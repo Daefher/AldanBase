@@ -1,8 +1,23 @@
-<mat-grid-list cols="1" rowHeight="400px">
-    <mat-grid-tile class="header-container">
-       <app-header></app-header>
-    </mat-grid-tile>   
-    <mat-grid-tile >
-        <app-tools></app-tools>
-    </mat-grid-tile>">
-</mat-grid-list>
+<div class="bounds">
+
+  <div class="home-content header-container" fxLayout="row" fxLayoutAlign="space-around center"
+    style="min-height:400px">
+    <div fxFlex="100" class="sec1" fxFlex.xs="55">
+      <app-header></app-header>
+    </div>
+  </div>
+  <br>
+  <div class="home-content" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center">
+    <div fxFlex="100" class="sec2">
+      <app-tools></app-tools>
+    </div>
+  </div>
+  <br>
+  <div class="home-content header-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center"
+    style="min-height:400px">
+    <div fxFlex="100" class="sec2">
+      <app-about></app-about>
+    </div>
+  </div>
+
+</div>

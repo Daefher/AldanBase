@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
+
 
 //Mateial
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -10,6 +12,7 @@ import { MatButtonModule } from '@angular/material'
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 //Flex Layout 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -28,19 +31,21 @@ import { ToolsComponent } from './components/home-theme/home-sub-components/tool
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SidenavComponent,
+    AppComponent,    
     HomeComponent,
+    SidenavComponent,
     FooterComponent,
     LoginComponent,
     HeaderComponent,
     AboutComponent,
-    ToolsComponent,
-    
+    ToolsComponent,    
   ],
-  imports: [
+  imports: [    
     BrowserModule,
+    CommonModule,
+    FlexLayoutModule,
     AppRoutingModule,
+    MatCardModule, 
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -48,10 +53,11 @@ import { ToolsComponent } from './components/home-theme/home-sub-components/tool
     MatSidenavModule,
     HttpClientModule,
     MatButtonModule,
+    MatListModule,
     MatIconModule,
     MatGridListModule,
-    MatCardModule,
-    FlexLayoutModule
+      
+         
   ],
   providers: [],
   bootstrap: [AppComponent]
