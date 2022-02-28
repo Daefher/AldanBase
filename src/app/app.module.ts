@@ -13,21 +13,37 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+//toastr
+import { ToastrModule } from 'ngx-toastr';
 
 //Flex Layout 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavComponent } from './components/home-theme/sidenav/sidenav.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HomeComponent } from './components/home-theme/home/home.component';
 import { FooterComponent } from './components/home-theme/footer/footer.component';
 import { LoginComponent } from './components/home-theme/login/login.component';
+
 import { HeaderComponent } from './components/home-theme/home-sub-components/header/header.component';
 import { AboutComponent } from './components/home-theme/home-sub-components/about/about.component';
 import { ToolsComponent } from './components/home-theme/home-sub-components/tools/tools.component';
+import { HomeDemoThemeComponent } from './components/demo-theme/home-demo-theme/home-demo-theme.component';
+import { HeaderDemoThemeComponent } from './components/demo-theme/header-demo-theme/header-demo-theme.component';
+import { FooterDemoThemeComponent } from './components/demo-theme/footer-demo-theme/footer-demo-theme.component';
+import { ProductsComponent } from './components/demo-theme/content-demo-theme/products/products.component';
+import { UsersComponent } from './components/demo-theme/content-demo-theme/users/users.component';
+import { OrdersComponent } from './components/demo-theme/content-demo-theme/orders/orders.component';
+import { ProductComponent } from './components/demo-theme/content-demo-theme/product/product.component';
+import { NavDemoThemeComponent } from './components/demo-theme/nav-demo-theme/nav-demo-theme.component';
+import { DemoLoginComponent } from './components/demo-theme/content-demo-theme/demo-login/demo-login.component';
+
 
 @NgModule({
   declarations: [
@@ -38,11 +54,24 @@ import { ToolsComponent } from './components/home-theme/home-sub-components/tool
     LoginComponent,
     HeaderComponent,
     AboutComponent,
-    ToolsComponent,    
+    ToolsComponent,
+    HomeDemoThemeComponent,
+    HeaderDemoThemeComponent,
+    FooterDemoThemeComponent,
+    ProductsComponent,
+    UsersComponent,
+    OrdersComponent,
+    ProductComponent,
+    NavDemoThemeComponent,
+    DemoLoginComponent
+        
   ],
   imports: [    
     BrowserModule,
     CommonModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-left'
+    }), // ToastrModule added
     FlexLayoutModule,
     AppRoutingModule,
     MatCardModule, 
@@ -56,6 +85,10 @@ import { ToolsComponent } from './components/home-theme/home-sub-components/tool
     MatListModule,
     MatIconModule,
     MatGridListModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    
       
          
   ],

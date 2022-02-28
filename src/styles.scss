@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
 
 html,
 body {
@@ -13,4 +14,20 @@ body {
 .grid-row{
     min-height: fit-content;
     
+}
+
+.btn-primary {
+  background-color: #604D53;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto; }
+
+.primary {
+  //#d5c5c8
+  //#9da3a4
+  //#604d53
+  //#db7f8e
+  //#ffdbda
 }
