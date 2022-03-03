@@ -1,0 +1,83 @@
+<app-nav-demo-theme></app-nav-demo-theme>
+<div class="main-div">
+  <mat-card class="mat-card-class">
+    <h2>Agregar Producto</h2>
+    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+      <form class="example-form" [formGroup]='createProductForm' (ngSubmit)='onSubmit()'>
+        <input type="hidden" [hidden]="true" formControlName="UomClassId" [ngModel]="1">
+        <input type="hidden" [hidden]="true" formControlName="UomId" [ngModel]="2">
+        <input type="hidden" [hidden]="true" formControlName="CreatedDateTime">
+        <input type="hidden" [hidden]="true" formControlName="UnitCost">
+        <input type="hidden" [hidden]="true" formControlName="imageFile">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name'>
+          <div *ngIf="submitted && f.Name.errors">
+            <mat-error *ngIf="f.Name.errors.required">
+              Name is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput placeholder="Descripcion del Producto" formControlName='description'></textarea>
+          <div *ngIf="submitted && f.description.errors">
+            <mat-error *ngIf="f.description.errors.required">
+              Description is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Peso</mat-label>
+                <input type="text" matInput placeholder="Peso del Producto" formControlName='weightPerUnit'>
+                <div *ngIf="submitted && f.weightPerUnit.errors">
+                  <mat-error *ngIf="f.weightPerUnit.errors.required">
+                    Peso is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Precio</mat-label>
+                <input type="text" matInput placeholder="Precio del Producto" formControlName='UnitPrice'>
+                <div *ngIf="submitted && f.UnitPrice.errors">
+                  <mat-error *ngIf="f.UnitPrice.errors.required">
+                    Precio is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Categoria</mat-label>
+          <mat-select placeholder="Descripcion del Producto" formControlName='category' value="selected" >
+            <mat-option value="frutas">Frutas</mat-option>
+            <mat-option value="vegetales">Vegetales</mat-option>
+            <mat-option value="semillas">Semillas</mat-option>
+            <mat-option value="hierbas">Hierbas</mat-option>
+            <mat-option value="proteina">Proteina</mat-option>
+          </mat-select>
+          <div *ngIf="submitted && f.category.errors">
+            <mat-error *ngIf="f.category.errors.required">
+              Category is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <button type="submit" mat-button class="btn-primary">
+          Crear
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

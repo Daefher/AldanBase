@@ -6,6 +6,7 @@
     <a mat-button routerLink="/demo/demo-products"> Productos </a>   
     <a mat-button> Acerca de  </a>   
     <a mat-button routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user"> Iniciar Sesión </a>   
+    
     <a mat-button *ngIf="(authenticationService.currentuser | async) as user" (click)="logout()"> Cerrar Sesion </a>   
 
  

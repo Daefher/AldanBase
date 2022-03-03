@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuardGuard } from './helpers/auth-guard.guard';
+
+
 import {
   
   HomeComponent,
   ProductsComponent,
   ProductComponent,
   HomeDemoThemeComponent,
-  DemoLoginComponent
+  DemoLoginComponent,
+  CreateProductComponent
   
 } from "./components/index.pages";
 
@@ -17,7 +21,8 @@ const routes: Routes = [
   {path : 'demo', component:HomeDemoThemeComponent},
   {path : 'demo/demo-login', component:DemoLoginComponent},
   {path : 'demo/demo-products', component:ProductsComponent},
-  { path: 'demo/demo-products/:partId/view', component: ProductComponent, pathMatch: 'full'}, 
+  {path : 'demo/demo-products/create', component:CreateProductComponent, canActivate: [AuthGuardGuard]},
+  {path : 'demo/demo-products/:partId/view', component: ProductComponent, pathMatch: 'full'}, 
 
 ];
 

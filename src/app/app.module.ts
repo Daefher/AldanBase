@@ -2,12 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 
+import { JWTInterceptorInterceptor } from './helpers/jwtinterceptor.interceptor';
 
-//Mateial
+
+
+//Material
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -16,6 +19,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 //toastr
 import { ToastrModule } from 'ngx-toastr';
@@ -43,6 +49,7 @@ import { OrdersComponent } from './components/demo-theme/content-demo-theme/orde
 import { ProductComponent } from './components/demo-theme/content-demo-theme/product/product.component';
 import { NavDemoThemeComponent } from './components/demo-theme/nav-demo-theme/nav-demo-theme.component';
 import { DemoLoginComponent } from './components/demo-theme/content-demo-theme/demo-login/demo-login.component';
+import { CreateProductComponent } from './components/demo-theme/content-demo-theme/create-product/create-product.component';
 
 
 @NgModule({
@@ -63,7 +70,8 @@ import { DemoLoginComponent } from './components/demo-theme/content-demo-theme/d
     OrdersComponent,
     ProductComponent,
     NavDemoThemeComponent,
-    DemoLoginComponent
+    DemoLoginComponent,
+    CreateProductComponent
         
   ],
   imports: [    
@@ -88,11 +96,14 @@ import { DemoLoginComponent } from './components/demo-theme/content-demo-theme/d
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     
       
          
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
