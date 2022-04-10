@@ -23,18 +23,22 @@ export class ProductComponent implements OnInit {
 
   image_path = globals.img_path;
 
+  public user;
 
   constructor(
     private route : ActivatedRoute,
     public productService  : ProductsService,
     //public shoppingCartService: ShoppingcartService,
     private router :  Router,
-    private authenticationService : AuthenticationService,
+    public authenticationService : AuthenticationService,
     private toastr: ToastrService,
    
   ) { }
 
   ngOnInit(): void {
+
+    this.authenticationService.currentuser.subscribe(user => this.user = user);
+
 
     this.product_id =  this.route.snapshot.params['partId'];
 
@@ -54,5 +58,13 @@ export class ProductComponent implements OnInit {
       
     });
   }
+
+  gotoTop() {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }   
 
 }

@@ -20,6 +20,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 
@@ -50,6 +54,13 @@ import { ProductComponent } from './components/demo-theme/content-demo-theme/pro
 import { NavDemoThemeComponent } from './components/demo-theme/nav-demo-theme/nav-demo-theme.component';
 import { DemoLoginComponent } from './components/demo-theme/content-demo-theme/demo-login/demo-login.component';
 import { CreateProductComponent } from './components/demo-theme/content-demo-theme/create-product/create-product.component';
+import { EditProductComponent } from './components/demo-theme/content-demo-theme/edit-product/edit-product.component';
+import { UserProfileComponent } from './components/demo-theme/content-demo-theme/user-profile/user-profile.component';
+import { SalesOrdersComponent } from './components/demo-theme/content-demo-theme/sales-orders/sales-orders.component';
+import { SalesOrderComponent } from './components/demo-theme/content-demo-theme/sales-order/sales-order.component';
+import { OrdersListComponent } from './components/demo-theme/content-demo-theme/orders-list/orders-list.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditUserDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 
 
 @NgModule({
@@ -71,7 +82,14 @@ import { CreateProductComponent } from './components/demo-theme/content-demo-the
     ProductComponent,
     NavDemoThemeComponent,
     DemoLoginComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    EditProductComponent,
+    UserProfileComponent,
+    SalesOrdersComponent,
+    SalesOrderComponent,
+    OrdersListComponent,
+    EditUserDialogComponent,
+    
         
   ],
   imports: [    
@@ -97,7 +115,10 @@ import { CreateProductComponent } from './components/demo-theme/content-demo-the
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatDialogModule,
       
          
   ],

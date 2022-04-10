@@ -1,13 +1,56 @@
-<mat-toolbar class="navbar-custom nav-primary" fxLayout="row" fxLayoutAlign="center end" fxLayoutGap="30px">
-
+<mat-toolbar  flexLayout="row" class="navbar-custom nav-primary" fxLayout="row" fxLayoutAlign="center end" fxLayoutGap="30px">
+    
     <span mat-button>LOGO</span>
     <span fxFlex></span>
-    <a mat-button routerLink="/demo"> Inicio </a>
-    <a mat-button routerLink="/demo/demo-products"> Productos </a>   
-    <a mat-button> Acerca de  </a>   
-    <a mat-button routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user"> Iniciar Sesión </a>   
+    <a mat-button routerLink="/demo" fxHide.xs> Inicio </a>
+    <a mat-button routerLink="/demo/demo-products" fxHide.xs> Productos </a>   
+    <a mat-button fxHide.xs> Acerca de  </a>   
+    <a mat-button routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user" fxHide.xs> Iniciar Sesión </a>   
     
-    <a mat-button *ngIf="(authenticationService.currentuser | async) as user" (click)="logout()"> Cerrar Sesion </a>   
+    <a mat-button [routerLink]="['/demo/demo-users', user.systemUserId, 'view' ]"  *ngIf="(authenticationService.currentuser | async) as user" fxHide.xs>        
+       Perfil 
+    </a>
+    <a mat-button *ngIf="(authenticationService.currentuser | async) as user" (click)="logout()" fxHide.xs> Cerrar Sesion </a>   
 
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu">
+        <ng-container>
+            
+            
+            <button mat-menu-item routerLink="/demo">
+                <mat-icon class="mr">home</mat-icon>
+               Inicio 
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/demo/demo-products">
+                <mat-icon class="mr">store</mat-icon>
+                 Productos
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item >
+                <mat-icon class="mr">note</mat-icon>
+                 Acerca de
+            </button>
+            <mat-divider></mat-divider>
+
+            <button mat-menu-item routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user" > 
+                <mat-icon class="mr">login</mat-icon>
+                Iniciar Sesión 
+            </button>   
+            <mat-divider></mat-divider>
+            <button mat-menu-item [routerLink]="['/demo/demo-users', user.systemUserId, 'view' ]"  *ngIf="(authenticationService.currentuser | async) as user">
+                <mat-icon class="mr">person</mat-icon>
+               Perfil 
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item *ngIf="(authenticationService.currentuser | async) as user" (click)="logout()">
+                <mat-icon class="mr">logout</mat-icon>
+                Cerrar Sesion 
+            </button>   
+        
+        </ng-container>
+    </mat-menu>
  
 </mat-toolbar>

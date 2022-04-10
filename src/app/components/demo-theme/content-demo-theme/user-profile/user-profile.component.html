@@ -1,0 +1,35 @@
+<app-nav-demo-theme></app-nav-demo-theme>
+
+<div class="wrapper">
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="30%">
+        <mat-card class="mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>
+              Informacion De perfil             
+            </mat-card-title>           
+          </mat-card-header>
+          <!-- <img mat-card-image  src="{{ image_path + product.imageFile}}">     -->
+          <mat-card-content>
+            <mat-list>
+              <mat-list-item> Nombre : {{this.user_data?.name}} </mat-list-item>
+              <mat-list-item> Correo : {{user.email}} </mat-list-item>
+              <mat-list-item> Telefono: </mat-list-item>
+              <mat-list-item> Fecha de Registro : {{this.user_created_date | date:'MM/dd/yyyy'}} </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+          <mat-card-actions align="end" >
+            <button mat-button class="btn-primary" (click)="openDialog()">Editar</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div fxFlex="70%" fxFlex.xs="100%" fxFlex.sm="70%">
+        <app-orders-list></app-orders-list>
+      </div>
+    </div>
+
+    
+
+  </div>
+</div>

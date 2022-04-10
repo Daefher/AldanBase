@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../../../services/demo-login/authentic
 import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
 
-
+ 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -19,7 +19,11 @@ export class ProductsComponent implements OnInit {
 
   public user;
 
-  constructor( private productService : ProductsService, public authenticationService: AuthenticationService, private toastr: ToastrService) { }
+  constructor(
+      private productService : ProductsService, 
+      public authenticationService: AuthenticationService,
+      private toastr: ToastrService
+     ) { }
 
   ngOnInit(): void {
 

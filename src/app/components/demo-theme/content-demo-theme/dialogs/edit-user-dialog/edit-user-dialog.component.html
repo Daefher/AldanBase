@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Editar Perfil </h1>
+<div mat-dialog-content fxLayout="column" fxLayoutAlign="center center">
+  
+  <mat-form-field appearance="fill" fxFlex="100%" >
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Nombre" [(ngModel)]="data.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill"  fxFlex="100%" >
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email" [(ngModel)]="data.email">
+    
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end"> 
+  <button mat-button (click)="onNoClick()" class="btn-secondary" >Cancelar</button>
+  <button mat-button class="btn-primary" >Guardar</button>
+</div>
