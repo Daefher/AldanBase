@@ -1,108 +1,114 @@
 <app-nav-demo-theme></app-nav-demo-theme>
 <div class="main-div">
-    <mat-card class="mat-card-class">
-      <h2>Editar Producto</h2>
-      <mat-card-content fxLayout="row" fxLayoutAlign="center center">
-        <form class="example-form" [formGroup]='EditProductForm' (ngSubmit)='onSubmit()'>
-          <input type="hidden" [hidden]="true" formControlName="AldanCustomerId"  [ngModel]="product?.aldanCustomerId">
-          <input type="hidden" [hidden]="true" formControlName="CompanyId"  [ngModel]="product?.companyId">
-          <input type="hidden" [hidden]="true" formControlName="PartId"  [ngModel]="product?.partId">
-          <input type="hidden" [hidden]="true" formControlName="PartNum" [ngModel]="product?.partNum" >
-          <input type="hidden" [hidden]="true" formControlName="PayPalToken" [ngModel]="0" >
-          <input type="hidden" [hidden]="true" formControlName="CanceledBy" [ngModel]="product?.canceledBy" >
-          <input type="hidden" [hidden]="true" formControlName="CanceledDateTime" [ngModel]="product?.canceledDateTime" >
-          <input type="hidden" [hidden]="true" formControlName="Canceled" [ngModel]="product?.canceled" >
-          <input type="hidden" [hidden]="true" formControlName="CreatedBy" [ngModel]="product?.createdBy" >
-          <input type="hidden" [hidden]="true" formControlName="CreatedDateTime" >
-          <input type="hidden" [hidden]="true" formControlName="Cancelable" [ngModel]="product?.cancelable" >
-          <input type="hidden" [hidden]="true" formControlName="SysRowId" [ngModel]="product?.sysRowId" >
-          <input type="hidden" [hidden]="true" formControlName="UnitCost" [ngModel]="0" >
-          <input type="hidden" [hidden]="true" formControlName="UomClassId"  [ngModel]="0">
-          <input type="hidden" [hidden]="true" formControlName="UomId"  [ngModel]="0">                 
-          <input type="hidden" [hidden]="true" formControlName="WeightUomId"  [ngModel]="0">                 
-          <input type="hidden" [hidden]="true" formControlName="imageFile" >      
-          
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Nombre</mat-label>
-            <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name' [ngModel]="product?.name">
-            <div *ngIf="submitted && f.Name.errors">
-              <mat-error *ngIf="f.Name.errors.required">
-                Name is <strong>required</strong>
-              </mat-error>
-            </div>
-          </mat-form-field>
-  
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Descripcion</mat-label>
-            <textarea matInput placeholder="Descripcion del Producto" formControlName='Description' [ngModel]="product?.description"></textarea>
-            <div *ngIf="submitted && f.Description.errors">
-              <mat-error *ngIf="f.Description.errors.required">
-                Description is <strong>required</strong>
-              </mat-error>
-            </div>
-          </mat-form-field>
-  
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Peso</mat-label>
-                  <input type="text" matInput placeholder="Peso del Producto" formControlName='weightPerUnit' [ngModel]="product?.weightPerUnit">
-                  <div *ngIf="submitted && f.weightPerUnit.errors">
-                    <mat-error *ngIf="f.weightPerUnit.errors.required">
-                      Peso is <strong>required</strong>
-                    </mat-error>
-                  </div>
-                </mat-form-field>
-              </td>
-              <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Precio</mat-label>
-                  <input type="text" matInput placeholder="Precio del Producto" formControlName='UnitPrice' [ngModel]="product?.unitPrice">
-                  <div *ngIf="submitted && f.UnitPrice.errors">
-                    <mat-error *ngIf="f.UnitPrice.errors.required">
-                      Precio is <strong>required</strong>
-                    </mat-error>
-                  </div>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
-  
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Categoria</mat-label>
-            <mat-select placeholder="Descripcion del Producto" formControlName='category' [ngModel]="product?.category">
-              <mat-option value="frutas">Frutas</mat-option>
-              <mat-option value="vegetales">Vegetales</mat-option>
-              <mat-option value="semillas">Semillas</mat-option>
-              <mat-option value="hierbas">Hierbas</mat-option>
-              <mat-option value="proteina">Proteina</mat-option>
-            </mat-select>
-            <div *ngIf="submitted && f.category.errors">
-              <mat-error *ngIf="f.category.errors.required">
-                Category is <strong>required</strong>
-              </mat-error>
-            </div>
-          </mat-form-field>
-  
-          <mat-spinner [diameter]="20" *ngIf="loading"></mat-spinner>
-         
-          <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" >
-            <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">  
-              <button mat-raised-button class="btn-secondary" [routerLink]="['/demo/demo-products', product?.partId, 'view' ]">
-                Regresar
-              </button>
-            </div>
-            <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">  
+  <mat-card class="mat-card-class">
+    <h2>Editar Producto</h2>
+    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+      <form class="example-form" [formGroup]='EditProductForm' (ngSubmit)='onSubmit()'>
+        <input type="hidden" [hidden]="true" formControlName="AldanCustomerId" [ngModel]="product?.aldanCustomerId">
+        <input type="hidden" [hidden]="true" formControlName="CompanyId" [ngModel]="product?.companyId">
+        <input type="hidden" [hidden]="true" formControlName="PartId" [ngModel]="product?.partId">
+        <input type="hidden" [hidden]="true" formControlName="PartNum" [ngModel]="product?.partNum">
+        <input type="hidden" [hidden]="true" formControlName="PayPalToken" [ngModel]="0">
+        <input type="hidden" [hidden]="true" formControlName="CanceledBy" [ngModel]="product?.canceledBy">
+        <input type="hidden" [hidden]="true" formControlName="CanceledDateTime" [ngModel]="product?.canceledDateTime">
+        <input type="hidden" [hidden]="true" formControlName="Canceled" [ngModel]="product?.canceled">
+        <input type="hidden" [hidden]="true" formControlName="CreatedBy" [ngModel]="product?.createdBy">
+        <input type="hidden" [hidden]="true" formControlName="CreatedDateTime">
+        <input type="hidden" [hidden]="true" formControlName="Cancelable" [ngModel]="product?.cancelable">
+        <input type="hidden" [hidden]="true" formControlName="SysRowId" [ngModel]="product?.sysRowId">
+        <input type="hidden" [hidden]="true" formControlName="UnitCost" [ngModel]="0">
+        <input type="hidden" [hidden]="true" formControlName="UomClassId" [ngModel]="0">
+        <input type="hidden" [hidden]="true" formControlName="UomId" [ngModel]="0">
+        <input type="hidden" [hidden]="true" formControlName="WeightUomId" [ngModel]="0">
+        <input type="hidden" [hidden]="true" formControlName="imageFile">
 
-              <button type="submit" mat-raised-button class="btn-primary" [disabled]="loading">
-                Guardar             
-              </button>
-            </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name'
+            [ngModel]="product?.name">
+          <div *ngIf="submitted && f.Name.errors">
+            <mat-error *ngIf="f.Name.errors.required">
+              Name is <strong>required</strong>
+            </mat-error>
           </div>
-         
-          
-  
-        </form>
-      </mat-card-content>
-    </mat-card>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput placeholder="Descripcion del Producto" formControlName='Description'
+            [ngModel]="product?.description"></textarea>
+          <div *ngIf="submitted && f.Description.errors">
+            <mat-error *ngIf="f.Description.errors.required">
+              Description is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Peso</mat-label>
+                <input type="text" matInput placeholder="Peso del Producto" formControlName='weightPerUnit'
+                  [ngModel]="product?.weightPerUnit">
+                <div *ngIf="submitted && f.weightPerUnit.errors">
+                  <mat-error *ngIf="f.weightPerUnit.errors.required">
+                    Peso is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Precio</mat-label>
+                <input type="text" matInput placeholder="Precio del Producto" formControlName='UnitPrice'
+                  [ngModel]="product?.unitPrice">
+                <div *ngIf="submitted && f.UnitPrice.errors">
+                  <mat-error *ngIf="f.UnitPrice.errors.required">
+                    Precio is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Categoria</mat-label>
+          <mat-select placeholder="Descripcion del Producto" formControlName='category' [ngModel]="product?.category">
+            <mat-option value="frutas">Frutas</mat-option>
+            <mat-option value="vegetales">Vegetales</mat-option>
+            <mat-option value="semillas">Semillas</mat-option>
+            <mat-option value="hierbas">Hierbas</mat-option>
+            <mat-option value="proteina">Proteina</mat-option>
+          </mat-select>
+          <div *ngIf="submitted && f.category.errors">
+            <mat-error *ngIf="f.category.errors.required">
+              Category is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-spinner [diameter]="20" *ngIf="loading"></mat-spinner>
+
+        <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+          <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">
+            <button mat-raised-button class="btn-secondary"
+              [routerLink]="['/demo/demo-products', product?.partId, 'view' ]">
+              Regresar
+            </button>
+          </div>
+          <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">
+
+            <button type="submit" mat-raised-button class="btn-primary" [disabled]="loading">
+              Guardar
+            </button>
+          </div>
+        </div>
+
+
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <app-footer-demo-theme></app-footer-demo-theme>

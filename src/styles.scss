@@ -1,6 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~ngx-toastr/toastr';
 
+
+// Define a custom mixin that takes in the current theme
+@mixin theme-color-grabber($theme) {
+  // Parse the theme and create variables for each color in the pallete
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  // Create theme specfic styles
+  .primaryColorBG {
+    background-color: mat-color($primary);
+  }
+  .accentColorBG {
+    background-color: mat-color($accent);
+  }
+  .warnColorBG {
+    background-color: mat-color($warn);
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -16,15 +35,7 @@ body {
     
 }
 
-.btn-primary {
-  background-color: #604D53;
-  color: #d5c5c8;
-}
 
-.btn-secondary {
-  background-color: #d5c5c8;
-  color:#604d53 ;
-}
 
 .img-fluid {
   max-width: 100%;
@@ -36,4 +47,9 @@ body {
   //#604d53
   //#db7f8e
   //#ffdbda
+}
+
+mat-card {
+  word-break: break-all !important;
+
 }

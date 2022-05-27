@@ -9,6 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import { UsersService } from '../../../../services/demo-user/users.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../dialogs/edit-user-dialog/edit-user-dialog.component';
+import { UserDataInterface } from '../../../../interfaces/user-data-interface';
+import { Observable } from 'rxjs';
 
 
 
@@ -20,7 +22,7 @@ import { EditUserDialogComponent } from '../dialogs/edit-user-dialog/edit-user-d
 export class UserProfileComponent implements OnInit {
 
   public user;
-  public user_data: any;
+  public user_data$: Observable<UserDataInterface>;
   public user_created_date : any;
 
   animal: string;
@@ -31,31 +33,35 @@ export class UserProfileComponent implements OnInit {
      public authenticationService : AuthenticationService,
      public usersService : UsersService,
      private toastr: ToastrService,
-     public dialog: MatDialog
+     public dialog: MatDialog,
+     
+
     ) { }
 
   ngOnInit(): void {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
-    if(this.user){
+    this.user_data$ = this.usersService.getCurrentUserInfo;
+    console.log("userDATA", this.user_data$);
+   /*  if(this.user){
       this.usersService.getUserInfo(this.user.systemUserId).subscribe((data)=>{
         this.user_data = data[0];        
         this.user_created_date = new Date(this.user_data.createdDateTime);
 
-        console.log(this.user_data);
+        //console.log(this.user_data);
       },
       err =>{
        
           this.toastr.error(err);
       }
       );
-    }
+    } */
 
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EditUserDialogComponent, {
-      width: '320px',
+      width: '320px',     
       data: {name: this.name, animal: this.animal},
     });
 
@@ -64,5 +70,10 @@ export class UserProfileComponent implements OnInit {
       
     });
   }
+
+  receiver(receivedFromChild:any){
+    console.log(receivedFromChild)
+  }
+  
 
 }

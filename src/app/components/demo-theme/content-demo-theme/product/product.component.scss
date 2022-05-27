@@ -1,9 +1,12 @@
 mat-toolbar {
     justify-content: space-between;
 }
-
+.wrapper {
+    min-height: 100vh !important ;
+}
 .content {
     padding: 16px;
+    
 }
 
 .content > mat-card {

@@ -29,9 +29,16 @@ export class ProductsComponent implements OnInit {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
 
-    this.productService.getAll(globals.company_id).subscribe((data: ProductInterface[])=>{      
+    this.productService.getAll(globals.company_id).subscribe((data: ProductInterface[])=>{   
+      
+      if(data.length > 4) {
+        data.slice(0,4);
+        this.products = data;
+      }else {
+        this.products = data;
+      }
               
-      this.products = data;
+     
           
       
     },

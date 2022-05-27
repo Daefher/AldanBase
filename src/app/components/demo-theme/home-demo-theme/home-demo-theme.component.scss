@@ -1,8 +1,18 @@
 .demo-header-container{
-    background: rgb(213,197,200);
-    background: -moz-linear-gradient(90deg, rgba(213,197,200) 0%, rgba(157,163,164,1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(213,197,200) 0%, rgba(157,163,164,1) 100%);
-    background: linear-gradient(90deg, rgba(213,197,200) 0%, rgba(157,163,164,1) 100%);
+    background: rgb(137,210,220);
+    background: -moz-linear-gradient(90deg, #ace0e7 0%, #444dd8 100%);
+    background: -webkit-linear-gradient(90deg, #ace0e7 0%, #444dd8 100%);
+    background: linear-gradient(90deg, #ace0e7 0%, #444dd8 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#D5C5C8",endColorstr="#9DA3A4",GradientType=1);
-    color: #604D53;
+    color: #000000;
+
+}
+
+
+.wrapper {
+    margin: 20px;
+}
+
+.title {
+    text-align: center;
 }

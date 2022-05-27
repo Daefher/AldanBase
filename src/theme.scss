@@ -1,0 +1,180 @@
+@import '~@angular/material/theming';
+@import 'styles.scss';
+@include mat-core();
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette0: (
+    50 : #f1fafb,
+    100 : #dcf2f5,
+    200 : #c4e9ee,
+    300 : #ace0e7,
+    400 : #9bd9e1,
+    500 : #89d2dc,
+    600 : #81cdd8,
+    700 : #76c7d3,
+    800 : #6cc1ce,
+    900 : #59b6c5,
+    A100 : #ffffff,
+    A200 : #f8feff,
+    A400 : #c5f7ff,
+    A700 : #acf3ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-mcgpalette1: (
+    50 : #edecfb,
+    100 : #d1d1f4,
+    200 : #b2b2ed,
+    300 : #9393e6,
+    400 : #7c7be0,
+    500 : #6564db,
+    600 : #5d5cd7,
+    700 : #5352d2,
+    800 : #4948cd,
+    900 : #3736c4,
+    A100 : #ffffff,
+    A200 : #dbdaff,
+    A400 : #a8a7ff,
+    A700 : #8f8eff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-mcgpalette2: (
+    50 : #e5e6f9,
+    100 : #bdc0f1,
+    200 : #9197e8,
+    300 : #656ddf,
+    400 : #444dd8,
+    500 : #232ed1,
+    600 : #1f29cc,
+    700 : #1a23c6,
+    800 : #151dc0,
+    900 : #0c12b5,
+    A100 : #e1e2ff,
+    A200 : #aeb0ff,
+    A400 : #7b7eff,
+    A700 : #6265ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$md-mcgpalette3: (
+    50 : #e2e4e8,
+    100 : #b7bbc6,
+    200 : #888ea1,
+    300 : #58617b,
+    400 : #343f5e,
+    500 : #101d42,
+    600 : #0e1a3c,
+    700 : #0c1533,
+    800 : #09112b,
+    900 : #050a1d,
+    A100 : #5c6fff,
+    A200 : #2942ff,
+    A400 : #001cf5,
+    A700 : #0019db,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-mcgpalette4: (
+    50 : #e2e3e3,
+    100 : #b6b8b9,
+    200 : #86898b,
+    300 : #565a5d,
+    400 : #31363a,
+    500 : #0d1317,
+    600 : #0b1114,
+    700 : #090e11,
+    800 : #070b0d,
+    900 : #030607,
+    A100 : #4eb7ff,
+    A200 : #1ba3ff,
+    A400 : #0089e7,
+    A700 : #007ace,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+$my-app-primary: mat-palette($md-mcgpalette0, 500);
+$my-app-accent:  mat-palette($md-mcgpalette4, A400);
+$my-app-basic: mat-palette($md-mcgpalette3, A100);
+/*$my-app-warn:    mat-palette($md-mcgpalette2); */
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent,$my-app-basic);
+@include theme-color-grabber($my-app-theme);
+
+@include angular-material-theme($my-app-theme);
+
+

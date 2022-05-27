@@ -61,6 +61,7 @@ import { SalesOrderComponent } from './components/demo-theme/content-demo-theme/
 import { OrdersListComponent } from './components/demo-theme/content-demo-theme/orders-list/orders-list.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditUserDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
+import { FeatureProductsComponent } from './components/demo-theme/content-demo-theme/feature-products/feature-products.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { EditUserDialogComponent } from './components/demo-theme/content-demo-th
     SalesOrderComponent,
     OrdersListComponent,
     EditUserDialogComponent,
+    FeatureProductsComponent,
     
         
   ],
