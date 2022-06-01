@@ -26,7 +26,14 @@ export class FeatureProductsComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAll(globals.company_id).subscribe((data: ProductInterface[])=>{      
               
-      this.products = data;
+      let temp = this.ReturnNotTrashed(data);
+      if(temp.length > 4) {
+        console.log(temp);
+       
+        this.products =  temp.slice(0,4);        
+      }else {
+        this.products = temp;
+      }
           
       
     },
@@ -34,6 +41,21 @@ export class FeatureProductsComponent implements OnInit {
       this.toastr.error("Error cargar productos");  
     }
     ); 
+  }
+
+  //DELETE THIS FUNCTION SHOULD BE ON BACKEND
+  //Sort only the products that are not trashed
+  ReturnNotTrashed(products) {
+    let newProducts = [];
+    products.forEach(element => {
+      if(element.canceled == false){
+        newProducts.push(element);
+      }
+    });
+
+    return newProducts;
+
+    
   }
 
 }

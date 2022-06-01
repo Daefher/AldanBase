@@ -26,6 +26,7 @@ export class CreateProductComponent implements OnInit {
   image_file : string;
   is_avocado : boolean;
 
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -52,7 +53,7 @@ export class CreateProductComponent implements OnInit {
     });
 
       // get return url from route parameters or default to '/'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/demo/demo-products/';
   }
 
   get f() {
@@ -94,8 +95,13 @@ export class CreateProductComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.router.navigate([this.returnUrl+ data[0].partId.toString() + '/view'])
           this.toastr.success("Producto creado correctamente", "Exito");
-          this.router.navigateByUrl("/");
+          console.log(this.returnUrl+ data[0].partId.toString() + '/view');
+          console.log(data);
+          // this.router.navigate([this.returnUrl]);
+          //this.router.navigateByUrl('/product/'+data[0].partId+ '/view');
+         
         },
         error => {
           this.toastr.error("Error", error);

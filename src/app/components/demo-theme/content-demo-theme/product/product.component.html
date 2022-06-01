@@ -1,8 +1,17 @@
 <app-nav-demo-theme></app-nav-demo-theme>
 <div class="wrapper">
   <div class="content">
-    <button align='right' mat-raised-button color="accent" style="margin:5px;" *ngIf="authenticationService.currentuser | async"
-      [routerLink]="['/demo/demo-products', product.partId, 'update']" (click)="gotoTop()">Edtar Producto</button>
+    <div class="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+        <button align='right' mat-raised-button color="accent" style="margin:5px;"
+          *ngIf="authenticationService.currentuser | async"
+          [routerLink]="['/demo/demo-products', product.partId, 'update']" (click)="gotoTop()">Edtar Producto</button>
+      </div>
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+        <input type="text">
+      </div>
+    </div>
+    <br>
     <div fxLayout="row wrap" fxLayoutGap="5px grid">
 
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="33%">
@@ -25,7 +34,9 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button color="accent">AGREGAR</button>
+            <button mat-raised-button color="accent"><span class="material-icons">
+                add_shopping_cart
+              </span></button>
           </mat-card-actions>
         </mat-card>
       </div>
@@ -34,4 +45,4 @@
     </div>
   </div>
 </div>
-  <app-footer-demo-theme></app-footer-demo-theme>
+<app-footer-demo-theme></app-footer-demo-theme>

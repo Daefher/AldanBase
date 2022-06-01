@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../../../services/demo-login/authentic
 
 import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
  
 @Component({
@@ -16,29 +17,34 @@ export class ProductsComponent implements OnInit {
 
   products: any = [];
   image_path = globals.img_path;
+  filterRslt = [];
+
+  searchForm: any;
 
   public user;
 
   constructor(
       private productService : ProductsService, 
       public authenticationService: AuthenticationService,
-      private toastr: ToastrService
-     ) { }
+      private toastr: ToastrService,
+      private formBuilder: FormBuilder,
+     ) { 
+      this.searchForm = this.formBuilder.group({
+        search: '',
+      });
+     }
 
   ngOnInit(): void {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
+    
 
     this.productService.getAll(globals.company_id).subscribe((data: ProductInterface[])=>{   
       
-      if(data.length > 4) {
-        data.slice(0,4);
-        this.products = data;
-      }else {
-        this.products = data;
-      }
-              
-     
+      
+      let temp =  this.ReturnNotTrashed(data);        
+      this.products = temp;
+      //this.filterRslt = temp;
           
       
     },
@@ -46,6 +52,8 @@ export class ProductsComponent implements OnInit {
       this.toastr.error("Error cargar productos");  
     }
     ); 
+
+   
   }
 
  /*  getProdut(data:ProductInterface[]){
@@ -58,12 +66,28 @@ export class ProductsComponent implements OnInit {
     return box;
   } */
 
+  filter(status){
+    this.filterRslt =  this.products.filter(tur => tur.name === status);
+  }
   gotoTop() {
     window.scroll({ 
       top: 0, 
       left: 0, 
       behavior: 'smooth' 
     });
-  }   
+  }  
+  
+  ReturnNotTrashed(products) {
+    let newProducts = [];
+    products.forEach(element => {
+      if(element.canceled == false){
+        newProducts.push(element);
+      }
+    });
+
+    return newProducts;
+
+    
+  }
 
 }

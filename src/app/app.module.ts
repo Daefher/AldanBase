@@ -62,6 +62,7 @@ import { OrdersListComponent } from './components/demo-theme/content-demo-theme/
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditUserDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 import { FeatureProductsComponent } from './components/demo-theme/content-demo-theme/feature-products/feature-products.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { FeatureProductsComponent } from './components/demo-theme/content-demo-t
     OrdersListComponent,
     EditUserDialogComponent,
     FeatureProductsComponent,
+    SearchFilterPipe,
     
         
   ],
