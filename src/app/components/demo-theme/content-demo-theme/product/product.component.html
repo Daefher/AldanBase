@@ -7,9 +7,7 @@
           *ngIf="authenticationService.currentuser | async"
           [routerLink]="['/demo/demo-products', product.partId, 'update']" (click)="gotoTop()">Edtar Producto</button>
       </div>
-      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-        <input type="text">
-      </div>
+     
     </div>
     <br>
     <div fxLayout="row wrap" fxLayoutGap="5px grid">
