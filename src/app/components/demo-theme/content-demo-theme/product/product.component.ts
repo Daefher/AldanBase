@@ -18,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductComponent implements OnInit {
 
   product_id : any;
-  product : ProductInterface; 
+  product : ProductInterface;
   is_login : boolean;
 
   image_path = globals.img_path;
@@ -28,7 +28,6 @@ export class ProductComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     public productService  : ProductsService,
-    //public shoppingCartService: ShoppingcartService,
     private router :  Router,
     public authenticationService : AuthenticationService,
     private toastr: ToastrService,
