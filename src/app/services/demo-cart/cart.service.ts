@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ProductsService } from '../../services/demo-products/products.service';
 import { ProductInterface } from '../../interfaces/product-interface';
 import * as globals from '../../globals';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,9 @@ export class CartService {
 
     if(cart != null)
     {
-      var cartParsed = JSON.parse(cart);
+      var cartParsed : ProductInterface[] = JSON.parse(cart);
       if(cartParsed != null)
-        return of(cartParsed.sort(this.compare));
+        return of(cartParsed);
       else
         return of(null);
     }
@@ -36,7 +37,9 @@ export class CartService {
       var cartParsed : ProductInterface[] = JSON.parse(cart);
 
       //Check if product exists in cart
-      var result = cartParsed.filter((p) => {p.partId == item.partId});
+      var result = cartParsed.filter((obj) => {
+        return obj.partId === item.partId;
+      });
 
       if(result.length > 0){
         if(!overrideQty)

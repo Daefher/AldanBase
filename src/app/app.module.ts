@@ -64,6 +64,7 @@ import { EditUserDialogComponent } from './components/demo-theme/content-demo-th
 import { FeatureProductsComponent } from './components/demo-theme/content-demo-theme/feature-products/feature-products.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ShoppingcartComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
+import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart-form/shoppingcart-form.component';
 
 
 @NgModule({
@@ -95,6 +96,7 @@ import { ShoppingcartComponent } from './components/demo-theme/content-demo-them
     FeatureProductsComponent,
     SearchFilterPipe,
     ShoppingcartComponent,
+    ShoppingcartFormComponent,
     
         
   ],

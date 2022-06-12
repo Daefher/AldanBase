@@ -93,6 +93,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: ProductInterface){
+    product.quantity = 1;
     if(this.cartService.addToLSCart(product, false))
       this.toastr.success("¡Product agregado exitosamente!");
     else
