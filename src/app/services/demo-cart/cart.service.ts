@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProductsService } from '../../services/demo-products/products.service';
 import { ProductInterface } from '../../interfaces/product-interface';
 import * as globals from '../../globals';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,12 @@ export class CartService {
     {
       var cartParsed = JSON.parse(cart);
       if(cartParsed != null)
-        return cartParsed.sort(this.compare);
+        return of(cartParsed.sort(this.compare));
       else
-        return null;
+        return of(null);
     }
     else
-      return null;
+      return of(null);
   }
 
   public addToLSCart(item: ProductInterface, overrideQty: boolean){
@@ -54,6 +55,8 @@ export class CartService {
       var productCart : ProductInterface[] = [item];
       this.setLSCart(productCart);
     }
+
+    return true;
   }
 
   public updateCart(productsArray: ProductInterface[]){

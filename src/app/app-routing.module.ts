@@ -15,7 +15,8 @@ import {
   EditProductComponent,
   UserProfileComponent,
   SalesOrdersComponent,
-  SalesOrderComponent
+  SalesOrderComponent,
+  ShoppingcartComponent
   
 } from "./components/index.pages";
 
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path : 'demo/demo-products/:partId/update', component: EditProductComponent, canActivate: [AuthGuardGuard]},
   {path : 'demo/demo-users/:userId/view', component: UserProfileComponent, canActivate: [AuthGuardGuard]},
   {path : 'demo/demo-orders/view', component: SalesOrdersComponent, canActivate: [AuthGuardGuard]},
-  {path : 'demo/demo-orders/:orderId/view', component: SalesOrderComponent, canActivate: [AuthGuardGuard]}
+  {path : 'demo/demo-orders/:orderId/view', component: SalesOrderComponent, canActivate: [AuthGuardGuard]},
+  {path : 'demo/demo-cart', component: ShoppingcartComponent}
 
 
 ];

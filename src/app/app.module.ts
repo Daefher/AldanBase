@@ -63,6 +63,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { EditUserDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 import { FeatureProductsComponent } from './components/demo-theme/content-demo-theme/feature-products/feature-products.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { ShoppingcartComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     EditUserDialogComponent,
     FeatureProductsComponent,
     SearchFilterPipe,
+    ShoppingcartComponent,
     
         
   ],

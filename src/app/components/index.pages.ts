@@ -8,4 +8,5 @@ export { EditProductComponent} from './demo-theme/content-demo-theme/edit-produc
 export { UserProfileComponent } from './demo-theme/content-demo-theme/user-profile/user-profile.component';
 export { SalesOrdersComponent} from './demo-theme/content-demo-theme/sales-orders/sales-orders.component';
 export { SalesOrderComponent} from './demo-theme/content-demo-theme/sales-order/sales-order.component';
+export { ShoppingcartComponent } from './demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
 
