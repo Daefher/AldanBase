@@ -39,11 +39,11 @@ export class ProductsComponent implements OnInit {
     this.authenticationService.currentuser.subscribe(user => this.user = user);
     
 
-    this.productService.getAll(globals.company_id).subscribe((data: ProductInterface[])=>{   
+    this.productService.getAllActive(globals.company_id).subscribe((data: ProductInterface[])=>{   
       
       
-      let temp =  this.ReturnNotTrashed(data);        
-      this.products = temp;
+      //let temp =  this.ReturnNotTrashed(data);        
+      this.products = data;
       //this.filterRslt = temp;
           
       
