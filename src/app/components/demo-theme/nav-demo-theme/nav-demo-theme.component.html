@@ -40,7 +40,7 @@
 
             <button mat-menu-item routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user" > 
                 <mat-icon class="mr">login</mat-icon>
-                Iniciar Sesión 
+                Iniciar Sesión
             </button>   
             <mat-divider></mat-divider>
             <button mat-menu-item [routerLink]="['/demo/demo-users', user.systemUserId, 'view' ]"  *ngIf="(authenticationService.currentuser | async) as user">
@@ -50,10 +50,11 @@
             <mat-divider></mat-divider>
             <button mat-menu-item *ngIf="(authenticationService.currentuser | async) as user" (click)="logout()">
                 <mat-icon class="mr">logout</mat-icon>
-                Cerrar Sesion 
-            </button>   
-        
+                Cerrar Sesion
+            </button> 
         </ng-container>
     </mat-menu>
- 
+    <button mat-menu-item routerLink="/demo/demo-cart">
+         Carrito
+    </button> 
 </mat-toolbar>

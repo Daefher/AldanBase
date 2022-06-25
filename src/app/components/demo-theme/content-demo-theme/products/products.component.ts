@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../../services/demo-products/products.service';
 import { ProductInterface } from '../../../../interfaces/product-interface';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
+import { CartService } from 'src/app/services/demo-cart/cart.service';
 
 import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
@@ -25,6 +26,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(
       private productService : ProductsService, 
+      public cartService: CartService,
       public authenticationService: AuthenticationService,
       private toastr: ToastrService,
       private formBuilder: FormBuilder,
@@ -88,6 +90,14 @@ export class ProductsComponent implements OnInit {
     return newProducts;
 
     
+  }
+
+  addToCart(product: ProductInterface){
+    product.quantity = 1;
+    if(this.cartService.addToLSCart(product, false))
+      this.toastr.success("¡Product agregado exitosamente!");
+    else
+      this.toastr.error("Hubo un error al agregar el producto");
   }
 
 }
