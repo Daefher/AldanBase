@@ -53,3 +53,9 @@ mat-card {
   word-break: break-all !important;
 
 }
+
+.img-size {
+  object-fit: contain ;
+  width: 100%;
+  height: 150px;
+}

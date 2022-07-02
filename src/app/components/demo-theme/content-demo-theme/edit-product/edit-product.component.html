@@ -22,6 +22,15 @@
         <input type="hidden" [hidden]="true" formControlName="WeightUomId" [ngModel]="0">
         <input type="hidden" [hidden]="true" formControlName="imageFile">
 
+
+        <div class="example-full-width" appearance="fill">
+          <mat-label>Imagen</mat-label>
+          <input type="file" (change)="handleInputChange($event)" class="form-control small-form"  /> 
+          <ng-container *ngIf="image_file">
+            <img src="{{image_path+image_file}}" class="img-size-edit" >    
+          </ng-container>    
+        </div>
+
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Nombre</mat-label>
           <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name'
@@ -111,4 +120,5 @@
       </form>
     </mat-card-content>
   </mat-card>
+</div>
   <app-footer-demo-theme></app-footer-demo-theme>

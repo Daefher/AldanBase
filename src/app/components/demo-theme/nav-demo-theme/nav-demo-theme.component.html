@@ -5,6 +5,8 @@
     <a mat-button routerLink="/demo" fxHide.xs> Inicio </a>
     <a mat-button routerLink="/demo/demo-products" fxHide.xs> Productos </a>   
     <a mat-button fxHide.xs> Acerca de  </a>   
+    <a mat-button routerLink="/demo/demo-cart" fxHide.xs> Carrito </a>   
+
     <a mat-button routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user" fxHide.xs> Iniciar Sesión </a>   
     
     <a mat-button [routerLink]="['/demo/demo-users', user.systemUserId, 'view' ]"  *ngIf="(authenticationService.currentuser | async) as user" fxHide.xs>        
@@ -37,7 +39,11 @@
                  Acerca de
             </button>
             <mat-divider></mat-divider>
-
+            <button mat-menu-item routerLink="/demo/demo-cart">
+                <mat-icon class="mr">shopping_cart</mat-icon>
+                Carrito
+           </button> 
+           <mat-divider></mat-divider>
             <button mat-menu-item routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user" > 
                 <mat-icon class="mr">login</mat-icon>
                 Iniciar Sesión
@@ -54,7 +60,4 @@
             </button> 
         </ng-container>
     </mat-menu>
-    <button mat-menu-item routerLink="/demo/demo-cart">
-         Carrito
-    </button> 
 </mat-toolbar>

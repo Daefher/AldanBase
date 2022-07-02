@@ -24,7 +24,7 @@
 
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <ng-container *ngFor="let product of products | searchFilter: searchForm.value.search ">
-        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngIf="(product.canceled == false)">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngIf="(product?.canceled == false)">
           <mat-card class="mat-elevation-z4">
             <mat-card-header>
               <mat-card-title>
@@ -32,8 +32,8 @@
                   [routerLink]="['/demo/demo-products', product.partId, 'view' ]">{{product.name}}</button>
               </mat-card-title>
             </mat-card-header>
-            <!--               <img mat-card-image  src="{{ image_path + product.imageFile}}">
- -->
+              <img mat-card-image class="img-size" src="{{ image_path + product?.imageFile}}">
+ 
             <mat-card-content>
               <p>
                 ${{product.unitPrice}}.00 MXN

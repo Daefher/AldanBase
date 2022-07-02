@@ -3,8 +3,13 @@
   <mat-card class="mat-card-class">
     <h2>Carrito</h2>
     <app-shoppingcart-form></app-shoppingcart-form>
-    <ng-container *ngIf=" prods_on_cart > 0">
-        <a  routerLink="/checkout" class="btn btn-primary">Continuar</a>  
+    <br>
+    <ng-container *ngIf=" prods_on_cart > 0">     
+        <div fxLayout="column wrap" fxLayoutAlign=" end" >
+          <div fxFlex="100%" fxFlex.xs="50%" fxFlex.sm="50%">
+            <button routerLink="/checkout" mat-raised-button color="accent" class="btn btn-primary">Continuar</button>  
+          </div>
+        </div>    
     </ng-container>            
 </mat-card>
 </div>

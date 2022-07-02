@@ -14,19 +14,17 @@ export class CartService {
 
   constructor() { }
 
-  public getLSCart(){
-    var cart = localStorage.getItem(globals.cartId);
-
+  public getLSCart(cart){
+    
+    var cartParsed : ProductInterface[] = JSON.parse(cart);
     if(cart != null)
     {
-      var cartParsed : ProductInterface[] = JSON.parse(cart);
       if(cartParsed != null)
         return of(cartParsed);
-      else
-        return of(null);
     }
-    else
-      return of(null);
+
+    return of(cartParsed);
+   
   }
 
   public addToLSCart(item: ProductInterface, overrideQty: boolean){
@@ -69,7 +67,7 @@ export class CartService {
 
   public deletePartFromLSCart(product: ProductInterface){
     var cart = localStorage.getItem(globals.cartId);
-    var currentCart : ProductInterface[];
+    var currentCart : ProductInterface[] = [];
 
     if(cart == null || cart == undefined)
       return;
@@ -79,7 +77,8 @@ export class CartService {
     //Check if part exists in cart
     if(currentCart != null)
     {
-      var result = currentCart.filter((e) => {return e.partId == product.partId})
+      var result = currentCart.filter((e) => {
+        return e.partId == product.partId})
 
       if(result.length > 0)
         this.removePart(currentCart, product.partId);
