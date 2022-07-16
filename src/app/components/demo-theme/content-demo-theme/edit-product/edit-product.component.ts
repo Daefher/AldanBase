@@ -49,7 +49,8 @@ export class EditProductComponent implements OnInit {
 
     this.productService.find(this.product_id).subscribe((data: ProductInterface)=>{
       this.product = data[0]; 
-      this.image_file = this.product.imageFile;  
+      this.image_file = this.image_path +this.product.imageFile;
+        
       //this.on_select(this.product.category);
       
     });   

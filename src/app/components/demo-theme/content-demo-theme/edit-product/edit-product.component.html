@@ -27,7 +27,7 @@
           <mat-label>Imagen</mat-label>
           <input type="file" (change)="handleInputChange($event)" class="form-control small-form"  /> 
           <ng-container *ngIf="image_file">
-            <img src="{{image_path+image_file}}" class="img-size-edit" >    
+            <img src="{{image_file}}"  class="img-size-edit" >    
           </ng-container>    
         </div>
 
@@ -121,4 +121,4 @@
     </mat-card-content>
   </mat-card>
 </div>
-  <app-footer-demo-theme></app-footer-demo-theme>
+   

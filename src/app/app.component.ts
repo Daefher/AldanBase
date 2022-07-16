@@ -18,12 +18,17 @@ export class AppComponent {
       //.pipe(event => event instanceof NavigationEnd)
       .subscribe(() => {
         
-        document.querySelector('.mat-drawer-content ').scroll({ 
+        document.querySelector('.mat-drawer-content ')!.scroll({ 
           top: 0, 
           left: 0, 
           behavior: 'smooth' 
         }
-        ) ;
+        );      
+
       });
+
+      
+
+
   }
 }

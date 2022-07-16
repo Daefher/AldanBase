@@ -1,16 +1,26 @@
 <app-nav-demo-theme></app-nav-demo-theme>
-<div class="main-div">
-  <mat-card class="mat-card-class">
-    <h2>Carrito</h2>
-    <app-shoppingcart-form></app-shoppingcart-form>
-    <br>
-    <ng-container *ngIf=" prods_on_cart > 0">     
+<div class="wrapper">
+  <mat-card class="mat-card-class cart">
+    <mat-card-header>
+      <mat-card-title>
+          Carrito
+      </mat-card-title>
+  </mat-card-header>
+    
+    <mat-card-content> 
+      <app-shoppingcart-form></app-shoppingcart-form>      
+    </mat-card-content>
+    
+    <ng-container *ngIf=" prods_on_cart > 0"> 
+      <mat-card-actions>
         <div fxLayout="column wrap" fxLayoutAlign=" end" >
           <div fxFlex="100%" fxFlex.xs="50%" fxFlex.sm="50%">
             <button routerLink="/checkout" mat-raised-button color="accent" class="btn btn-primary">Continuar</button>  
           </div>
         </div>    
+      </mat-card-actions>    
+        
     </ng-container>            
 </mat-card>
 </div>
-<app-footer-demo-theme></app-footer-demo-theme>
+ 
