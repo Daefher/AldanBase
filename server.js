@@ -14,7 +14,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/AldanBase'));
+//app.use(express.static(__dirname + '/dist/AldanBase'));
 
 app.get('/*', function(req,res) {
     
