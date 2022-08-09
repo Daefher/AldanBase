@@ -7,6 +7,7 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
 import { ProductsService } from '../../../../services/demo-products/products.service';
 
+import * as globals from '../../../../globals';
 
 
 import { ToastrService } from 'ngx-toastr';
@@ -25,6 +26,9 @@ export class CreateProductComponent implements OnInit {
   returnUrl: string;
   image_file : string;
   is_avocado : boolean;
+
+  image_path = globals.img_path;
+
 
 
   constructor(

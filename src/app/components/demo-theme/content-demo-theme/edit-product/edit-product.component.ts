@@ -10,6 +10,9 @@ import { ProductsService } from '../../../../services/demo-products/products.ser
 import { ToastrService } from 'ngx-toastr';
 import { ProductInterface } from '../../../../interfaces/product-interface';
 
+import * as globals from '../../../../globals';
+
+
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -27,6 +30,8 @@ export class EditProductComponent implements OnInit {
   returnUrl: string;
   image_file : string;
   is_avocado : boolean;
+  image_path = globals.img_path;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,7 +49,8 @@ export class EditProductComponent implements OnInit {
 
     this.productService.find(this.product_id).subscribe((data: ProductInterface)=>{
       this.product = data[0]; 
-      this.image_file = this.product.imageFile;  
+      this.image_file = this.image_path +this.product.imageFile;
+        
       //this.on_select(this.product.category);
       
     });   

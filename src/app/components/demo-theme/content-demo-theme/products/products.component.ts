@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../../services/demo-products/products.service';
 import { ProductInterface } from '../../../../interfaces/product-interface';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
-import { CartService } from 'src/app/services/demo-cart/cart.service';
+import { CartService } from '../../../../services/demo-cart/cart.service';
 
 import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
@@ -41,11 +41,11 @@ export class ProductsComponent implements OnInit {
     this.authenticationService.currentuser.subscribe(user => this.user = user);
     
 
-    this.productService.getAll(globals.company_id).subscribe((data: ProductInterface[])=>{   
+    this.productService.getAllActive(globals.company_id).subscribe((data: ProductInterface[])=>{   
       
       
-      let temp =  this.ReturnNotTrashed(data);        
-      this.products = temp;
+      //let temp =  this.ReturnNotTrashed(data);        
+      this.products = data;
       //this.filterRslt = temp;
           
       
@@ -80,7 +80,7 @@ export class ProductsComponent implements OnInit {
   }  
   
   ReturnNotTrashed(products) {
-    let newProducts = [];
+    let newProducts:any[] = [];
     products.forEach(element => {
       if(element.canceled == false){
         newProducts.push(element);

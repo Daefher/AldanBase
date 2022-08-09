@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as globals from '../../../../../globals';
-import { CartService } from 'src/app/services/demo-cart/cart.service';
-import { SalesorderService } from 'src/app/services/demo-salesorder/salesorder.service';
-import { ProductInterface } from 'src/app/interfaces/product-interface';
+import { CartService } from '../../../../../services/demo-cart/cart.service';
+import { SalesorderService } from '../../../../../services/demo-salesorder/salesorder.service';
+import { ProductInterface } from '../../../../../interfaces/product-interface';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,13 +17,19 @@ export class ShoppingcartFormComponent implements OnInit {
   showControls: boolean;
   subscription: Subscription;
   image_path = globals.img_path;
-  private toastr: ToastrService
+ 
   
   shopCartItems: any = [];
   sumOfCart: number;
+  
   numberOfElements: number;
+  displayedColumns: string[] = ['name','description','quantity'];
+  cart = localStorage.getItem(globals.cartId);
 
-  constructor(private cartService : CartService, public salesOrderService : SalesorderService) { }
+
+  constructor(private cartService : CartService, 
+    public salesOrderService : SalesorderService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message)      
@@ -32,8 +38,9 @@ export class ShoppingcartFormComponent implements OnInit {
     }
     console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls);
 
-    this.cartService.getLSCart().subscribe((data: ProductInterface[])=>{ 
+    this.cartService.getLSCart(this.cart).subscribe((data: ProductInterface[])=>{ 
       this.shopCartItems  = data;
+      console.log(data);
     },
     err =>{
       this.toastr.error("Error cargar productos");  
@@ -56,15 +63,19 @@ export class ShoppingcartFormComponent implements OnInit {
     product.quantity = Number(newValue);
     product.total = product.quantity * product.unitPrice;
     this.cartService.addToLSCart(product, true);
-
+    var cart = localStorage.getItem(globals.cartId);
+    let tempCart = this.getCurrentCartFromStorage();
     //get freshly updated cart from local storage
-    this.cartService.getLSCart().subscribe((data: ProductInterface[])=>{ 
+   /*  this.cartService.getLSCart(this.cart).subscribe((data: ProductInterface[])=>{ 
       this.shopCartItems  = data;
     },
     err =>{
       this.toastr.error("Error cargar productos");  
     }
-    ); 
+    );  */
+
+    this.shopCartItems = JSON.parse(tempCart || '{}');
+    
 
     this.updateOnTheFlyFields();
   }
@@ -87,11 +98,26 @@ export class ShoppingcartFormComponent implements OnInit {
 
   removeProduct(product: ProductInterface){
     this.cartService.deletePartFromLSCart(product);
+    //console.log(JSON.parse(this.cart));
 
     //get freshly updated cart from local storage
-    this.shopCartItems = this.cartService.getLSCart();
+    /*  this.cartService.getLSCart(this.cart).subscribe((data: ProductInterface[])=>{ 
+      this.shopCartItems  = data;
+      console.log(data);
+    },
+    err =>{
+      this.toastr.error("Error cargar productos");  
+    }
+    ); */
+    let tempCart = this.getCurrentCartFromStorage();
+    this.shopCartItems = JSON.parse(tempCart || '{}');
     this.toastr.error("Producto Borrado!");
     this.updateOnTheFlyFields();
+  }
+
+  getCurrentCartFromStorage(){
+    return localStorage.getItem(globals.cartId) ;
+
   }
 
   isNumeric(value: string){

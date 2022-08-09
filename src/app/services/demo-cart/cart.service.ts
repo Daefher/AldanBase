@@ -12,21 +12,33 @@ export class CartService {
 
   product : ProductInterface;
 
-  constructor() { }
+  private cart = localStorage.getItem(globals.cartId);
 
-  public getLSCart(){
-    var cart = localStorage.getItem(globals.cartId);
+  private totalCost = (JSON.parse(this.cart)) ? new BehaviorSubject<number>(JSON.parse(this.cart).length) :  new BehaviorSubject<number>(0) ;
+  
 
+  constructor() {
+
+    console.log(this.totalCost);
+   }
+
+
+  public getLSCart(cart){
+    
+    var cartParsed : ProductInterface[] = JSON.parse(cart);
     if(cart != null)
     {
-      var cartParsed : ProductInterface[] = JSON.parse(cart);
       if(cartParsed != null)
         return of(cartParsed);
-      else
-        return of(null);
     }
-    else
-      return of(null);
+
+    return of(cartParsed);
+   
+  }
+
+  getAmountOnCart(): Observable<any>{
+    
+    return this.totalCost.asObservable();
   }
 
   public addToLSCart(item: ProductInterface, overrideQty: boolean){
@@ -50,12 +62,13 @@ export class CartService {
       }
       
       cartParsed.push(item);
-
+      this.totalCost.next(cartParsed.length);
       this.setLSCart(cartParsed);
     }
     else
     {
       var productCart : ProductInterface[] = [item];
+      this.totalCost.next(1);
       this.setLSCart(productCart);
     }
 
@@ -65,11 +78,12 @@ export class CartService {
   public updateCart(productsArray: ProductInterface[]){
     var cart = JSON.stringify(productsArray);
     localStorage.setItem(globals.cartId, cart);
+
   }
 
   public deletePartFromLSCart(product: ProductInterface){
     var cart = localStorage.getItem(globals.cartId);
-    var currentCart : ProductInterface[];
+    var currentCart : ProductInterface[] = [];
 
     if(cart == null || cart == undefined)
       return;
@@ -79,12 +93,14 @@ export class CartService {
     //Check if part exists in cart
     if(currentCart != null)
     {
-      var result = currentCart.filter((e) => {return e.partId == product.partId})
+      var result = currentCart.filter((e) => {
+        return e.partId == product.partId})
 
       if(result.length > 0)
         this.removePart(currentCart, product.partId);
 
       this.setLSCart(currentCart);
+      this.totalCost.next(currentCart.length);
     }
     else
       return;

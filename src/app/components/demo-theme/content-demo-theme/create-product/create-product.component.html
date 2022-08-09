@@ -10,6 +10,16 @@
         <input type="hidden" [hidden]="true" formControlName="UnitCost">
         <input type="hidden" [hidden]="true" formControlName="imageFile">
 
+       
+        <div class="example-full-width" appearance="fill">
+          <mat-label>Imagen</mat-label>
+          <input type="file" (change)="handleInputChange($event)" class="form-control small-form"  /> 
+          <ng-container *ngIf="image_file">
+            <img src="{{image_file}}" class="img-size-create" >    
+          </ng-container>    
+        </div>
+
+
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Nombre</mat-label>
           <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name'>
@@ -81,4 +91,4 @@
     </mat-card-content>
   </mat-card>
 </div>
-<app-footer-demo-theme></app-footer-demo-theme>
+ 

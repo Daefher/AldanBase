@@ -17,3 +17,9 @@ mat-toolbar {
     margin-right: 8px;
     font-size: 1rem;
 }
+
+.img-size-prod {
+    object-fit: contain ;
+    width: 100%;
+    height: 400px;
+  }

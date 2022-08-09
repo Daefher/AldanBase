@@ -1,47 +1,96 @@
-<div class="table-responsive" style="margin-top: 10px;" id="divdtTickets">
-    <table id="dtTickets" class="table table-condensed table-striped table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" style="width: 20%;"></th>
-                <th scope="col" >Producto</th>                                
-                <th scope="col" >Cantidad</th>
-                <th scope="col" >Precio Unitario</th>
-                <th scope="col" >Total</th>
-                <th  scope="col" style="width: 20%;" *ngIf="this.showControls"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let product of shopCartItems">
-                <th scope="row"><img class="img-fluid img-size-cart" src="{{image_path + product.imageFile}}" alt="solfishbox trio" style="height: 150px;"></th>
-                <td>{{product.name}}</td>
-                <td><input [disabled] = '!this.showControls' id="cartQty" name="cartQty"  min="1" type="number" #cartQty value="{{product.quantity}}" (change)="onQtyChange(product, cartQty.value)" style="width: 40px;"></td>
-                <td>{{product.unitPrice}}.00 MXN</td>                      
-                <td>{{product.total}}.00 MXN</td>               
-                <td *ngIf="this.showControls"><span class="ion-ios-trash trash-btn" (click)="removeProduct(product)"></span></td>               
-            </tr>
-        </tbody>
-        <!-- <tfoot>
-            <tr>
-                <th></th>
-                <th>Producto</th>
-                <th>Precio Unitario</th>
-                <th>Cantidad</th>
-            </tr>
-        </tfoot> -->
-    </table>
-    <td colspan="2" *ngIf="shopCartItems == null ? true : (shopCartItems.length == 0 ? true : false)"> 
-        No hay productos en el carrito.
-    </td>
+<div class="wrapper">
+    <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="70%">
+                <mat-card class="mat-elevation-z4 ">
+                    <mat-card-header>
+                        <mat-card-title>
+                            Productos
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-grid-list cols="6" rowHeight="6:1">
+                            <mat-grid-tile>  </mat-grid-tile>
+                            <mat-grid-tile><b>Producto</b>  </mat-grid-tile>
+                            <mat-grid-tile><b>Cantidad</b>  </mat-grid-tile>
+                            <mat-grid-tile> <b>Precio Unitario</b> </mat-grid-tile>
+                            <mat-grid-tile><b>Total</b>  </mat-grid-tile>
+                            <mat-grid-tile *ngIf="this.showControls"> <b>Acciones</b>  </mat-grid-tile>
+
+                        </mat-grid-list>
+                        <ng-container *ngFor="let product of shopCartItems">
+                            <mat-grid-list cols="6" rowHeight="6:2">
+                                <mat-grid-tile> <img class="img-size-cart" src="{{image_path+product.imageFile}}"> </mat-grid-tile>
+                                <mat-grid-tile> {{product.name}} </mat-grid-tile>                               
+                                <mat-grid-tile> 
+                                    <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">                                        
+                                        <input matInput type="number" [disabled] = '!this.showControls' id="cartQty" name="cartQty"   min="1" #cartQty value="{{product?.quantity}}" (change)="onQtyChange(product, cartQty.value)" >
+                                      </mat-form-field>
+                                </mat-grid-tile>
+                                <mat-grid-tile> {{product.unitPrice}} </mat-grid-tile>
+                                <mat-grid-tile> {{product.total}} </mat-grid-tile>
+                                <mat-grid-tile *ngIf="this.showControls"><mat-icon (click)="removeProduct(product)">delete</mat-icon></mat-grid-tile>
+                                <br/>
+                            </mat-grid-list>
+                            <ng-container  *ngIf="!shopCartItems"> 
+                                <div>No hay productos en el carrito.</div> 
+                            </ng-container>
+                        </ng-container>                           
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+        </div>
+
+
+
+    </div>
 </div>
-<div class="form-group">
-    <label>Total de artículos:<small class="text-muted"></small></label>
-    <label id="totalTickets">&nbsp;{{this.numberOfElements}}</label>
-</div>
-<!-- <div class="form-group">
-    <label>IVA:<small class="text-muted"></small></label>
-    <label id="totalTicketsEfectivo"></label>
-</div> -->
-<div class="form-group">
-    <label>Total de la compra:<small class="text-muted"></small></label>
-    <label id="totalTicketsTarjeta">&nbsp;{{this.sumOfCart}}.00 MXN</label>
-</div>
+
+<!-- <div class="table-responsive" style="margin-top: 10px;" id="divdtTickets">
+            <table id="dtTickets" class="table table-condensed table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 20%;"></th>
+                        <th scope="col" >Producto</th>                                
+                        <th scope="col" >Cantidad</th>
+                        <th scope="col" >Precio Unitario</th>
+                        <th scope="col" >Total</th>
+                        <th  scope="col" style="width: 20%;" *ngIf="this.showControls"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of shopCartItems">
+                        <th scope="row"><img class="img-fluid img-size-cart" src="{{image_path + product.imageFile}}" alt="solfishbox trio" style="height: 150px;"></th>
+                        <td>{{product.name}}</td>
+                        <td><input [disabled] = '!this.showControls' id="cartQty" name="cartQty"  min="1" type="number" #cartQty value="{{product.quantity}}" (change)="onQtyChange(product, cartQty.value)" style="width: 40px;"></td>
+                        <td>{{product.unitPrice}}.00 MXN</td>                      
+                        <td>{{product.total}}.00 MXN</td>               
+                        <td *ngIf="this.showControls"><span class="ion-ios-trash trash-btn" (click)="removeProduct(product)"></span></td>               
+                    </tr>
+                </tbody>
+                 <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>Producto</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </tfoot> 
+            </table>
+            <td colspan="2" *ngIf="shopCartItems == null ? true : (shopCartItems.length == 0 ? true : false)"> 
+                No hay productos en el carrito.
+            </td>
+        </div>
+        <div class="form-group">
+            <label>Total de artículos:<small class="text-muted"></small></label>
+            <label id="totalTickets">&nbsp;{{this.numberOfElements}}</label>
+        </div>
+        <div class="form-group">
+            <label>IVA:<small class="text-muted"></small></label>
+            <label id="totalTicketsEfectivo"></label>
+        </div> 
+        <div class="form-group">
+            <label>Total de la compra:<small class="text-muted"></small></label>
+            <label id="totalTicketsTarjeta">&nbsp;{{this.sumOfCart}}.00 MXN</label>
+        </div> -->

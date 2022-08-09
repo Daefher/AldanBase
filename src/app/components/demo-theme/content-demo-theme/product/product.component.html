@@ -5,11 +5,9 @@
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
         <button align='right' mat-raised-button color="accent" style="margin:5px;"
           *ngIf="authenticationService.currentuser | async"
-          [routerLink]="['/demo/demo-products', product.partId, 'update']" (click)="gotoTop()">Edtar Producto</button>
+          [routerLink]="['/demo/demo-products', product?.partId, 'update']" (click)="gotoTop()">Edtar Producto</button>
       </div>
-      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-        <input type="text">
-      </div>
+     
     </div>
     <br>
     <div fxLayout="row wrap" fxLayoutGap="5px grid">
@@ -17,9 +15,8 @@
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="33%">
         <mat-card class="mat-elevation-z4">
 
-          <!--               <img mat-card-image  src="{{ image_path + product.imageFile}}">
-   --> IMAGEN
-
+        <img mat-card-image class="img-size-prod"  src="{{ image_path + product?.imageFile}}">
+   
         </mat-card>
       </div>
 
@@ -45,4 +42,4 @@
     </div>
   </div>
 </div>
-<app-footer-demo-theme></app-footer-demo-theme>
+ 
