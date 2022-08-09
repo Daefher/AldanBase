@@ -65,6 +65,8 @@ import { FeatureProductsComponent } from './components/demo-theme/content-demo-t
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ShoppingcartComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
 import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart-form/shoppingcart-form.component';
+import { CheckoutComponent } from './components/demo-theme/content-demo-theme/checkout/checkout.component';
+import { CheckoutFormComponent } from './components/demo-theme/content-demo-theme/checkout/checkout-form/checkout-form.component';
 
 
 @NgModule({
@@ -97,6 +99,8 @@ import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-
     SearchFilterPipe,
     ShoppingcartComponent,
     ShoppingcartFormComponent,
+    CheckoutComponent,
+    CheckoutFormComponent,
     
         
   ],

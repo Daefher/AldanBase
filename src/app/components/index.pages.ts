@@ -9,4 +9,5 @@ export { UserProfileComponent } from './demo-theme/content-demo-theme/user-profi
 export { SalesOrdersComponent} from './demo-theme/content-demo-theme/sales-orders/sales-orders.component';
 export { SalesOrderComponent} from './demo-theme/content-demo-theme/sales-order/sales-order.component';
 export { ShoppingcartComponent } from './demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
+export { CheckoutComponent } from './demo-theme/content-demo-theme/checkout/checkout.component';
 
