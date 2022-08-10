@@ -1,0 +1,52 @@
+<section class="ftco-section ftco-no-pb ftco-no-pt bg-light" id="productos">
+    <div class="container">
+      <a href="#" routerLink="../demo-checkout" class="btn btn-primary" style="margin-bottom: 5px;">Atras</a>
+      <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label><h2>Confirmación de pedido</h2></label>
+                </div>                
+                <app-shoppingcart-form></app-shoppingcart-form>
+            </div>
+        </div>        
+        <style>
+            .table td.fit, 
+            .table th.fit {
+                white-space: nowrap;
+                width: 1%;
+            }
+        </style>
+      </div>
+    </div>
+  </section>
+  
+<!-- Section to fill address, email and customer name -->
+<section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+    <div class="container ">  
+        <div class="row justify-content-center">
+        <div class="col-6 p-md-5">
+            <h2>Datos de pago</h2>
+            <div class="form-group">
+                <label for="PartType">Forma de pago</label>
+                <select [(ngModel)]="mySelect" disabled class="form-control small-form">
+                    <option *ngFor="let item of paymentFormArray" [ngValue]="item.id">{{item.name}}</option>
+                </select>
+            </div>
+            <app-checkout-form></app-checkout-form>
+            <div class="form-group" *ngIf="!this.hideControls">
+                <button *ngIf="!this.showControls" [disabled]="loading" (click)="placeOrder()" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Realizar pedido
+                </button>
+            </div>
+            <div class="form-group">
+                <button *ngIf="this.showPayPalPayButton" (click)="redirectToPayPal()" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Pagar en PayPal
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>    
+</section> 

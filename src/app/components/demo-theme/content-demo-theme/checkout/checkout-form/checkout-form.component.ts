@@ -368,7 +368,7 @@ export class CheckoutFormComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message);    
     
-    if(this.matchExact(location.pathname.split("/").slice(-1)[0], "checkout")){
+    if(this.matchExact(location.href.split("/").slice(-1)[0], "demo-checkout")){
       this.changeShowControls(true)
     }
    /*  console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls); */
@@ -411,7 +411,7 @@ export class CheckoutFormComponent implements OnInit {
     }   
     this.loading = true;
     this.salesOrderService.updateCheckoutSalesOrderData(this.createSalesOrderForm);
-    this.router.navigateByUrl("/confirmorder");
+    this.router.navigateByUrl("demo/demo-orderconfirmation");
   }
 
   checkIfPostalCodeExist(control){ 

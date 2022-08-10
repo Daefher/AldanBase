@@ -68,6 +68,7 @@ import { ShoppingcartComponent } from './components/demo-theme/content-demo-them
 import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart-form/shoppingcart-form.component';
 import { CheckoutComponent } from './components/demo-theme/content-demo-theme/checkout/checkout.component';
 import { CheckoutFormComponent } from './components/demo-theme/content-demo-theme/checkout/checkout-form/checkout-form.component';
+import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
 
 
 @NgModule({
@@ -102,6 +103,7 @@ import { CheckoutFormComponent } from './components/demo-theme/content-demo-them
     ShoppingcartFormComponent,
     CheckoutComponent,
     CheckoutFormComponent,
+    OrderconfirmationComponent,
     
         
   ],
