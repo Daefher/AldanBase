@@ -24,6 +24,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
 
 
 
@@ -66,6 +70,9 @@ import { FeatureProductsComponent } from './components/demo-theme/content-demo-t
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ShoppingcartComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
 import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart-form/shoppingcart-form.component';
+import { CheckoutComponent } from './components/demo-theme/content-demo-theme/checkout/checkout.component';
+import { CheckoutFormComponent } from './components/demo-theme/content-demo-theme/checkout/checkout-form/checkout-form.component';
+import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
 
 
 @NgModule({
@@ -98,6 +105,9 @@ import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-
     SearchFilterPipe,
     ShoppingcartComponent,
     ShoppingcartFormComponent,
+    CheckoutComponent,
+    CheckoutFormComponent,
+    OrderconfirmationComponent,
     
         
   ],
@@ -129,6 +139,8 @@ import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-
     MatDividerModule,
     MatDialogModule,
     MatTableModule,
+    MatExpansionModule,
+    MatPaginatorModule,
       
          
   ],

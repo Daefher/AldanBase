@@ -26,14 +26,17 @@
    }
 
    .bgColorDark{
-    background-color: #007ace;
+    background-color: #0d1317;
     
     color:  rgba(255, 255, 255, 0.87)  !important;
    }
 
    .footer-text {
-    color: rgba(255, 255, 255, 0.54) !important;
+    color: #ffffff !important;
 
+   }
+   mat-list-item {
+    color: #ffffff !important;
    }
 
    .tech{

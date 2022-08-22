@@ -1,0 +1,34 @@
+<app-nav-demo-theme></app-nav-demo-theme>
+<div class="wrapper">
+  <mat-card class="mat-card-class cart">
+    <mat-card-header>
+      <a routerLink="../demo-cart" class="btn btn-primary">Atras</a>
+      <mat-card-title>
+        <h2>Ya casi es tuyo el carrito...</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="PartType">Forma de pago</mat-label>
+          <mat-select [(ngModel)]="mySelect" class="form-control small-form"
+            (selectionChange)="onPaymentFormChange($event.value)">
+            <mat-option *ngFor="let item of paymentFormArray" [value]="item.id">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+        <ng-container *ngIf="this.selectedPaymentForm == 'PagoContraEntrega' || this.selectedPaymentForm == 'PayPal'">
+          <app-checkout-form></app-checkout-form>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<!-- Section to fill address, email and customer name -->
+
+
+<br><br>

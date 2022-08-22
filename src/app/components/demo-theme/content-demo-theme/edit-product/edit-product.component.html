@@ -2,7 +2,7 @@
 <div class="main-div">
   <mat-card class="mat-card-class">
     <h2>Editar Producto</h2>
-    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+    <mat-card-content  fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
       <form class="example-form" [formGroup]='EditProductForm' (ngSubmit)='onSubmit()'>
         <input type="hidden" [hidden]="true" formControlName="AldanCustomerId" [ngModel]="product?.aldanCustomerId">
         <input type="hidden" [hidden]="true" formControlName="CompanyId" [ngModel]="product?.companyId">
@@ -113,9 +113,7 @@
               Guardar
             </button>
           </div>
-        </div>
-
-
+        </div> 
 
       </form>
     </mat-card-content>

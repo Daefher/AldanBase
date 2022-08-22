@@ -1,0 +1,66 @@
+<app-nav-demo-theme></app-nav-demo-theme>
+<div class="wrapper" >
+    <div fxLayoutAlign="center center" >        
+        <div fxLayout="column"    fxFlex="90%" id="productos">
+            <div fxLayout="column"  fxFlex="100%"  fxLayout.lt-sm="column">
+                <a href="#" routerLink="../demo-checkout" class="btn btn-primary" style="margin-bottom: 5px;">Atras</a>
+                <div class="row justify-content-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>
+                                    <h2>Confirmación de pedido</h2>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="column"  fxFlex="100%" fxLayout.lt-sm="column">
+                <app-shoppingcart-form></app-shoppingcart-form>          
+            </div>
+            <div fxLayout="column"  fxFlex="100%" fxLayout.lt-sm="column">
+                <h2>Datos de pago</h2>
+                <mat-form-field class="form-group">
+                    <mat-label for="PartType">Forma de pago</mat-label>
+                    <mat-select [(ngModel)]="mySelect" disabled class="form-control small-form">
+                        <mat-option *ngFor="let item of paymentFormArray" [value]="item.id">{{item.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column"  fxFlex="100%" fxLayout.lt-sm="column">
+                <app-checkout-form></app-checkout-form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="cart-div">
+
+</div>
+
+
+
+<section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-6 p-md-5">
+                
+                <div class="form-group" *ngIf="!this.hideControls">
+                    <button *ngIf="!this.showControls" [disabled]="loading" (click)="placeOrder()"
+                        class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Realizar pedido
+                    </button>
+                </div>
+                <div class="form-group">
+                    <button *ngIf="this.showPayPalPayButton" (click)="redirectToPayPal()" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Pagar en PayPal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

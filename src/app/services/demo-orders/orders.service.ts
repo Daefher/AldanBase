@@ -7,6 +7,7 @@ import * as globals from '../../globals';
 
 import { OrderInterface } from '../../interfaces/order-interface';
 import { FormGroup } from '@angular/forms';
+import { SalesorderdtlInterface } from '../../interfaces/salesorderdtl-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class OrdersService {
   orders: any = {};
   loaded: boolean = false;
 
-  private api_url = globals.api_url + "TfOrder";
+  private api_url = globals.api_url + "SalesOrder";
+  private api_url_order_items  =   globals.api_url + "SalesOrderDtl";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,12 +28,34 @@ export class OrdersService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<OrderInterface[]> {
-    return this.http.get<OrderInterface[]>(this.api_url + '/GetTfOrders')
+  getAll(companyId): Observable<OrderInterface[]> {
+    return this.http.get<OrderInterface[]>(this.api_url + '/GetSalesOrders',{ params: { companyId: companyId } })
       .pipe(
         catchError(this.errorHandler)
       )
   }
+
+  getByOrderId(salesOrderId){
+    return this.http.get<SalesorderdtlInterface[]>(this.api_url_order_items + '/GetByOrderId/' + salesOrderId )
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  //create(post): Observable<ProductInterface> {
+
+  closeOrder(order): Observable<OrderInterface> {
+
+    return this.http.post<OrderInterface>(this.api_url + '/Close', JSON.stringify([order]), this.httpOptions)
+
+    .pipe(
+
+      catchError(this.errorHandler)
+
+    );
+  }
+
+ 
 
   errorHandler(error: any) {
     let errorMessage = '';
