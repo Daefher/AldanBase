@@ -8,6 +8,47 @@
         <ng-container *ngIf="orders.length < 1 ">
             <h2>No Existen Ordenes</h2>
         </ng-container>
+        <ng-container *ngIf="orders.length > 0">           
+                <mat-accordion fxFlexFill fxLayout="column"  >
+                  <ng-container fxflex  *ngFor="let order of selectedResult">
+                    <mat-expansion-panel  (afterExpand)="fetchPanelData(order.salesOrderId)"  hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                         {{order.payPalFullName}}
+                        </mat-panel-title>
+                        <mat-panel-description>                          
+                          <p *ngIf="!order.closed">{{order.paymentFormNum}},  Estado: <b>Pendiente</b> </p>
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <p>
+                        Direccion de Entrega: {{orders.payPalAddressLine1}} {{order.payPalAddressLine2}}, {{order.payPalAdminArea1}}, {{order.payPalAdminArea2}}
+                      </p>
+                      <ng-container *ngFor = "let orderDtl of ordersDtl; trackBy: trackByOrderDtl">
+                      
+                        <ng-container *ngIf = "orderDtl.salesOrderId == order.salesOrderId">
+                          
+                          <p>
+                            {{orderDtl?.partName}} (${{orderDtl.unitPrice}}.00 pesos)
+                          </p>                          
+
+                        </ng-container>
+                      </ng-container> 
+                      <p>
+                        Total de la orden: <strong> $ {{order.totalLetter}} </strong>
+                      </p>
+                      <div align="end" >
+                        <button mat-raised-button class="action-button" (click)="closeOrder(order.salesOrderId)" color="accent"> Finalizar </button>
+                        <button mat-raised-button class="action-button"  color="warn"> Cancelar </button>
+                      </div>
+                      
+
+                    </mat-expansion-panel> 
+                  </ng-container>                           
+                  </mat-accordion>
+                  <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent=getData($event)" showFirstLastButtons></mat-paginator>
+                <br>
+            
+        </ng-container>
     </mat-card-content>
    
 </mat-card>

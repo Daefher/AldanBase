@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { count } from 'rxjs/operators';
-import { SalesOrderDatasetInterface } from 'src/app/interfaces/sales-order-dataset-interface';
+import { SalesOrderDatasetInterface } from '../../../../interfaces/sales-order-dataset-interface';
 import { ToastrService } from 'ngx-toastr';
-import { CartService } from 'src/app/services/demo-cart/cart.service';
-import { SalesorderService } from 'src/app/services/demo-salesorder/salesorder.service';
-import { SalesOrderInterface } from 'src/app/interfaces/sales-order-interface';
-import { ProductInterface } from 'src/app/interfaces/product-interface';
-import { SalesorderdtlInterface } from 'src/app/interfaces/salesorderdtl-interface';
+import { CartService } from '../../../../services/demo-cart/cart.service';
+import { SalesorderService } from '../../../../services/demo-salesorder/salesorder.service';
+import { SalesOrderInterface } from '../../../../interfaces/sales-order-interface';
+import { ProductInterface } from '../../../../interfaces/product-interface';
+import { SalesorderdtlInterface } from '../../../../interfaces/salesorderdtl-interface';
 import * as globals from '../../../../globals';
 
 @Component({
@@ -30,18 +30,18 @@ export class OrderconfirmationComponent implements OnInit {
   hideControls: boolean = false;
 
   constructor(private router: Router, private salesOrderService: SalesorderService, private shoppingCartService: CartService, private toastr: ToastrService) {
-    
+
   }
 
   ngOnInit(): void {
-    window.scroll(0,0); //scroll to the top
+    window.scroll(0, 0); //scroll to the top
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message)
     this.changeShowControls(false)
     this.populateInitialCombos();
-/*     console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls);
- */    /* document.getElementById("formSelectState").setAttribute("disabled", "disabled");
-    document.getElementById("formSelectPostalCode").setAttribute("disabled", "disabled");
-    document.getElementById("formSelectCountry").setAttribute("disabled", "disabled"); */
+    /*     console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls);
+     */    /* document.getElementById("formSelectState").setAttribute("disabled", "disabled");
+       document.getElementById("formSelectPostalCode").setAttribute("disabled", "disabled");
+       document.getElementById("formSelectCountry").setAttribute("disabled", "disabled"); */
   }
 
   ngOnDestroy() {
@@ -93,14 +93,14 @@ export class OrderconfirmationComponent implements OnInit {
               UnitPrice: element.unitPrice,
               TaxesPerUnit: 0,
               Taxes: 0,
-              Total: element.total,
+              Total: element.unitPrice * element.quantity,
               Discount: 0
             };
 
             //Calculate totals
-            currentSalesOrder[0].Subtotal = Number(currentSalesOrder[0].Subtotal) + Number(element.total);
+            currentSalesOrder[0].Subtotal = Number(currentSalesOrder[0].Subtotal) + Number(dtlObj.Total);
             currentSalesOrder[0].Taxes = Number(currentSalesOrder[0].Taxes) + Number(0); //0 represent taxes
-            currentSalesOrder[0].Total = Number(currentSalesOrder[0].Total) + Number(element.total) + Number(0); //0 represent taxes
+            currentSalesOrder[0].Total = Number(currentSalesOrder[0].Total) + Number(dtlObj.Total) + Number(0); //0 represent taxes
 
             this.ds.lstSalesOrderDtl.push(dtlObj);
 
@@ -108,7 +108,6 @@ export class OrderconfirmationComponent implements OnInit {
           });
       }
     }
-
     currentSalesOrder[0].Payed = currentSalesOrder[0].Total;
     this.ds.lstSalesOrder.push(currentSalesOrder[0]);
 
@@ -143,36 +142,35 @@ export class OrderconfirmationComponent implements OnInit {
       this.loading = false;
     });    
   }
-
-  redirectToPayPal(){
+  redirectToPayPal() {
     this.openPayPalCheckOutIfApplies();
   }
 
-  openPayPalCheckOutIfApplies(){
-    var url: string = localStorage.getItem(this.salesOrderService.lclStrgIdPayPalCheckOutURL);
-    
-    if(url != null && url != undefined){
-      if(url.length > 0) {
+  openPayPalCheckOutIfApplies() {
+    var url = localStorage.getItem(this.salesOrderService.lclStrgIdPayPalCheckOutURL);
+
+    if (url != null && url != undefined) {
+      if (url.length > 0) {
         localStorage.removeItem(this.salesOrderService.lclStrgIdPayPalCheckOutURL);
         window.open(url);
         this.router.navigateByUrl("/");
-      }        
-    }      
+      }
+    }
   }
 
-  populateInitialCombos(){
-    this.paymentFormArray =  [
-      {id: 0, name: ""},
-      {id: "PagoContraEntrega", name: "Pago contra entrega"},
-      {id: "PayPal", name: "PayPal"}
+  populateInitialCombos() {
+    this.paymentFormArray = [
+      { id: 0, name: "" },
+      { id: "PagoContraEntrega", name: "Pago contra entrega" },
+      { id: "PayPal", name: "PayPal" }
     ];
 
-    var paymentFormLclStrg: string = localStorage.getItem(this.salesOrderService.lclStrgIdPayFrm);
-        if(paymentFormLclStrg != null && paymentFormLclStrg != undefined){
-          if(paymentFormLclStrg.length > 0) {
-            this.mySelect = paymentFormLclStrg;
-          }
-        }
+    var paymentFormLclStrg = localStorage.getItem(this.salesOrderService.lclStrgIdPayFrm);
+    if (paymentFormLclStrg != null && paymentFormLclStrg != undefined) {
+      if (paymentFormLclStrg.length > 0) {
+        this.mySelect = paymentFormLclStrg;
+      }
+    }
   }
 
   changeShowControls(bl: boolean) {

@@ -1,37 +1,34 @@
-<section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
-    <div class="container ">
+<app-nav-demo-theme></app-nav-demo-theme>
+<div class="wrapper">
+  <mat-card class="mat-card-class cart">
+    <mat-card-header>
       <a routerLink="../demo-cart" class="btn btn-primary">Atras</a>
-      <div class="row justify-content-center">
-        <div class="col-md-10">       
-          <div class="row justify-content-center">            
-            <div class="col-md-6">
-              <h2>Ya casi es tuyo el carrito...</h2>
-              <div class="form-group">
-                <label for="PartType">Forma de pago</label>
-                <select [(ngModel)]="mySelect" class="form-control small-form"
-                  (change)="onPaymentFormChange($event.target)">
-                  <option *ngFor="let item of paymentFormArray" [ngValue]="item.id">{{item.name}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-  
-        </div>
+      <mat-card-title>
+        <h2>Ya casi es tuyo el carrito...</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="PartType">Forma de pago</mat-label>
+          <mat-select [(ngModel)]="mySelect" class="form-control small-form"
+            (selectionChange)="onPaymentFormChange($event.value)">
+            <mat-option *ngFor="let item of paymentFormArray" [value]="item.id">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-    </div>
-  </section>
-  
-  
-  <!-- Section to fill address, email and customer name -->
-  <section class="ftco-section ftco-no-pb ftco-no-pt bg-light"
-    *ngIf="this.selectedPaymentForm == 'Pago contra entrega' || this.selectedPaymentForm == 'PayPal'">
-    <div class="container ">
-      <div class="row justify-content-center">
-        <div class="col-10 col-md-10">
+
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+        <ng-container *ngIf="this.selectedPaymentForm == 'PagoContraEntrega' || this.selectedPaymentForm == 'PayPal'">
           <app-checkout-form></app-checkout-form>
-        </div>
+        </ng-container>
       </div>
-    </div>
-  </section>
-  
-  <br><br>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<!-- Section to fill address, email and customer name -->
+
+
+<br><br>

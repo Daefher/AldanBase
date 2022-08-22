@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SalesorderdtlInterface } from 'src/app/interfaces/salesorderdtl-interface';
-import { SalesorderService } from 'src/app/services/demo-salesorder/salesorder.service';
+import { SalesorderdtlInterface } from '../../../../interfaces/salesorderdtl-interface';
+import { SalesorderService } from '../../../../services/demo-salesorder/salesorder.service';
 
 @Component({
   selector: 'app-checkout',
@@ -23,9 +23,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   onPaymentFormChange(selected: any){
-    this.selectedPaymentForm = selected.selectedOptions[0].outerText;
-    this.updatePaymentFormLclStrg(this.mySelect);
-    // this.populateSalesOrderData()
+    this.selectedPaymentForm = selected;
+    this.updatePaymentFormLclStrg(selected);
+    //console.log(this.mySelect);
+    //this.populateSalesOrderData()
     /* console.log("PaymentFormNum: " + this.mySelect + ", PaymentFormName: " + this.selectedPaymentForm); */
   }
 
@@ -38,7 +39,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   updatePaymentFormLclStrg(paymentForm: string){
-    var salesOrderLclStrg: string = localStorage.getItem(this.salesOrderService.lclStrgIdPayFrm);
+    var salesOrderLclStrg = localStorage.getItem(this.salesOrderService.lclStrgIdPayFrm);
     
     if(salesOrderLclStrg != null && salesOrderLclStrg != undefined){
       if(salesOrderLclStrg.length > 0) {

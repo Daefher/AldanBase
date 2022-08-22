@@ -168,7 +168,7 @@ $md-mcgpalette4: (
 );
 
 
-$my-app-primary: mat-palette($md-mcgpalette0, 500);
+$my-app-primary: mat-palette($md-mcgpalette4, 400);
 $my-app-accent:  mat-palette($md-mcgpalette4, A400);
 $my-app-basic: mat-palette($md-mcgpalette3, A100);
 /*$my-app-warn:    mat-palette($md-mcgpalette2); */

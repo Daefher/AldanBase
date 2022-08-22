@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { SalesOrderInterface } from 'src/app/interfaces/sales-order-interface';
-import { SalesorderService } from 'src/app/services/demo-salesorder/salesorder.service';
+import { SalesOrderInterface } from '../../../../../interfaces/sales-order-interface';
+import { SalesorderService } from '../../../../../services/demo-salesorder/salesorder.service';
 
 @Component({
   selector: 'app-checkout-form',
@@ -17,7 +17,7 @@ export class CheckoutFormComponent implements OnInit {
     showControls: boolean;
     subscription: Subscription;
   
-    salesOrderLclStrg: string;
+    salesOrderLclStrg: any;
     loading = false;
     submitted = false;
   
