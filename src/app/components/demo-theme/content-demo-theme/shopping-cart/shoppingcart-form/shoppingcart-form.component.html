@@ -27,8 +27,8 @@
                                         <input matInput type="number" [disabled] = '!this.showControls' id="cartQty" name="cartQty"   min="1" #cartQty value="{{product?.quantity}}" (change)="onQtyChange(product, cartQty.value)" >
                                       </mat-form-field>
                                 </mat-grid-tile>
-                                <mat-grid-tile> {{product.unitPrice}} </mat-grid-tile>
-                                <mat-grid-tile> {{product.total}} </mat-grid-tile>
+                                <mat-grid-tile> {{product.unitPrice | currency: 'MXN'}} </mat-grid-tile>
+                                <mat-grid-tile> {{product.total | currency: 'MXN'}} </mat-grid-tile>
                                 <mat-grid-tile *ngIf="this.showControls"><mat-icon (click)="removeProduct(product)">delete</mat-icon></mat-grid-tile>
                                 <br/>
                             </mat-grid-list>

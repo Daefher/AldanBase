@@ -33,10 +33,10 @@ export class ShoppingcartFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message)      
-    if(this.matchExact(location.pathname.split("/").slice(-1)[0], "demo-cart")){
+    if(this.matchExact(location.href.split("/").slice(-1)[0], "demo-cart")){
       this.changeShowControls(true)
     }
-    console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls);
+    console.log(location.href.split("/").slice(-1)[0] + " " + this.showControls);
 
     this.cartService.getLSCart(this.cart).subscribe((data: ProductInterface[])=>{ 
       this.shopCartItems  = data;
