@@ -55,6 +55,16 @@ export class OrdersService {
     );
   }
 
+  cancelOrder(order): Observable<OrderInterface> {
+
+    return this.http.post<OrderInterface>(this.api_url + '/Cancel', JSON.stringify([order]), this.httpOptions)
+
+    .pipe(
+
+      catchError(this.errorHandler)
+
+    );
+  }
  
 
   errorHandler(error: any) {

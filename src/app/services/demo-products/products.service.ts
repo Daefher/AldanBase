@@ -6,6 +6,8 @@ import * as globals from '../../globals';
 
 
 import { ProductInterface } from '../../interfaces/product-interface';
+import { ProductQty } from '../../interfaces/product-qty';
+
 import { FormGroup } from '@angular/forms';
 
  
@@ -18,6 +20,7 @@ export class ProductsService {
   loaded: boolean = false;
 
   private api_url = globals.api_url + "Part";
+  private api_url_quantity = globals.api_url + "PartQty";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -52,6 +55,24 @@ export class ProductsService {
 
       );
 
+  }
+
+  getPartQty(id): Observable<ProductQty> {
+    return this.http.get<ProductQty>(this.api_url_quantity + '/GetByPartId/' + id)
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
+
+  adjustQty(post): Observable<ProductQty> {
+    return this.http.post<ProductQty>(this.api_url_quantity + '/AdjustQuantity', JSON.stringify([post]), this.httpOptions)
+
+    .pipe(
+
+      catchError(this.errorHandler)
+
+    );
   }
 
   find(id): Observable<ProductInterface> {

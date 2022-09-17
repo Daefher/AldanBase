@@ -20,10 +20,10 @@ import { SalesorderdtlInterface } from '../../../../interfaces/salesorderdtl-int
 export class OrdersListComponent implements OnInit {
 
   public user;
-  
+
   orders: any = [];
   panelOpenState = false;
-  ordersDtl:any = [];
+  ordersDtl: any = [];
 
 
   selectedResult: any;
@@ -31,60 +31,98 @@ export class OrdersListComponent implements OnInit {
 
   length: number;
   pageSize = 10;
-  pageSizeOptions: number[] = [1, 2, 5, 10,30];
+  pageSizeOptions: number[] = [1, 2, 5, 10, 30];
   pageEvent: PageEvent;
 
 
   constructor(
-    private ordersService : OrdersService, 
+    private ordersService: OrdersService,
     public authenticationService: AuthenticationService,
     private toastr: ToastrService
-   
-  ) { } 
+
+  ) { }
 
   ngOnInit(): void {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
 
-    this.ordersService.getAll(globals.company_id).subscribe((data: OrderInterface[])=>{      
-              
+    this.ordersService.getAll(globals.company_id).subscribe((data: OrderInterface[]) => {
+
       this.orders = data;
       this.length = this.orders.length;
       this.selectedResult = this.orders.slice(0, this.pageSize);
 
 
 
-      console.log("Ordenes",this.orders);
-          
-      
+      console.log("Ordenes", this.orders);
+
+
     },
-    err =>{
-      this.toastr.error("Error cargar las ordenes");  
-    }
-    ); 
+      err => {
+        this.toastr.error("Error cargar las ordenes");
+      }
+    );
   }
 
 
-  closeOrder(orderId){
-    if(this.orders){
+
+
+  closeOrder(orderId) {
+    if (this.orders) {
       //let order =  this.orders.find(x=>this.orders.salesOrderId == orderId);
-      let order = this.orders.find(({salesOrderId}) => salesOrderId === orderId);
-      if(order) {
-        order.closedDateTime =  new Date().toJSON();
+      let order = this.orders.find(({ salesOrderId }) => salesOrderId === orderId);
+      if (order) {
+        order.closedDateTime = new Date().toJSON();
         console.log(order);
-        this.ordersService.closeOrder(order).subscribe( res => {
+        this.ordersService.closeOrder(order).subscribe(res => {
           this.toastr.success("Orden Cerrada Correctamente", "Exito");
-          
+
           //this.router.navigateByUrl('/product/'+this.product_id + '/view');
         },
-        error => {
-          this.toastr.error("Error", error);
-        });;
+          error => {
+            this.toastr.error("Error", error);
+          });;
       }
-     
+
     }
- 
-   }
+
+  }
+
+  cancelOrder(orderId) {
+    if (this.orders) {
+      //let order =  this.orders.find(x=>this.orders.salesOrderId == orderId);
+      let order = this.orders.find(({ salesOrderId }) => salesOrderId === orderId);
+      if (order) {
+        order.canceledDateTime = new Date().toJSON();
+        console.log(order);
+        this.ordersService.cancelOrder(order).subscribe(res => {
+          this.toastr.success("Orden Cancelada Correctamente", "Exito");
+          this.ordersService.getAll(globals.company_id).subscribe((data: OrderInterface[]) => {
+
+            this.orders = data;
+            this.length = this.orders.length;
+            this.selectedResult = this.orders.slice(0, this.pageSize);
+
+
+
+            console.log("Ordenes", this.orders);
+
+
+          },
+            err => {
+              this.toastr.error("Error cargar las ordenes");
+            }
+          );
+          //this.router.navigateByUrl('/product/'+this.product_id + '/view');
+        },
+          error => {
+            this.toastr.error("Error", error);
+          });;
+      }
+
+    }
+
+  }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     if (setPageSizeOptionsInput) {
@@ -93,35 +131,35 @@ export class OrdersListComponent implements OnInit {
   }
 
 
-  trackByOrderDtl(index: any, orderDtl: { partName: any; }){
-    
+  trackByOrderDtl(index: any, orderDtl: { partName: any; }) {
+
     return orderDtl[0];
   }
 
-  getData( event?: PageEvent) {
+  getData(event?: PageEvent) {
     console.log(event);
     this.selectedResult = this.orders.slice(event.pageIndex * event.pageSize,
-                                             event.pageIndex * event.pageSize + event.pageSize);
+      event.pageIndex * event.pageSize + event.pageSize);
     return event;
   }
 
-  
 
-  fetchPanelData(orderId){
 
-    this.ordersService.getByOrderId(orderId).subscribe((data: SalesorderdtlInterface[])=>{      
-              
+  fetchPanelData(orderId) {
+
+    this.ordersService.getByOrderId(orderId).subscribe((data: SalesorderdtlInterface[]) => {
+
       this.ordersDtl = (data);
 
 
-     // console.log("OrderDtl",this.ordersDtl);
-          
-      
+      // console.log("OrderDtl",this.ordersDtl);
+
+
     },
-    err =>{
-      this.toastr.error("Error cargar las ordenes");  
-    }
-    ); 
+      err => {
+        this.toastr.error("Error cargar las ordenes");
+      }
+    );
 
   }
 
