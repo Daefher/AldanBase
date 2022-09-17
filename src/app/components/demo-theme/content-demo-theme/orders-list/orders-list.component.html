@@ -11,13 +11,15 @@
         <ng-container *ngIf="orders.length > 0">           
                 <mat-accordion fxFlexFill fxLayout="column"  >
                   <ng-container fxflex  *ngFor="let order of selectedResult">
-                    <mat-expansion-panel  (afterExpand)="fetchPanelData(order.salesOrderId)"  hideToggle>
+                    <mat-expansion-panel  (afterExpand)="fetchPanelData(order.salesOrderId)"  hideToggle >
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                          {{order.payPalFullName}}
                         </mat-panel-title>
                         <mat-panel-description>                          
                           <p *ngIf="!order.closed">{{order.paymentFormNum}},  Estado: <b>Pendiente</b> </p>
+                          <p *ngIf="order.closed">{{order.paymentFormNum}},  Estado: <b>Orden Cerrada</b> </p>
+
                         </mat-panel-description>
                       </mat-expansion-panel-header>
                       <p>
@@ -37,8 +39,10 @@
                         Total de la orden: <strong> $ {{order.totalLetter}} </strong>
                       </p>
                       <div align="end" >
-                        <button mat-raised-button class="action-button" (click)="closeOrder(order.salesOrderId)" color="accent"> Finalizar </button>
-                        <button mat-raised-button class="action-button"  color="warn"> Cancelar </button>
+                        <ng-container *ngIf="!order.closed">
+                          <button mat-raised-button class="action-button" (click)="closeOrder(order.salesOrderId)" color="accent"> Finalizar </button>
+                        </ng-container>
+                        <button mat-raised-button class="action-button" (click)="cancelOrder(order.salesOrderId)"color="warn"> Cancelar </button>
                       </div>
                       
 
