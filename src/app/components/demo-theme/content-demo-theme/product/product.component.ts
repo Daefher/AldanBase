@@ -48,7 +48,6 @@ export class ProductComponent implements OnInit {
     this.route.params.subscribe(routeParams => {
       this.product_id = routeParams.partId;
 
-
       this.productService.find(this.product_id).subscribe((data) => {
         this.product = data[0];
         console.log(this.product);
@@ -65,12 +64,24 @@ export class ProductComponent implements OnInit {
       },
         err => {
 
-          this.toastr.error(err);
+          //this.toastr.error(err);
         });
 
     });
   }
+  cancelProduct(partId){
 
+    this.productService.delete(partId).subscribe((data) => {
+      this.toastr.success("Producto Cancelado Correctamente", "Exito");
+
+    },
+     err => {
+
+        this.toastr.error(err);
+      }
+    );
+
+  }
   adjustQty(partId, event) {
     //console.log(event)
     let data =
@@ -85,7 +96,7 @@ export class ProductComponent implements OnInit {
     },
       err => {
 
-        this.toastr.error(err);
+        //this.toastr.error(err);
       });
 
 

@@ -43,6 +43,14 @@
               <button mat-raised-button color="accent" (click)="addToCart(product)"><span class="material-icons">
                   add_shopping_cart
                 </span></button>
+                <button  *ngIf="authenticationService.currentuser | async" mat-raised-button color="warn" (click)="cancelProduct(product?.partId)"><span class="material-icons">
+                  cancel
+                </span></button>
+               <!--  <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+                  <button align='right' mat-raised-button color="warn" style="margin:5px;"
+                    *ngIf="authenticationService.currentuser | async"
+                    (click)="cancelProduct(product?.partId)">Cancelar Producto</button>
+                </div> -->
             </mat-card-actions>
           </mat-card>
         </div>
