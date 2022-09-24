@@ -58,6 +58,19 @@ export class ProductsComponent implements OnInit {
    
   }
 
+  cancelProduct(partId){
+
+    this.productService.delete(partId).subscribe((data) => {
+      this.toastr.success("Producto Cancelado Correctamente", "Exito");
+      this.products = this.products.filter(item => item.partId != partId);
+    },
+     err => {
+      
+    }
+    );
+
+  }
+
  /*  getProdut(data:ProductInterface[]){
     let box =  [];
     data.forEach(element => {
@@ -71,6 +84,8 @@ export class ProductsComponent implements OnInit {
   filter(status){
     this.filterRslt =  this.products.filter(tur => tur.name === status);
   }
+
+
   gotoTop() {
     window.scroll({ 
       top: 0, 

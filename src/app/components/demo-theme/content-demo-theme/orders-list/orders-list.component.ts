@@ -27,11 +27,12 @@ export class OrdersListComponent implements OnInit {
 
 
   selectedResult: any;
+  isLoading = true;
 
 
   length: number;
   pageSize = 10;
-  pageSizeOptions: number[] = [1, 2, 5, 10, 30];
+  pageSizeOptions: number[] = [5, 10, 30];
   pageEvent: PageEvent;
 
 
@@ -51,6 +52,7 @@ export class OrdersListComponent implements OnInit {
       this.orders = data;
       this.length = this.orders.length;
       this.selectedResult = this.orders.slice(0, this.pageSize);
+      this.isLoading = false;
 
 
 
@@ -60,10 +62,41 @@ export class OrdersListComponent implements OnInit {
     },
       err => {
         this.toastr.error("Error cargar las ordenes");
+        this.isLoading = false;
       }
     );
   }
+  
 
+  filterBy(type){
+    let new_filter;
+    switch (type) {
+      case 'closed':
+        new_filter = this.orders.filter(item => item.closed === true);
+        this.selectedResult = new_filter.slice(0, this.pageSize);
+
+        //this.products.filter(tur => tur.name === status)
+
+        break;
+      case 'canceled':
+         new_filter = this.orders.filter(item => item.canceled === true);
+        this.selectedResult = new_filter.slice(0, this.pageSize);
+        break;
+
+      case 'notClosed':
+        new_filter = this.orders.filter(item => item.closed === false);
+        this.selectedResult = new_filter.slice(0, this.pageSize);
+        break;
+
+      case 'all':
+        //new_filter = this.orders.filter(item => item.closed === false);
+        this.selectedResult = this.orders.slice(0, this.pageSize);
+      break;
+    
+      default:
+        break;
+    }
+  }
 
 
 
