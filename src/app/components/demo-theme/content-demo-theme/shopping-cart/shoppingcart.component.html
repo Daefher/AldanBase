@@ -11,16 +11,18 @@
       <app-shoppingcart-form></app-shoppingcart-form>      
     </mat-card-content>
     
-    <ng-container *ngIf=" prods_on_cart > 0"> 
-      <mat-card-actions>
-        <div fxLayout="column wrap" fxLayoutAlign=" end" >
+     
+      <mat-card-actions align="end">
+        <ng-container *ngIf=" prods_on_cart > 0">
+        <div fxLayout="column wrap">
           <div fxFlex="100%" fxFlex.xs="50%" fxFlex.sm="50%">
-            <button routerLink="../demo-checkout" mat-raised-button color="accent" class="btn btn-primary">Continuar</button>  
+            <button routerLink="../demo-checkout" mat-raised-button color="accent">Continuar</button>  
           </div>
-        </div>    
+        </div>  
+        </ng-container>       
       </mat-card-actions>    
         
-    </ng-container>            
+           
 </mat-card>
 </div>
  

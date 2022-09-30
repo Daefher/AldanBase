@@ -22,6 +22,7 @@ export class ProductComponent implements OnInit {
   product: ProductInterface;
   productQty: any;
   is_login: boolean;
+  is_loading = true;
 
   image_path = globals.img_path;
 
@@ -50,6 +51,7 @@ export class ProductComponent implements OnInit {
 
       this.productService.find(this.product_id).subscribe((data) => {
         this.product = data[0];
+        this.is_loading = false;
         console.log(this.product);
       },
         err => {
@@ -66,6 +68,8 @@ export class ProductComponent implements OnInit {
 
           //this.toastr.error(err);
         });
+
+        
 
     });
   }

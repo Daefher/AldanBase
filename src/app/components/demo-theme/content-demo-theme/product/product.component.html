@@ -1,26 +1,37 @@
 <app-nav-demo-theme></app-nav-demo-theme>
 <div class="wrapper">
   <div class="content">
+    <ng-container *ngIf="is_loading" >
+      <div style="display: flex; justify-content: center; align-items: center; background: white;">
+        <mat-progress-spinner 
+          color="accent" 
+          mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+    </ng-container>
     <div class="row wrap" fxLayoutGap="5px grid">
       <div fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%">
-        <button align='right' mat-raised-button color="accent" style="margin:5px;"
+        <button align='right' mat-raised-button class="alterPrimaryBG" style="margin:5px;"
           *ngIf="authenticationService.currentuser | async"
           [routerLink]="['/demo/demo-products', product?.partId, 'update']" (click)="gotoTop()">Editar Producto</button>
       </div>
-      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-        <button align='right' mat-raised-button color="warn" style="margin:5px;"
-          *ngIf="authenticationService.currentuser | async"
-          (click)="cancelProduct(product?.partId)">Cancelar Producto</button>
-      </div>
+      <ng-container *ngIf="!product?.canceled">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+          <button align='right' mat-raised-button color="warn" style="margin:5px;"
+            *ngIf="authenticationService.currentuser | async"
+            (click)="cancelProduct(product?.partId)">Cancelar Producto</button>
+        </div>
+      </ng-container>
+     
     </div>
     <br>
     <div fxLayout="row wrap" fxLayoutGap="10px grid">
-
+      
       <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="33%">
         <mat-card class="mat-elevation-z4">
 
           <img mat-card-image class="img-size-prod" src="{{ image_path + product?.imageFile}}">
-
+         
         </mat-card>
       </div>
 
@@ -33,41 +44,46 @@
             <p>
               {{product?.description }}
             </p>
+
           </mat-card-content>
           <mat-card-actions>
+           
             <button mat-raised-button color="accent" (click)="addToCart()"><span class="material-icons">
                 add_shopping_cart
               </span></button>
           </mat-card-actions>
         </mat-card>
         <br>
-        <mat-card class="mat-elevation-z4">
-          <mat-card-header>
-            <mat-card-title>Ajustar Inventario</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-
-            <ng-container *ngIf="!productQty">
-              <p>
-                Este producto no existe en inventario, desea agregar
-              </p>
-              <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">
-                <input matInput type="number" min="0" (change)="adjustQty(product?.partId, $event)">
-              </mat-form-field>
-            </ng-container>
-            <ng-container *ngIf="productQty">
-              <p>
-              </p>
-              <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">
-                <input matInput type="number" min="0" value="{{productQty?.onHandQty}}" (change)="adjustQty(product?.partId, $event)">
-              </mat-form-field>
-            </ng-container>
-
-          </mat-card-content>
-          <mat-card-actions>           
-
-          </mat-card-actions>
-        </mat-card>
+        <ng-container *ngIf="authenticationService.currentuser | async">
+          <mat-card class="mat-elevation-z4">
+            <mat-card-header>
+              <mat-card-title>Ajustar Inventario</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+  
+              <ng-container *ngIf="!productQty">
+                <p>
+                  Este producto no existe en inventario, desea agregar
+                </p>
+                <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">
+                  <input matInput type="number" min="0" (change)="adjustQty(product?.partId, $event)">
+                </mat-form-field>
+              </ng-container>
+              <ng-container *ngIf="productQty">
+                <p>
+                </p>
+                <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">
+                  <input matInput type="number" min="0" value="{{productQty?.onHandQty}}" (change)="adjustQty(product?.partId, $event)">
+                </mat-form-field>
+              </ng-container>
+  
+            </mat-card-content>
+            <mat-card-actions>           
+  
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+        
       </div>
 
     </div>

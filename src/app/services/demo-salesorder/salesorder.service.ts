@@ -17,6 +17,7 @@ export class SalesorderService {
   public lclStrgIdPayFrm: string = "selectedCheckoutPaymentForm";
   public lclStrgIdPayPalCheckOutURL: string = "paypalCheckOutUrl";
   salesOrderLclStrg: string;
+  
 
   private showControls = new BehaviorSubject(true);
   currentMessage = this.showControls.asObservable();

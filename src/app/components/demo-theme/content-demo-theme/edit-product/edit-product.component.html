@@ -3,6 +3,8 @@
   <mat-card class="mat-card-class">
     <h2>Editar Producto</h2>
     <mat-card-content  fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
+
+      
       <form class="example-form" [formGroup]='EditProductForm' (ngSubmit)='onSubmit()'>
         <input type="hidden" [hidden]="true" formControlName="AldanCustomerId" [ngModel]="product?.aldanCustomerId">
         <input type="hidden" [hidden]="true" formControlName="CompanyId" [ngModel]="product?.companyId">
@@ -11,8 +13,8 @@
         <input type="hidden" [hidden]="true" formControlName="PayPalToken" [ngModel]="0">
         <input type="hidden" [hidden]="true" formControlName="CanceledBy" [ngModel]="product?.canceledBy">
         <input type="hidden" [hidden]="true" formControlName="CanceledDateTime" [ngModel]="product?.canceledDateTime">
-        <input type="hidden" [hidden]="true" formControlName="Canceled" [ngModel]="product?.canceled">
-        <input type="hidden" [hidden]="true" formControlName="CreatedBy" [ngModel]="product?.createdBy">
+<!--         <input type="hidden" [hidden]="true" formControlName="Canceled" [ngModel]="product?.canceled">
+ -->        <input type="hidden" [hidden]="true" formControlName="CreatedBy" [ngModel]="product?.createdBy">
         <input type="hidden" [hidden]="true" formControlName="CreatedDateTime">
         <input type="hidden" [hidden]="true" formControlName="Cancelable" [ngModel]="product?.cancelable">
         <input type="hidden" [hidden]="true" formControlName="SysRowId" [ngModel]="product?.sysRowId">
@@ -22,7 +24,15 @@
         <input type="hidden" [hidden]="true" formControlName="WeightUomId" [ngModel]="0">
         <input type="hidden" [hidden]="true" formControlName="imageFile">
 
-
+        <ng-container *ngIf="form_loading" >
+          <div style="display: flex; justify-content: center; align-items: center; background: white;">
+            <mat-progress-spinner 
+              color="accent" 
+              mode="indeterminate">
+            </mat-progress-spinner>
+          </div>
+        </ng-container>
+        
         <div class="example-full-width" appearance="fill">
           <mat-label>Imagen</mat-label>
           <input type="file" (change)="handleInputChange($event)" class="form-control small-form"  /> 
@@ -82,6 +92,8 @@
           </tr>
         </table>
 
+
+
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Categoria</mat-label>
           <mat-select placeholder="Descripcion del Producto" formControlName='category' [ngModel]="product?.category">
@@ -97,6 +109,13 @@
             </mat-error>
           </div>
         </mat-form-field>
+        <br>
+        
+
+        <mat-slide-toggle formControlName="Canceled" color="warn" [ngModel]="product?.canceled">Cancelado</mat-slide-toggle>
+        
+
+        <br>
 
         <mat-spinner [diameter]="20" *ngIf="loading"></mat-spinner>
 
@@ -109,7 +128,7 @@
           </div>
           <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">
 
-            <button type="submit" mat-raised-button color="accent" [disabled]="loading">
+            <button type="submit" mat-raised-button class="alterPrimaryBG" [class.spinner]="loading" [disabled]="loading">
               Guardar
             </button>
           </div>

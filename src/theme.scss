@@ -135,9 +135,9 @@ $md-mcgpalette3: (
 );
 
 $md-mcgpalette4: (
-    50 : #e2e3e3,
-    100 : #b6b8b9,
-    200 : #86898b,
+    50 : #e9e9ee,
+    100 : #c7c8d6,
+    200 : #a4a5ba,
     300 : #565a5d,
     400 : #31363a,
     500 : #0d1317,
@@ -167,13 +167,116 @@ $md-mcgpalette4: (
     )
 );
 
+$md-primary: (
+    50 : #fefcf9,
+    100 : #fbf7f0,
+    200 : #f9f2e6,
+    300 : #f7ecdc,
+    400 : #f5e8d5,
+    500 : #f3e4cd,
+    600 : #f1e1c8,
+    700 : #efddc1,
+    800 : #edd9ba,
+    900 : #ead1ae,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
 
-$my-app-primary: mat-palette($md-mcgpalette4, 400);
-$my-app-accent:  mat-palette($md-mcgpalette4, A400);
+ $md-accent: (
+    50 : #f9f6f8,
+    100 : #efeaee,
+    200 : #e5dce3,
+    300 : #dacdd7,
+    400 : #d2c3cf,
+    500 : #cab8c6,
+    600 : #c5b1c0,
+    700 : #bda8b9,
+    800 : #b7a0b1,
+    900 : #ab91a4,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffdff7,
+    A700 : #ffc5f1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+); 
+
+$md-accent2: (
+    50 : #f7fcf6,
+    100 : #ecf8e9,
+    200 : #e0f4da,
+    300 : #d3efcb,
+    400 : #c9ebbf,
+    500 : #c0e8b4,
+    600 : #bae5ad,
+    700 : #b2e2a4,
+    800 : #aade9c,
+    900 : #9cd88c,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #f0ffec,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+  
+
+$my-app-primary: mat-palette($md-primary, 500);
+$my-app-accent:  mat-palette($md-accent2, 500);
 $my-app-basic: mat-palette($md-mcgpalette3, A100);
 /*$my-app-warn:    mat-palette($md-mcgpalette2); */
-$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent,$my-app-basic);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
+
+
 @include theme-color-grabber($my-app-theme);
+
 
 @include angular-material-theme($my-app-theme);
 

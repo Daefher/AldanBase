@@ -26,6 +26,7 @@ export class EditProductComponent implements OnInit {
 
   EditProductForm: FormGroup;
   loading = false;
+  form_loading = true;
   submitted = false;
   returnUrl: string;
   image_file : string;
@@ -50,6 +51,7 @@ export class EditProductComponent implements OnInit {
     this.productService.find(this.product_id).subscribe((data: ProductInterface)=>{
       this.product = data[0]; 
       this.image_file = this.image_path +this.product.imageFile;
+      this.form_loading = false;
         
       //this.on_select(this.product.category);
       

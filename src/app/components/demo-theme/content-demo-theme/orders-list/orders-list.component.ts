@@ -29,6 +29,8 @@ export class OrdersListComponent implements OnInit {
   selectedResult: any;
   isLoading = true;
 
+  closeIsLoading = false;
+
 
   length: number;
   pageSize = 10;
@@ -56,7 +58,7 @@ export class OrdersListComponent implements OnInit {
 
 
 
-      console.log("Ordenes", this.orders);
+      //console.log("Ordenes", this.orders);
 
 
     },
@@ -107,14 +109,21 @@ export class OrdersListComponent implements OnInit {
       if (order) {
         order.closedDateTime = new Date().toJSON();
         console.log(order);
+        this.closeIsLoading =  true;
         this.ordersService.closeOrder(order).subscribe(res => {
+          this.closeIsLoading =  false;
+
+          console.log("RESPONSE",res);
+          order.closed = true;
           this.toastr.success("Orden Cerrada Correctamente", "Exito");
 
           //this.router.navigateByUrl('/product/'+this.product_id + '/view');
         },
           error => {
-            this.toastr.error("Error", error);
-          });;
+            this.toastr.error("No se ha podido cerrar la orden, revise el inventario de productos", " Error ");
+
+            this.closeIsLoading =  false;
+          });
       }
 
     }

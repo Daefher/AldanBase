@@ -83,7 +83,7 @@
           </div>
         </mat-form-field>
 
-        <button type="submit" mat-raised-button color="accent">
+        <button type="submit" mat-raised-button class="alterPrimaryBG" [class.spinner]="loading" [disabled]="loading" >
           Crear
         </button>
 

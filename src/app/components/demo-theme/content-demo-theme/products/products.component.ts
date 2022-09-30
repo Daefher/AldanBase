@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
   products: any = [];
   image_path = globals.img_path;
   filterRslt = [];
+  is_loading = true;
 
   searchForm: any;
 
@@ -46,6 +47,7 @@ export class ProductsComponent implements OnInit {
       
       //let temp =  this.ReturnNotTrashed(data);        
       this.products = data;
+      this.is_loading = false;
       //this.filterRslt = temp;
           
       
@@ -65,7 +67,7 @@ export class ProductsComponent implements OnInit {
       this.products = this.products.filter(item => item.partId != partId);
     },
      err => {
-      
+
     }
     );
 
