@@ -5,8 +5,10 @@
     <a mat-button routerLink="/demo" fxHide.xs> Inicio </a>
     <a mat-button routerLink="/demo/demo-products" fxHide.xs> Productos </a>   
     <a mat-button fxHide.xs> Acerca de  </a>   
-    <a mat-button routerLink="/demo/demo-cart" fxHide.xs> Carrito ( {{prods_on_cart}} ) </a>   
-
+    <a mat-button routerLink="/demo/demo-cart" fxHide.xs> <mat-icon>shopping_cart</mat-icon>  ( {{prods_on_cart}} ) </a>   
+    <a mat-button [routerLink]="['/demo/demo-adminproducts', user.systemUserId ]"  *ngIf="(authenticationService.currentuser | async) as user" fxHide.xs>        
+        Administrar Productos 
+    </a>
     <a mat-button [routerLink]="['/demo/demo-users', user.systemUserId, 'view' ]"  *ngIf="(authenticationService.currentuser | async) as user" fxHide.xs>        
         Perfil 
     </a>

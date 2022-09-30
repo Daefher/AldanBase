@@ -101,8 +101,9 @@ export class CreateProductComponent implements OnInit {
         data => {
           this.router.navigate([this.returnUrl+ data[0].partId.toString() + '/view'])
           this.toastr.success("Producto creado correctamente", "Exito");
-          console.log(this.returnUrl+ data[0].partId.toString() + '/view');
-          console.log(data);
+          this.loading = false;
+          /* console.log(this.returnUrl+ data[0].partId.toString() + '/view');
+          console.log(data); */
           // this.router.navigate([this.returnUrl]);
           //this.router.navigateByUrl('/product/'+data[0].partId+ '/view');
          

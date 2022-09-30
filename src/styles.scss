@@ -2,6 +2,7 @@
 @import '~ngx-toastr/toastr';
 
 
+
 // Define a custom mixin that takes in the current theme
 @mixin theme-color-grabber($theme) {
   // Parse the theme and create variables for each color in the pallete
@@ -18,7 +19,18 @@
   .warnColorBG {
     background-color: mat-color($warn);
   }
+  
+  .alterPrimaryBG {
+    background-color: #cab8c6 !important;
+  }
 }
+
+
+
+
+
+
+
 
 html,
 body {
@@ -59,3 +71,24 @@ mat-card {
   width: 100%;
   height: 150px;
 }
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+

@@ -17,7 +17,8 @@ import {
   SalesOrdersComponent,
   SalesOrderComponent,
   ShoppingcartComponent,
-  CheckoutComponent
+  CheckoutComponent,
+  AdminProductsComponent
   
 } from "./components/index.pages";
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path : 'demo/demo-orders/:orderId/view', component: SalesOrderComponent, canActivate: [AuthGuardGuard]},
   {path : 'demo/demo-cart', component: ShoppingcartComponent},
   {path : 'demo/demo-checkout', component: CheckoutComponent},
-  {path : 'demo/demo-orderconfirmation', component: OrderconfirmationComponent}
+  {path : 'demo/demo-orderconfirmation', component: OrderconfirmationComponent},
+  {path : 'demo/demo-adminproducts/:userId', component: AdminProductsComponent,canActivate: [AuthGuardGuard]}
 
 ];
 

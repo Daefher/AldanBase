@@ -26,9 +26,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
-
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -73,6 +72,8 @@ import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-
 import { CheckoutComponent } from './components/demo-theme/content-demo-theme/checkout/checkout.component';
 import { CheckoutFormComponent } from './components/demo-theme/content-demo-theme/checkout/checkout-form/checkout-form.component';
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
+import { AdminProductsComponent } from './components/demo-theme/content-demo-theme/admin-products/admin-products.component';
+import { AdminProductsTableComponent } from './components/demo-theme/content-demo-theme/admin-products-table/admin-products-table.component';
 
 
 @NgModule({
@@ -108,6 +109,8 @@ import { OrderconfirmationComponent } from './components/demo-theme/content-demo
     CheckoutComponent,
     CheckoutFormComponent,
     OrderconfirmationComponent,
+    AdminProductsComponent,
+    AdminProductsTableComponent
     
         
   ],
@@ -141,6 +144,8 @@ import { OrderconfirmationComponent } from './components/demo-theme/content-demo
     MatTableModule,
     MatExpansionModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
+    MatTooltipModule,
       
          
   ],
