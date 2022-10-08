@@ -27,9 +27,16 @@
       </div>
     </ng-container>
 
+    
+    <mat-form-field>
+      <mat-label>Ordenar</mat-label>
+      <mat-select placeholder="Ordenar" [ngModel]="selected_sort" (ngModelChange)="orderByChange($event)"> 
+        <mat-option *ngFor="let type of sort_types" [value]="type">{{type.name}}</mat-option>            
+      </mat-select>     
+    </mat-form-field>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       
-      <ng-container *ngFor="let product of products | searchFilter: searchForm.value.search ">
+      <ng-container *ngFor="let product of products | searchFilter: searchForm.value.search | productsSort: selected_sort">
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngIf="(product?.canceled == false)">
           <mat-card class="mat-elevation-z4">
             <mat-card-header>

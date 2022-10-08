@@ -74,6 +74,7 @@ import { CheckoutFormComponent } from './components/demo-theme/content-demo-them
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
 import { AdminProductsComponent } from './components/demo-theme/content-demo-theme/admin-products/admin-products.component';
 import { AdminProductsTableComponent } from './components/demo-theme/content-demo-theme/admin-products-table/admin-products-table.component';
+import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
 
 
 @NgModule({
@@ -110,7 +111,8 @@ import { AdminProductsTableComponent } from './components/demo-theme/content-dem
     CheckoutFormComponent,
     OrderconfirmationComponent,
     AdminProductsComponent,
-    AdminProductsTableComponent
+    AdminProductsTableComponent,
+    ProductsSortPipe
     
         
   ],

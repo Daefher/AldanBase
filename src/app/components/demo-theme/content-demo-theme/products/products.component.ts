@@ -3,12 +3,20 @@ import { ProductsService } from '../../../../services/demo-products/products.ser
 import { ProductInterface } from '../../../../interfaces/product-interface';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
 import { CartService } from '../../../../services/demo-cart/cart.service';
+import { ProductsSortPipe } from '../../../../pipes/productsPipes/products-sort.pipe';
+
 
 import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
- 
+ export interface sortInterface  {
+  name : string,
+  value : string,
+  type : string,
+  is_date : boolean,
+
+ }
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -20,8 +28,19 @@ export class ProductsComponent implements OnInit {
   image_path = globals.img_path;
   filterRslt = [];
   is_loading = true;
+  sort_types : Array<sortInterface> = [
+    { name: 'A-Z', value: 'name' , type: 'asc', is_date: false },
+    { name: 'Z-A', value: 'name' , type: 'desc', is_date: false },
+    { name: 'Antiguos', value: 'createdDateTime' , type: 'asc', is_date: true },
+    { name: 'Nuevos', value: 'createdDateTime' , type: 'desc', is_date: true },
+    { name: 'Menor Precio', value: 'unitPrice' , type: 'asc', is_date: false },
+    { name: 'Mayor Precio', value: 'unitPrice' , type: 'desc', is_date: false },
+  ];
 
+  selected_sort  = { name: 'Nuevos', value: 'createdDateTime' , type: 'desc', is_date: true };
+  sort_type : any;
   searchForm: any;
+  orderByForm : any;
 
   public user;
 
@@ -95,6 +114,19 @@ export class ProductsComponent implements OnInit {
       behavior: 'smooth' 
     });
   }  
+
+  orderByChange(sortInterface :sortInterface){
+    console.log(sortInterface);
+    this.updateSortValue(sortInterface);
+  }
+
+  updateSortValue(selected_sort){
+    this.selected_sort  = selected_sort;
+  }
+
+  
+
+  
   
   ReturnNotTrashed(products) {
     let newProducts:any[] = [];
