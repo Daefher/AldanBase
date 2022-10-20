@@ -10,6 +10,7 @@
   // Create theme specfic styles
   .primaryColorBG {
     background-color: mat-color($primary);
+    
   }
   .accentColorBG {
     background-color: mat-color($accent);
@@ -25,7 +26,8 @@
   
   .alterPrimaryBG {
     background-color: $alterPrimary !important ;
-   
+    color : $textColor !important;
+
   }
 
   .textColorPrimary{

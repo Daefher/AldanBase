@@ -17,7 +17,7 @@ import { CompanyInterface } from '../../../interfaces/company-interface';
 export class NavDemoThemeComponent implements OnInit {
   public user;
   public prods_on_cart : any;
-  private company : CompanyInterface;
+  public company : CompanyInterface;
 
   constructor(
     public authenticationService: AuthenticationService,

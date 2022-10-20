@@ -36,7 +36,7 @@ export class CompanyResolver implements Resolve<any> {
       //this.chooseCompany(this.company_host_name);
       
       //this.themeService.setTheme(this.company_host_name);
-      this.themeService.setTheme("macetita");
+      this.chooseTheme(this.company_host_name);
 
     return this.companyService.getCompanyByIdResolver(10).pipe(
       catchError(error => {
@@ -44,6 +44,22 @@ export class CompanyResolver implements Resolve<any> {
       })
     );
   }
+
+
+chooseTheme(hostname){
+  switch (hostname) {
+    case "localhost":
+    case "aldantech":
+      this.themeService.setTheme("aldantech");      
+    break;
+    case "macetita":
+      this.themeService.setTheme(hostname);
+    default:
+      break;
+  }
+}
+
+
 
   chooseCompany(hostname){
     switch (hostname) {
