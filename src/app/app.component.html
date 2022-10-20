@@ -1,5 +1,5 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="example-sidenav" mode="side" >
+<mat-drawer-container [ngClass]="current_theme| async" class="example-container">
+  <mat-drawer #drawer class="example-sidenav leftNavColor" mode="side" >
       <app-sidenav></app-sidenav>
     </mat-drawer>
   <ng-container  *ngIf="authenticationService.currentuser | async"> 

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { ThemeService } from './core/services/theme.service';
 import { company_id } from './globals';
 import { CompanyService } from './services/demo-company/company.service';
 import { AuthenticationService } from './services/demo-login/authentication.service';
@@ -15,19 +16,26 @@ export class AppComponent {
   user : any;
   company_host_name :  string;
   loading = true;
+  current_theme : any;
+  @HostBinding('class') componentCssClass;
+ 
   constructor(
       private router :  Router,
       public authenticationService: AuthenticationService,
-      private companyService : CompanyService
+      private companyService : CompanyService,
+      public themeService: ThemeService
     ){
      
     }
- 
+   
+  onSetTheme(theme) {   
+    this.componentCssClass = theme;
+  }
   ngOnInit() {
     this.authenticationService.currentuser.subscribe(user => this.user = user);   
     
     //this.companyService.findBy();
-     
+    this.current_theme =  this.themeService.company_themePicket;
    
     this.router.events
       // For newer versions or rxjs use a pipe on the filter:

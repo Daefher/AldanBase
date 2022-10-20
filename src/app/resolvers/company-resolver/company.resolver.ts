@@ -6,6 +6,7 @@ import {
 } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ThemeService } from 'src/app/core/services/theme.service';
 import { CompanyInterface } from '../../interfaces/company-interface';
 import { CompanyService } from '../../services/demo-company/company.service';
 
@@ -20,7 +21,8 @@ export class CompanyResolver implements Resolve<any> {
   private company :CompanyInterface
   constructor(
     private router: Router,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private themeService :ThemeService,
     ){
 
   }
@@ -31,7 +33,10 @@ export class CompanyResolver implements Resolve<any> {
 
       this.company_host_name = window.location.hostname;
       //console.log(this.company_host_name);
-      //this.chooseCompany(this.company_host_name); 
+      //this.chooseCompany(this.company_host_name);
+      
+      //this.themeService.setTheme(this.company_host_name);
+      this.themeService.setTheme("macetita");
 
     return this.companyService.getCompanyByIdResolver(10).pipe(
       catchError(error => {

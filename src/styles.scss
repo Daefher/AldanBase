@@ -2,7 +2,7 @@
 @import '~ngx-toastr/toastr';
 
 // Define a custom mixin that takes in the current theme
-@mixin theme-color-grabber($theme) {
+@mixin theme-color-grabber($theme, $alterPrimary, $textColor) {
   // Parse the theme and create variables for each color in the pallete
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -17,9 +17,19 @@
   .warnColorBG {
     background-color: mat-color($warn);
   }
+
+  .leftNavColor{
+    background-color: mat-color($accent) !important;
+    color : $textColor !important;
+  }
   
   .alterPrimaryBG {
-    background-color: #cab8c6 !important;
+    background-color: $alterPrimary !important ;
+   
+  }
+
+  .textColorPrimary{
+    color : $textColor;
   }
 }
 
