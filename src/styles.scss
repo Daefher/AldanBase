@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~ngx-toastr/toastr';
 
-
-
 // Define a custom mixin that takes in the current theme
 @mixin theme-color-grabber($theme) {
   // Parse the theme and create variables for each color in the pallete
@@ -24,13 +22,6 @@
     background-color: #cab8c6 !important;
   }
 }
-
-
-
-
-
-
-
 
 html,
 body {
@@ -75,6 +66,7 @@ mat-card {
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
+
  
 .spinner:before {
   content: '';

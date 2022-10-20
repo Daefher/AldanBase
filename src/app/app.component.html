@@ -1,15 +1,25 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <app-sidenav></app-sidenav>
-  </mat-drawer>
-  <div id="open-menu">
-    <button mat-mini-fab color="primary" type="button"  (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
-  <div class="example-sidenav-content">
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer class="example-sidenav" mode="side" >
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+  <ng-container  *ngIf="authenticationService.currentuser | async"> 
+    <div id="open-menu"  >
+      <button mat-mini-fab color="accent" type="button"  (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+</ng-container>
+  <div class="example-sidenav-content">   
     <router-outlet></router-outlet>
   </div>
+  <ng-container *ngIf="loading" >
+    <div style="display: flex; justify-content: center; align-items: center; background: white;">
+      <mat-progress-spinner 
+      color="accent"
+        mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+  </ng-container>
    <div fxFlex="none">
     <app-footer></app-footer>
   </div>

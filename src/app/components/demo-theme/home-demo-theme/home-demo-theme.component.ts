@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CompanyInterface } from '../../../interfaces/company-interface';
 
 @Component({
   selector: 'app-home-demo-theme',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeDemoThemeComponent implements OnInit {
 
-  constructor() { }
+  public company: CompanyInterface;
+
+  constructor(
+  
+  ) { }
 
   ngOnInit(): void {
+
+   
   }
 
 }

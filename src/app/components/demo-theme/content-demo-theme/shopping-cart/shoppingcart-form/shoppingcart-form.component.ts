@@ -5,6 +5,8 @@ import { CartService } from '../../../../../services/demo-cart/cart.service';
 import { SalesorderService } from '../../../../../services/demo-salesorder/salesorder.service';
 import { ProductInterface } from '../../../../../interfaces/product-interface';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
+import { CompanyInterface } from '../../../../../interfaces/company-interface';
 
 @Component({
   selector: 'app-shoppingcart-form',
@@ -26,21 +28,28 @@ export class ShoppingcartFormComponent implements OnInit {
   displayedColumns: string[] = ['name','description','quantity'];
   cart = localStorage.getItem(globals.cartId);
 
+  private company :CompanyInterface;
+
 
   constructor(private cartService : CartService, 
     public salesOrderService : SalesorderService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private route :ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+    });
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message)      
     if(this.matchExact(location.pathname.split("/").slice(-1)[0], "demo-cart")){
       this.changeShowControls(true)
     }
-    console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls);
+    //console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls);
 
     this.cartService.getLSCart(this.cart).subscribe((data: ProductInterface[])=>{ 
       this.shopCartItems  = data;
-      console.log(data);
+      //console.log(data);
     },
     err =>{
       this.toastr.error("Error cargar productos");  

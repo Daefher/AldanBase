@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ProductInterface } from '../../../../interfaces/product-interface';
 
 import * as globals from '../../../../globals';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class EditProductComponent implements OnInit {
   is_avocado : boolean;
   image_path = globals.img_path;
 
+  private company:CompanyInterface;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,6 +49,10 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
 
 
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+    });
+    
     this.product_id = this.route.snapshot.params['partId'];
 
     this.productService.find(this.product_id).subscribe((data: ProductInterface)=>{

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CompanyInterface } from '../../../interfaces/company-interface';
+import { CompanyService } from '../../../services/demo-company/company.service';
 
 @Component({
   selector: 'app-header-demo-theme',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderDemoThemeComponent implements OnInit {
 
-  constructor() { }
+  public company : CompanyInterface;
+  constructor(
+    public companyService : CompanyService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe((response: any) => {
+     this.company = response.company[0];     
+    });
   }
 
 }

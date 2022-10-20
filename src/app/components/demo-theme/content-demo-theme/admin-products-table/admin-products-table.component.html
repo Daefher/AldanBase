@@ -19,7 +19,7 @@
         <div fxLayout="row wrap" fxLayoutGap="16px grid">
           <div fxFlex="25" fxFlex.xs="100%" fxFlex.sm="33%">
             <button align='right' mat-raised-button style="margin:5px;" class="alterPrimaryBG"
-              *ngIf="authenticationService.currentuser | async" [routerLink]="['create' ]" (click)="gotoTop()">Crear
+              *ngIf="authenticationService.currentuser | async" [routerLink]="['create']" (click)="gotoTop()">Crear
               Producto</button>
           </div>
         </div>

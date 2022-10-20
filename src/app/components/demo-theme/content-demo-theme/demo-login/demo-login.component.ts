@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
 import { ToastrService } from 'ngx-toastr';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 
 @Component({
   selector: 'app-demo-login',
@@ -18,12 +19,16 @@ export class DemoLoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
 
+  private company :CompanyInterface;
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    
+    
   ) {
 
     if (this.authenticationService.currentUserValue) {
@@ -37,7 +42,9 @@ export class DemoLoginComponent implements OnInit {
       Email: ['', Validators.email],
       Password: ['', Validators.required]
     });
-
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+     });
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/demo';
   }

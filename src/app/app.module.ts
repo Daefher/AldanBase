@@ -75,6 +75,8 @@ import { OrderconfirmationComponent } from './components/demo-theme/content-demo
 import { AdminProductsComponent } from './components/demo-theme/content-demo-theme/admin-products/admin-products.component';
 import { AdminProductsTableComponent } from './components/demo-theme/content-demo-theme/admin-products-table/admin-products-table.component';
 import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
+import { EditHeaderDemoThemeComponent } from './components/demo-theme/header-demo-theme/edit-header-demo-theme/edit-header-demo-theme/edit-header-demo-theme.component';
+import { CompanyService } from './services/demo-company/company.service';
 
 
 @NgModule({
@@ -112,7 +114,8 @@ import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
     OrderconfirmationComponent,
     AdminProductsComponent,
     AdminProductsTableComponent,
-    ProductsSortPipe
+    ProductsSortPipe,
+    EditHeaderDemoThemeComponent
     
         
   ],
@@ -152,7 +155,8 @@ import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
          
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorInterceptor, multi: true },
+    CompanyService
   ],
   bootstrap: [AppComponent]
 })

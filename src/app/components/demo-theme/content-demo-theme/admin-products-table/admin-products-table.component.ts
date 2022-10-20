@@ -8,6 +8,10 @@ import { ProductsService } from '../../../../services/demo-products/products.ser
 import { ProductInterface } from '../../../../interfaces/product-interface';
 import * as globals from '../../../../globals';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
+import { CompanyService } from '../../../../services/demo-company/company.service';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 
 export interface PeriodicElement {
@@ -47,13 +51,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AdminProductsTableComponent implements OnInit {
   user: any;
   products: ProductInterface[] = [];
-  toastr: any;
   isLoading = true;
+
+  company : CompanyInterface;
 
   
   constructor(
     private productService : ProductsService,
-    public authenticationService: AuthenticationService,) {}
+    public authenticationService: AuthenticationService,
+    public companyService : CompanyService,
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute
+    ) {
+    }
 
   displayedColumns: string[] = ['name', 'unitPrice', 'createdDateTime', "actions"];
 
@@ -62,30 +72,34 @@ export class AdminProductsTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
+
     this.dataSource.paginator = this.paginator;
+   
   }
 
-
-  ngOnInit(): void {
-
-    this.authenticationService.currentuser.subscribe(user => this.user = user);
-    
-
-    this.productService.getAll(globals.company_id).subscribe((data: ProductInterface[])=>{   
-      
-      
+  mapInitializer(data) : void {
+    this.productService.getAll(data.companyId).subscribe((data: ProductInterface[])=>{   
+        
+        
       //let temp =  this.ReturnNotTrashed(data);        
       this.products = data;
       this.dataSource.data = this.products;
       this.isLoading = false;
-      //this.filterRslt = temp;
-          
-      
     },
     err =>{
       this.toastr.error("Error cargar productos");  
+      this.isLoading = false;
     }
     ); 
+  }
+
+  ngOnInit(): void {
+
+    this.authenticationService.currentuser.subscribe(user => this.user = user);
+   
+    this.activatedRoute.data.subscribe((response: any) => {
+      this.mapInitializer(response.company[0]);     
+    });
   }
 
   gotoTop() {

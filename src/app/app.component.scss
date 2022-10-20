@@ -1,6 +1,7 @@
 .example-container {
     width: 100vw;
     height: 100vh;    
+    margin-left: 0 !important;
 }  
 .example-sidenav-content {
     display: block;    
@@ -8,13 +9,18 @@
     justify-content: center;
     min-height: 100vh;
 }
-
+.mat-drawer-content {
+  margin-left: 0 !important;
+}
 #open-menu {
    margin: 15px;
+   margin-top: 5%;
    z-index: 999;
    display: flex;
    position: fixed;
+   
 }
+
   
 .example-sidenav {
     padding: 20px;

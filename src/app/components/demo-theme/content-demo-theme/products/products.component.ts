@@ -9,6 +9,9 @@ import { ProductsSortPipe } from '../../../../pipes/productsPipes/products-sort.
 import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
+import { CompanyService } from '../../../../services/demo-company/company.service';
+import { ActivatedRoute } from '@angular/router';
 
  export interface sortInterface  {
   name : string,
@@ -44,12 +47,16 @@ export class ProductsComponent implements OnInit {
 
   public user;
 
+  company : CompanyInterface;
+
   constructor(
       private productService : ProductsService, 
       public cartService: CartService,
       public authenticationService: AuthenticationService,
       private toastr: ToastrService,
       private formBuilder: FormBuilder,
+      private companyService : CompanyService,
+      private activatedRoute: ActivatedRoute
      ) { 
       this.searchForm = this.formBuilder.group({
         search: '',
@@ -59,24 +66,27 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
-    
+    this.activatedRoute.data.subscribe((response: any) => {
+      this.company = response.company[0];    
+      this.mapInitializer(this.company);      
+     });
 
-    this.productService.getAllActive(globals.company_id).subscribe((data: ProductInterface[])=>{   
-      
-      
-      //let temp =  this.ReturnNotTrashed(data);        
+  }
+
+  mapInitializer(data){
+
+    this.productService.getAllActive(data.companyId).subscribe((data: ProductInterface[])=>{   
+          
       this.products = data;
       this.is_loading = false;
-      //this.filterRslt = temp;
-          
-      
+     
     },
     err =>{
-      this.toastr.error("Error cargar productos");  
+      this.toastr.error("Error cargar productos"); 
+      this.is_loading = false; 
     }
     ); 
 
-   
   }
 
   cancelProduct(partId){
@@ -116,7 +126,7 @@ export class ProductsComponent implements OnInit {
   }  
 
   orderByChange(sortInterface :sortInterface){
-    console.log(sortInterface);
+    //console.log(sortInterface);
     this.updateSortValue(sortInterface);
   }
 

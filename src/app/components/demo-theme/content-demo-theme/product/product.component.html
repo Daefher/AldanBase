@@ -66,14 +66,16 @@
                   Este producto no existe en inventario, desea agregar
                 </p>
                 <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">
-                  <input matInput type="number" min="0" (change)="adjustQty(product?.partId, $event)">
+                  <input matInput type="number" min="0" (change)="adjustQty(product?.partId,productQty?.partQtyId, $event)">
                 </mat-form-field>
               </ng-container>
               <ng-container *ngIf="productQty">
-                <p>
-                </p>
-                <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">
-                  <input matInput type="number" min="0" value="{{productQty?.onHandQty}}" (change)="adjustQty(product?.partId, $event)">
+                <div>
+                  <h2>Disponible : {{partQty_Value}}</h2>
+                  <h3>Agregar:</h3>
+                </div>                
+                <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">                 
+                  <input matInput type="number" min="0" value="{{partQty_control}}" (change)="adjustQty(product?.partId,productQty?.partQtyId, $event)">
                 </mat-form-field>
               </ng-container>
   

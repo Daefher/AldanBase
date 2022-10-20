@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 import { SalesorderdtlInterface } from '../../../../interfaces/salesorderdtl-interface';
 import { SalesorderService } from '../../../../services/demo-salesorder/salesorder.service';
 
@@ -15,10 +16,18 @@ export class CheckoutComponent implements OnInit {
   selectedPaymentForm: string = "";
   mySelect: string;
 
-  constructor(private salesOrderService : SalesorderService) { }
+  private company : CompanyInterface;
+
+  constructor(
+    private salesOrderService : SalesorderService,
+    private activatedRoute: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
     window.scroll(0,0); //scroll to the top
+    this.activatedRoute.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+     });
     this.populateInitialCombos();
   }
 

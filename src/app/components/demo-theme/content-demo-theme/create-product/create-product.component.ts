@@ -11,6 +11,7 @@ import * as globals from '../../../../globals';
 
 
 import { ToastrService } from 'ngx-toastr';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class CreateProductComponent implements OnInit {
 
   image_path = globals.img_path;
 
+  private company : CompanyInterface;
 
 
   constructor(
@@ -37,7 +39,8 @@ export class CreateProductComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private productService : ProductsService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService    
+    ) { }
 
   ngOnInit(): void {
 
@@ -54,6 +57,10 @@ export class CreateProductComponent implements OnInit {
       weightPerUnit: ['', Validators.required],
       category: ['', Validators.required],
       subCategory: ['',]
+    });
+
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
     });
 
       // get return url from route parameters or default to '/'

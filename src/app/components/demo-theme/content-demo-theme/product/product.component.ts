@@ -9,6 +9,7 @@ import { CartService } from '../../../../services/demo-cart/cart.service';
 
 import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 
 
 @Component({
@@ -23,10 +24,14 @@ export class ProductComponent implements OnInit {
   productQty: any;
   is_login: boolean;
   is_loading = true;
+  partQty_Value : number;
+  partQty_control =  0;
 
   image_path = globals.img_path;
 
   public user;
+
+  private company: CompanyInterface;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +48,9 @@ export class ProductComponent implements OnInit {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
 
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+    });
 
     this.product_id = this.route.snapshot.params['partId'];
 
@@ -52,7 +60,7 @@ export class ProductComponent implements OnInit {
       this.productService.find(this.product_id).subscribe((data) => {
         this.product = data[0];
         this.is_loading = false;
-        console.log(this.product);
+        //console.log(this.product);
       },
         err => {
 
@@ -62,7 +70,7 @@ export class ProductComponent implements OnInit {
 
       this.productService.getPartQty(this.product_id).subscribe((data) => {
         this.productQty = data[0];
-        console.log("PartQty", data);
+        this.partQty_Value =  data[0].onHandQty;
       },
         err => {
 
@@ -86,16 +94,21 @@ export class ProductComponent implements OnInit {
     );
 
   }
-  adjustQty(partId, event) {
+  adjustQty(partId, partQtyId, event) {
     //console.log(event)
     let data =
     {
+      "PartQtyId": partQtyId,
+      "UomId": 0,
       "PartId": partId,
-      "Quantity": event.target.value
-    }
+      "OnHandQty": event.target.value
+      }
       ;
-    this.productService.adjustQty(data).subscribe((data) => {
+    this.productService.UpdateQty(data).subscribe((data) => {
+      
+      this.partQty_Value = data[0].onHandQty;
       this.toastr.success("Inventario  actualizado correctamente", "Exito");
+      this.partQty_control = 0
 
     },
       err => {

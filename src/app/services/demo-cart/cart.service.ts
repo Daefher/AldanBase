@@ -19,7 +19,7 @@ export class CartService {
 
   constructor() {
 
-    console.log(this.totalCost);
+    //console.log(this.totalCost);
    }
 
 

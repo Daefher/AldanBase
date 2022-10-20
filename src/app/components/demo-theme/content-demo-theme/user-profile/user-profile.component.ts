@@ -11,6 +11,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { EditUserDialogComponent } from '../dialogs/edit-user-dialog/edit-user-dialog.component';
 import { UserDataInterface } from '../../../../interfaces/user-data-interface';
 import { Observable } from 'rxjs';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 
 
 
@@ -27,22 +28,28 @@ export class UserProfileComponent implements OnInit {
 
   animal: string;
   name: string;
-  
 
+  protected company:CompanyInterface;
+  
   constructor(   
      public authenticationService : AuthenticationService,
      public usersService : UsersService,
      private toastr: ToastrService,
      public dialog: MatDialog,
-     
+     private route: ActivatedRoute
 
     ) { }
 
   ngOnInit(): void {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
+
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+    });
+
     this.user_data$ = this.usersService.getCurrentUserInfo;
-    console.log("userDATA", this.user_data$);
+    //console.log("userDATA", this.user_data$);
    /*  if(this.user){
       this.usersService.getUserInfo(this.user.systemUserId).subscribe((data)=>{
         this.user_data = data[0];        
@@ -66,13 +73,13 @@ export class UserProfileComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       
     });
   }
 
   receiver(receivedFromChild:any){
-    console.log(receivedFromChild)
+    //console.log(receivedFromChild)
   }
   
 

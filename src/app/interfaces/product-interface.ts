@@ -18,6 +18,7 @@ export interface ProductInterface {
     unitCost: number,
     partType: string,        
     uomClassId: number,
+    onHandQty: number,
     uomId: number,
     weightPerUnit : number
     weightUomId : number
