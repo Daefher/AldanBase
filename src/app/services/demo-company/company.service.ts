@@ -39,6 +39,14 @@ export class CompanyService {
     return this.http.get<CompanyInterface>(this.api_url + '/GetById/' + id);
       
   }
+  
+  getCompanyByHostNameResolver(hostname): Observable<CompanyInterface> {
+    if(hostname =="localhost"){
+      hostname = "soxela";
+    }
+    return this.http.get<CompanyInterface>(this.api_url + '/GetByHostName/' + hostname);
+      
+  }
 
   findByUrl(url): Observable<CompanyInterface> {
     return this.http.get<CompanyInterface>(this.api_url + '/GetById/' + url)

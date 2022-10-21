@@ -38,7 +38,6 @@ export class ProductComponent implements OnInit {
     public productService: ProductsService,
     private router: Router,
     public cartService: CartService,
-
     public authenticationService: AuthenticationService,
     private toastr: ToastrService,
 

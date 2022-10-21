@@ -32,13 +32,14 @@ export class CompanyResolver implements Resolve<any> {
     ): Observable<any>{
 
       this.company_host_name = window.location.hostname;
-      //console.log(this.company_host_name);
+      console.log(this.company_host_name);
       //this.chooseCompany(this.company_host_name);
       
       //this.themeService.setTheme(this.company_host_name);
       this.chooseTheme(this.company_host_name);
 
-    return this.companyService.getCompanyByIdResolver(10).pipe(
+    return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
+     
       catchError(error => {
         return of('No data');
       })
@@ -49,11 +50,11 @@ export class CompanyResolver implements Resolve<any> {
 chooseTheme(hostname){
   switch (hostname) {
     case "localhost":
-    case "aldantech":
+    case "aldantech.tk":
       this.themeService.setTheme("aldantech");      
     break;
-    case "macetita":
-      this.themeService.setTheme(hostname);
+    case "lamacetita.tk":
+      this.themeService.setTheme("lamacetita");
     default:
       break;
   }

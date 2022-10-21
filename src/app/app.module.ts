@@ -77,6 +77,7 @@ import { AdminProductsTableComponent } from './components/demo-theme/content-dem
 import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
 import { EditHeaderDemoThemeComponent } from './components/demo-theme/header-demo-theme/edit-header-demo-theme/edit-header-demo-theme/edit-header-demo-theme.component';
 import { CompanyService } from './services/demo-company/company.service';
+import { EditCompanyDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-company-dialog/edit-company-dialog.component';
 
 
 @NgModule({
@@ -115,7 +116,8 @@ import { CompanyService } from './services/demo-company/company.service';
     AdminProductsComponent,
     AdminProductsTableComponent,
     ProductsSortPipe,
-    EditHeaderDemoThemeComponent
+    EditHeaderDemoThemeComponent,
+    EditCompanyDialogComponent
     
         
   ],
