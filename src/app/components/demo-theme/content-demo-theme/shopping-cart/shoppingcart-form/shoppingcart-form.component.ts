@@ -18,7 +18,7 @@ export class ShoppingcartFormComponent implements OnInit {
   //Subscribe to showControls flag
   showControls: boolean;
   subscription: Subscription;
-  image_path = globals.img_path;
+  image_path :string;
  
   
   shopCartItems: any = [];
@@ -39,7 +39,9 @@ export class ShoppingcartFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((response: any) => {
-      this.company = response.company[0];          
+      this.company = response.company[0];  
+      this.image_path = globals.img_path + this.company.companyId +'/';      
+        
     });
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message)      
     if(this.matchExact(location.pathname.split("/").slice(-1)[0], "demo-cart")){

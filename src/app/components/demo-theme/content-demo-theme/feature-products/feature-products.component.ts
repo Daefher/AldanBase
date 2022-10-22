@@ -8,7 +8,6 @@ import * as globals from '../../../../globals';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyInterface } from '../../../../interfaces/company-interface';
 import { CompanyService } from '../../../../services/demo-company/company.service';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FeatureProductsComponent implements OnInit,AfterViewInit {
   products: any = [];
-  image_path = globals.img_path;
+  image_path :string;
 
   company : CompanyInterface;
 
@@ -58,8 +57,8 @@ export class FeatureProductsComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
 
     this.activatedRoute.data.subscribe((response: any) => {
-      this.company = response.company[0];     
-      console.log(response.company[0]);
+      this.company = response.company[0]; 
+      this.image_path = globals.img_path + this.company.companyId +'/';      
      });
   }
 

@@ -17,7 +17,7 @@ import { CompanyService } from '../../services/demo-company/company.service';
 
 export class CompanyResolver implements Resolve<any> {
 
-  private company_host_name :string;
+  public company_host_name :string;
   private company :CompanyInterface
   constructor(
     private router: Router,
@@ -32,20 +32,24 @@ export class CompanyResolver implements Resolve<any> {
     ): Observable<any>{
 
       this.company_host_name = window.location.hostname;
-      console.log(this.company_host_name);
+      //console.log(this.company_host_name);
       //this.chooseCompany(this.company_host_name);
       
       //this.themeService.setTheme(this.company_host_name);
       this.chooseTheme(this.company_host_name);
+      
 
-    return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
-     
+    //return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
+    return this.companyService.getCompanyByHostNameResolver("aldantech.tk").pipe(
+
       catchError(error => {
         return of('No data');
       })
     );
   }
 
+  getHostName()
+{ return this.company_host_name }
 
 chooseTheme(hostname){
   switch (hostname) {

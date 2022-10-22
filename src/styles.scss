@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~ngx-toastr/toastr';
+@import 'ngx-toastr/toastr';
 
 // Define a custom mixin that takes in the current theme
 @mixin theme-color-grabber($theme, $alterPrimary, $textColor) {
@@ -33,6 +33,15 @@
   .textColorPrimary{
     color : $textColor;
   }
+
+  .demo-header-container{
+    background: mat-color($primary);
+    background: -moz-linear-gradient(90deg,$alterPrimary 0%, mat-color($accent) 100%);
+    background: -webkit-linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
+    background: linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
+    color: #000000;
+  
+  }
 }
 
 html,
@@ -49,6 +58,7 @@ body {
     min-height: fit-content;
     
 }
+
 
 
 

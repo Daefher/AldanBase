@@ -38,13 +38,14 @@ export class DemoLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      Email: ['', Validators.email],
-      Password: ['', Validators.required]
-    });
     this.route.data.subscribe((response: any) => {
       this.company = response.company[0];          
      });
+    this.loginForm = this.formBuilder.group({
+      Email: ['', Validators.email],
+      Password: ['', Validators.required],
+    });
+    //console.log(this.company.companyId);
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/demo';
   }
@@ -62,7 +63,7 @@ export class DemoLoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.Email.value, this.f.Password.value)
+    this.authenticationService.login(this.f.Email.value, this.f.Password.value, this.company.companyId )
       .pipe(first())
       .subscribe(
         data => {

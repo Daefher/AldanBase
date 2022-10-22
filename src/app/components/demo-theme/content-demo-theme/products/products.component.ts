@@ -28,7 +28,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductsComponent implements OnInit {
 
   products: any = [];
-  image_path = globals.img_path;
+  image_path :string ;
   filterRslt = [];
   is_loading = true;
   sort_types : Array<sortInterface> = [
@@ -68,7 +68,8 @@ export class ProductsComponent implements OnInit {
     this.authenticationService.currentuser.subscribe(user => this.user = user);
     this.activatedRoute.data.subscribe((response: any) => {
       this.company = response.company[0];    
-      this.mapInitializer(this.company);      
+      this.mapInitializer(this.company);    
+      this.image_path = globals.img_path + this.company.companyId +'/';  
      });
 
   }

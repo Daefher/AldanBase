@@ -8,7 +8,7 @@ export const api_url='https://infowebpage.azurewebsites.net/api/';
 export const company_id = 10;
 
 //images Server if we serve them
-export const img_path = "https://aldantech.tk/images/10/"
+export const img_path = "https://aldantech.tk/data/images/"
 
 
 export const cartId = "productsCart";

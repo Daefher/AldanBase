@@ -32,7 +32,7 @@ export class EditProductComponent implements OnInit {
   returnUrl: string;
   image_file : string;
   is_avocado : boolean;
-  image_path = globals.img_path;
+  image_path :string;
 
   private company:CompanyInterface;
 
@@ -50,7 +50,9 @@ export class EditProductComponent implements OnInit {
 
 
     this.route.data.subscribe((response: any) => {
-      this.company = response.company[0];          
+      this.company = response.company[0];        
+      this.image_path = globals.img_path + this.company.companyId +'/';      
+  
     });
     
     this.product_id = this.route.snapshot.params['partId'];

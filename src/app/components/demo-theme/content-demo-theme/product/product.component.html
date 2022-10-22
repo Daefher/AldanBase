@@ -72,7 +72,7 @@
               <ng-container *ngIf="productQty">
                 <div>
                   <h2>Disponible : {{partQty_Value}}</h2>
-                  <h3>Agregar:</h3>
+                  <h3>Cambiar:</h3>
                 </div>                
                 <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">                 
                   <input matInput type="number" min="0" value="{{partQty_control}}" (change)="adjustQty(product?.partId,productQty?.partQtyId, $event)">

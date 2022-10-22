@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
   partQty_Value : number;
   partQty_control =  0;
 
-  image_path = globals.img_path;
+  image_path :string;
 
   public user;
 
@@ -48,7 +48,9 @@ export class ProductComponent implements OnInit {
     this.authenticationService.currentuser.subscribe(user => this.user = user);
 
     this.route.data.subscribe((response: any) => {
-      this.company = response.company[0];          
+      this.company = response.company[0];    
+      this.image_path = globals.img_path + this.company.companyId +'/';      
+      
     });
 
     this.product_id = this.route.snapshot.params['partId'];
@@ -103,9 +105,9 @@ export class ProductComponent implements OnInit {
       "OnHandQty": event.target.value
       }
       ;
-    this.productService.UpdateQty(data).subscribe((data) => {
+    this.productService.UpdateQty(data).subscribe((response) => {
       
-      this.partQty_Value = data[0].onHandQty;
+      this.partQty_Value = response[0].onHandQty;
       this.toastr.success("Inventario  actualizado correctamente", "Exito");
       this.partQty_control = 0
 
