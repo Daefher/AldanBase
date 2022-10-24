@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../../../../services/demo-company/company.service';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
 import { first } from 'rxjs/operators';
+import { CompanyInterface } from 'src/app/interfaces/company-interface';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ContactFormComponent implements OnInit {
   contactForm : FormGroup;
   loading = false;
   submitted = false;
+  public company :CompanyInterface;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,15 +30,19 @@ export class ContactFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.contactForm = this.formBuilder.group({     
-      name: ['', Validators.required],
-      message: ['',Validators.required],
-      CompanyId:['13'],
-      email: ['',Validators.required],
-      CreatedDateTime: [new Date],      
-      PhoneNumber: ['', Validators.required],        
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];     
+      this.contactForm = this.formBuilder.group({     
+        name: ['', Validators.required],
+        message: ['',Validators.required],
+        CompanyId:[this.company.companyId],
+        email: ['',Validators.required],
+        CreatedDateTime: [new Date],      
+        PhoneNumber: ['', Validators.required],        
+      });
     });
+
+    
 
   }
 

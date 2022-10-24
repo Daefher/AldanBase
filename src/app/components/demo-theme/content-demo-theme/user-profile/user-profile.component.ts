@@ -12,8 +12,7 @@ import { EditUserDialogComponent } from '../dialogs/edit-user-dialog/edit-user-d
 import { UserDataInterface } from '../../../../interfaces/user-data-interface';
 import { Observable } from 'rxjs';
 import { CompanyInterface } from '../../../../interfaces/company-interface';
-
-
+import {EditCompanyDialogComponent} from '../dialogs/company/edit-company-dialog/edit-company-dialog.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -70,6 +69,7 @@ export class UserProfileComponent implements OnInit {
     const dialogRef = this.dialog.open(EditUserDialogComponent, {
       width: '320px',     
       data: {name: this.name, animal: this.animal},
+      panelClass :'bg-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -77,6 +77,22 @@ export class UserProfileComponent implements OnInit {
       
     });
   }
+
+  openCompanyDialog():void {
+    const dialogRefCompany = this.dialog.open(EditCompanyDialogComponent, {
+      maxWidth: '480px',
+      maxHeight: '640px',
+      minWidth: "380px",
+      
+    });
+
+    dialogRefCompany.afterClosed().subscribe(result => {
+      //console.log('The dialog was closed');
+      
+    });
+  }
+    
+  
 
   receiver(receivedFromChild:any){
     //console.log(receivedFromChild)
