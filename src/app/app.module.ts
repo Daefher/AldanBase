@@ -28,6 +28,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -63,7 +65,6 @@ import { UserProfileComponent } from './components/demo-theme/content-demo-theme
 import { SalesOrdersComponent } from './components/demo-theme/content-demo-theme/sales-orders/sales-orders.component';
 import { SalesOrderComponent } from './components/demo-theme/content-demo-theme/sales-order/sales-order.component';
 import { OrdersListComponent } from './components/demo-theme/content-demo-theme/orders-list/orders-list.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import { EditUserDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 import { FeatureProductsComponent } from './components/demo-theme/content-demo-theme/feature-products/feature-products.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';

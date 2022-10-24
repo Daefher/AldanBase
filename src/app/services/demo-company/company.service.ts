@@ -30,6 +30,13 @@ export class CompanyService {
 
   constructor(private http: HttpClient) { }
 
+  update(post) {
+    return this.http.post<CompanyInterface>(this.api_url + '/Update', JSON.stringify([post]), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
   getCompanyById(id): Observable<CompanyInterface> {
     return this.http.get<CompanyInterface>(this.api_url + '/GetById/' + id)
       .pipe(

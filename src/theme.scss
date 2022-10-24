@@ -270,7 +270,6 @@ $md-accent2: (
 .lamacetita-theme {
     $my-app-primary: mat-palette($md-primary, 500);
     $my-app-accent:  mat-palette($md-accent2, 500);
-    $my-app-basic: mat-palette($md-mcgpalette3, A100);
     /*$my-app-warn:    matP-palette($md-mcgpalette2); */
     $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
     $secondPrimary: #cab8c6;
@@ -283,7 +282,6 @@ $md-accent2: (
     //color : $light-primary-text;
     $macetita-primary: mat-palette($md-mcgpalette3, 500);
     $macetita-accent:  mat-palette($md-mcgpalette0, 500);
-    $macetita-basic: mat-palette($md-mcgpalette3, A100);
     /*$my-app-warn:    mat-palette($md-mcgpalette2); */
     $macetita-theme: mat-light-theme($macetita-primary, $macetita-accent);
     //$secondPrimary : mat-palette($md-mcgpalette4, 300);

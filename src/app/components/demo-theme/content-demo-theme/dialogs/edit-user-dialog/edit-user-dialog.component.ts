@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserDataInterface } from '../../../../../interfaces/user-data-interface';
 import { Observable } from 'rxjs';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
 
 
@@ -33,6 +34,7 @@ export class EditUserDialogComponent {
   //public post_data$:  Observable<UserDataInterface>;
 
   submitted = false;
+  private hostname = window.location.hostname;
 
 
   constructor(
@@ -42,23 +44,23 @@ export class EditUserDialogComponent {
     public authenticationService : AuthenticationService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
+    private overlayContainer: OverlayContainer
 
   ) {
     this.authenticationService.currentuser.subscribe(user => this.user = user);
     //this.post_data$ = this.usersService.getCurrentUserInfo;
+    
     if(this.user){
       this.usersService.getUserInfo(this.user.systemUserId).subscribe((data)=>{
         this.post_data = data[0];
-       
-        
-        //console.log("Post Data",this.post_data);
-
        
       },
       err =>{       
         this.toastr.error(err);
       }
       ); 
+
+      this.chooseTheme(this.hostname);
     }
 
     this.user_data_form = this.formBuilder.group({
@@ -104,7 +106,6 @@ export class EditUserDialogComponent {
 
     this.usersService.update(this.post_data.systemUserId, this.user_data_form.value).subscribe( res => {
       this.toastr.success("Perfil actualizado correctamente", "Exito");
-      let form = this.user_data_form.value;
       this.usersService.setCurrentUserInfo = this.user_data_form.value;
       //this.user_data = this.user_data_form.value;
       
@@ -118,6 +119,19 @@ export class EditUserDialogComponent {
     });
     this.dialogRef.close(); 
 
+  }
+
+  chooseTheme(hostname){
+    switch (hostname) {
+      case "localhost":
+      case "aldantech.tk":
+        this.overlayContainer.getContainerElement().classList.add("aldantech-theme");
+      break;
+      case "lamacetita.tk":
+        this.overlayContainer.getContainerElement().classList.add("aldantech-them");
+      default:
+        break;
+    }
   }
 
 }

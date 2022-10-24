@@ -1,0 +1,23 @@
+export interface CompanyDialogData {
+    //companyId:number,
+    name:string,
+    //ftpUserName:string,
+    //ftpPassword:string,
+    payPalClientId:string,
+    payPalClientSecret:string,
+    payPalPartnerAttrId:string,
+    contactEmail:string,
+    smtpServer:string,
+    smtpPort:number,
+    smtpEmail:string,
+    smtpPassword:string,
+    smtpEnableSsl:boolean,
+    //companyWebSite:string,
+    description:string,
+    logoUrl:string,
+    facebookUrl:string,
+    instagramUrl:string,
+    whatsAppUrl:string,
+    twitterUrl:string,
+    youTubeUrl:string
+}
