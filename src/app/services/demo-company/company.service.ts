@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 
 import * as globals from '../../globals';
 import { CompanyInterface } from '../../interfaces/company-interface';
+import { ContactInfo } from '../../interfaces/contact-info';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ import { CompanyInterface } from '../../interfaces/company-interface';
 export class CompanyService {
 
   private api_url = globals.api_url + "Company";
+  private contact_url = globals.api_url + "ContactMessage";
 
   private company =  new BehaviorSubject<CompanyInterface>({} as CompanyInterface);
  
@@ -72,6 +74,18 @@ export class CompanyService {
   getCompany(){
     return this.companyT;
   }
+
+  createContactInfo(post): Observable<ContactInfo> {
+
+    return this.http.post<ContactInfo>(this.contact_url + '/Insert', JSON.stringify([post]), this.httpOptions)
+
+    .pipe(      
+
+      catchError(this.errorHandler)
+
+    )
+
+  } 
 
   
  

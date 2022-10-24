@@ -14,7 +14,7 @@ export class HeaderDemoThemeComponent implements OnInit {
   constructor(
     public companyService : CompanyService,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) { } 
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((response: any) => {

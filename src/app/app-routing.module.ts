@@ -17,7 +17,8 @@ import {
   SalesOrderComponent,
   ShoppingcartComponent,
   CheckoutComponent,
-  AdminProductsComponent
+  AdminProductsComponent,
+  AboutComponent
   
 } from "./components/index.pages";
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
@@ -39,7 +40,8 @@ const routes: Routes = [
   {path : 'demo/demo-cart', component: ShoppingcartComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
   {path : 'demo/demo-checkout', component: CheckoutComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
   {path : 'demo/demo-orderconfirmation', component: OrderconfirmationComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
-  {path : 'demo/demo-adminproducts/:userId', component: AdminProductsComponent,resolve: { company: CompanyResolver },canActivate: [AuthGuardGuard],title: CompanyNameResolver}
+  {path : 'demo/demo-adminproducts/:userId', component: AdminProductsComponent,resolve: { company: CompanyResolver },canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'demo/demo-about', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver}
 
 ];
 

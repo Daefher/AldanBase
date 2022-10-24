@@ -9,19 +9,27 @@
       </button>
     </div>
 </ng-container>
-  <div class="example-sidenav-content">   
-    <router-outlet></router-outlet>
+
+<ng-container *ngIf="loading" >
+  <div style=" margin-top: 20px;display: flex; justify-content: center; align-items: center; background: white;">
+   <span>
+    <mat-progress-spinner 
+    color="accent"
+      mode="indeterminate">
+    </mat-progress-spinner>
+    Cargando ...
+   </span> 
   </div>
-  <ng-container *ngIf="loading" >
-    <div style="display: flex; justify-content: center; align-items: center; background: white;">
-      <mat-progress-spinner 
-      color="accent"
-        mode="indeterminate">
-      </mat-progress-spinner>
-    </div>
-  </ng-container>
-   <div fxFlex="none">
-    <app-footer></app-footer>
+</ng-container>
+
+  <div class="example-sidenav-content" *ngIf="!loading" >   
+    <router-outlet></router-outlet>
+    
+    
+  </div>
+ 
+   <div fxFlex="none"  >
+    <app-footer *ngIf="!loading" ></app-footer>
   </div>
 
 

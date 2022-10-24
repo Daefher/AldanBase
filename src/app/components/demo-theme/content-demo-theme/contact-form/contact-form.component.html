@@ -1,0 +1,52 @@
+<div class="main-div">
+    <mat-card class="mat-card-class">
+        <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+
+
+            <form class="example-form" [formGroup]='contactForm' (ngSubmit)='onSubmit()'>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput placeholder="Email" formControlName='email'>
+                    <div *ngIf="submitted && f.email.errors">
+                        <mat-error *ngIf="f.email.errors.required">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Telefono</mat-label>
+                    <input type="text" matInput placeholder="Telefono" formControlName='PhoneNumber'>
+                    <div *ngIf="submitted && f.PhoneNumber.errors">
+                        <mat-error *ngIf="f.PhoneNumber.errors.required">
+                            Telefono is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre completo</mat-label>
+                    <input type="text" matInput placeholder="Nombre Completo" formControlName='name'>
+                    <div *ngIf="submitted && f.name.errors">
+                        <mat-error *ngIf="f.name.errors.required">
+                            Name is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>¿Qué necesitas?</mat-label>
+                    <textarea matInput placeholder="Nombre del Producto" formControlName='message'></textarea>
+                    <div *ngIf="submitted && f.message.errors">
+                        <mat-error *ngIf="f.message.errors.required">
+                            Mensaje is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <button type="submit" mat-raised-button color="primary" [class.spinner]="loading"
+                    [disabled]="loading">
+                    Enviar
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
