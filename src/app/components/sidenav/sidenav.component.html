@@ -1,9 +1,15 @@
-<mat-selection-list [multiple]="false">
+<mat-selection-list  [multiple]="false" *ngIf="authenticationService.currentuser | async">
   <mat-list-option routerLink='/' >
-    Inicio
+    <span> <mat-icon>home</mat-icon> Inicio</span>
   </mat-list-option>
-  <mat-list-option  routerLink="demo" >
-    Demo
-  </mat-list-option>  
+  <mat-list-option [routerLink]="['/demo/demo-users', user.systemUserId, 'view' ]"  >        
+    <span><mat-icon>perm_contact_calendar</mat-icon> Perfil </span>
+  </mat-list-option> 
+  <mat-list-option [routerLink]="['/demo/demo-adminproducts', user.systemUserId ]" >        
+    <span><mat-icon>business_center</mat-icon> Administrar Productos   </span>     
+  </mat-list-option>
+  <mat-list-option (click)="logout()">
+  <span><mat-icon class="mr">logout</mat-icon> Salir</span>
+  </mat-list-option> 
 </mat-selection-list>
 

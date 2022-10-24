@@ -1,0 +1,72 @@
+<app-nav-demo-theme></app-nav-demo-theme>
+<div class="main-div">
+  <mat-card class="mat-card-class">
+    <h2>Editar Producto</h2>
+    <mat-card-content  fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
+
+      
+      <form class="example-form" [formGroup]='form' (ngSubmit)='onSubmit()'>
+     
+        <ng-container *ngIf="form_loading" >
+          <div style="display: flex; justify-content: center; align-items: center; background: white;">
+            <mat-progress-spinner 
+              color="accent" 
+              mode="indeterminate">
+            </mat-progress-spinner>
+          </div>
+        </ng-container>
+        
+        <div class="example-full-width" appearance="fill">
+          <mat-label>Imagen</mat-label>
+          <input type="file" (change)="handleInputChange($event)" class="form-control small-form"  /> 
+          <ng-container *ngIf="image_file">
+            <img src="{{image_file}}"  class="img-size-edit" >    
+          </ng-container>    
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name'
+            [ngModel]="">
+          <div *ngIf="submitted && f.Name.errors">
+            <mat-error *ngIf="f.Name.errors.required">
+              Name is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput placeholder="Descripcion del Producto" formControlName='Description'
+            [ngModel]=""></textarea>
+          <div *ngIf="submitted && f.Description.errors">
+            <mat-error *ngIf="f.Description.errors.required">
+              Description is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+
+      
+
+        <mat-spinner [diameter]="20" *ngIf="loading"></mat-spinner>
+
+        <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+          <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">
+            <button mat-raised-button color="primary"
+              [routerLink]="['/demo/demo-products', '', 'view' ]">
+              Regresar
+            </button>
+          </div>
+          <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">
+
+            <button type="submit" mat-raised-button class="alterPrimaryBG" [class.spinner]="loading" [disabled]="loading">
+              Guardar
+            </button>
+          </div>
+        </div> 
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+   

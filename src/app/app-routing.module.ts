@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardGuard } from './helpers/auth-guard.guard';
 
-
 import {
   
   HomeComponent,
@@ -18,27 +17,31 @@ import {
   SalesOrderComponent,
   ShoppingcartComponent,
   CheckoutComponent,
-  AdminProductsComponent
+  AdminProductsComponent,
+  AboutComponent
   
 } from "./components/index.pages";
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
+import { CompanyResolver } from './resolvers/company-resolver/company.resolver';
+import { CompanyNameResolver } from './resolvers/company-name/company-name.resolver';
 
 
 const routes: Routes = [
-  {path : '', component: HomeComponent},  
-  {path : 'demo', component:HomeDemoThemeComponent},
-  {path : 'demo/demo-login', component:DemoLoginComponent},
-  {path : 'demo/demo-products', component:ProductsComponent},
-  {path : 'demo/demo-products/create', component:CreateProductComponent, canActivate: [AuthGuardGuard]},
-  {path : 'demo/demo-products/:partId/view', component: ProductComponent, pathMatch: 'full'}, 
-  {path : 'demo/demo-products/:partId/update', component: EditProductComponent, canActivate: [AuthGuardGuard]},
-  {path : 'demo/demo-users/:userId/view', component: UserProfileComponent, canActivate: [AuthGuardGuard]},
-  {path : 'demo/demo-orders/view', component: SalesOrdersComponent, canActivate: [AuthGuardGuard]},
-  {path : 'demo/demo-orders/:orderId/view', component: SalesOrderComponent, canActivate: [AuthGuardGuard]},
-  {path : 'demo/demo-cart', component: ShoppingcartComponent},
-  {path : 'demo/demo-checkout', component: CheckoutComponent},
-  {path : 'demo/demo-orderconfirmation', component: OrderconfirmationComponent},
-  {path : 'demo/demo-adminproducts/:userId', component: AdminProductsComponent,canActivate: [AuthGuardGuard]}
+  {path : '', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},  
+  {path : 'demo', component:HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},
+  {path : 'demo/demo-login', component:DemoLoginComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'demo/demo-products', component:ProductsComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'demo/demo-products/create', component:CreateProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'demo/demo-products/:partId/view', component: ProductComponent, resolve: { company: CompanyResolver }, pathMatch: 'full'}, 
+  {path : 'demo/demo-products/:partId/update', component: EditProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'demo/demo-users/:userId/view', component: UserProfileComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'demo/demo-orders/view', component: SalesOrdersComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'demo/demo-orders/:orderId/view', component: SalesOrderComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'demo/demo-cart', component: ShoppingcartComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'demo/demo-checkout', component: CheckoutComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'demo/demo-orderconfirmation', component: OrderconfirmationComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'demo/demo-adminproducts/:userId', component: AdminProductsComponent,resolve: { company: CompanyResolver },canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'demo/demo-about', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver}
 
 ];
 

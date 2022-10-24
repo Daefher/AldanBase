@@ -10,6 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 import { OrdersService } from '../../../../services/demo-orders/orders.service';
 import { OrderInterface } from '../../../../interfaces/order-interface';
 import { SalesorderdtlInterface } from '../../../../interfaces/salesorderdtl-interface';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
+import { CompanyService } from '../../../../services/demo-company/company.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -37,29 +40,36 @@ export class OrdersListComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 30];
   pageEvent: PageEvent;
 
+  private company: CompanyInterface;
+
 
   constructor(
     private ordersService: OrdersService,
     public authenticationService: AuthenticationService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private companyService : CompanyService,
+    private route : ActivatedRoute
 
   ) { }
 
   ngOnInit(): void {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];   
+      this.mapInitializer(response.company[0]);   
+    });
 
-    this.ordersService.getAll(globals.company_id).subscribe((data: OrderInterface[]) => {
+   
+  }
+
+  mapInitializer(data){
+    this.ordersService.getAll(data.companyId).subscribe((data: OrderInterface[]) => {
 
       this.orders = data;
       this.length = this.orders.length;
       this.selectedResult = this.orders.slice(0, this.pageSize);
       this.isLoading = false;
-
-
-
-      //console.log("Ordenes", this.orders);
-
 
     },
       err => {
@@ -108,12 +118,12 @@ export class OrdersListComponent implements OnInit {
       let order = this.orders.find(({ salesOrderId }) => salesOrderId === orderId);
       if (order) {
         order.closedDateTime = new Date().toJSON();
-        console.log(order);
+        //console.log(order);
         this.closeIsLoading =  true;
         this.ordersService.closeOrder(order).subscribe(res => {
           this.closeIsLoading =  false;
 
-          console.log("RESPONSE",res);
+          //console.log("RESPONSE",res);
           order.closed = true;
           this.toastr.success("Orden Cerrada Correctamente", "Exito");
 
@@ -136,10 +146,10 @@ export class OrdersListComponent implements OnInit {
       let order = this.orders.find(({ salesOrderId }) => salesOrderId === orderId);
       if (order) {
         order.canceledDateTime = new Date().toJSON();
-        console.log(order);
+        //console.log(order);
         this.ordersService.cancelOrder(order).subscribe(res => {
           this.toastr.success("Orden Cancelada Correctamente", "Exito");
-          this.ordersService.getAll(globals.company_id).subscribe((data: OrderInterface[]) => {
+          this.ordersService.getAll(this.company.companyId).subscribe((data: OrderInterface[]) => {
 
             this.orders = data;
             this.length = this.orders.length;
@@ -147,7 +157,7 @@ export class OrdersListComponent implements OnInit {
 
 
 
-            console.log("Ordenes", this.orders);
+            //("Ordenes", this.orders);
 
 
           },
@@ -179,7 +189,7 @@ export class OrdersListComponent implements OnInit {
   }
 
   getData(event?: PageEvent) {
-    console.log(event);
+    //console.log(event);
     this.selectedResult = this.orders.slice(event.pageIndex * event.pageSize,
       event.pageIndex * event.pageSize + event.pageSize);
     return event;

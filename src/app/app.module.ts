@@ -46,7 +46,7 @@ import { FooterComponent } from './components/home-theme/footer/footer.component
 import { LoginComponent } from './components/home-theme/login/login.component';
 
 import { HeaderComponent } from './components/home-theme/home-sub-components/header/header.component';
-import { AboutComponent } from './components/home-theme/home-sub-components/about/about.component';
+import { AboutComponent } from './components/demo-theme/content-demo-theme/about/about.component';
 import { ToolsComponent } from './components/home-theme/home-sub-components/tools/tools.component';
 import { HomeDemoThemeComponent } from './components/demo-theme/home-demo-theme/home-demo-theme.component';
 import { HeaderDemoThemeComponent } from './components/demo-theme/header-demo-theme/header-demo-theme.component';
@@ -75,6 +75,10 @@ import { OrderconfirmationComponent } from './components/demo-theme/content-demo
 import { AdminProductsComponent } from './components/demo-theme/content-demo-theme/admin-products/admin-products.component';
 import { AdminProductsTableComponent } from './components/demo-theme/content-demo-theme/admin-products-table/admin-products-table.component';
 import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
+import { EditHeaderDemoThemeComponent } from './components/demo-theme/header-demo-theme/edit-header-demo-theme/edit-header-demo-theme/edit-header-demo-theme.component';
+import { CompanyService } from './services/demo-company/company.service';
+import { EditCompanyDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-company-dialog/edit-company-dialog.component';
+import { ContactFormComponent } from './components/demo-theme/content-demo-theme/contact-form/contact-form.component';
 
 
 @NgModule({
@@ -112,7 +116,11 @@ import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
     OrderconfirmationComponent,
     AdminProductsComponent,
     AdminProductsTableComponent,
-    ProductsSortPipe
+    ProductsSortPipe,
+    EditHeaderDemoThemeComponent,
+    EditCompanyDialogComponent,
+    ContactFormComponent,
+    
     
         
   ],
@@ -152,7 +160,8 @@ import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
          
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorInterceptor, multi: true },
+    CompanyService
   ],
   bootstrap: [AppComponent]
 })

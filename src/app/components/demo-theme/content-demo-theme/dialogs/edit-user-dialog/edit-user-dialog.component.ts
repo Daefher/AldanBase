@@ -51,7 +51,7 @@ export class EditUserDialogComponent {
         this.post_data = data[0];
        
         
-        console.log("Post Data",this.post_data);
+        //console.log("Post Data",this.post_data);
 
        
       },
@@ -100,7 +100,7 @@ export class EditUserDialogComponent {
 
     this.submitted = true;  
 
-    console.log("Sent FORM",this.user_data_form.value);
+    //console.log("Sent FORM",this.user_data_form.value);
 
     this.usersService.update(this.post_data.systemUserId, this.user_data_form.value).subscribe( res => {
       this.toastr.success("Perfil actualizado correctamente", "Exito");

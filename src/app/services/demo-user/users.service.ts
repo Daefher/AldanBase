@@ -60,7 +60,7 @@ export class UsersService {
     },
     err =>{
         this.currentUserInfo.next(null);
-        console.log("error");
+        //console.log("error");
     });
 
     return this.currentUserInfo.asObservable();
@@ -75,7 +75,7 @@ export class UsersService {
   }
 
   getUserInfo(user_id): Observable<UserDataInterface[]> {
-    console.log("user_id", user_id);
+    //console.log("user_id", user_id);
     return this.http.get<UserDataInterface[]>(this.api_url + '/GetById/'+ user_id)
       .pipe(
         catchError(this.errorHandler)

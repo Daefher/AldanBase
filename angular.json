@@ -120,5 +120,7 @@
       }
     }
   },
-  "defaultProject": "AldanBase"
+  "cli": {
+    "analytics": false
+  }
 }

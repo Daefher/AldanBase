@@ -11,3 +11,4 @@ export { SalesOrderComponent} from './demo-theme/content-demo-theme/sales-order/
 export { ShoppingcartComponent } from './demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
 export { CheckoutComponent } from './demo-theme/content-demo-theme/checkout/checkout.component';
 export { AdminProductsComponent }  from './demo-theme/content-demo-theme/admin-products/admin-products.component';
+export { AboutComponent } from './demo-theme/content-demo-theme/about/about.component';

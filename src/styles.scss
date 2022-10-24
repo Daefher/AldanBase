@@ -1,10 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~ngx-toastr/toastr';
-
-
+@import 'ngx-toastr/toastr';
 
 // Define a custom mixin that takes in the current theme
-@mixin theme-color-grabber($theme) {
+@mixin theme-color-grabber($theme, $alterPrimary, $textColor) {
   // Parse the theme and create variables for each color in the pallete
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -12,6 +10,7 @@
   // Create theme specfic styles
   .primaryColorBG {
     background-color: mat-color($primary);
+    
   }
   .accentColorBG {
     background-color: mat-color($accent);
@@ -19,18 +18,31 @@
   .warnColorBG {
     background-color: mat-color($warn);
   }
+
+  .leftNavColor{
+    background-color: mat-color($accent) !important;
+    color : $textColor !important;
+  }
   
   .alterPrimaryBG {
-    background-color: #cab8c6 !important;
+    background-color: $alterPrimary !important ;
+    color : $textColor !important;
+
+  }
+
+  .textColorPrimary{
+    color : $textColor;
+  }
+
+  .demo-header-container{
+    background: mat-color($primary);
+    background: -moz-linear-gradient(90deg,$alterPrimary 0%, mat-color($accent) 100%);
+    background: -webkit-linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
+    background: linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
+    color: #000000;
+  
   }
 }
-
-
-
-
-
-
-
 
 html,
 body {
@@ -46,6 +58,7 @@ body {
     min-height: fit-content;
     
 }
+
 
 
 
@@ -75,6 +88,7 @@ mat-card {
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
+
  
 .spinner:before {
   content: '';

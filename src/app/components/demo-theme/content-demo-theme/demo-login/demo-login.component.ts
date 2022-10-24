@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
 import { ToastrService } from 'ngx-toastr';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 
 @Component({
   selector: 'app-demo-login',
@@ -18,12 +19,16 @@ export class DemoLoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
 
+  private company :CompanyInterface;
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    
+    
   ) {
 
     if (this.authenticationService.currentUserValue) {
@@ -33,11 +38,14 @@ export class DemoLoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+     });
     this.loginForm = this.formBuilder.group({
       Email: ['', Validators.email],
-      Password: ['', Validators.required]
+      Password: ['', Validators.required],
     });
-
+    //console.log(this.company.companyId);
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/demo';
   }
@@ -55,7 +63,7 @@ export class DemoLoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.Email.value, this.f.Password.value)
+    this.authenticationService.login(this.f.Email.value, this.f.Password.value, this.company.companyId )
       .pipe(first())
       .subscribe(
         data => {

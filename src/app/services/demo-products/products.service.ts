@@ -75,6 +75,16 @@ export class ProductsService {
     );
   }
 
+  UpdateQty(post): Observable<ProductQty> {
+    return this.http.post<ProductQty>(this.api_url_quantity + '/Update', JSON.stringify([post]), this.httpOptions)
+
+    .pipe(
+
+      catchError(this.errorHandler)
+
+    );
+  }
+
   find(id): Observable<ProductInterface> {
     return this.http.get<ProductInterface>(this.api_url + '/GetById/' + id)
       .pipe(

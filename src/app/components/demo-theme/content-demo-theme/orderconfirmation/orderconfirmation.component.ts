@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { count } from 'rxjs/operators';
 import { SalesOrderDatasetInterface } from '../../../../interfaces/sales-order-dataset-interface';
 import { ToastrService } from 'ngx-toastr';
@@ -10,6 +10,7 @@ import { SalesOrderInterface } from '../../../../interfaces/sales-order-interfac
 import { ProductInterface } from '../../../../interfaces/product-interface';
 import { SalesorderdtlInterface } from '../../../../interfaces/salesorderdtl-interface';
 import * as globals from '../../../../globals';
+import { CompanyInterface } from '../../../../interfaces/company-interface';
 
 @Component({
   selector: 'app-orderconfirmation',
@@ -29,12 +30,23 @@ export class OrderconfirmationComponent implements OnInit {
   showPayPalPayButton: boolean = false;
   hideControls: boolean = false;
 
-  constructor(private router: Router, private salesOrderService: SalesorderService, private shoppingCartService: CartService, private toastr: ToastrService) {
+  private company :CompanyInterface;
+
+  constructor(
+    private router: Router,
+    private salesOrderService: SalesorderService, 
+    private shoppingCartService: CartService, 
+    private toastr: ToastrService,
+    private route: ActivatedRoute
+    ) {
 
   }
 
   ngOnInit(): void {
     window.scroll(0, 0); //scroll to the top
+    this.route.data.subscribe((response: any) => {
+      this.company = response.company[0];          
+    });
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message)
     this.changeShowControls(false)
     this.populateInitialCombos();
@@ -62,13 +74,13 @@ export class OrderconfirmationComponent implements OnInit {
     
     //Add sales order object to dataset
     var currentSalesOrder: SalesOrderInterface[];
-    var salesOrderLclStrg: string = localStorage.getItem(this.salesOrderService.lclStrgId);
+    var salesOrderLclStrg = localStorage.getItem(this.salesOrderService.lclStrgId);
     if(salesOrderLclStrg != null && salesOrderLclStrg != undefined){
       currentSalesOrder = JSON.parse(salesOrderLclStrg);      
 
       if(currentSalesOrder.length > 0) {
         //Set PaymentForm field
-        var paymentFormLclStrg: string = localStorage.getItem(this.salesOrderService.lclStrgIdPayFrm);
+        var paymentFormLclStrg = localStorage.getItem(this.salesOrderService.lclStrgIdPayFrm);
         if(paymentFormLclStrg != null && paymentFormLclStrg != undefined){
           if(paymentFormLclStrg.length > 0) {
             currentSalesOrder[0].PaymentFormNum = paymentFormLclStrg;
@@ -78,7 +90,7 @@ export class OrderconfirmationComponent implements OnInit {
     }
 
     //Add sales order details to dataset
-    var cart: string = localStorage.getItem(globals.cartId);
+    var cart = localStorage.getItem(globals.cartId);
     if(cart != null && cart != undefined){
       var currentCart: ProductInterface[] = JSON.parse(cart);      
       

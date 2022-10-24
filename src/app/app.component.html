@@ -1,17 +1,35 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <app-sidenav></app-sidenav>
-  </mat-drawer>
-  <div id="open-menu">
-    <button mat-mini-fab color="primary" type="button"  (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+<mat-drawer-container [ngClass]="current_theme| async" class="example-container">
+  <mat-drawer #drawer class="example-sidenav leftNavColor" mode="side" >
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+  <ng-container  *ngIf="authenticationService.currentuser | async"> 
+    <div id="open-menu"  >
+      <button mat-mini-fab color="accent" type="button"  (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="loading" >
+  <div style=" margin-top: 20px;display: flex; justify-content: center; align-items: center; background: white;">
+   <span>
+    <mat-progress-spinner 
+    color="accent"
+      mode="indeterminate">
+    </mat-progress-spinner>
+    Cargando ...
+   </span> 
   </div>
-  <div class="example-sidenav-content">
+</ng-container>
+
+  <div class="example-sidenav-content" *ngIf="!loading" >   
     <router-outlet></router-outlet>
+    
+    
   </div>
-   <div fxFlex="none">
-    <app-footer></app-footer>
+ 
+   <div fxFlex="none"  >
+    <app-footer *ngIf="!loading" ></app-footer>
   </div>
 
 
