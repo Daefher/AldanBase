@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyInterface } from '../../../../interfaces/company-interface';
 import { SalesorderdtlInterface } from '../../../../interfaces/salesorderdtl-interface';
 import { SalesorderService } from '../../../../services/demo-salesorder/salesorder.service';
+import * as globals from '../../../../globals';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-checkout',
@@ -20,10 +22,14 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private salesOrderService : SalesorderService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private overlayContainer: OverlayContainer
     ) { }
 
   ngOnInit(): void {
+    const hostname = window.location.hostname;    
+    globals.chooseTheme(hostname, this.overlayContainer);
+    
     window.scroll(0,0); //scroll to the top
     this.activatedRoute.data.subscribe((response: any) => {
       this.company = response.company[0];          

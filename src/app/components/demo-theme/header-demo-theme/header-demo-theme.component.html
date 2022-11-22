@@ -1,4 +1,5 @@
 <div class="header-text">
-    <h1>{{company.name}}</h1>
-    <h2>Subtitulo</h2>
+    <h1 *ngIf="model?.title">{{model?.title}}</h1>
+    <h1 *ngIf="!model?.title">{{company?.name}}</h1>
+    <h2>{{model?.subtitle}}</h2>
 </div>

@@ -3,6 +3,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 import { filter } from 'rxjs/operators';
 import { ThemeService } from './core/services/theme.service';
 import { company_id } from './globals';
+import { CompanyInterface } from './interfaces/company-interface';
 import { CompanyService } from './services/demo-company/company.service';
 import { AuthenticationService } from './services/demo-login/authentication.service';
 
@@ -17,6 +18,7 @@ export class AppComponent {
   company_host_name :  string;
   loading = true;
   current_theme : any;
+  public company :CompanyInterface;
   @HostBinding('class') componentCssClass;
  
   constructor(
@@ -42,7 +44,11 @@ export class AppComponent {
        .pipe(filter(event => event instanceof NavigationEnd))
       //.pipe(event => event instanceof NavigationEnd)
       .subscribe(() => {      
-        this.loading = false;  
+        this.loading = false; 
+        this.companyService.getCurrentCompany().subscribe( data =>{
+          this.company = data;
+          //console.log("DATA",data);
+        }) 
         document.querySelector('.mat-drawer-content ')!.scroll({ 
           top: 0, 
           left: 0, 
@@ -75,6 +81,8 @@ export class AppComponent {
         this.companyService.getCompanyById(10).subscribe(data => {         
           this.companyService.setCurrentCompany(data[0]);
           this.companyService.setCompany(data[0]);
+          this.company = data[0];
+          //console.log("choose", this.company);
           //console.log(data[0]);         
         });
 

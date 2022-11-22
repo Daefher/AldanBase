@@ -12,6 +12,7 @@ import { ProductInterface } from '../../../../interfaces/product-interface';
 
 import * as globals from '../../../../globals';
 import { CompanyInterface } from '../../../../interfaces/company-interface';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 
 @Component({
@@ -43,10 +44,14 @@ export class EditProductComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private productService : ProductsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private overlayContainer : OverlayContainer
   ) { }
 
   ngOnInit(): void {
+
+    const hostname = window.location.hostname;
+    globals.chooseTheme(hostname, this.overlayContainer);
 
 
     this.route.data.subscribe((response: any) => {
