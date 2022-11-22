@@ -1,4 +1,4 @@
-export const api_url='https://infowebpage.azurewebsites.net/api/';
+export const api_url='https://aldandev.azurewebsites.net/api/';
 
 
 //Local Test URL Daniel
@@ -12,3 +12,17 @@ export const img_path = "https://aldantech.tk/data/images/"
 
 
 export const cartId = "productsCart";
+
+
+export function chooseTheme(hostname, container){
+    switch (hostname) {
+      case "localhost":
+      case "aldantech.tk":
+        container.getContainerElement().classList.add("aldantech-theme");
+      break;
+      case "lamacetita.tk":
+        container.getContainerElement().classList.add("lamacetita-theme");
+      default:
+        break;
+    }
+  } 

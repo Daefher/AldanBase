@@ -80,6 +80,8 @@ import { EditHeaderDemoThemeComponent } from './components/demo-theme/header-dem
 import { CompanyService } from './services/demo-company/company.service';
 import { EditCompanyDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-company-dialog/edit-company-dialog.component';
 import { ContactFormComponent } from './components/demo-theme/content-demo-theme/contact-form/contact-form.component';
+import { BannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/banner/banner.component';
+import { EditBannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
 
 
 @NgModule({
@@ -121,6 +123,8 @@ import { ContactFormComponent } from './components/demo-theme/content-demo-theme
     EditHeaderDemoThemeComponent,
     EditCompanyDialogComponent,
     ContactFormComponent,
+    BannerComponent,
+    EditBannerComponent,
     
     
         

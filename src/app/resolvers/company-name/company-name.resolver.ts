@@ -31,8 +31,8 @@ export class CompanyNameResolver implements Resolve<string> {
       
       //this.themeService.setTheme(this.company_host_name);   
     
-    return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
-    //return this.companyService.getCompanyByHostNameResolver("aldantech").pipe(
+    //return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
+    return this.companyService.getCompanyByHostNameResolver("aldantech").pipe(
       map(company => company[0].name), take(1)
      );
     

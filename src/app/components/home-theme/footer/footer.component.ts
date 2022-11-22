@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CompanyInterface } from 'src/app/interfaces/company-interface';
 import { AuthenticationService } from '../../../services/demo-login/authentication.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthenticationService } from '../../../services/demo-login/authenticati
 })
 export class FooterComponent implements OnInit {
   public user;
-
+  @Input() company : CompanyInterface;
   constructor(
     
     public authenticationService: AuthenticationService,
@@ -23,7 +24,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
-
+    //console.log(this.company);
   }
 
   logout() {

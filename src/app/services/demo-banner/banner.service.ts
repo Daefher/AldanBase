@@ -4,6 +4,7 @@ import * as globals from '../../globals';
 import { catchError, map } from 'rxjs/operators';
 import { Observable,throwError } from 'rxjs';
 import { BannerInterface } from '../../interfaces/banner-interface';
+import { CompanyFile } from '../../interfaces/company-file';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +22,27 @@ export class BannerService {
   constructor(private http: HttpClient ) { }
 
 
-  create(post): Observable<BannerInterface> {
+  create(post): Observable<CompanyFile>{
+    return this.http.post<CompanyFile>(this.api_url + '/Insert', JSON.stringify([post]), this.httpOptions)
+
+    .pipe(
+
+      catchError(this.errorHandler)
+
+    );
+  }
+
+  update(post): Observable<CompanyFile>{
+    return this.http.post<CompanyFile>(this.api_url + '/Update', JSON.stringify([post]), this.httpOptions)
+
+    .pipe(
+
+      catchError(this.errorHandler)
+
+    );
+  }
+
+  createBase64(post): Observable<BannerInterface> {
 
     return this.http.post<BannerInterface>(this.api_url + '/UploadFileBase64', JSON.stringify(post), this.httpOptions)
 
@@ -54,8 +75,8 @@ export class BannerService {
 
   }
 
-  getImage(FileName): Observable<BannerInterface[]> {
-    return this.http.get<BannerInterface[]>(this.api_url + '/GetActiveCompanyFiles?name=' + FileName)
+  getImage(FileName): Observable<CompanyFile[]> {
+    return this.http.get<CompanyFile[]>(this.api_url + '/GetActiveCompanyFiles?name=' + FileName)
     .pipe(
       catchError(this.errorHandler)
     );

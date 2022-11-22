@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CompanyInterface } from '../../../../interfaces/company-interface';
 import { CompanyService } from '../../../../services/demo-company/company.service';
 import { ActivatedRoute } from '@angular/router';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
  export interface sortInterface  {
   name : string,
@@ -56,7 +57,8 @@ export class ProductsComponent implements OnInit {
       private toastr: ToastrService,
       private formBuilder: FormBuilder,
       private companyService : CompanyService,
-      private activatedRoute: ActivatedRoute
+      private activatedRoute: ActivatedRoute,
+      private overlayContainer: OverlayContainer
      ) { 
       this.searchForm = this.formBuilder.group({
         search: '',
@@ -64,8 +66,10 @@ export class ProductsComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    const hostname = window.location.hostname;
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
+    globals.chooseTheme(hostname, this.overlayContainer);
     this.activatedRoute.data.subscribe((response: any) => {
       this.company = response.company[0];    
       this.mapInitializer(this.company);    

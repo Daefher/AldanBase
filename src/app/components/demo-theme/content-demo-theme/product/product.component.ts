@@ -98,15 +98,16 @@ export class ProductComponent implements OnInit {
 
   adjustQty(partId, event){
     let data =
-    {
-     
+    {     
       "PartId": partId,
       "Quantity": event.target.value
-    }
-      ;
+    };
+
     this.productService.adjustQty(data).subscribe((response) => {
       
-      this.partQty_Value = response[0].onHandQty;
+      this.partQty_Value = this.partQty_Value + parseInt(event.target.value);
+      //console.log( this.partQty_Value );
+      //console.log( event.target.value);
       this.toastr.success("Inventario  actualizado correctamente", "Exito");
       this.partQty_control = 0
 
@@ -129,7 +130,9 @@ export class ProductComponent implements OnInit {
       ;
     this.productService.UpdateQty(data).subscribe((response) => {
       
-      this.partQty_Value = response[0].onHandQty;
+      this.partQty_Value = this.partQty_Value + event.target.value;
+
+    
       this.toastr.success("Inventario  actualizado correctamente", "Exito");
       this.partQty_control = 0
 

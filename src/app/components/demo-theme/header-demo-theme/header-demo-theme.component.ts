@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CompanyInterface } from '../../../interfaces/company-interface';
 import { CompanyService } from '../../../services/demo-company/company.service';
@@ -11,6 +11,8 @@ import { CompanyService } from '../../../services/demo-company/company.service';
 export class HeaderDemoThemeComponent implements OnInit {
 
   public company : CompanyInterface;
+  @Input() model:any;
+  
   constructor(
     public companyService : CompanyService,
     private activatedRoute: ActivatedRoute
