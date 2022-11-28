@@ -15,8 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.js"
+             },
             "outputPath": "dist/AldanBase",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -29,7 +32,7 @@
             "styles": [
               
               "src/styles.scss",
-               "src/theme.scss",
+               "src/theme.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -38,6 +41,7 @@
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true
+           
           },
           "configurations": {
             "production": {
