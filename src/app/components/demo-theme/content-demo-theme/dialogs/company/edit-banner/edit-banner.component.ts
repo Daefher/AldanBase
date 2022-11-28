@@ -8,6 +8,8 @@ import { CompanyInterface } from '../../../../../../interfaces/company-interface
 import { BannerService } from '../../../../../../services/demo-banner/banner.service';
 import { CompanyService } from '../../../../../../services/demo-company/company.service';
 import { BannerComponent } from '../banner/banner.component';
+import  * as globals from '../../../../../../globals';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-edit-banner',
@@ -31,9 +33,14 @@ export class EditBannerComponent implements OnInit {
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<EditBannerComponent>,
     public companyService : CompanyService,
+    public overlayContainer : OverlayContainer
   ) { }
 
   ngOnInit(): void {
+
+    const hostname = window.location.hostname;
+    globals.chooseTheme(hostname, this.overlayContainer);
+
 
     this.bannerService.getImage("HOME-BANNER").subscribe(response =>{
       if(response.length > 0){

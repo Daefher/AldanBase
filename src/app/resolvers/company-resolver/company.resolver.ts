@@ -6,7 +6,7 @@ import {
 } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ThemeService } from 'src/app/core/services/theme.service';
+import { ThemeService } from '../../core/services/theme.service';
 import { CompanyInterface } from '../../interfaces/company-interface';
 import { CompanyService } from '../../services/demo-company/company.service';
 
@@ -40,8 +40,8 @@ export class CompanyResolver implements Resolve<any> {
       this.chooseTheme(this.company_host_name);
       
 
-    //return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
-    return this.companyService.getCompanyByHostNameResolver("aldantech.tk").pipe(
+    return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
+    //return this.companyService.getCompanyByHostNameResolver("aldantech.tk").pipe(
       catchError(error => {
         return of('No data');
       })

@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserDataInterface } from '../../../../../interfaces/user-data-interface';
 import { Observable } from 'rxjs';
 import {OverlayContainer} from '@angular/cdk/overlay';
+import * as globals from '../../../../../globals';
 
 
 
@@ -60,7 +61,7 @@ export class EditUserDialogComponent {
       }
       ); 
 
-      this.chooseTheme(this.hostname);
+      globals.chooseTheme(this.hostname, this.overlayContainer);
     }
 
     this.user_data_form = this.formBuilder.group({
@@ -128,7 +129,7 @@ export class EditUserDialogComponent {
         this.overlayContainer.getContainerElement().classList.add("aldantech-theme");
       break;
       case "lamacetita.tk":
-        this.overlayContainer.getContainerElement().classList.add("aldantech-them");
+        this.overlayContainer.getContainerElement().classList.add("lamacetita-theme");
       default:
         break;
     }

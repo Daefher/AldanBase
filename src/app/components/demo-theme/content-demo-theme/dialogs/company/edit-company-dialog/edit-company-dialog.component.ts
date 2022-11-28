@@ -5,9 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../../../../../../services/demo-company/company.service';
 import { EditUserDialogComponent } from '../../edit-user-dialog/edit-user-dialog.component';
 import { CompanyDialogData } from '../../../../../../interfaces/DialogInterfaces/company-dialog-data';
-import { CompanyInterface } from 'src/app/interfaces/company-interface';
+import { CompanyInterface } from '../../../../../../interfaces/company-interface';
 import { ActivatedRoute } from '@angular/router';
 import {OverlayContainer} from '@angular/cdk/overlay';
+import * as globals from '../../../../../../globals';
+
 
 
 @Component({
@@ -40,6 +42,7 @@ export class EditCompanyDialogComponent implements OnInit {
 
   ngOnInit(): void {
     const hostname = window.location.hostname;
+    globals.chooseTheme(hostname, this.overlayContainer);
 
     this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
       this.company = response[0];    
@@ -48,7 +51,6 @@ export class EditCompanyDialogComponent implements OnInit {
      }); 
 
      
-     this.chooseTheme(hostname);
   
      
      this.mapFormInit();     
@@ -62,7 +64,7 @@ export class EditCompanyDialogComponent implements OnInit {
           this.overlayContainer.getContainerElement().classList.add("aldantech-theme");
         break;
         case "lamacetita.tk":
-          this.overlayContainer.getContainerElement().classList.add("aldantech-them");
+          this.overlayContainer.getContainerElement().classList.add("lamacetita-theme");
         default:
           break;
       }

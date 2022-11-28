@@ -6,8 +6,8 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map, take } from 'rxjs/operators';
-import { CompanyInterface } from 'src/app/interfaces/company-interface';
-import { CompanyService } from 'src/app/services/demo-company/company.service';
+import { CompanyInterface } from '../../interfaces/company-interface';
+import { CompanyService } from '../../services/demo-company/company.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +31,10 @@ export class CompanyNameResolver implements Resolve<string> {
       
       //this.themeService.setTheme(this.company_host_name);   
     
-    //return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
-    return this.companyService.getCompanyByHostNameResolver("aldantech").pipe(
+    return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
+    //return this.companyService.getCompanyByHostNameResolver("aldantech").pipe(
       map(company => company[0].name), take(1)
-     );
+    );
     
   }
 }
