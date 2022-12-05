@@ -29,13 +29,14 @@ export interface PeriodicElement {
   styleUrls: ['./admin-products-table.component.scss']
 })
 export class AdminProductsTableComponent implements OnInit {
+
+  cmbOptions: Array<Object>;
+  selected = 'All';
   user: any;
   products: ProductInterface[] = [];
   isLoading = true;
 
   company : CompanyInterface;
-
-
   
   constructor(
     private productService : ProductsService,
@@ -85,6 +86,8 @@ export class AdminProductsTableComponent implements OnInit {
     });
 
     globals.chooseTheme(hostname, this.overlayContainer);
+
+    this.populateInitialCombos();
   }
 
 
@@ -110,6 +113,57 @@ export class AdminProductsTableComponent implements OnInit {
     }
     );
 
+  }
+
+  populateInitialCombos(){
+    this.cmbOptions =  [
+      {id: "All", name: "Todos"},
+      {id: "Active", name: "Activos"},
+      {id: "Canceled", name: "Cancelados"}
+    ];
+  }
+
+  onFilterChange(selected: any){
+    switch(selected){
+      case "All":
+        this.activatedRoute.data.subscribe((response: any) => {
+          this.mapInitializer(response.company[0]);     
+        });
+        break;
+      case "Active":
+        this.activatedRoute.data.subscribe((response: any) => {
+          this.productService.getAllActive(response.company[0].companyId).subscribe((data: ProductInterface[])=>{   
+            this.products = data;
+            this.dataSource.data = this.products;
+            this.isLoading = false;
+          },
+          err =>{
+            this.toastr.error("Error cargar productos");  
+            this.isLoading = false;
+          }
+          );   
+        });
+        break;
+      case "Canceled":
+        this.activatedRoute.data.subscribe((response: any) => {
+          this.productService.getAllCanceled(response.company[0].companyId).subscribe((data: ProductInterface[])=>{   
+            this.products = data;
+            this.dataSource.data = this.products;
+            this.isLoading = false;
+          },
+          err =>{
+            this.toastr.error("Error cargar productos");  
+            this.isLoading = false;
+          }
+          );   
+        });
+        break;
+      default:
+        this.activatedRoute.data.subscribe((response: any) => {
+          this.mapInitializer(response.company[0]);     
+        });
+        break;
+    }
   }
 
 }

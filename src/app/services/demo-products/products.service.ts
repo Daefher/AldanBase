@@ -45,6 +45,13 @@ export class ProductsService {
       )
   }
 
+  getAllCanceled(companyId): Observable<ProductInterface[]> {
+    return this.http.get<ProductInterface[]>(this.api_url + '/GetPartsCanceled', { params: { companyId: companyId } })
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   create(post): Observable<ProductInterface> {
 
     return this.http.post<ProductInterface>(this.api_url + '/Insert', JSON.stringify([post]), this.httpOptions)
