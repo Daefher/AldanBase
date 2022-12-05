@@ -48,7 +48,7 @@ export class AdminProductsTableComponent implements OnInit {
     ) {
     }
 
-  displayedColumns: string[] = ['name', 'unitPrice', 'createdDateTime', "actions"];
+  displayedColumns: string[] = ['name', 'unitPrice','onHandQty', 'createdDateTime', "actions"];
 
   dataSource = new MatTableDataSource<ProductInterface>(this.products);
 
@@ -61,8 +61,7 @@ export class AdminProductsTableComponent implements OnInit {
   }
 
   mapInitializer(data) : void {
-    this.productService.getAll(data.companyId).subscribe((data: ProductInterface[])=>{   
-        
+    this.productService.getAll(data.companyId).subscribe((data: ProductInterface[])=>{           
         
       //let temp =  this.ReturnNotTrashed(data);        
       this.products = data;
