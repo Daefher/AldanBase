@@ -41,7 +41,7 @@ export class BannerComponent implements OnInit {
     this.bannerService.getImage("BANNER-HOME").subscribe(response =>{
       if(response.length > 0){
         this.mapForm(response[0]);
-        console.log(response)
+        //console.log(response)
       }
      
      

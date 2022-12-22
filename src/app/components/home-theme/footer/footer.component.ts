@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CompanyInterface } from 'src/app/interfaces/company-interface';
+import { CompanyInterface } from '../../../interfaces/company-interface';
 import { AuthenticationService } from '../../../services/demo-login/authentication.service';
+import { CompanyService } from '../../../services/demo-company/company.service';
 
 @Component({
   selector: 'app-footer',
@@ -12,11 +13,15 @@ import { AuthenticationService } from '../../../services/demo-login/authenticati
 export class FooterComponent implements OnInit {
   public user;
   @Input() company : CompanyInterface;
+  public cpny : any;
+
+  public year : number;
   constructor(
     
     public authenticationService: AuthenticationService,
     private router: Router,
     private toastr: ToastrService,
+    private companyService: CompanyService
 
 
   ) { }
@@ -24,7 +29,21 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
-    //console.log(this.company);
+    
+    
+    if(!this.company){
+      this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
+        this.cpny = data[0];     
+        console.log("footer: ",this.cpny);     
+      })
+    }else{
+      this.cpny = this.company[0];
+      console.log("footer: ",this.cpny);
+    }
+
+    this.year = new Date().getFullYear();
+    
+    
   }
 
   logout() {

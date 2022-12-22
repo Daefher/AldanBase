@@ -46,7 +46,7 @@ export class EditCompanyDialogComponent implements OnInit {
 
     this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
       this.company = response[0];    
-      console.log(response);
+      //console.log(response);
       this.mapFormGroup();   
      }); 
 
@@ -157,7 +157,7 @@ export class EditCompanyDialogComponent implements OnInit {
 
       this.submitted = true;  
   
-      console.log("Sent FORM",this.companyForm.value);
+      //console.log("Sent FORM",this.companyForm.value);
   
       this.companyService.update(this.companyForm.value).subscribe( res => {
         this.toastr.success("Perfil actualizado correctamente", "Exito");

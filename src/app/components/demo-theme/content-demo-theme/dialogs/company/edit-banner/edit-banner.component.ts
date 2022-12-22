@@ -125,7 +125,7 @@ export class EditBannerComponent implements OnInit {
     this.image_file = reader.result;
     this.edit_b_form.controls.filePath.setValue(this.image_file);
     
-    console.log(this.edit_b_form.value)
+    //console.log(this.edit_b_form.value)
   }
 
   onNoClick(): void {
