@@ -82,6 +82,7 @@ import { EditCompanyDialogComponent } from './components/demo-theme/content-demo
 import { ContactFormComponent } from './components/demo-theme/content-demo-theme/contact-form/contact-form.component';
 import { BannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/banner/banner.component';
 import { EditBannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
+import { ProductListComponent } from './components/demo-theme/content-demo-theme/products/product-list/product-list.component';
 
 
 @NgModule({
@@ -125,6 +126,7 @@ import { EditBannerComponent } from './components/demo-theme/content-demo-theme/
     ContactFormComponent,
     BannerComponent,
     EditBannerComponent,
+    ProductListComponent,
     
     
         

@@ -33,7 +33,10 @@
                       {{order.payPalFullName}}
                     </mat-panel-title>
                     <mat-panel-description>      
-                      <p>{{ order.paymentFormNum }} |  <b>{{ order.closed ? 'Pendiente' : 'Orden Cerrada' }}</b>    </p>           
+                      <p>{{ order.paymentFormNum }} | <b *ngIf="order.closed">Cerrada</b> 
+                                                      <b *ngIf="order.canceled">Cancelada</b>
+                                                      <b *ngIf="!order.canceled && !order.closed">Pendiente</b>
+                      </p>           
                     </mat-panel-description>
                   </mat-expansion-panel-header>
                   <p>
@@ -52,8 +55,8 @@
                   <p>
                     Total de la orden: <strong> $ {{order.totalLetter}} </strong>
                   </p>
-                  <div align="end" >
-                    <ng-container *ngIf="!order.closed">
+                  <div align="end" *ngIf="" >
+                    <ng-container *ngIf="!order.closed || !order.canceled">
                       <button mat-raised-button class="action-button"
                         matTooltip="Editar"
                        (click)="closeOrder(order.salesOrderId)" [class.spinner]="closeIsLoading" [disabled]="closeIsLoading"  color="accent"> Finalizar

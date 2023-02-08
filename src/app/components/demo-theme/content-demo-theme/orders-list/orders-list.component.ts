@@ -91,12 +91,12 @@ export class OrdersListComponent implements OnInit {
 
         break;
       case 'canceled':
-         new_filter = this.orders.filter(item => item.canceled === true);
+        new_filter = this.orders.filter(item => item.canceled === true);
         this.selectedResult = new_filter.slice(0, this.pageSize);
         break;
 
       case 'notClosed':
-        new_filter = this.orders.filter(item => item.closed === false);
+        new_filter = this.orders.filter(item => item.closed === false && item.canceled === false);
         this.selectedResult = new_filter.slice(0, this.pageSize);
         break;
 
@@ -190,9 +190,14 @@ export class OrdersListComponent implements OnInit {
 
   getData(event?: PageEvent) {
     //console.log(event);
-    this.selectedResult = this.orders.slice(event.pageIndex * event.pageSize,
-      event.pageIndex * event.pageSize + event.pageSize);
-    return event;
+    if(event){
+      this.selectedResult = this.orders.slice(event.pageIndex * event.pageSize,
+        event.pageIndex * event.pageSize + event.pageSize);
+      return event;
+    } else {
+      return null;
+    }
+    
   }
 
 
