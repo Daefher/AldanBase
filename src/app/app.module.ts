@@ -83,7 +83,9 @@ import { ContactFormComponent } from './components/demo-theme/content-demo-theme
 import { BannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/banner/banner.component';
 import { EditBannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
 import { ProductListComponent } from './components/demo-theme/content-demo-theme/products/product-list/product-list.component';
-
+import { TextAreaComponent } from './components/demo-theme/dynamic-componets/text-area/text-area.component';
+import { TextFormComponent } from './components/demo-theme/dynamic-componets/text-area/text-form/text-form.component';
+import { TextFormEditComponent } from './components/demo-theme/dynamic-componets/text-area/text-form-edit/text-form-edit.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +129,9 @@ import { ProductListComponent } from './components/demo-theme/content-demo-theme
     BannerComponent,
     EditBannerComponent,
     ProductListComponent,
+    TextAreaComponent,
+    TextFormComponent,
+    TextFormEditComponent,
     
     
         

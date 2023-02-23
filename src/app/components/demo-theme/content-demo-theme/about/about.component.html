@@ -1,13 +1,15 @@
 <app-nav-demo-theme></app-nav-demo-theme>
 <div class="wrapper">
-    <div class="title">
+   <!--  <div class="title">
         <h2>Nosotros {{company.name}} </h2>
     </div>
     <mat-divider></mat-divider>
     <div class="about-text">
         <p align="center">{{company.description}}</p>
     </div>
-    <mat-divider></mat-divider>
+    <mat-divider></mat-divider> -->
+    <app-text-area *ngIf="companyPage"  [CurrentPage] ="companyPage[0]" [Block]="0" #textArea0></app-text-area>
+
     <div class="title">
         <h2>Contactanos </h2>
     </div>

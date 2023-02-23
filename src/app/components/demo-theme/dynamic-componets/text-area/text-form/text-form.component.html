@@ -1,0 +1,38 @@
+ 
+<h1 mat-dialog-title>Agregar Texto </h1>
+
+<div mat-dialog-content > 
+  <form  class="example-form"  [formGroup]="block_data_form" fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="onSubmit()">
+    <input type="hidden" [hidden]="true" formControlName="createdDateTime"  [ngModel]="post_data?.createdDateTime">
+    <input type="hidden" [hidden]="true" formControlName="cancelable"  [ngModel]="post_data?.cancelable">
+    <input type="hidden" [hidden]="true" formControlName="canceled"  [ngModel]="post_data?.canceled">
+    <input type="hidden" [hidden]="true" formControlName="canceledBy"  [ngModel]="post_data?.canceledBy">
+<!--<input type="hidden" [hidden]="true" formControlName="companyId"  [ngModel]="0">-->
+    <input type="hidden" [hidden]="true" formControlName="createdBy"  [ngModel]="post_data?.createdBy">
+<!--<input type="hidden" [hidden]="true" formControlName="aldanCustomerId"  [ngModel]="0">-->   
+
+    <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%" >
+      <mat-label>Titulo</mat-label>
+      <input type="text" matInput placeholder="Titulo"  formControlName="sectionTitle" [ngModel]="post_data?.sectionTitle">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%" >
+      <mat-label>Subtitulo</mat-label>
+      <input matInput placeholder="Subtitulo" formControlName="sectionSubtitle" [ngModel]="post_data?.sectionSubtitle">
+    </mat-form-field>
+
+     <mat-form-field class="example-full-width"  appearance="fill" fxFlex="100%" >
+      <mat-label>Contenido</mat-label>
+      <textarea matInput placeholder="Contenido" formControlName="sectionDescription" [ngModel]="post_data?.sectionDescription">
+      </textarea>
+    </mat-form-field> 
+
+    <div mat-dialog-actions align="end">
+      <button mat-raised-button (click)="onNoClick()" type="button" 
+      color="primary">Cancelar</button>
+      <button   mat-raised-button color="accent" [class.spinner]="loading_edit" 
+      [disabled]="loading_edit">Guardar</button>
+    </div>
+  </form>
+
+</div> 

@@ -1,0 +1,51 @@
+<ng-container *ngIf="data_loaded" >
+
+    <ng-container *ngIf=" authenticationService.currentuser | async  ">
+        <div align="right" class="wrapper">
+            <mat-slide-toggle class="toggle-btn" (change)="changeColor(companyPageData)" color="primary" [checked]="this.companyPageData?.sectionCss" >Change Color</mat-slide-toggle>
+
+            <mat-slide-toggle class="toggle-btn" (change)="deactiveSection(companyPageData)" color="primary" [checked]="!companyPageData?.canceled">Activo</mat-slide-toggle>
+            <button mat-raised-button color="warn"  (click)="editCompanyDialog()"><mat-icon>edit</mat-icon>Editar</button> 
+        </div>
+        <!-- <div class="wrapper alterPrimaryBG ">
+    
+            <mat-divider></mat-divider>
+           
+            <div class="title">
+                <h1>{{companyPageData?.sectionTitle}}</h1>
+            </div>   
+            <div class="title">
+                <h4>{{companyPageData?.sectionSubtitle}}</h4>
+            </div>    
+           
+            <div class="about-text">
+                <p align="center">{{companyPageData?.sectionDescription}}</p>
+            </div>
+            <mat-divider></mat-divider>
+        </div> -->
+    </ng-container>
+    <div class="wrapper" [ngClass]="{'alterPrimaryBG': this.companyPageData?.sectionCss} " *ngIf="!companyPageData?.canceled">
+    
+        <mat-divider></mat-divider>
+       
+        <div class="title">
+            <h1>{{companyPageData?.sectionTitle}}</h1>
+        </div>   
+        <div class="title">
+            <h4>{{companyPageData?.sectionSubtitle}}</h4>
+        </div>    
+       
+        <div class="about-text">
+            <p align="center">{{companyPageData?.sectionDescription}}</p>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    
+</ng-container>
+
+<ng-container *ngIf="!data_loaded && authenticationService.currentuser | async" >
+    <div class="wrapper" align="center">
+        <button mat-raised-button color="warn"  (click)="openCompanyDialog()"><mat-icon>add_box</mat-icon>   </button> 
+    </div>
+</ng-container>
+
