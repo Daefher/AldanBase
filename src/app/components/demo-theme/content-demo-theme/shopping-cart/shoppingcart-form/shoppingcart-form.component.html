@@ -41,8 +41,32 @@
                 </mat-card>
             </div>
         </div>
+        <br>
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="100%" fxFlex.xs="70%" fxFlex.sm="70%">
+                <mat-card class="mat-elevation-z4 ">
+                    <mat-card-header  >
+                       
+                    </mat-card-header>
+                    <mat-card-content align="right">
 
+                        <div class="form-group">
+                            <label>Total de artículos:<small class="text-muted"></small></label>
+                            <label id="totalTickets">&nbsp;{{this.numberOfElements}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label>IVA:<small class="text-muted"></small></label>
+                            <label id="totalTicketsEfectivo"></label>
+                        </div> 
+                        <div class="form-group">
+                            <label>Total de la compra:<small class="text-muted"></small></label>
+                            <label id="totalTicketsTarjeta">&nbsp;{{this.sumOfCart}}.00 MXN</label>
+                        </div> 
+                    </mat-card-content>
 
+                </mat-card>   
+            </div>
+        </div>
 
     </div>
 </div>
@@ -82,15 +106,4 @@
                 No hay productos en el carrito.
             </td>
         </div>-->
-        <div class="form-group">
-            <label>Total de artículos:<small class="text-muted"></small></label>
-            <label id="totalTickets">&nbsp;{{this.numberOfElements}}</label>
-        </div>
-        <div class="form-group">
-            <label>IVA:<small class="text-muted"></small></label>
-            <label id="totalTicketsEfectivo"></label>
-        </div> 
-        <div class="form-group">
-            <label>Total de la compra:<small class="text-muted"></small></label>
-            <label id="totalTicketsTarjeta">&nbsp;{{this.sumOfCart}}.00 MXN</label>
-        </div> 
+        

@@ -38,6 +38,9 @@
 
     </div>
   </ng-container>
+
+  <app-text-area *ngIf="companyPage"  [CurrentPage] ="companyPage[0]" [Block]="0"></app-text-area>
+  
   <br>
   <br>
   <div class="wrapper">
@@ -47,7 +50,17 @@
 
     <app-feature-products></app-feature-products>
 
+    <br>
+    <app-text-area *ngIf="companyPage" [CurrentPage] ="companyPage[0]" [Block]="1"></app-text-area>
+
+    <div class="title">
+      <h1>Productos</h1>
+    </div>
+    <app-product-list></app-product-list>
+
   </div>
+  <app-text-area *ngIf="companyPage" [CurrentPage] ="companyPage[0]" [Block]="2"></app-text-area>
+  <app-text-area *ngIf="companyPage" [CurrentPage] ="companyPage[0]" [Block]="3"></app-text-area>
 
 </div>
  

@@ -12,12 +12,17 @@
     
     text-align: center;
   }
-
+  .mat-icon {
+    vertical-align: middle;
+  }
   
   #btmFooter {
     align-self: flex-end;
   }
+.sec2{
+  text-align: justify;
   
+}  
 
 
   .bgColorlight {
@@ -33,8 +38,10 @@
 
    .footer-text {
     color: #000 !important;
-
+   /*  text-decoration: none; */
    }
+
+   
    mat-list-item {
     color: #000 !important;
    }

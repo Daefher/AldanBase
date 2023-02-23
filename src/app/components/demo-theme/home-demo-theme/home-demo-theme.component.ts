@@ -10,6 +10,8 @@ import { BannerComponent } from '../content-demo-theme/dialogs/company/banner/ba
 import * as globals from '../../../globals';
 import { BannerService } from '../../../services/demo-banner/banner.service';
 import { EditBannerComponent } from '../content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
+import { CompanyService } from '../../../services/demo-company/company.service';
+import { CompanyPage } from '../../../interfaces/CompanyPage/company-page';
 
 @Component({
   selector: 'app-home-demo-theme',
@@ -24,6 +26,16 @@ export class HomeDemoThemeComponent implements OnInit {
   };
   public image_id :any;
   public image_path? :string;
+
+  public blocks_map = new Map([
+        [0, null],
+        [1, null],
+        [2, null],
+        [3, null]]
+      );
+  public companyPage : CompanyPage;
+
+  public test :any;
   
   user :any;
   constructor(
@@ -34,16 +46,31 @@ export class HomeDemoThemeComponent implements OnInit {
     private route: ActivatedRoute,
     private overlayContainer : OverlayContainer ,
     private bannerService :BannerService,
+    private companyService: CompanyService,
+  
     
 
   
   ) { }
 
   ngOnInit(): void {  
+
+    //this.test = "test";
      
     this.route.data.subscribe((response: any) => {
       this.company = response.company[0];          
       this.image_path = globals.img_path + this.company.companyId +'/';  
+      let values = {
+        "CompanyId" : this.company.companyId,
+        "PageName": "home"
+      }
+      this.test = values;
+      this.companyService.getCompanyPageByCompanyId(values).subscribe(resp => {
+
+        this.companyPage = resp;
+        //console.log(this.companyPage);
+      })
+
      });
     
     this.authenticationService.currentuser.subscribe(user => this.user = user);
@@ -54,7 +81,9 @@ export class HomeDemoThemeComponent implements OnInit {
       if(resp.length > 0)
         this.image_banner.image = this.image_path + resp[0].fileName;
         this.image_id = resp[0];        
-    });   
+    });  
+    
+    
   }
 
   openEditDialog(): void {
@@ -81,8 +110,8 @@ export class HomeDemoThemeComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BannerComponent, {
-      width: '330px',     
-      panelClass :'bg-dialog'
+      width: '350px',        
+      panelClass :'bg-dialog-text'
     });
 
     dialogRef.afterClosed().subscribe(result => {

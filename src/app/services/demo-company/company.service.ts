@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
 
 
 import * as globals from '../../globals';
 import { CompanyInterface } from '../../interfaces/company-interface';
 import { ContactInfo } from '../../interfaces/contact-info';
+import { CompanyPage } from '../../interfaces/CompanyPage/company-page';
+import { CompanyPageData } from '../../interfaces/CompanyPage/company-page-data';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class CompanyService {
 
   private api_url = globals.api_url + "Company";
   private contact_url = globals.api_url + "ContactMessage";
+  private companypage_url = globals.api_url + "CompanyPage";
 
   private company =  new BehaviorSubject<CompanyInterface>({} as CompanyInterface);
  
@@ -63,9 +65,66 @@ export class CompanyService {
         catchError(this.errorHandler)
       );
   }
+
+
+  //CompanyPage section
+  getCompanyPageByCompanyId(post): Observable<CompanyPage> {
+    
+    let qparams = {
+      "CompanyId": post.CompanyId,
+      "PageName" :post.PageName
+    }
+    return this.http.get<CompanyPage>(this.companypage_url + '/GetCompanyPage',{params:qparams})
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
+  getCompanyPageData(post, section): Observable<CompanyPageData[]> {
+    
+    let qparams = {
+      "companyId": post.companyId,
+      "CompanyPageId" :post.companyPageId,
+      "SectionPosition": section
+    }
+    return this.http.get<CompanyPageData[]>(this.companypage_url + '/GetCompanyPageData',{params:qparams})
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
+  createCompanyPageData(post) : Observable<CompanyPageData>{
+    return this.http.post<CompanyPageData>(this.companypage_url + '/PageDataInsert', JSON.stringify([post]), this.httpOptions)
+
+    .pipe(      
+
+      catchError(this.errorHandler)
+
+    )
+  }
+
+  updateCompanyPageData(post) : Observable<CompanyPageData>{
+    return this.http.post<CompanyPageData>(this.companypage_url + '/PageDataUpdate', JSON.stringify([post]), this.httpOptions)
+
+    .pipe(      
+
+      catchError(this.errorHandler)
+
+    )
+  }
+
+  deactiveCompanyPageData(post): Observable<CompanyPageData>{
+    return this.http.post<CompanyPageData>(this.companypage_url + '/CompanyPageCancel', 
+    JSON.stringify([post]), this.httpOptions)
+    .pipe(      
+
+      catchError(this.errorHandler)
+
+    )
+  }
   
 
-  getCurrentCompany(){
+  getCurrentCompany(hostname){
     return this.company.asObservable();
   }
  
