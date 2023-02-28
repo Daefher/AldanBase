@@ -31,7 +31,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 
 
-
+//charts
+import { NgChartsModule } from 'ng2-charts';
 
 //toastr
 import { ToastrModule } from 'ngx-toastr';
@@ -86,6 +87,7 @@ import { ProductListComponent } from './components/demo-theme/content-demo-theme
 import { TextAreaComponent } from './components/demo-theme/dynamic-componets/text-area/text-area.component';
 import { TextFormComponent } from './components/demo-theme/dynamic-componets/text-area/text-form/text-form.component';
 import { TextFormEditComponent } from './components/demo-theme/dynamic-componets/text-area/text-form-edit/text-form-edit.component';
+import { DashboardSalesComponent } from './components/demo-theme/dashboard-sales/dashboard-sales.component';
 
 @NgModule({
   declarations: [
@@ -132,6 +134,7 @@ import { TextFormEditComponent } from './components/demo-theme/dynamic-componets
     TextAreaComponent,
     TextFormComponent,
     TextFormEditComponent,
+    DashboardSalesComponent,
     
     
         
@@ -142,6 +145,7 @@ import { TextFormEditComponent } from './components/demo-theme/dynamic-componets
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left'
     }), // ToastrModule added
+    NgChartsModule,
     FlexLayoutModule,
     AppRoutingModule,
     MatCardModule, 
