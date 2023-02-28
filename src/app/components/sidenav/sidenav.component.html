@@ -8,6 +8,10 @@
   <mat-list-option [routerLink]="['/demo/demo-adminproducts', user.systemUserId ]" >        
     <span><mat-icon>business_center</mat-icon> Administrar Productos   </span>     
   </mat-list-option>
+  <mat-list-option [routerLink]="['/demo/demo-salesdashboard', user.systemUserId, 'view']" >        
+    <span><mat-icon>assessment</mat-icon> Ventas  </span>     
+  </mat-list-option>
+
   <mat-list-option (click)="logout()">
   <span><mat-icon class="mr">logout</mat-icon> Salir</span>
   </mat-list-option> 
