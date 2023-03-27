@@ -4,6 +4,10 @@ import { CommonModule } from "@angular/common";
 
 import { JWTInterceptorInterceptor } from './helpers/jwtinterceptor.interceptor';
 
+//WSYIWYG
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
+
 
 
 //Material
@@ -142,6 +146,7 @@ import { TextFormEditComponent } from './components/demo-theme/dynamic-componets
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left'
     }), // ToastrModule added
+    AngularEditorModule,
     FlexLayoutModule,
     AppRoutingModule,
     MatCardModule, 
