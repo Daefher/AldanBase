@@ -5,6 +5,7 @@ export interface OrderInterface {
     plantId: number,
     tfOrderId: number,
     tfOrderNum: string,
+    paymentFormNum: string,
     createdBy: number,
     createdDateTime: string,
     canceledBy: number,

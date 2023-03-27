@@ -107,7 +107,7 @@ export class TextAreaComponent implements OnInit {
 
     this.companyService.updateCompanyPageData(companyPageDataInfo).subscribe(resp => {
     if(companyPageDataInfo.sectionCss)
-      this.toastr.success("Color seleccioado", "Exito");     
+      this.toastr.success("Color seleccionado", "Exito");     
     },
     error => {
       this.toastr.error("Error", error);

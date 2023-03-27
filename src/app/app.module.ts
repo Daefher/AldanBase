@@ -29,6 +29,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 
 //charts
@@ -88,6 +90,8 @@ import { TextAreaComponent } from './components/demo-theme/dynamic-componets/tex
 import { TextFormComponent } from './components/demo-theme/dynamic-componets/text-area/text-form/text-form.component';
 import { TextFormEditComponent } from './components/demo-theme/dynamic-componets/text-area/text-form-edit/text-form-edit.component';
 import { DashboardSalesComponent } from './components/demo-theme/dashboard-sales/dashboard-sales.component';
+import { GeneralInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/general-info/general-info.component';
+import { SalesInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/sales-info/sales-info.component';
 
 @NgModule({
   declarations: [
@@ -135,6 +139,8 @@ import { DashboardSalesComponent } from './components/demo-theme/dashboard-sales
     TextFormComponent,
     TextFormEditComponent,
     DashboardSalesComponent,
+    GeneralInfoComponent,
+    SalesInfoComponent,
     
     
         
@@ -172,7 +178,7 @@ import { DashboardSalesComponent } from './components/demo-theme/dashboard-sales
     MatPaginatorModule,
     MatSlideToggleModule,
     MatTooltipModule,
-      
+    MatProgressBarModule,
          
   ],
   providers: [

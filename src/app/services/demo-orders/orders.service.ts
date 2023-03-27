@@ -35,6 +35,15 @@ export class OrdersService {
       )
   }
 
+  
+  getAllByDays(companyId, days): Observable<OrderInterface[]> {
+    return this.http.get<OrderInterface[]>(this.api_url + '/GetSalesOrdersbyDays',{ params: { companyId: companyId, days:days } })
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+
   getByOrderId(salesOrderId){
     return this.http.get<SalesorderdtlInterface[]>(this.api_url_order_items + '/GetByOrderId/' + salesOrderId )
       .pipe(

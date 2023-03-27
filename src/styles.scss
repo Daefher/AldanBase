@@ -12,12 +12,22 @@
     background-color: mat-color($primary);
     
   }
+  .primaryColorFont {
+    color: mat-color($primary);
+  }
+  .accentColorFont {
+    color: mat-color($accent);
+  }
+  .warnColorFont{
+    color: mat-color($warn);
+  }
   .accentColorBG {
     background-color: mat-color($accent);
   }
   .warnColorBG {
     background-color: mat-color($warn);
   }
+
 
   .leftNavColor{
     background-color: mat-color($accent) !important;
