@@ -33,9 +33,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
+//charts
+import { NgChartsModule } from 'ng2-charts';
 
 //toastr
 import { ToastrModule } from 'ngx-toastr';
@@ -90,6 +93,12 @@ import { ProductListComponent } from './components/demo-theme/content-demo-theme
 import { TextAreaComponent } from './components/demo-theme/dynamic-componets/text-area/text-area.component';
 import { TextFormComponent } from './components/demo-theme/dynamic-componets/text-area/text-form/text-form.component';
 import { TextFormEditComponent } from './components/demo-theme/dynamic-componets/text-area/text-form-edit/text-form-edit.component';
+import { DashboardSalesComponent } from './components/demo-theme/dashboard-sales/dashboard-sales.component';
+import { GeneralInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/general-info/general-info.component';
+import { SalesInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/sales-info/sales-info.component';
+import { SalesInfoActiveOnlyComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/sales-info-active-only/sales-info-active-only.component';
+import { OrdersInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/orders-info/orders-info.component';
+import { ReportsComponent } from './components/demo-theme/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -136,6 +145,12 @@ import { TextFormEditComponent } from './components/demo-theme/dynamic-componets
     TextAreaComponent,
     TextFormComponent,
     TextFormEditComponent,
+    DashboardSalesComponent,
+    GeneralInfoComponent,
+    SalesInfoComponent,
+    SalesInfoActiveOnlyComponent,
+    OrdersInfoComponent,
+    ReportsComponent,
     
     
         
@@ -146,6 +161,7 @@ import { TextFormEditComponent } from './components/demo-theme/dynamic-componets
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left'
     }), // ToastrModule added
+    NgChartsModule,
     AngularEditorModule,
     FlexLayoutModule,
     AppRoutingModule,
@@ -173,7 +189,7 @@ import { TextFormEditComponent } from './components/demo-theme/dynamic-componets
     MatPaginatorModule,
     MatSlideToggleModule,
     MatTooltipModule,
-      
+    MatProgressBarModule,
          
   ],
   providers: [

@@ -274,10 +274,8 @@ $md-accent2: (
     $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
     $secondPrimary: #cab8c6;
     @include theme-color-grabber($my-app-theme,$secondPrimary, $light-primary-text);
-    @include angular-material-theme($my-app-theme);
-    
-}
-
+    @include angular-material-theme($my-app-theme);    
+}   
 .aldantech-theme {
     //color : $light-primary-text;
     $macetita-primary: mat-palette($md-mcgpalette3, 500);

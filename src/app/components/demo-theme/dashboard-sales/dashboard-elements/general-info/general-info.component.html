@@ -1,0 +1,67 @@
+<mat-card class="mat-elevation-z4">
+    <mat-card-header>
+        <mat-card-title>
+            Informacion General
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        
+
+        <div fxLayout="row wrap" align="left" >
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%">
+                <b class="number accentColorFont">{{length}} </b>
+            </div>
+                <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%" class="small-desc" ><p>Ordenes Totales</p></div>            
+            <!-- <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%">
+                <mat-progress-bar mode="determinate" [color]="color" [value]="length"></mat-progress-bar>    
+            </div>   -->
+        </div>
+        <div fxLayout="row wrap">
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%" align="left">
+                <button mat-raised-button  color="primary">Ver Reporte</button>
+            </div>  
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+        <div fxLayout="row wrap">
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%"><p>Ordenes Canceladas</p></div>            
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%">
+                <mat-progress-bar mode="determinate" [color]="color" [value]="orders_caceled_length"></mat-progress-bar>    
+            </div> 
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%" class="small-desc" align="right">
+                <p>{{orders_caceled_length}}</p>
+            </div>            
+
+        </div>
+
+        <div fxLayout="row wrap">
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%"><p>Ordenes Paypal</p></div>            
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%">
+                <mat-progress-bar mode="determinate" [color]="color" [value]="orders_paypal_length"></mat-progress-bar>    
+            </div> 
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%" class="small-desc" align="right">
+                <p>{{orders_paypal_length}}</p>
+            </div> 
+        </div>
+
+        <div fxLayout="row wrap">
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%"><p>Ordenes Pago Contra Entrega</p></div>            
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%">
+                <mat-progress-bar mode="determinate" [color]="color" [value]="orders_money_length"></mat-progress-bar>    
+            </div> 
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="30%" class="small-desc" align="right">
+                <p>{{orders_money_length}}</p>
+            </div> 
+        </div>
+          
+
+       
+       <!--  <canvas baseChart class="chart"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>  -->
+    </mat-card-content>
+
+</mat-card>

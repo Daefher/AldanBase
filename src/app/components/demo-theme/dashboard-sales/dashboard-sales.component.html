@@ -1,0 +1,24 @@
+<app-nav-demo-theme></app-nav-demo-theme>
+<div class="wrapper">
+    <div class="content">
+      <div fxLayout="column" fxLayoutGap="16px grid" fxLayoutAlign="space-evenly" >
+        <div fxLayout="row wrap" fxLayoutGap="16px grid"  fxLayoutAlign="space-evenly center"  >
+          <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="100%">
+            <app-general-info [company] = "company"></app-general-info>           
+          </div>
+          <div fxFlex="70%" fxFlex.xs="100%" fxFlex.sm="100%">
+            <app-sales-info [company] = "company"></app-sales-info>
+          </div>
+        </div>
+     
+      <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="space-evenly center"   >
+          <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+            <app-sales-info-active-only [company] = "company"></app-sales-info-active-only>
+          </div>
+          <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+            <app-orders-info [company] = "company"></app-orders-info>
+          </div>
+        </div>
+    </div>
+     
+</div>
