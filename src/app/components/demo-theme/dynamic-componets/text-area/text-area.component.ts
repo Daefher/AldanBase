@@ -16,6 +16,7 @@ export class TextAreaComponent implements OnInit {
 
   @Input() CurrentPage: any[];
   @Input() Block: number;
+  
 
   public companyPageData :CompanyPageData;
   public data_loaded = false;
@@ -53,9 +54,9 @@ export class TextAreaComponent implements OnInit {
 
   editCompanyDialog():void {
     const dialogRefCompany = this.dialog.open(TextFormEditComponent, {
-      maxWidth: '480px',
+      maxWidth: '680px',
       maxHeight: '640px',
-      minWidth: "380px",
+      minWidth: "480px",
       data: {companyPageData: this.companyPageData, block: this.Block},
     });
 

@@ -7,6 +7,8 @@ import { CompanyPageData } from '../../../../../interfaces/CompanyPage/company-p
 import { CompanyService } from '../../../../../services/demo-company/company.service';
 import { AuthenticationService } from '../../../../../services/demo-login/authentication.service';
 import { DialogData } from '../../../content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+
 
 @Component({
   selector: 'app-text-form-edit',
@@ -25,6 +27,57 @@ export class TextFormEditComponent implements OnInit {
   public companyPageData :CompanyPageData;
   public loading_edit = false;
 
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      [        
+        'fontName',
+        'superscript',
+        'justifyLeft',
+        'justifyCenter',
+        'justifyRight',
+        'justifyFull',
+        'indent',
+        'outdent',
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'link',
+        'unlink',
+        'insertImage',
+        'insertVideo',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode'
+      ]
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  };
+
   constructor(public dialogRef: MatDialogRef<TextFormEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public companyService : CompanyService,
@@ -32,6 +85,8 @@ export class TextFormEditComponent implements OnInit {
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private overlayContainer: OverlayContainer) { }
+
+
 
   ngOnInit(): void {
 

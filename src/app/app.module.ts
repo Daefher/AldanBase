@@ -4,6 +4,10 @@ import { CommonModule } from "@angular/common";
 
 import { JWTInterceptorInterceptor } from './helpers/jwtinterceptor.interceptor';
 
+//WSYIWYG
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
+
 
 
 //Material
@@ -158,6 +162,7 @@ import { ReportsComponent } from './components/demo-theme/reports/reports.compon
       positionClass: 'toast-bottom-left'
     }), // ToastrModule added
     NgChartsModule,
+    AngularEditorModule,
     FlexLayoutModule,
     AppRoutingModule,
     MatCardModule, 
