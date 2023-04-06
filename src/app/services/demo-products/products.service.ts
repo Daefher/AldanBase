@@ -52,6 +52,13 @@ export class ProductsService {
       )
   }
 
+  getActiveDemand(active): Observable<any[]>{
+    return this.http.get<any[]>(this.api_url + '/GetActiveDemandOfPart', { params: { active: active } })
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   create(post): Observable<ProductInterface> {
 
     return this.http.post<ProductInterface>(this.api_url + '/Insert', JSON.stringify([post]), this.httpOptions)

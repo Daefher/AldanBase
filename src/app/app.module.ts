@@ -92,6 +92,9 @@ import { TextFormEditComponent } from './components/demo-theme/dynamic-componets
 import { DashboardSalesComponent } from './components/demo-theme/dashboard-sales/dashboard-sales.component';
 import { GeneralInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/general-info/general-info.component';
 import { SalesInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/sales-info/sales-info.component';
+import { SalesInfoActiveOnlyComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/sales-info-active-only/sales-info-active-only.component';
+import { OrdersInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/orders-info/orders-info.component';
+import { ReportsComponent } from './components/demo-theme/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -141,6 +144,9 @@ import { SalesInfoComponent } from './components/demo-theme/dashboard-sales/dash
     DashboardSalesComponent,
     GeneralInfoComponent,
     SalesInfoComponent,
+    SalesInfoActiveOnlyComponent,
+    OrdersInfoComponent,
+    ReportsComponent,
     
     
         

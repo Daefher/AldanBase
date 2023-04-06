@@ -11,6 +11,7 @@ export interface OrderInterface {
     canceledBy: number,
     canceledDateTime: string,
     canceled: boolean,
+    closed: boolean,
     cancelable: boolean,
     needByDateTime: string,
     toPlantId: number,
