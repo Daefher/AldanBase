@@ -19,7 +19,8 @@ import {
   CheckoutComponent,
   AdminProductsComponent,
   AboutComponent,
-  DashboardSalesComponent
+  DashboardSalesComponent,
+  ReportsComponent
   
 } from "./components/index.pages";
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
@@ -28,22 +29,23 @@ import { CompanyNameResolver } from './resolvers/company-name/company-name.resol
 
 
 const routes: Routes = [
-  {path : '', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},  
-  {path : 'demo', component:HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},
-  {path : 'demo/demo-login', component:DemoLoginComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
-  {path : 'demo/demo-products', component:ProductsComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
-  {path : 'demo/demo-products/create', component:CreateProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
-  {path : 'demo/demo-products/:partId/view', component: ProductComponent, resolve: { company: CompanyResolver }, pathMatch: 'full'}, 
-  {path : 'demo/demo-products/:partId/update', component: EditProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
-  {path : 'demo/demo-users/:userId/view', component: UserProfileComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
-  {path : 'demo/demo-orders/view', component: SalesOrdersComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
-  {path : 'demo/demo-orders/:orderId/view', component: SalesOrderComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
-  {path : 'demo/demo-cart', component: ShoppingcartComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
-  {path : 'demo/demo-checkout', component: CheckoutComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
-  {path : 'demo/demo-orderconfirmation', component: OrderconfirmationComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
-  {path : 'demo/demo-adminproducts/:userId', component: AdminProductsComponent,resolve: { company: CompanyResolver },canActivate: [AuthGuardGuard],title: CompanyNameResolver},
-  {path : 'demo/demo-about', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},
-  {path : 'demo/demo-salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver}, title: CompanyNameResolver, canActivate:[AuthGuardGuard]}
+  {path : '', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},
+  {path : 'home', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},
+  {path : 'login', component:DemoLoginComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'products', component:ProductsComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'products/create', component:CreateProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'products/:partId/view', component: ProductComponent, resolve: { company: CompanyResolver }, pathMatch: 'full'}, 
+  {path : 'products/:partId/update', component: EditProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'users/:userId/view', component: UserProfileComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'orders/view', component: SalesOrdersComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'orders/:orderId/view', component: SalesOrderComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'cart', component: ShoppingcartComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'checkout', component: CheckoutComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'orderconfirmation', component: OrderconfirmationComponent, resolve: { company: CompanyResolver },title: CompanyNameResolver},
+  {path : 'adminproducts/:userId', component: AdminProductsComponent,resolve: { company: CompanyResolver },canActivate: [AuthGuardGuard],title: CompanyNameResolver},
+  {path : 'about', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},
+  {path : 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver}, title: CompanyNameResolver, canActivate:[AuthGuardGuard]},
+  {path : 'reports', component: ReportsComponent, resolve: { company: CompanyResolver}, title: CompanyNameResolver, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({

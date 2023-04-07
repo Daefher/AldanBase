@@ -99,6 +99,7 @@ import { SalesInfoComponent } from './components/demo-theme/dashboard-sales/dash
 import { SalesInfoActiveOnlyComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/sales-info-active-only/sales-info-active-only.component';
 import { OrdersInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/orders-info/orders-info.component';
 import { ReportsComponent } from './components/demo-theme/reports/reports.component';
+import { ReportsTableComponent } from './components/demo-theme/reports/reports-table/reports-table.component';
 
 @NgModule({
   declarations: [
@@ -151,6 +152,7 @@ import { ReportsComponent } from './components/demo-theme/reports/reports.compon
     SalesInfoActiveOnlyComponent,
     OrdersInfoComponent,
     ReportsComponent,
+    ReportsTableComponent,
     
     
         

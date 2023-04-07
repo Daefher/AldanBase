@@ -71,7 +71,7 @@ export class CreateProductComponent implements OnInit {
     });
 
       // get return url from route parameters or default to '/'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/demo/demo-products/';
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'products/';
   }
 
   get f() {
