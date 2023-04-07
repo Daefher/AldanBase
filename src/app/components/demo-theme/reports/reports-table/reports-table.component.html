@@ -1,0 +1,88 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Administrar Inventario</mat-card-title>
+
+  </mat-card-header>
+  <mat-card-content>
+
+    <!--<div class="mat-elevation-z8">
+
+       <ng-container *ngIf="isLoading">
+        <div style="display: flex; justify-content: center; align-items: center; background: white;">
+          <mat-progress-spinner color="accent" mode="indeterminate">
+          </mat-progress-spinner>
+        </div>
+      </ng-container>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <div fxFlex="75" style="margin-left: 10px;" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="start">
+          <button mat-raised-button class="alterPrimaryBG" *ngIf="authenticationService.currentuser | async"
+            [routerLink]="['/demo/demo-products/create']" (click)="gotoTop()">Crear
+            Producto</button>
+        </div>
+
+        <div fxFlex="25" fxFlex.xs="100%" fxFlex.sm="33%" fxFlexAlign="center">
+          <mat-form-field style="margin-top:25px;" appearance="fill">
+            <mat-label>Filtros</mat-label>
+            <mat-select [(value)]="selected" (selectionChange)="onFilterChange($event.value)">
+              <mat-option *ngFor="let item of cmbOptions" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div> -->
+
+
+
+     <!--  <table mat-table [dataSource]="dataSource">
+
+      
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+
+
+      
+        <ng-container matColumnDef="unitPrice">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let element"> ${{element.unitPrice}} </td>
+        </ng-container>
+
+       
+        <ng-container matColumnDef="onHandQty">
+          <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.onHandQty}} </td>
+        </ng-container>
+
+       
+        <ng-container matColumnDef="createdDateTime">
+          <th mat-header-cell *matHeaderCellDef> Creación </th>
+          <td mat-cell *matCellDef="let element"> {{element.createdDateTime}} </td>
+        </ng-container>
+
+       
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button [routerLink]="['/demo/demo-products', element.partId, 'update' ]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button *ngIf="authenticationService.currentuser | async" mat-button color="warn"
+              (click)="cancelProduct(element?.partId)">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+      </ng-container>
+
+    </div> -->
+  </mat-card-content>
+</mat-card>

@@ -3,6 +3,11 @@
 
 .wrapper {
     margin: 20px;
+    
+}
+
+.bounds{
+    overflow-x: hidden;
 }
 
 .title {
@@ -16,8 +21,10 @@
 
 .content > mat-card {
     margin-bottom: 16px;
+    
 }
 
 .bg-dialog-text{
     min-height: 400px;
 }
+

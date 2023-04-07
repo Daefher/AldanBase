@@ -32,7 +32,7 @@ export class DemoLoginComponent implements OnInit {
   ) {
 
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/demo']);
+      this.router.navigate(['/']);
     }
 
   }
@@ -47,7 +47,7 @@ export class DemoLoginComponent implements OnInit {
     });
     //console.log(this.company.companyId);
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/demo';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields

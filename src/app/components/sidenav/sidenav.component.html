@@ -2,16 +2,18 @@
   <mat-list-option routerLink='/' >
     <span> <mat-icon>home</mat-icon> Inicio</span>
   </mat-list-option>
-  <mat-list-option [routerLink]="['/demo/demo-users', user.systemUserId, 'view' ]"  >        
+  <mat-list-option [routerLink]="['/users', user.systemUserId, 'view' ]"  >        
     <span><mat-icon>perm_contact_calendar</mat-icon> Perfil & Ordenes </span>
   </mat-list-option> 
-  <mat-list-option [routerLink]="['/demo/demo-adminproducts', user.systemUserId ]" >        
+  <mat-list-option [routerLink]="['/adminproducts', user.systemUserId ]" >        
     <span><mat-icon>business_center</mat-icon> Administrar Productos   </span>     
   </mat-list-option>
-  <mat-list-option [routerLink]="['/demo/demo-salesdashboard', user.systemUserId, 'view']" >        
+  <mat-list-option [routerLink]="['/salesdashboard', user.systemUserId, 'view']" >        
     <span><mat-icon>assessment</mat-icon> Informacion de Pedidos </span>     
   </mat-list-option>
-
+  <mat-list-option [routerLink]="['/reports']" >        
+    <span><mat-icon>pie_chart</mat-icon> Reportes </span>     
+  </mat-list-option>
   <mat-list-option (click)="logout()">
   <span><mat-icon class="mr">logout</mat-icon> Salir</span>
   </mat-list-option> 

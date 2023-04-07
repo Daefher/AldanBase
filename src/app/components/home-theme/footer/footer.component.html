@@ -26,7 +26,7 @@
                 </a>
               </mat-list-item>              
               <mat-list-item>
-                <a mat-button routerLink="/demo/demo-login" *ngIf="!(authenticationService.currentuser | async) as user" fxHide.xs> Iniciar Sesión </a>   
+                <a mat-button routerLink="/login" *ngIf="!(authenticationService.currentuser | async) as user" fxHide.xs> Iniciar Sesión </a>   
                      
               </mat-list-item>
             </mat-list>
