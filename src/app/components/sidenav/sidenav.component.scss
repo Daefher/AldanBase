@@ -8,3 +8,46 @@
   .mat-icon {
     vertical-align: middle;
   }
+
+.name {
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+.email {
+    margin-top: 2px;
+    font-size: 0.7rem;
+  
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    
+}
+
+.avatar {
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+
+  mat-icon {
+      margin-right: 8px;
+  }
+}
+
+.userAvatarInfo{
+  text-align: center;
+  width: 100%;
+  color: black;
+}
+
