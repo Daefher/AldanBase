@@ -1,5 +1,8 @@
+@use '@angular/material' as mat;
 @import '@angular/material/theming';
 @import 'styles.scss';
+
+
 @include mat-core();
 /* For use in src/lib/core/theming/_palette.scss */
 $md-mcgpalette0: (
@@ -266,26 +269,40 @@ $md-accent2: (
     )
 );
 
-  
+
 .lamacetita-theme {
     $my-app-primary: mat-palette($md-primary, 500);
     $my-app-accent:  mat-palette($md-accent2, 500);
     /*$my-app-warn:    matP-palette($md-mcgpalette2); */
-    $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
+    $my-app-theme:  mat.define-light-theme((
+            color: (
+            primary: $my-app-primary,
+            accent: $my-app-accent,
+          ),
+          typography: mat.define-typography-config(),
+          density: 0 
+          ));
     $secondPrimary: #cab8c6;
     @include theme-color-grabber($my-app-theme,$secondPrimary, $light-primary-text);
-    @include angular-material-theme($my-app-theme);    
+    @include all-component-themes($my-app-theme);    
 }   
 .aldantech-theme {
     //color : $light-primary-text;
     $macetita-primary: mat-palette($md-mcgpalette3, 500);
     $macetita-accent:  mat-palette($md-mcgpalette0, 500);
     /*$my-app-warn:    mat-palette($md-mcgpalette2); */
-    $macetita-theme: mat-light-theme($macetita-primary, $macetita-accent);
+    $macetita-theme: mat.define-light-theme((
+        color: (
+        primary: $macetita-primary,
+        accent: $macetita-accent,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0 
+      ));
     //$secondPrimary : mat-palette($md-mcgpalette4, 300);
     $secondPrimary : #565a5d;
     @include theme-color-grabber($macetita-theme, $secondPrimary, $light-primary-text);
-    @include angular-material-theme($macetita-theme);
+    @include all-component-themes($macetita-theme);
 }
 
 

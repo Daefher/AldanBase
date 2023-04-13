@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyPageData } from '../../../../interfaces/CompanyPage/company-page-data';
 import { CompanyService } from '../../../../services/demo-company/company.service';

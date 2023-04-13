@@ -15,25 +15,26 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import {MatButtonModule} from '@angular/material/button';;
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
-import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
+import {MatCardModule} from '@angular/material/card';
+
+import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
-import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
-import {MatLegacyProgressSpinnerModule as MatProgressSpinnerModule} from '@angular/material/legacy-progress-spinner';
-import { MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-menu';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
+import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatLegacyPaginatorModule as MatPaginatorModule} from '@angular/material/legacy-paginator';
-import {MatLegacySlideToggleModule as MatSlideToggleModule} from '@angular/material/legacy-slide-toggle';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
-import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
-import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -44,7 +45,9 @@ import { NgChartsModule } from 'ng2-charts';
 import { ToastrModule } from 'ngx-toastr';
 
 //Flex Layout 
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+//import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -165,7 +168,7 @@ import { ReportsTableComponent } from './components/demo-theme/reports/reports-t
     }), // ToastrModule added
     NgChartsModule,
     AngularEditorModule,
-    FlexLayoutModule,
+    //FlexLayoutModule,
     AppRoutingModule,
     MatCardModule, 
     FormsModule,
