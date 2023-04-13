@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="content">
         <div fxLayout="row wrap" fxLayoutGap="16px grid">
-            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="70%">
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
                 <mat-card class="mat-elevation-z4 ">
                     <mat-card-header>
                         <mat-card-title>
@@ -9,8 +9,8 @@
                         </mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
-                        <mat-grid-list cols="6" rowHeight="6:1">
-                            <mat-grid-tile>  </mat-grid-tile>
+                        <mat-grid-list cols="6" rowHeight="6:1" >
+                            <mat-grid-tile >  </mat-grid-tile>
                             <mat-grid-tile><b>Producto</b>  </mat-grid-tile>
                             <mat-grid-tile><b>Cantidad</b>  </mat-grid-tile>
                             <mat-grid-tile> <b>Precio Unitario</b> </mat-grid-tile>
@@ -19,8 +19,8 @@
 
                         </mat-grid-list>
                         <ng-container *ngFor="let product of shopCartItems">
-                            <mat-grid-list cols="6" rowHeight="6:2">
-                                <mat-grid-tile> <img class="img-size-cart" src="{{image_path+product.imageFile}}"> </mat-grid-tile>
+                            <mat-grid-list cols="6" rowHeight="6:2" >
+                                <mat-grid-tile  fxFlex.sm="50%"> <img class="img-size-cart" src="{{image_path+product.imageFile}}"> </mat-grid-tile>
                                 <mat-grid-tile> {{product.name}} </mat-grid-tile>                               
                                 <mat-grid-tile> 
                                     <mat-form-field appearance="fill" floatLabel="always" style="width: 80px;">                                        
@@ -43,7 +43,7 @@
         </div>
         <br>
         <div fxLayout="row wrap" fxLayoutGap="16px grid">
-            <div fxFlex="100%" fxFlex.xs="70%" fxFlex.sm="70%">
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
                 <mat-card class="mat-elevation-z4 ">
                     <mat-card-header  >
                        
@@ -70,6 +70,8 @@
 
     </div>
 </div>
+
+
 
 <!-- <div class="table-responsive" style="margin-top: 10px;" id="divdtTickets">
             <table id="dtTickets" class="table table-condensed table-striped table-bordered">
