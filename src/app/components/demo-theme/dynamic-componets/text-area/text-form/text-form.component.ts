@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { ToastrService, OverlayContainer } from 'ngx-toastr';
 import { CompanyPageData } from '../../../../../interfaces/CompanyPage/company-page-data';
 import { CompanyService } from '../../../../../services/demo-company/company.service';
