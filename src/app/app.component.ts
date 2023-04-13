@@ -45,7 +45,10 @@ export class AppComponent {
       //.pipe(event => event instanceof NavigationEnd)
       .subscribe(() => {      
         this.loading = false; 
-        this.companyService.getCurrentCompany().subscribe( data =>{
+       //this.companyService.getCompanyByHostNameResolver("aldantech.tk")
+        this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
+        //this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe( data =>{
+
           this.company = data;
           //console.log("DATA",data);
         }) 
