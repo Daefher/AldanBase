@@ -6,23 +6,23 @@
   </div>
   <mat-divider></mat-divider>
 
-  <mat-list-option routerLink='/'  class="menu-button">
+  <mat-list-item routerLink='/'  class="menu-button">
     <span> <mat-icon>home</mat-icon> Inicio</span>
-  </mat-list-option>
-  <mat-list-option [routerLink]="['/users', user.systemUserId, 'view' ]"  class="menu-button" >        
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/users', user.systemUserId, 'view' ]"  class="menu-button" >        
     <span><mat-icon>perm_contact_calendar</mat-icon> Perfil & Ordenes </span>
-  </mat-list-option> 
-  <mat-list-option [routerLink]="['/adminproducts', user.systemUserId ]" class="menu-button" >        
+  </mat-list-item> 
+  <mat-list-item [routerLink]="['/adminproducts', user.systemUserId ]" class="menu-button" >        
     <span><mat-icon>business_center</mat-icon> Administrar Productos   </span>     
-  </mat-list-option>
-  <mat-list-option [routerLink]="['/salesdashboard', user.systemUserId, 'view']" class="menu-button" >        
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/salesdashboard', user.systemUserId, 'view']" class="menu-button" >        
     <span><mat-icon>assessment</mat-icon> Informacion de Pedidos </span>     
-  </mat-list-option>
-  <mat-list-option  class="menu-button disabled">        
+  </mat-list-item>
+  <mat-list-item  class="menu-button disabled">        
     <span><mat-icon>pie_chart</mat-icon> Reportes </span>     
-  </mat-list-option>
-  <mat-list-option (click)="logout()" class="menu-button">
+  </mat-list-item>
+  <mat-list-item (click)="logout()" class="menu-button">
   <span><mat-icon class="mr">logout</mat-icon> Salir</span>
-  </mat-list-option> 
+  </mat-list-item> 
 </mat-selection-list>
 

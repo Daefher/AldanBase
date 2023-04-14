@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
-import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
+import {  PageEvent } from '@angular/material/paginator';
 
 
 

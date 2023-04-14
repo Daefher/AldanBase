@@ -46,6 +46,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 //Flex Layout 
 //import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 
@@ -168,7 +170,7 @@ import { ReportsTableComponent } from './components/demo-theme/reports/reports-t
     }), // ToastrModule added
     NgChartsModule,
     AngularEditorModule,
-    //FlexLayoutModule,
+    FlexLayoutModule,
     AppRoutingModule,
     MatCardModule, 
     FormsModule,

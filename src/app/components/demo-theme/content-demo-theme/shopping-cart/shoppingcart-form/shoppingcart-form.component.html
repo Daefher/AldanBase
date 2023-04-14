@@ -1,10 +1,5 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <div class="content">
-        <div fxLayout="row wrap" fxLayoutGap="16px grid">
-
-        </div>
-
-
         <div >
             <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%">
                 <mat-card class="mat-elevation-z4 ">
@@ -75,42 +70,58 @@
 
     </div>
 </div>
+ -->
+<div class="wrapper-cart">
 
 
+  <div class="shopping-cart cScrollbar">
+    <div class="title">
+      Carrito
+    </div>
+    <ng-container *ngFor="let product of shopCartItems">
+        <!-- Start Item section -->
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn" *ngIf="this.showControls"><mat-icon (click)="removeProduct(product)">close</mat-icon></span>
+        </div>
+        <div class="image">
+          <img class="img-size-cart" src="{{image_path+product.imageFile}}" alt="">
+        </div>
+        <div class="description">
+          <span>{{product.name}}</span>
+        </div>
+        <div class="quantity">
+            <input matInput  type="number" [disabled] = '!this.showControls' id="cartQty" name="cartQty"   min="1" #cartQty value="{{product?.quantity}}" (change)="onQtyChange(product, cartQty.value)" >
+ 
+        </div>
+       <!--  <div class="unit-price">
+            {{product.unitPrice | currency: 'MXN'}}
+        </div> -->
 
-<!-- <div class="table-responsive" style="margin-top: 10px;" id="divdtTickets">
-            <table id="dtTickets" class="table table-condensed table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width: 20%;"></th>
-                        <th scope="col" >Producto</th>                                
-                        <th scope="col" >Cantidad</th>
-                        <th scope="col" >Precio Unitario</th>
-                        <th scope="col" >Total</th>
-                        <th  scope="col" style="width: 20%;" *ngIf="this.showControls"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let product of shopCartItems">
-                        <th scope="row"><img class="img-fluid img-size-cart" src="{{image_path + product.imageFile}}" alt="solfishbox trio" style="height: 150px;"></th>
-                        <td>{{product.name}}</td>
-                        <td><input [disabled] = '!this.showControls' id="cartQty" name="cartQty"  min="1" type="number" #cartQty value="{{product.quantity}}" (change)="onQtyChange(product, cartQty.value)" style="width: 40px;"></td>
-                        <td>{{product.unitPrice}}.00 MXN</td>                      
-                        <td>{{product.total}}.00 MXN</td>               
-                        <td *ngIf="this.showControls"><span class="ion-ios-trash trash-btn" (click)="removeProduct(product)"></span></td>               
-                    </tr>
-                </tbody>
-                 <tfoot>
-                    <tr>
-                        <th></th>
-                        <th>Producto</th>
-                        <th>Precio Unitario</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </tfoot> 
-            </table>
-            <td colspan="2" *ngIf="shopCartItems == null ? true : (shopCartItems.length == 0 ? true : false)"> 
-                No hay productos en el carrito.
-            </td>
-        </div>-->
-        
+        <div class="total-price">
+            {{product.total | currency: 'MXN'}} 
+        </div>       
+
+      </div>      
+    </ng-container>
+       <!-- End Item section -->
+    <ng-container  *ngIf='shopCartItems.length == 0'> 
+        <div class="no-item">No hay productos en el carrito.</div> 
+    </ng-container>
+
+    <div class="cart-footer">
+        <div class="total-parts-qty">
+         
+         <span> Total de artículos: {{this.numberOfElements}}</span>  
+        </div>
+        <div class="tax">
+            IVA:
+        </div>
+        <div class="cart-total-price">
+            Total de la compra: {{this.sumOfCart}}.00 MXN
+        </div>
+  </div>
+  </div>
+
+  
+</div>

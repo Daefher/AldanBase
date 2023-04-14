@@ -119,3 +119,29 @@ mat-card {
 .disabled {
   color: grey !important;
 }
+
+
+/*
+ *  STYLE 1
+ */
+
+ .cScrollbar::-webkit-scrollbar-track
+ {
+   
+   border-radius: 10px;
+   background-color: #F5F5F5;
+ }
+ 
+ .cScrollbar::-webkit-scrollbar
+ {
+   width: 12px;
+   background-color: #F5F5F5;
+ }
+ 
+ .cScrollbar::-webkit-scrollbar-thumb
+ {
+   border-radius: 10px;
+   
+   background-color: #c7c7c7;
+ }
+ 
