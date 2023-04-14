@@ -6,6 +6,7 @@ import { company_id } from './globals';
 import { CompanyInterface } from './interfaces/company-interface';
 import { CompanyService } from './services/demo-company/company.service';
 import { AuthenticationService } from './services/demo-login/authentication.service';
+import * as globals from './globals';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,8 @@ export class AppComponent {
   current_theme : any;
   public company :CompanyInterface;
   @HostBinding('class') componentCssClass;
+  favIcon: HTMLLinkElement = document.querySelector('#appFavicon');
+
  
   constructor(
       private router :  Router,
@@ -50,6 +53,8 @@ export class AppComponent {
         //this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe( data =>{
 
           this.company = data;
+         
+          this.favIcon.href = globals.img_path + this.company[0].companyId + '/favicon.ico';
           //console.log("DATA",data);
         }) 
         document.querySelector('.mat-drawer-content ')!.scroll({ 
