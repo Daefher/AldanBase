@@ -41,6 +41,7 @@ export class AppComponent {
     
     //this.companyService.findBy();
     this.current_theme =  this.themeService.company_themePicket;
+    this.company_host_name = window.location.hostname;
    
     this.router.events
       // For newer versions or rxjs use a pipe on the filter:

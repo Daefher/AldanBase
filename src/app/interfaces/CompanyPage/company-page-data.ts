@@ -8,6 +8,8 @@ export interface CompanyPageData {
     sectionSubtitle: string,
     sectionDescription: string,
     sectionPosition: string,   
+    sectionFontColor : string,
+    sectionBGColor : string,
     sectionCss :boolean,
     canceledBy: number,
     canceledDateTime: string,

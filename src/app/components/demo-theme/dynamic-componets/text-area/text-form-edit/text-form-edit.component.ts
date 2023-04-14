@@ -27,6 +27,8 @@ export class TextFormEditComponent implements OnInit {
   public companyPageData :CompanyPageData;
   public loading_edit = false;
 
+
+
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -140,6 +142,9 @@ export class TextFormEditComponent implements OnInit {
       cancelable: [PageData?.cancelable],
     });
   }
+
+
+ 
 
   onNoClick(): void {
     this.dialogRef.close();    

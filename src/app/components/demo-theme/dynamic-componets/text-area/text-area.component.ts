@@ -22,18 +22,24 @@ export class TextAreaComponent implements OnInit {
   public data_loaded = false;
   user :any;
   public has_class : boolean;
+  public background_color : string;
+  public color: string = "#ffffff";
+
+  logs: Array<Array<any>> = [];
+
 
   constructor(
     private companyService: CompanyService,
     public dialog: MatDialog,
     public authenticationService : AuthenticationService,
     private toastr: ToastrService,
-    private renderer: Renderer2
-
+    private renderer: Renderer2,
+   
 
   ) { }
 
   ngOnInit(): void {
+    this.background_color = 'background-color : ' + this.color;
 
     //let pageData = this.PageData;
     //console.log(this.PageData);
@@ -51,6 +57,15 @@ export class TextAreaComponent implements OnInit {
 
 
   }
+
+
+  
+  public logEvent(event, trigger) {
+    this.logs.unshift([this.logs.length + 1, trigger, event]);
+    console.log(this.logs);
+  }
+
+
 
   editCompanyDialog():void {
     const dialogRefCompany = this.dialog.open(TextFormEditComponent, {
@@ -98,22 +113,55 @@ export class TextAreaComponent implements OnInit {
 
   }
 
-  public changeColor(companyPageDataInfo : CompanyPageData){
+  
+
+  savePageData(pageDataInfo){
+    this.companyService.updateCompanyPageData(pageDataInfo).subscribe(resp => {      
+       this.toastr.success("Color seleccionado", "Exito");     
+     },
+     error => {
+       this.toastr.error("Error", error);
+       //this.loading = false;
+     });
+  }
+  public changeColor(event, trigger,companyPageDataInfo : CompanyPageData){
 
     //this.has_class = !this.has_class;
 
-    companyPageDataInfo.sectionCss = !companyPageDataInfo.sectionCss; 
+    //companyPageDataInfo.sectionCss = !companyPageDataInfo.sectionCss; 
+
+    switch (trigger) {
+      case 'BGColor':
+        if( companyPageDataInfo.sectionBGColor != event && event != null){
+          companyPageDataInfo.sectionBGColor = event;
+          this.savePageData(companyPageDataInfo);
+        }
+        
+
+
+        break;
+      case 'FontColor':
+        if( companyPageDataInfo.sectionFontColor != event && event != null){
+           companyPageDataInfo.sectionFontColor = event;
+           this.savePageData(companyPageDataInfo);
+        }
+        break;
+    
+      default:
+        break;
+    }
+    
 
 
 
-    this.companyService.updateCompanyPageData(companyPageDataInfo).subscribe(resp => {
-    if(companyPageDataInfo.sectionCss)
+   /*  this.companyService.updateCompanyPageData(companyPageDataInfo).subscribe(resp => {
+     if(companyPageDataInfo.sectionCss)
       this.toastr.success("Color seleccionado", "Exito");     
     },
     error => {
       this.toastr.error("Error", error);
       //this.loading = false;
-    });
+    }); */
 
   }
 

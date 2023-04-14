@@ -8,6 +8,11 @@ import { JWTInterceptorInterceptor } from './helpers/jwtinterceptor.interceptor'
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
+//Color Picker
+import { NgxColorsModule } from 'ngx-colors';
+
+
+
 
 
 //Material
@@ -35,6 +40,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 
 
@@ -168,6 +174,7 @@ import { ReportsTableComponent } from './components/demo-theme/reports/reports-t
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left'
     }), // ToastrModule added
+    NgxColorsModule,
     NgChartsModule,
     AngularEditorModule,
     FlexLayoutModule,
