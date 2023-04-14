@@ -41,6 +41,13 @@ export class CartService {
     return this.totalCost.asObservable();
   }
 
+  /**
+   * 
+   * @param item ProductInterface the product desire to update
+   * @param overrideQty Boolean That tells if the quantity is changed
+   * @returns boolean
+   */
+
   public updateLSCartPart(item: ProductInterface, overrideQty){
     var cart = localStorage.getItem(globals.cartId);
     if(cart != null)
@@ -60,7 +67,7 @@ export class CartService {
           this.updatePart(cartParsed, item.partId, item.quantity);
       }
       
-      //cartParsed.push(item);
+     
       this.totalCost.next(cartParsed.length);
       this.setLSCart(cartParsed);
     }
