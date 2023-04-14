@@ -14,6 +14,7 @@ export class FooterComponent implements OnInit {
   public user;
   @Input() company : CompanyInterface;
   public cpny : any;
+  protected company_host_name : string;
 
   public year : number;
   constructor(
@@ -32,7 +33,9 @@ export class FooterComponent implements OnInit {
     
     
     if(!this.company){
-      this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
+      this.company_host_name = window.location.hostname;
+      this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe( data =>{
+      //this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
         this.cpny = data[0];     
         console.log("footer: ",this.cpny);     
       })
