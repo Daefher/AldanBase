@@ -127,7 +127,7 @@ export class BannerComponent implements OnInit {
     this.image_file = reader.result;
     this.form.controls.filePath.setValue(this.image_file);
     
-    console.log(this.form.value)
+    //console.log(this.form.value)
   }
 
   onNoClick(): void {

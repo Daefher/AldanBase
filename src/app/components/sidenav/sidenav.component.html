@@ -18,8 +18,8 @@
   <mat-list-item [routerLink]="['/salesdashboard', user.systemUserId, 'view']" class="menu-button" >        
     <span><mat-icon>assessment</mat-icon> Informacion de Pedidos </span>     
   </mat-list-item>
-  <mat-list-item  class="menu-button disabled">        
-    <span><mat-icon>pie_chart</mat-icon> Reportes </span>     
+  <mat-list-item  class="menu-button">        
+    <span class="disabled"><mat-icon>pie_chart</mat-icon> Reportes </span>     
   </mat-list-item>
   <mat-list-item (click)="logout()" class="menu-button">
   <span><mat-icon class="mr">logout</mat-icon> Salir</span>

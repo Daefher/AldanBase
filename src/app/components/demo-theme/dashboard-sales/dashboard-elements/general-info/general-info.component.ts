@@ -54,7 +54,7 @@ export class GeneralInfoComponent implements OnInit {
       this.orders_money_length = this.orders_money.length;
       
       this.loading = false;
-      console.log(this.orders);
+      //console.log(this.orders);
 
     },
       err => {

@@ -37,11 +37,11 @@ export class FooterComponent implements OnInit {
       this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe( data =>{
       //this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
         this.cpny = data[0];     
-        console.log("footer: ",this.cpny);     
+        //console.log("footer: ",this.cpny);     
       })
     }else{
       this.cpny = this.company[0];
-      console.log("footer: ",this.cpny);
+      //console.log("footer: ",this.cpny);
     }
 
     this.year = new Date().getFullYear();
