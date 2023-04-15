@@ -18,7 +18,8 @@ import { CompanyService } from '../../services/demo-company/company.service';
 export class CompanyResolver implements Resolve<any> {
 
   public company_host_name :string;
-  private company :CompanyInterface
+  private company :CompanyInterface;
+
   constructor(
     private router: Router,
     private companyService: CompanyService,

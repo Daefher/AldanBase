@@ -2,8 +2,8 @@
 <div class="main-div">
   <mat-card class="mat-card-class">
     <h2>Agregar Producto</h2>
-    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
-      <form class="example-form" [formGroup]='createProductForm' (ngSubmit)='onSubmit()'>
+     <mat-card-content> 
+      <form class="form-wrapper"  [formGroup]='createProductForm' (ngSubmit)='onSubmit()'>
         <input type="hidden" [hidden]="true" formControlName="UomClassId" [ngModel]="1">
         <input type="hidden" [hidden]="true" formControlName="UomId" [ngModel]="2">
         <input type="hidden" [hidden]="true" formControlName="CreatedDateTime">
