@@ -43,8 +43,8 @@ export class EditCompanyDialogComponent implements OnInit {
   ngOnInit(): void {
     const hostname = window.location.hostname;
     globals.chooseTheme(hostname, this.overlayContainer);
-
-    this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
+    this.companyService.getCompanyByHostNameResolver(hostname).subscribe((response: any) => {
+    //this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
       this.company = response[0];    
       //console.log(response);
       this.mapFormGroup();   

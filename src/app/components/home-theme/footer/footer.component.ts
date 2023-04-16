@@ -35,7 +35,6 @@ export class FooterComponent implements OnInit {
     if(!this.company){
       this.company_host_name = window.location.hostname;
       this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe( data =>{
-      //this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
         this.cpny = data[0];     
         //console.log("footer: ",this.cpny);     
       })

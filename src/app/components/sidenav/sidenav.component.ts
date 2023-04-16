@@ -39,8 +39,8 @@ export class SidenavComponent implements OnInit   {
 
     if(!this.company){
       this.company_host_name = window.location.hostname;
-      //this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe( data =>{
-      this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
+      this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe( data =>{
+      //this.companyService.getCompanyByHostNameResolver("aldantech.tk").subscribe( data =>{
         this.company = data[0];    
         this.image_path = globals.img_path +  this.company.companyId +'/'+this.company.name.toLowerCase().replace(/\s/g, '')+'logo.jpg'; 
         //console.log(this.image_path);

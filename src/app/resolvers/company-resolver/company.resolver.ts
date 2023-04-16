@@ -38,11 +38,9 @@ export class CompanyResolver implements Resolve<any> {
       
       //this.themeService.setTheme(this.company_host_name);
       this.chooseTheme(this.company_host_name);
-      //this.chooseTheme('lamacetita.tk');
-      
+      //this.chooseTheme('lamacetita.tk');     
 
-    //return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
-    return this.companyService.getCompanyByHostNameResolver("aldantech.tk").pipe(
+    return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
       catchError(error => {
         return of('No data');
       })

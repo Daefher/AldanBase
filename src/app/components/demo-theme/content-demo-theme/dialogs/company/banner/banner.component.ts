@@ -51,9 +51,9 @@ export class BannerComponent implements OnInit {
     )
    
 
-    this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
+    /* this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
       this.company = response[0];    
-     });
+     }); */
 
     this.initForm();
     
