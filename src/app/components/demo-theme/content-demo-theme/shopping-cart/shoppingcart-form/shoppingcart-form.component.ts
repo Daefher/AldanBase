@@ -73,7 +73,7 @@ export class ShoppingcartFormComponent implements OnInit {
 
     product.quantity = Number(newValue);
     product.total = product.quantity * product.unitPrice;
-    this.cartService.addToLSCart(product, true);
+    this.cartService.updateLSCartPart(product, true);
     var cart = localStorage.getItem(globals.cartId);
     let tempCart = this.getCurrentCartFromStorage();
     //get freshly updated cart from local storage

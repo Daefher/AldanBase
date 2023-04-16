@@ -18,13 +18,13 @@
     <div class="content" fxLayoutGap="5px grid"> 
 
       <ng-container *ngIf="!image_banner?.image">
-        <div  fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%">
+        <div  fxFlex="15%" fxFlex.xs="100%" fxFlex.sm="33%">
           <button mat-raised-button color="accent"   (click)="openDialog()">Agregar Banner</button>
         </div>
       </ng-container>
    
       <ng-container *ngIf="image_banner?.image">
-          <div   fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%">
+          <div   fxFlex="15%" fxFlex.xs="100%" fxFlex.sm="33%">
             <button mat-raised-button color="accent"   (click)="openEditDialog()">Editar Banner</button>
           </div>
       </ng-container>

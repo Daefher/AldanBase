@@ -29,6 +29,8 @@ export class TextFormComponent implements OnInit {
   public loading_edit = false;
 
 
+
+
   
 
   constructor( public dialogRef: MatDialogRef<TextFormComponent>,
@@ -37,7 +39,8 @@ export class TextFormComponent implements OnInit {
     public authenticationService : AuthenticationService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
-    private overlayContainer: OverlayContainer) { }
+    private overlayContainer: OverlayContainer,
+    ) { }
 
   ngOnInit(): void {
 
@@ -53,7 +56,7 @@ export class TextFormComponent implements OnInit {
     }else {
       this.CurrentPage = this.data['companyPage'];
       this.block = this.data['block'];
-      console.log(this.CurrentPage);
+      //console.log(this.CurrentPage);
       this.initForm(this.companyPageData);
     }
 
@@ -62,6 +65,7 @@ export class TextFormComponent implements OnInit {
     this.dialogRef.close();    
   }
 
+ 
   onSubmit(){
     this.submitted = true;
    

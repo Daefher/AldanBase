@@ -1,5 +1,9 @@
 .toggle-btn{
-    margin-right: 15px;;
+    margin: 15px;;
+}
+
+.space_between {
+    margin: auto 15px auto 15px;
 }
 
 
@@ -7,8 +11,28 @@
     margin: 20px;
 }
 
-.title {
+.top-controls{
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+
+
+}
+
+
+.controls-sec{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.title{
     text-align: center;
+}
+
+.title-darkBG{
+    text-align: center;
+    color: white;
 }
 
 .content {

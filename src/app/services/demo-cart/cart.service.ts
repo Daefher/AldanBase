@@ -41,6 +41,46 @@ export class CartService {
     return this.totalCost.asObservable();
   }
 
+  /**
+   * 
+   * @param item ProductInterface the product desire to update
+   * @param overrideQty Boolean That tells if the quantity is changed
+   * @returns boolean
+   */
+
+  public updateLSCartPart(item: ProductInterface, overrideQty){
+    var cart = localStorage.getItem(globals.cartId);
+    if(cart != null)
+    {
+      var cartParsed : ProductInterface[] = JSON.parse(cart);
+
+      //Check if product exists in cart
+      var result = cartParsed.filter((obj) => {
+        return obj.partId === item.partId;
+      });
+
+      if(result.length > 0){
+        if(!overrideQty)
+          item.quantity += result[0].quantity;
+        
+          //Update the existing element
+          this.updatePart(cartParsed, item.partId, item.quantity);
+      }
+      
+     
+      this.totalCost.next(cartParsed.length);
+      this.setLSCart(cartParsed);
+    }
+    else
+    {
+      var productCart : ProductInterface[] = [item];
+      this.totalCost.next(1);
+      this.setLSCart(productCart);
+    }
+
+    return true;
+  }
+
   public addToLSCart(item: ProductInterface, overrideQty: boolean){
     var cart = localStorage.getItem(globals.cartId);
 
@@ -116,6 +156,15 @@ export class CartService {
     localStorage.setItem(globals.cartId, cartJson);
   }
 
+
+  private updatePart(currentCart: ProductInterface[], partId: number, quantity){
+    currentCart.forEach((element,index)=>{
+      if(element.partId == partId) {
+          element.quantity = quantity;
+        }
+    });
+    return currentCart;
+  }
   private removePart(currentCart: ProductInterface[], partId: number){
     currentCart.forEach((element,index)=>{
       if(element.partId == partId) {

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {  MatDialogRef,  MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService, OverlayContainer } from 'ngx-toastr';
 import { CompanyPage } from '../../../../../interfaces/CompanyPage/company-page';
 import { CompanyPageData } from '../../../../../interfaces/CompanyPage/company-page-data';
@@ -26,6 +26,8 @@ export class TextFormEditComponent implements OnInit {
   public user;
   public companyPageData :CompanyPageData;
   public loading_edit = false;
+
+
 
   config: AngularEditorConfig = {
     editable: true,
@@ -140,6 +142,9 @@ export class TextFormEditComponent implements OnInit {
       cancelable: [PageData?.cancelable],
     });
   }
+
+
+ 
 
   onNoClick(): void {
     this.dialogRef.close();    

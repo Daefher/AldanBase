@@ -8,6 +8,11 @@ import { JWTInterceptorInterceptor } from './helpers/jwtinterceptor.interceptor'
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
+//Color Picker
+import { NgxColorsModule } from 'ngx-colors';
+
+
+
 
 
 //Material
@@ -15,17 +20,18 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
+import {MatButtonModule} from '@angular/material/button';;
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatInputModule } from '@angular/material/input';
+import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatMenuModule} from '@angular/material/menu';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -37,6 +43,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
+
 //charts
 import { NgChartsModule } from 'ng2-charts';
 
@@ -44,7 +51,11 @@ import { NgChartsModule } from 'ng2-charts';
 import { ToastrModule } from 'ngx-toastr';
 
 //Flex Layout 
+//import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -163,6 +174,7 @@ import { ReportsTableComponent } from './components/demo-theme/reports/reports-t
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left'
     }), // ToastrModule added
+    NgxColorsModule,
     NgChartsModule,
     AngularEditorModule,
     FlexLayoutModule,

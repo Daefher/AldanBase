@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import {  MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyFile } from '../../../../../../interfaces/company-file';
@@ -51,9 +51,9 @@ export class BannerComponent implements OnInit {
     )
    
 
-    this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
+    /* this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
       this.company = response[0];    
-     });
+     }); */
 
     this.initForm();
     
@@ -127,7 +127,7 @@ export class BannerComponent implements OnInit {
     this.image_file = reader.result;
     this.form.controls.filePath.setValue(this.image_file);
     
-    console.log(this.form.value)
+    //console.log(this.form.value)
   }
 
   onNoClick(): void {

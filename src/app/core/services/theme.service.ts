@@ -12,7 +12,7 @@ export class ThemeService {
 
   setTheme(CurrentTheme:string) {
     this.company_theme.next(CurrentTheme+"-theme");
-    console.log(CurrentTheme+"-theme");
+    //console.log(CurrentTheme+"-theme");
   }
   
 

@@ -7,7 +7,7 @@ import * as globals from '../../../../globals';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from '../../../../services/demo-user/users.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog,  MatDialogRef,  MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../dialogs/edit-user-dialog/edit-user-dialog.component';
 import { UserDataInterface } from '../../../../interfaces/user-data-interface';
 import { Observable } from 'rxjs';

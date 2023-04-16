@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import {  MatDialog } from '@angular/material/dialog';
 import { ChartConfiguration, ChartData, ChartEvent, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective, ThemeService } from 'ng2-charts';
 import { ToastrService } from 'ngx-toastr';

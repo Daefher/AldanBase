@@ -18,7 +18,8 @@ import { CompanyService } from '../../services/demo-company/company.service';
 export class CompanyResolver implements Resolve<any> {
 
   public company_host_name :string;
-  private company :CompanyInterface
+  private company :CompanyInterface;
+
   constructor(
     private router: Router,
     private companyService: CompanyService,
@@ -36,12 +37,10 @@ export class CompanyResolver implements Resolve<any> {
       //this.chooseCompany(this.company_host_name);
       
       //this.themeService.setTheme(this.company_host_name);
-      //this.chooseTheme(this.company_host_name);
       this.chooseTheme(this.company_host_name);
-      
+      //this.chooseTheme('lamacetita.tk');     
 
-    //return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
-    return this.companyService.getCompanyByHostNameResolver("aldantech.tk").pipe(
+    return this.companyService.getCompanyByHostNameResolver(this.company_host_name).pipe(
       catchError(error => {
         return of('No data');
       })

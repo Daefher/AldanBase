@@ -49,19 +49,32 @@ export class UsersService {
     
   }
 
+ /**
+  * This Function get the current values from the user log in, if no user found returns null
+  */
   get getCurrentUserInfo(){
     var curUserVal = this.currentUserValue; 
+    try {
+      if(curUserVal){
+        this.getUserInfo(curUserVal.systemUserId).subscribe((data)=> {      
+          this.user_data_info = data[0];
+          //console.log("data",data[0]);
+          this.currentUserInfo.next(data[0]);
+          //console.log("currentUserInfo", this.currentUserInfo);
+        },
+        err =>{
+            this.currentUserInfo.next(null);
+            //console.log("error");
+        });
+      }else {
+        return undefined;
+      }
+     
+    } catch (error) {
+      console.log(error);
+    }
 
-    this.getUserInfo(curUserVal.systemUserId).subscribe((data)=> {      
-      this.user_data_info = data[0];
-      //console.log("data",data[0]);
-      this.currentUserInfo.next(data[0]);
-      //console.log("currentUserInfo", this.currentUserInfo);
-    },
-    err =>{
-        this.currentUserInfo.next(null);
-        //console.log("error");
-    });
+   
 
     return this.currentUserInfo.asObservable();
   }

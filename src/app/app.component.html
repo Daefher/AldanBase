@@ -24,13 +24,11 @@
 
   <div class="example-sidenav-content" *ngIf="!loading">
     <router-outlet></router-outlet>
-
-
   </div>
 
-  <div fxFlex="none">
-    <app-footer [company]="company" *ngIf="!loading"></app-footer>
-  </div>
+ 
+  <app-footer [company]="company" *ngIf="!loading"></app-footer>
+
 
 
 </mat-drawer-container>

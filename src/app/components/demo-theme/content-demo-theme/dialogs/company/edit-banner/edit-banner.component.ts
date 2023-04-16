@@ -46,7 +46,7 @@ export class EditBannerComponent implements OnInit {
       if(response.length > 0){
         this.mapForm(response[0]);
         this.post_data = response[0];
-        console.log(response)
+        //console.log(response)
       }
      
      

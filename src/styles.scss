@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'ngx-toastr/toastr';
 
+@import './flex_comp.scss';
+
 // Define a custom mixin that takes in the current theme
 @mixin theme-color-grabber($theme, $alterPrimary, $textColor) {
   // Parse the theme and create variables for each color in the pallete
@@ -116,4 +118,57 @@ mat-card {
 
 .disabled {
   color: grey !important;
+}
+
+
+/*
+ *  STYLE 1
+ */
+
+ .cScrollbar::-webkit-scrollbar-track
+ {
+   
+   border-radius: 10px;
+   background-color: #F5F5F5;
+ }
+ 
+ .cScrollbar::-webkit-scrollbar
+ {
+   width: 12px;
+   background-color: #F5F5F5;
+ }
+ 
+ .cScrollbar::-webkit-scrollbar-thumb
+ {
+   border-radius: 10px;
+   
+   background-color: #c7c7c7;
+ }
+ 
+
+ /* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

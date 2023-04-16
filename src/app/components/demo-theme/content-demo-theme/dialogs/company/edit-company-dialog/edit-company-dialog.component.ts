@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef,  MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../../../../../../services/demo-company/company.service';
 import { EditUserDialogComponent } from '../../edit-user-dialog/edit-user-dialog.component';
@@ -43,8 +43,8 @@ export class EditCompanyDialogComponent implements OnInit {
   ngOnInit(): void {
     const hostname = window.location.hostname;
     globals.chooseTheme(hostname, this.overlayContainer);
-
-    this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
+    this.companyService.getCompanyByHostNameResolver(hostname).subscribe((response: any) => {
+    //this.companyService.getCompanyByHostNameResolver('aldantech.tk').subscribe((response: any) => {
       this.company = response[0];    
       //console.log(response);
       this.mapFormGroup();   

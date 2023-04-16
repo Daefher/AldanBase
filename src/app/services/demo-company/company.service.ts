@@ -53,7 +53,7 @@ export class CompanyService {
   
   getCompanyByHostNameResolver(hostname): Observable<CompanyInterface> {
     if(hostname =="localhost"){
-      hostname = "soxela";
+      hostname = "aldantech.tk";
     }
     return this.http.get<CompanyInterface>(this.api_url + '/GetByHostName/' + hostname);
       
