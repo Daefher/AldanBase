@@ -6,6 +6,22 @@
     margin: auto 15px auto 15px;
 }
 
+.add-btn{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+ 
+  .add-btn mat-icon {
+    
+    display: flex;
+    /* justify-items: center; */
+    align-items: center !important;
+    justify-content: center !important;
+  }
 
 .wrapper {
     margin: 20px;
@@ -43,3 +59,4 @@
 .content > mat-card {
     margin-bottom: 16px;
 }
+

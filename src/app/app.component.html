@@ -1,7 +1,7 @@
-<mat-drawer-container [ngClass]="current_theme| async" class="example-container">
+<mat-drawer-container [ngClass]="current_theme | async  " class="example-container">
   
   
-  <mat-drawer #drawer class="example-sidenav leftNavColor" mode="side" >
+  <mat-drawer #drawer class="example-sidenav leftNavColor " mode="side" >
     <app-sidenav [company]="company" ></app-sidenav>
   </mat-drawer>
   <ng-container *ngIf="authenticationService.currentuser | async ">
@@ -22,13 +22,10 @@
     </div>
   </ng-container>
 
-  <div class="example-sidenav-content" *ngIf="!loading">
+  <mat-drawer-content class="example-sidenav-content cScrollbar" *ngIf="!loading">
     <router-outlet></router-outlet>
-  </div>
-
- 
-  <app-footer [company]="company" *ngIf="!loading"></app-footer>
-
+    <app-footer [company]="company" *ngIf="!loading"></app-footer>
+</mat-drawer-content>
 
 
 </mat-drawer-container>

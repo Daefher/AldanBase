@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyPageData } from '../../../../interfaces/CompanyPage/company-page-data';
 import { CompanyService } from '../../../../services/demo-company/company.service';
@@ -21,11 +21,15 @@ export class TextAreaComponent implements OnInit {
   public companyPageData :CompanyPageData;
   public data_loaded = false;
   user :any;
-  public has_class : boolean;
+  public has_class : any;
   public background_color : string;
   public color: string = "#ffffff";
 
   logs: Array<Array<any>> = [];
+
+  private config: MatDialogConfig = {
+    panelClass: "dialog-responsive"
+  }
 
 
   constructor(
@@ -48,9 +52,9 @@ export class TextAreaComponent implements OnInit {
     if(this.CurrentPage !== undefined && this.Block !== undefined){
       this.companyService.getCompanyPageData(this.CurrentPage, this.Block).subscribe(resp => {
         this.companyPageData =  resp[0];
-        this.has_class = this.companyPageData.sectionCss;     
+        this.has_class = this.companyPageData?.sectionCss;     
         if(resp.length > 0) this.data_loaded = true;
-        console.log(resp);
+        //console.log(resp);
       })
     }
    
@@ -70,8 +74,8 @@ export class TextAreaComponent implements OnInit {
   editCompanyDialog():void {
     const dialogRefCompany = this.dialog.open(TextFormEditComponent, {
       maxWidth: '680px',
-      maxHeight: '640px',
-      minWidth: "480px",
+      maxHeight: '640px',     
+      panelClass: "dialog-responsive",
       data: {companyPageData: this.companyPageData, block: this.Block},
     });
 
@@ -83,9 +87,9 @@ export class TextAreaComponent implements OnInit {
 
   openCompanyDialog():void {
     const dialogRefCompany = this.dialog.open(TextFormComponent, {
-      maxWidth: '480px',
-      maxHeight: '640px',
-      minWidth: "380px",
+      maxWidth: '680px',
+      maxHeight: '640px',     
+      panelClass: "dialog-responsive",
       data: {companyPage: this.CurrentPage, block: this.Block},
     });
 
