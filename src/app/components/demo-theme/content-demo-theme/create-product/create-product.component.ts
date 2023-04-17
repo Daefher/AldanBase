@@ -58,10 +58,10 @@ export class CreateProductComponent implements OnInit {
       imageFile : ["",],
       description: ['', Validators.required],
       CreatedDateTime : [new Date],
-      UnitCost : ['0'],
-      weightPerUnit: ['', Validators.required],
-      category: ['', Validators.required],
-      subCategory: ['',]
+      UnitCost : ['0',Validators.required],
+      weightPerUnit: ['0', ],
+      category: ['NaN', ],
+      subCategory: ['NaN',]
     });
 
     this.route.data.subscribe((response: any) => {

@@ -22,10 +22,10 @@
     </div>
   </ng-container>
 
-  <mat-drawer-content class="example-sidenav-content cScrollbar" *ngIf="!loading">
+  <div class="example-sidenav-content cScrollbar" *ngIf="!loading">
     <router-outlet></router-outlet>
     <app-footer [company]="company" *ngIf="!loading"></app-footer>
-</mat-drawer-content>
+ </div>
 
 
 </mat-drawer-container>
