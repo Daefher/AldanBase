@@ -45,8 +45,10 @@
 </ng-container>
 
 <ng-container *ngIf="!data_loaded && authenticationService.currentuser | async" >
-    <div class="wrapper" align="center">
-        <button mat-raised-button color="warn"  (click)="openCompanyDialog()"><mat-icon>add_box</mat-icon>   </button> 
+    <div class="add-btn">
+        <button mat-fab color="warn"  (click)="openCompanyDialog()">
+            <mat-icon>add_box</mat-icon>
+        </button> 
     </div>
 </ng-container>
 

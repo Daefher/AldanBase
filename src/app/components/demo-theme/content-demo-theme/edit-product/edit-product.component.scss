@@ -12,6 +12,8 @@
     min-width: 400px;
     margin: 2em auto;
     text-align: center;
+    max-height: 90vh;
+    overflow-y: scroll;
   }
   
   mat-form-field {

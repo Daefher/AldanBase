@@ -21,11 +21,10 @@
       <input matInput placeholder="Subtitulo" formControlName="sectionSubtitle" [ngModel]="post_data?.sectionSubtitle">
     </mat-form-field>
 
-     <mat-form-field class="example-full-width"  appearance="fill" fxFlex="100%" >
+    <div class="example-full-width"  appearance="fill" fxFlex="100%" >
       <mat-label>Contenido</mat-label>
-      <textarea matInput placeholder="Contenido" formControlName="sectionDescription" [ngModel]="post_data?.sectionDescription">
-      </textarea>
-    </mat-form-field> 
+      <angular-editor [placeholder]="'Contenido...'"  formControlName="sectionDescription" [ngModel]="post_data?.sectionDescription"  [config]="config"></angular-editor>
+    </div> 
    
 
 

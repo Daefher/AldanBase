@@ -70,11 +70,22 @@ body {
 }
 
 
+mat-dialog-container{
+  max-width: 50%;
+  margin: auto;
+}
+@media (max-width: 500px){
+  mat-dialog-container{
+    max-width: 80vw;
+  }
+}
+
 
 
 .img-fluid {
   max-width: 100%;
-  height: auto; }
+  height: auto; 
+}
 
 .primary {
   //#d5c5c8

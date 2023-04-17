@@ -52,6 +52,7 @@ export class EditProductComponent implements OnInit {
 
     const hostname = window.location.hostname;
     globals.chooseTheme(hostname, this.overlayContainer);
+    this.buildEditForm();
 
 
     this.route.data.subscribe((response: any) => {
@@ -66,11 +67,43 @@ export class EditProductComponent implements OnInit {
       this.product = data[0]; 
       this.image_file = this.image_path +this.product.imageFile;
       this.form_loading = false;
+      this.EditProductForm.patchValue({
+        AldanCustomerId : this.product.aldanCustomerId,       
+        CompanyId: this.product.companyId,
+        PartId: this.product.partId,
+        PartNum: this.product.partNum,
+        Name:this.product.name,
+        Description: this.product.description,
+        PayPalToken: this.product.payPalToken,      
+        CanceledBy: this.product.canceledBy,      
+        CanceledDateTime: this.product.canceledDateTime,
+        Canceled: this.product.canceled,
+        CreatedBy: this.product.createdBy,
+        CreatedDateTime: this.product.createdDateTime,
+        Cancelable: this.product.cancelable,
+        UnitPrice: this.product.unitPrice,
+        SysRowId : this.product.sysRowId,
+        unitCost : this.product.unitCost,
+        PartType : this.product.partType,
+        UomClassId : this.product.uomClassId,
+        UomId : this.product.uomId,
+        weightPerUnit: this.product.weightPerUnit,
+        WeightUomId: this.product.weightUomId,        
+        category: this.product.category,
+        subCategory:this.product.subcategory
+      });
         
       //this.on_select(this.product.category);
       
     });   
 
+    
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+  }
+
+  buildEditForm(){
     this.EditProductForm = this.formBuilder.group({
       AldanCustomerId: [''],
       CompanyId: [''],
@@ -87,7 +120,7 @@ export class EditProductComponent implements OnInit {
       Cancelable: [''],
       UnitPrice: ['', ],
       SysRowId : ['', ],
-      UnitCost : [''],
+      unitCost : [''],
       PartType : ['Product', ],
       UomClassId : ['', ],
       UomId : ['', ],
@@ -97,9 +130,6 @@ export class EditProductComponent implements OnInit {
       category: ['', ],
       subCategory: ['',]
     });
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
   }
 
   get f() {

@@ -8,6 +8,7 @@ import { AuthenticationService } from '../../../../../services/demo-login/authen
 import {  DialogData } from '../../../content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 import  * as globals from '../../../../../globals';
 import { CompanyPage } from '../../../../../interfaces/CompanyPage/company-page';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-text-form',
@@ -30,7 +31,56 @@ export class TextFormComponent implements OnInit {
 
 
 
-
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      [        
+        'fontName',
+        'superscript',
+        'justifyLeft',
+        'justifyCenter',
+        'justifyRight',
+        'justifyFull',
+        'indent',
+        'outdent',
+      ],
+      [
+        'fontSize',
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'link',
+        'unlink',
+        'insertImage',
+        'insertVideo',
+        'insertHorizontalRule',
+        'removeFormat',
+        'toggleEditorMode'
+      ]
+    ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  };
   
 
   constructor( public dialogRef: MatDialogRef<TextFormComponent>,
@@ -92,10 +142,10 @@ export class TextFormComponent implements OnInit {
   initForm(CompanyPage){
     this.block_data_form = this.formBuilder.group({     
       
-      aldanCustomerId: [this.CurrentPage.aldanCustomerId],
-      companyId: [this.CurrentPage.companyId],
+      aldanCustomerId: [this.CurrentPage?.aldanCustomerId],
+      companyId: [this.CurrentPage?.companyId],
       companyPageDataId: [''],
-      companyPageId: [this.CurrentPage.companyPageId],
+      companyPageId: [this.CurrentPage?.companyPageId],
       sectionTitle: [''],
       sectionSubtitle: [''],
       sectionDescription: [''],
