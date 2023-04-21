@@ -1,0 +1,48 @@
+.wrapper {
+    margin: 20px;
+}
+
+mat-card-content{
+    margin: 10px;
+}
+
+mat-card-header{
+    background-color: rgb(1, 1, 1,0.1);
+}
+
+mat-card-title{
+    margin-left: 10px;
+    padding: 20px;
+}
+
+.header-wrapper{
+    display: flex;
+    flex-direction: row wrap;
+}
+
+.header-name{
+    margin-right: 10px;
+}
+
+.message-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.message-header{
+    margin: 10px;
+    text-align: justify;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.message-header span{
+    margin-right: 10px;
+}
+
+.message-content{
+    margin: 10px;
+    color: rgb(1, 1, 1, 0.8);
+    text-align: justify;
+}

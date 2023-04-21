@@ -111,6 +111,8 @@ import { SalesInfoActiveOnlyComponent } from './components/demo-theme/dashboard-
 import { OrdersInfoComponent } from './components/demo-theme/dashboard-sales/dashboard-elements/orders-info/orders-info.component';
 import { ReportsComponent } from './components/demo-theme/reports/reports.component';
 import { ReportsTableComponent } from './components/demo-theme/reports/reports-table/reports-table.component';
+import { MessagesComponent } from './components/demo-theme/content-demo-theme/messages/messages.component';
+import { MessageComponent } from './components/demo-theme/content-demo-theme/messages/message/message.component';
 
 @NgModule({
   declarations: [
@@ -164,6 +166,8 @@ import { ReportsTableComponent } from './components/demo-theme/reports/reports-t
     OrdersInfoComponent,
     ReportsComponent,
     ReportsTableComponent,
+    MessagesComponent,
+    MessageComponent,
     
     
         

@@ -14,3 +14,4 @@ export { AdminProductsComponent }  from './demo-theme/content-demo-theme/admin-p
 export { AboutComponent } from './demo-theme/content-demo-theme/about/about.component';
 export { DashboardSalesComponent } from './demo-theme/dashboard-sales/dashboard-sales.component';
 export { ReportsComponent }  from './demo-theme/reports/reports.component';
+export { MessagesComponent } from './demo-theme/content-demo-theme/messages/messages.component';
