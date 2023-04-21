@@ -20,7 +20,8 @@ import {
   AdminProductsComponent,
   AboutComponent,
   DashboardSalesComponent,
-  ReportsComponent
+  ReportsComponent,
+  MessagesComponent
   
 } from "./components/index.pages";
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
@@ -45,7 +46,8 @@ const routes: Routes = [
   {path : 'adminproducts/:userId', component: AdminProductsComponent,resolve: { company: CompanyResolver },canActivate: [AuthGuardGuard],title: CompanyNameResolver},
   {path : 'about', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver},
   {path : 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver}, title: CompanyNameResolver, canActivate:[AuthGuardGuard]},
-  {path : 'reports', component: ReportsComponent, resolve: { company: CompanyResolver}, title: CompanyNameResolver, canActivate:[AuthGuardGuard]}
+  {path : 'reports', component: ReportsComponent, resolve: { company: CompanyResolver}, title: CompanyNameResolver, canActivate:[AuthGuardGuard]},
+  {path : 'messages', component: MessagesComponent, resolve: { company: CompanyResolver}, title: CompanyNameResolver, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({

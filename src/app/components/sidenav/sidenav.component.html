@@ -15,14 +15,17 @@
   <mat-list-item [routerLink]="['/adminproducts', user.systemUserId ]" class="menu-button" >        
     <span><mat-icon>business_center</mat-icon> Administrar Productos   </span>     
   </mat-list-item>
+  <mat-list-item [routerLink]="['/messages']" class="menu-button">
+    <span><mat-icon class="mr">message</mat-icon>Mensajes</span>
+  </mat-list-item> 
   <mat-list-item [routerLink]="['/salesdashboard', user.systemUserId, 'view']" class="menu-button" >        
     <span><mat-icon>assessment</mat-icon> Informacion de Pedidos </span>     
   </mat-list-item>
   <mat-list-item  class="menu-button">        
     <span class="disabled"><mat-icon>pie_chart</mat-icon> Reportes </span>     
-  </mat-list-item>
+  </mat-list-item>  
   <mat-list-item (click)="logout()" class="menu-button">
-  <span><mat-icon class="mr">logout</mat-icon> Salir</span>
+    <span><mat-icon class="mr">logout</mat-icon> Salir</span>
   </mat-list-item> 
 </mat-selection-list>
 

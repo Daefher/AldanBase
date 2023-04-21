@@ -9,6 +9,9 @@ import { CompanyInterface } from '../../interfaces/company-interface';
 import { ContactInfo } from '../../interfaces/contact-info';
 import { CompanyPage } from '../../interfaces/CompanyPage/company-page';
 import { CompanyPageData } from '../../interfaces/CompanyPage/company-page-data';
+import { CompanyMessage } from '../../interfaces/company-message';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +67,13 @@ export class CompanyService {
       .pipe(
         catchError(this.errorHandler)
       );
+  }
+
+
+  //Company Messages section
+
+  getCompanyMessages(companyId): Observable<CompanyMessage[]>{
+    return this.http.get<CompanyMessage[]>(this.contact_url + '/GetByCompanyId',  { params: { companyId: companyId } });
   }
 
 
