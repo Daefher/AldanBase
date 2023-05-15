@@ -48,9 +48,9 @@ export class ProductComponent implements OnInit {
     this.authenticationService.currentuser.subscribe(user => this.user = user);
 
     this.route.data.subscribe((response: any) => {
-      this.company = response.company[0];    
-      this.image_path = globals.img_path + this.company.companyId +'/';      
-      
+      this.company = response.company[0];
+      this.image_path = globals.img_path + this.company.companyId +'/';
+
     });
 
     this.product_id = this.route.snapshot.params['partId'];
@@ -78,7 +78,7 @@ export class ProductComponent implements OnInit {
           //this.toastr.error(err);
         });
 
-        
+
 
     });
   }
@@ -98,13 +98,13 @@ export class ProductComponent implements OnInit {
 
   adjustQty(partId, event){
     let data =
-    {     
+    {
       "PartId": partId,
       "Quantity": event.target.value
     };
 
     this.productService.adjustQty(data).subscribe((response) => {
-      
+
       this.partQty_Value = this.partQty_Value + parseInt(event.target.value);
       //console.log( this.partQty_Value );
       //console.log( event.target.value);
@@ -129,10 +129,10 @@ export class ProductComponent implements OnInit {
       }
       ;
     this.productService.UpdateQty(data).subscribe((response) => {
-      
+
       this.partQty_Value = this.partQty_Value + event.target.value;
 
-    
+
       this.toastr.success("Inventario  actualizado correctamente", "Exito");
       this.partQty_control = 0
 
@@ -159,6 +159,10 @@ export class ProductComponent implements OnInit {
       left: 0,
       behavior: 'smooth'
     });
+  }
+
+  backButton() {
+    this.router.navigate(['/products']);
   }
 
 }
