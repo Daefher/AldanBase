@@ -161,8 +161,4 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  backButton() {
-    this.router.navigate(['/products']);
-  }
-
 }
