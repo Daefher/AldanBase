@@ -40,7 +40,7 @@
                     </mat-panel-description>
                   </mat-expansion-panel-header>
                   <p>
-                    Direccion de Entrega: {{orders.payPalAddressLine1}} {{order.payPalAddressLine2}}, {{order.payPalAdminArea1}}, {{order.payPalAdminArea2}}
+                    Direccion de Entrega: {{order.payPalAddressLine1}}, {{order.payPalAddressLine2}}, {{order.payPalAdminArea1}}, {{order.payPalAdminArea2}}, {{order.payPalCountryCode}}, CP {{order.payPalPostalCode}}
                   </p>
                   <ng-container *ngFor = "let orderDtl of ordersDtl; trackBy: trackByOrderDtl">
                   

@@ -411,7 +411,7 @@ export class CheckoutFormComponent implements OnInit {
     }   
     this.loading = true;
     this.salesOrderService.updateCheckoutSalesOrderData(this.createSalesOrderForm);
-    this.router.navigateByUrl("demo/demo-orderconfirmation");
+    this.router.navigateByUrl("orderconfirmation");
   }
 
   checkIfPostalCodeExist(control){ 
