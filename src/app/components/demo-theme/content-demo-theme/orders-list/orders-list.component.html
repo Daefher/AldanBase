@@ -47,13 +47,19 @@
                     <ng-container *ngIf = "orderDtl.salesOrderId == order.salesOrderId">
                       
                       <p>
-                        {{orderDtl?.partName}} (${{orderDtl.unitPrice}}.00 pesos)
+                        {{orderDtl?.salesOrderQuantity}} x {{orderDtl?.partName}} (${{orderDtl.unitPrice}} pesos)
                       </p>                          
 
                     </ng-container>
                   </ng-container> 
                   <p>
-                    Total de la orden: <strong> $ {{order.totalLetter}} </strong>
+                    Subtotal: ${{order.subtotal}} pesos
+                  </p>
+                  <p>
+                    Impuestos: ${{order.taxes}} pesos
+                  </p>
+                  <p>
+                    Total: <strong> ${{order.total}} pesos </strong>
                   </p>
                   <div align="end" *ngIf="" >
                     <ng-container *ngIf="!order.closed || !order.canceled">
