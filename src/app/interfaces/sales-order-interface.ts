@@ -15,5 +15,6 @@ export interface SalesOrderInterface {
     PayPalAdminArea1: string,
     PayPalPostalCode: string,
     PayPalCountryCode: "MX",
-    CustomerEmail: string
+    CustomerEmail: string,
+    PhoneNumber: string
 }

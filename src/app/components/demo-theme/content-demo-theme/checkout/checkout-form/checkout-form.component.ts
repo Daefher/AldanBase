@@ -368,7 +368,7 @@ export class CheckoutFormComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message);    
     
-    if(this.matchExact(location.href.split("/").slice(-1)[0], "demo-checkout")){
+    if(this.matchExact(location.href.split("/").slice(-1)[0], "checkout")){
       this.changeShowControls(true)
     }
    /*  console.log(location.pathname.split("/").slice(-1)[0] + " " + this.showControls); */
@@ -390,7 +390,8 @@ export class CheckoutFormComponent implements OnInit {
       PayPalAdminArea1: ['', Validators.required],
       PayPalPostalCode: ['', Validators.required],
       PayPalCountryCode: ['MX', Validators.required],
-      CustomerEmail: ['', Validators.required]
+      CustomerEmail: ['', Validators.required],
+      PhoneNumber: ['', Validators.required]
     });
 
         
@@ -452,6 +453,7 @@ export class CheckoutFormComponent implements OnInit {
         this.createSalesOrderForm.value.PayPalCountryCode = currentSalesOrder[0].PayPalCountryCode;
         this.createSalesOrderForm.value.CreatedDateTime = currentSalesOrder[0].CreatedDateTime;
         this.createSalesOrderForm.value.CustomerEmail = currentSalesOrder[0].CustomerEmail;
+        this.createSalesOrderForm.value.PhoneNumber = currentSalesOrder[0].PhoneNumber;
     }
 
     this.salesOrderData = this.createSalesOrderForm.value;
