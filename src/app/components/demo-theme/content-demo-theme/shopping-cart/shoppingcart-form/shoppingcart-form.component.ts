@@ -95,9 +95,7 @@ export class ShoppingcartFormComponent implements OnInit {
     this.numberOfElements = 0;
     this.sumOfCart = 0;
 
-    if(this.shopCartItems == null)
-      return;
-
+    if(this.shopCartItems != null)
     if(this.shopCartItems.length > 0){
       this.shopCartItems.forEach(element => {
         this.numberOfElements += 1;        
