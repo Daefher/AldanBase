@@ -2,14 +2,14 @@
 .footer-demo {
     height: 100%; /* Angular material adds "height:100%" to body tag by default. So, ignore this step in real-time application */
   }
-  
+
   .demo-section {
     border: 1px solid ;
   }
-  
+
   footer{
     position: absolute;
-    align-self: flex-end;   
+    align-self: flex-end;
     background: #111;
     height: auto;
     width: 100%;
@@ -77,7 +77,7 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-   
+
 }
 
 .login-component a{
@@ -89,29 +89,29 @@
 
 .footer-bottom{
   background: #000;
-  width: 100%;  
+  width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
 }
 
 .footer-bottom p{
- 
+
   font-size: 0.8rem;
   word-spacing: 2px;
   text-transform: capitalize;
- 
+
   display: inline-block;
-  
+
 }
 
 .footer-bottom span{
   text-transform: uppercase;
   opacity: .4;
   font-weight: 200;
-  
+
 }
- 
+
 @media (max-width:500px) {
   .footer-bottom ul{
     display: flex;
@@ -127,7 +127,7 @@
 
    .bgColorDark{
     background-color: #0d1317;
-    
+
     color:  rgba(255, 255, 255, 0.87)  !important;
    }
 
@@ -136,8 +136,8 @@
    /*  text-decoration: none; */
    }
 
-   
-   
+
+
 
    .tech{
     font-size: smaller;
