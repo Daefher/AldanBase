@@ -17,6 +17,7 @@ export interface UserDataInterface {
     employeeId: number,
     isCarrier: boolean,
     sysRowId: string,
-    name: string
+    name: string,
+    phoneNumber: string
 
 }

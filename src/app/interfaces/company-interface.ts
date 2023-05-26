@@ -31,6 +31,6 @@ export interface CompanyInterface{
     instagramUrl:string,
     whatsAppUrl:string,
     twitterUrl:string,
-    youTubeUrl:string
-
+    youTubeUrl:string,
+    contactPhoneNumber:string
 }

@@ -31,6 +31,11 @@
     </mat-form-field>    
 
     <mat-form-field class="example-full-width"  appearance="fill" fxFlex="100%" >
+      <mat-label>Teléfono de Contacto</mat-label>
+      <input matInput placeholder="Teléfono de Contacto" formControlName="contactPhoneNumber" [ngModel]="company?.contactPhoneNumber">
+    </mat-form-field>    
+
+    <mat-form-field class="example-full-width"  appearance="fill" fxFlex="100%" >
       <mat-label>Contraseña SMTP</mat-label>
       <input matInput type="password" placeholder="Contraseña SMTP" formControlName="smtpPassword" [ngModel]="company?.smtpPassword">
     </mat-form-field>
