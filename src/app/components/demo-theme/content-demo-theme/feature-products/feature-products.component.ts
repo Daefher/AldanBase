@@ -69,8 +69,8 @@ export class FeatureProductsComponent implements OnInit,AfterViewInit {
   addToCart(product: ProductInterface){
     product.quantity = 1;
     if(this.cartService.addToLSCart(product, false))
-      this.toastr.success("¡Product agregado exitosamente!");
+      this.toastr.success("¡Producto agregado exitosamente!");
     else
-      this.toastr.error("Hubo un error al agregar el producto");
+      this.toastr.error("Hubo un error al agregar el producto.");
   }
 }
