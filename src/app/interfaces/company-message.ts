@@ -12,5 +12,5 @@ export interface CompanyMessage {
     createdBy: number,
     createdDateTime: string,
     cancelable: boolean,
-    PhoneNumber: string
+    phoneNumber: string
 }
