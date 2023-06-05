@@ -112,7 +112,8 @@ export class EditCompanyDialogComponent implements OnInit {
         instagramUrl:[''],
         whatsAppUrl:[''],
         twitterUrl:[''],
-        youTubeUrl:['']
+        youTubeUrl:[''],
+        contactPhoneNumber:['']
         })
     }
     mapFormGroup(){
@@ -148,7 +149,8 @@ export class EditCompanyDialogComponent implements OnInit {
         instagramUrl:[this.company?.instagramUrl],
         whatsAppUrl:[this.company?.whatsAppUrl],
         twitterUrl:[this.company?.twitterUrl],
-        youTubeUrl:[this.company?.youTubeUrl]
+        youTubeUrl:[this.company?.youTubeUrl],
+        contactPhoneNumber:[this.company?.contactPhoneNumber]
         })
 
     }

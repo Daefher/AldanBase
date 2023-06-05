@@ -38,6 +38,16 @@
                     <mat-error *ngIf="f.CustomerEmail.errors.required">Correo electrónico es requerido</mat-error>
                   </div>
                 </mat-form-field>
+
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label for="PhoneNumber">Número de teléfono:</mat-label>
+                  <input matInput [readonly]='!this.showControls' type="text" formControlName='PhoneNumber'
+                    [ngModel]="salesOrderData.PhoneNumber" class="form-control small-form"
+                    [ngClass]="{ 'is-invalid': submitted && f.PhoneNumber.errors }" />
+                  <div class="invalid-feedback" *ngIf="submitted && f.PhoneNumber.errors">
+                    <mat-error *ngIf="f.PhoneNumber.errors.required">Número de teléfono es requerido</mat-error>
+                  </div>
+                </mat-form-field>
               </div>
               <div fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
 

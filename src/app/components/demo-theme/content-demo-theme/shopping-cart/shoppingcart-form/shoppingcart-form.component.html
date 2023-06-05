@@ -105,7 +105,7 @@
       </div>      
     </ng-container>
        <!-- End Item section -->
-    <ng-container  *ngIf='shopCartItems.length == 0'> 
+    <ng-container  *ngIf='this.numberOfElements == 0'> 
         <div class="no-item">No hay productos en el carrito.</div> 
     </ng-container>
 
@@ -114,9 +114,9 @@
          
          <span> Total de artículos: {{this.numberOfElements}}</span>  
         </div>
-        <div class="tax">
+        <!-- <div class="tax">
             IVA:
-        </div>
+        </div> -->
         <div class="cart-total-price">
             Total de la compra: {{this.sumOfCart}}.00 MXN
         </div>

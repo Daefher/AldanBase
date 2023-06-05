@@ -148,9 +148,9 @@ export class ProductComponent implements OnInit {
   addToCart(){
     this.product.quantity = 1;
     if(this.cartService.addToLSCart( this.product, false))
-      this.toastr.success("¡Product agregado exitosamente!");
+      this.toastr.success("¡Producto agregado exitosamente!");
     else
-      this.toastr.error("Hubo un error al agregar el producto");
+      this.toastr.error("Hubo un error al agregar el producto.");
   }
 
   gotoTop() {

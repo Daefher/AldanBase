@@ -12,10 +12,6 @@ import * as globals from '../../../../../globals';
 
 
 export interface DialogData {
-  email: string;
-  name: string;
-  //phone : string;
-
 
 }
 
@@ -79,6 +75,7 @@ export class EditUserDialogComponent {
       createdDateTime:  [''],
       cancelable:  [''],
       email:  [''],
+      phoneNumber:  [''],
       employeeId:  [''],
       isCarrier:  [''],
       sysRowId:  [''],
