@@ -9,7 +9,7 @@
               <br>
               <mat-list-item>
                {{ cpny?.description }}
-              </mat-list-item>             
+              </mat-list-item>
             </mat-list>
           </div>
           <div fxLayout="column" fxLayoutAlign="space-evenly center"  fxFlex.md="100" fxFlex="25" class="sec2">
@@ -24,10 +24,10 @@
                 <a mat-icon-button href="{{cpny?.instagramUrl}}">
                   <i class="fa fa-instagram" aria-hidden="true"></i> Instagram
                 </a>
-              </mat-list-item>              
+              </mat-list-item>
               <mat-list-item>
-                <a mat-button routerLink="/login" *ngIf="!(authenticationService.currentuser | async) as user" fxHide.xs> Iniciar Sesión </a>   
-                     
+                <a mat-button routerLink="/login" *ngIf="!(authenticationService.currentuser | async) as user" fxHide.xs> Iniciar Sesión </a>
+
               </mat-list-item>
             </mat-list>
           </div>
@@ -36,7 +36,7 @@
               <div class="footer-text" mat-subheader>Contactanos</div>
               <mat-list-item *ngIf="cpny?.contactEmail">
                 Correo : {{ cpny?.contactEmail }}
-              </mat-list-item>             
+              </mat-list-item>
             </mat-list>
           </div>
         </div>
@@ -50,29 +50,29 @@
 </footer> -->
 
 <footer>
-  
+
     <div class="footer-content" mat-subheader>
       <h3>{{this.cpny?.name}}</h3>
-   
+
       <p>
         {{ cpny?.description }}
       </p>
   </div>
 
-  <ul class="socials">    
+  <ul class="socials">
       <li><a href="{{cpny?.facebookUrl}}"><i class="fa fa-facebook"></i></a></li>
-      <li><a href=''><i class="fa fa-twitter"></i></a></li>
-      <li><a href=''><i class="fa fa-instagram"></i></a></li>
-      <li><a href=''><i class="fa fa-youtube"></i></a></li>
-     
+      <li><a href='{{cpny?.twitterUrl}}'><i class="fa fa-twitter"></i></a></li>
+      <li><a href='{{cpny?.instagramUrl}}'><i class="fa fa-instagram"></i></a></li>
+      <li><a href='{{cpny?.youTubeUrl}}'><i class="fa fa-youtube"></i></a></li>
+
   </ul>
 
   <div class="login-component">
-    <a routerLink="/login" *ngIf="!(authenticationService.currentuser | async) as user" > Iniciar Sesión </a>        
+    <a routerLink="/login" *ngIf="!(authenticationService.currentuser | async) as user" > Iniciar Sesión </a>
   </div>
 
   <div class="footer-bottom">
     <p>  AldanTech {{year}} </p>
   </div>
-  
+
 </footer>
