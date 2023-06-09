@@ -17,22 +17,22 @@
 
     <ng-container *ngIf="is_loading"  >
       <div style="display: flex; justify-content: center; align-items: center; background: white;">
-        <mat-progress-spinner 
-          color="accent" 
+        <mat-progress-spinner
+          color="accent"
           mode="indeterminate">
         </mat-progress-spinner>
       </div>
     </ng-container>
 
-    
+
     <mat-form-field>
       <mat-label>Ordenar</mat-label>
-      <mat-select placeholder="Ordenar" [ngModel]="selected_sort" (ngModelChange)="orderByChange($event)"> 
-        <mat-option *ngFor="let type of sort_types" [value]="type">{{type.name}}</mat-option>            
-      </mat-select>     
+      <mat-select placeholder="Ordenar" [ngModel]="selected_sort" (ngModelChange)="orderByChange($event)">
+        <mat-option *ngFor="let type of sort_types" [value]="type">{{type.name}}</mat-option>
+      </mat-select>
     </mat-form-field>
-<!--     <div fxLayout="row wrap" fxLayoutGap="16px grid">      
- --><div class="products-wrapper">  
+<!--     <div fxLayout="row wrap" fxLayoutGap="16px grid">
+ --><div class="products-wrapper">
       <ng-container *ngFor="let product of products | searchFilter: searchForm.value.search | productsSort: selected_sort">
 <!--         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngIf="(product?.canceled == false)">
  -->
@@ -46,13 +46,16 @@
               </mat-card-title>
             </mat-card-header>
               <img mat-card-image class="img-size" src="{{ image_path + product?.imageFile}}">
- 
+
             <mat-card-content>
               <p>
                 ${{product.unitPrice}}.00 MXN
               </p>
             </mat-card-content>
             <mat-card-actions class="product-actons" align="end">
+                <p *ngIf="product.onHandQty === 0" style="color: #838383;">
+                  Producto agotado
+                </p>
                 <button mat-raised-button  color="accent" (click)="addToCart(product)" [disabled]="(product.onHandQty < 1)" ><span class="material-icons">
                   add_shopping_cart
                 </span></button>
