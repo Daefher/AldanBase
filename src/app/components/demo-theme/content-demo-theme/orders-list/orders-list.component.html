@@ -40,6 +40,9 @@
                     </mat-panel-description>
                   </mat-expansion-panel-header>
                   <p>
+                    Fecha: {{order?.createdDateTime}}
+                  </p>
+                  <p>
                     Direccion de Entrega: {{orders.payPalAddressLine1}} {{order.payPalAddressLine2}}, {{order.payPalAdminArea1}}, {{order.payPalAdminArea2}}
                   </p>
                   <ng-container *ngFor = "let orderDtl of ordersDtl; trackBy: trackByOrderDtl">
@@ -48,17 +51,20 @@
                       
                       <p>
                         {{orderDtl?.partName}} (${{orderDtl.unitPrice}}.00 pesos)
-                      </p>                          
+                      </p>  
+                      
+                      
+
 
                     </ng-container>
                   </ng-container> 
                   <p>
                     Total de la orden: <strong> $ {{order.totalLetter}} </strong>
                   </p>
-                  <div align="end" *ngIf="" >
+                  <div align="end"  >
                     <ng-container *ngIf="!order.closed || !order.canceled">
                       <button mat-raised-button class="action-button"
-                        matTooltip="Editar"
+                        matTooltip="Finalizar"
                        (click)="closeOrder(order.salesOrderId)" [class.spinner]="closeIsLoading" [disabled]="closeIsLoading"  color="accent"> Finalizar
                       
                       </button>

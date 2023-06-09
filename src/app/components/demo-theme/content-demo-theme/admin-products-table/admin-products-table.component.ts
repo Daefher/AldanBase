@@ -65,6 +65,9 @@ export class AdminProductsTableComponent implements OnInit {
         
       //let temp =  this.ReturnNotTrashed(data);        
       this.products = data;
+      this.products.forEach(prod => {
+        prod.createdDateTime = new Date(prod.createdDateTime).toLocaleString();
+      })
       this.dataSource.data = this.products;
       this.isLoading = false;
     },

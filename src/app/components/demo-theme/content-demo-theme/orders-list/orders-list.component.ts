@@ -67,6 +67,12 @@ export class OrdersListComponent implements OnInit {
     this.ordersService.getAll(data.companyId).subscribe((data: OrderInterface[]) => {
 
       this.orders = data;
+      this.orders.forEach(order => {
+
+        order.createdDateTime =  new Date(order.createdDateTime).toLocaleString();
+        
+      });
+      console.log(this.orders);
       this.length = this.orders.length;
       this.selectedResult = this.orders.slice(0, this.pageSize);
       this.isLoading = false;

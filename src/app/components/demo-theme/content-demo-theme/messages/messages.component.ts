@@ -45,8 +45,9 @@ export class MessagesComponent implements OnInit {
     this.companyService.getCompanyMessages(companyId).subscribe((response : any) => {
         
       this.messages =  response;
-      console.log(response);
-      this.length =this.messages.length;
+      this.messages.forEach( m => { m.createdDateTime = new Date(m.createdDateTime).toLocaleString();});
+      //console.log(this.messages);
+      this.length = this.messages.length;
       this.messages_selected = this.messages.slice(0, this.pageSize) ;
       
     },
