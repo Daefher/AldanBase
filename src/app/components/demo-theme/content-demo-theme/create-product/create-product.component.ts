@@ -24,6 +24,7 @@ export class CreateProductComponent implements OnInit {
 
   createProductForm: FormGroup;
   loading = false;
+  createAnother = false;
   submitted = false;
   returnUrl: string;
   image_file : string;
@@ -80,6 +81,12 @@ export class CreateProductComponent implements OnInit {
 
   }
 
+  clearForm()
+  {
+    this.createProductForm.reset()
+    this.image_file = "";
+  }
+
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
@@ -113,12 +120,17 @@ export class CreateProductComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl+ data[0].partId.toString() + '/view'])
-          this.toastr.success("Producto creado correctamente", "Exito");
-          this.loading = false;
           /* console.log(this.returnUrl+ data[0].partId.toString() + '/view');
           console.log(data); */
-          // this.router.navigate([this.returnUrl]);
+          if(!this.createAnother)
+          {
+            this.toastr.success("Producto creado correctamente", "Exito");
+            this.router.navigate([this.returnUrl+ data[0].partId.toString() + '/view'])
+          }
+          else
+            location.reload()
+                      
+            this.loading = false;
           //this.router.navigateByUrl('/product/'+data[0].partId+ '/view');
          
         },

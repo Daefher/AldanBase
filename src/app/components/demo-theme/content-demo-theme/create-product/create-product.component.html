@@ -45,8 +45,7 @@
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Costo por Unidad</mat-label>
-                <input type="text" matInput placeholder="Peso del Producto" formControlName='UnitCost'
-                  >
+                <input type="text" matInput placeholder="Peso del Producto" formControlName='UnitCost'>
                 <div *ngIf="submitted && f.UnitCost.errors">
                   <mat-error *ngIf="f.UnitCost.errors.required">
                     Peso is <strong>required</strong>
@@ -83,6 +82,9 @@
             </mat-error>
           </div>
         </mat-form-field> -->
+        <mat-label>¿Crea otro?</mat-label>
+        <input class="example-full-width" type="checkbox" [checked]="createAnother" (change)="createAnother = !createAnother">
+        <br/>
 
         <button type="submit" mat-raised-button class="alterPrimaryBG" [class.spinner]="loading" [disabled]="loading" >
           Crear
