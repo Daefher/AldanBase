@@ -9,82 +9,87 @@
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
+
   // Create theme specfic styles
   .primaryColorBG {
     background-color: mat-color($primary);
-    
+
   }
+
   .primaryColorFont {
     color: mat-color($primary);
   }
+
   .accentColorFont {
     color: mat-color($accent);
   }
-  .warnColorFont{
+
+  .warnColorFont {
     color: mat-color($warn);
   }
+
   .accentColorBG {
     background-color: mat-color($accent);
   }
+
   .warnColorBG {
     background-color: mat-color($warn);
   }
 
 
-  .leftNavColor{
+  .leftNavColor {
     background-color: mat-color($accent) !important;
-    color : $textColor !important;
+    color: $textColor !important;
   }
-  
+
   .alterPrimaryBG {
-    background-color: $alterPrimary !important ;
-    color : $textColor !important;
+    background-color: $alterPrimary !important;
+    color: $textColor !important;
 
   }
 
-  .textColorPrimary{
-    color : $textColor;
+  .textColorPrimary {
+    color: $textColor;
   }
 
-  .demo-header-container{
+  .demo-header-container {
     background: mat-color($primary);
-    background: -moz-linear-gradient(90deg,$alterPrimary 0%, mat-color($accent) 100%);
+    background: -moz-linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
     background: -webkit-linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
     background: linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
     color: #000000;
-  
+
   }
 }
 
 html,
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
   overflow-x: hidden !important;
   height: 100%;
 }
 
-.grid-row{
-    min-height: fit-content;
-    
+.grid-row {
+  min-height: fit-content;
+
 }
 
 
-mat-dialog-container{
+mat-dialog-container {
   max-width: 50%;
   margin: auto;
 }
-@media (max-width: 500px){
-  mat-dialog-container{
+
+@media (max-width: 500px) {
+  mat-dialog-container {
     max-width: 80vw;
   }
 }
 
-
-
 .img-fluid {
   max-width: 100%;
-  height: auto; 
+  height: auto;
 }
 
 .primary {
@@ -101,16 +106,18 @@ mat-card {
 }
 
 .img-size {
-  object-fit: contain ;
+  object-fit: contain;
   width: 100%;
   height: 150px;
 }
 
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
- 
+
 .spinner:before {
   content: '';
   box-sizing: border-box;
@@ -131,14 +138,14 @@ mat-card {
   color: grey !important;
 }
 
-mat-card-header{
-  background-color: rgb(1, 1, 1,0.1);
+mat-card-header {
+  background-color: rgb(1, 1, 1, 0.1);
   justify-content: center;
   align-items: center;
 }
 
-mat-card-title{
- padding: 10px;
+mat-card-title {
+  padding: 10px;
 
 }
 
@@ -146,32 +153,29 @@ mat-card-title{
  *  STYLE 1
  */
 
- .cScrollbar::-webkit-scrollbar-track
- {
-   
-   border-radius: 10px;
-   background-color: #F5F5F5;
- }
- 
- .cScrollbar::-webkit-scrollbar
- {
-   width: 12px;
-   background-color: #F5F5F5;
- }
- 
- .cScrollbar::-webkit-scrollbar-thumb
- {
-   border-radius: 10px;
-   
-   background-color: #c7c7c7;
- }
- 
+.cScrollbar::-webkit-scrollbar-track {
 
- /* Tooltip container */
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.cScrollbar::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.cScrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+
+  background-color: #c7c7c7;
+}
+
+/* Tooltip container */
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
@@ -183,7 +187,7 @@ mat-card-title{
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
- 
+
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;

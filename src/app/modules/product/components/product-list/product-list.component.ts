@@ -1,31 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../../../services/demo-products/products.service';
-import { ProductInterface } from '../../../../interfaces/product-interface';
-import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
-import { CartService } from '../../../../services/demo-cart/cart.service';
 
 
 import * as globals from '../../../../globals';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder } from '@angular/forms';
-import { CompanyInterface } from '../../../../interfaces/company-interface';
-import { CompanyService } from '../../../../services/demo-company/company.service';
-import { ActivatedRoute } from '@angular/router';
+
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CompanyInterface } from 'src/app/interfaces/company-interface';
+import { ProductInterface } from 'src/app/interfaces/product-interface';
+import { CartService } from 'src/app/services/demo-cart/cart.service';
+import { CompanyService } from 'src/app/services/demo-company/company.service';
+import { AuthenticationService } from 'src/app/services/demo-login/authentication.service';
+import { ProductsService } from 'src/app/services/demo-products/products.service';
 
 export interface sortInterface  {
- name : string,
- value : string,
- type : string,
- is_date : boolean,
+  name : string,
+  value : string,
+  type : string,
+  is_date : boolean,
 
-}
+ }
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-product-lists',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
   products: any = [];
   image_path :string ;

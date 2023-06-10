@@ -20,7 +20,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
-import {MatButtonModule} from '@angular/material/button';;
+import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
@@ -40,9 +40,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
-
-
 
 //charts
 import { NgChartsModule } from 'ng2-charts';
@@ -71,10 +68,8 @@ import { ToolsComponent } from './components/home-theme/home-sub-components/tool
 import { HomeDemoThemeComponent } from './components/demo-theme/home-demo-theme/home-demo-theme.component';
 import { HeaderDemoThemeComponent } from './components/demo-theme/header-demo-theme/header-demo-theme.component';
 import { FooterDemoThemeComponent } from './components/demo-theme/footer-demo-theme/footer-demo-theme.component';
-import { ProductsComponent } from './components/demo-theme/content-demo-theme/products/products.component';
 import { UsersComponent } from './components/demo-theme/content-demo-theme/users/users.component';
 import { OrdersComponent } from './components/demo-theme/content-demo-theme/orders/orders.component';
-import { ProductComponent } from './components/demo-theme/content-demo-theme/product/product.component';
 import { NavDemoThemeComponent } from './components/demo-theme/nav-demo-theme/nav-demo-theme.component';
 import { DemoLoginComponent } from './components/demo-theme/content-demo-theme/demo-login/demo-login.component';
 import { CreateProductComponent } from './components/demo-theme/content-demo-theme/create-product/create-product.component';
@@ -85,7 +80,6 @@ import { SalesOrderComponent } from './components/demo-theme/content-demo-theme/
 import { OrdersListComponent } from './components/demo-theme/content-demo-theme/orders-list/orders-list.component';
 import { EditUserDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 import { FeatureProductsComponent } from './components/demo-theme/content-demo-theme/feature-products/feature-products.component';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ShoppingcartComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart.component';
 import { ShoppingcartFormComponent } from './components/demo-theme/content-demo-theme/shopping-cart/shoppingcart-form/shoppingcart-form.component';
 import { CheckoutComponent } from './components/demo-theme/content-demo-theme/checkout/checkout.component';
@@ -93,14 +87,12 @@ import { CheckoutFormComponent } from './components/demo-theme/content-demo-them
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
 import { AdminProductsComponent } from './components/demo-theme/content-demo-theme/admin-products/admin-products.component';
 import { AdminProductsTableComponent } from './components/demo-theme/content-demo-theme/admin-products-table/admin-products-table.component';
-import { ProductsSortPipe } from './pipes/productsPipes/products-sort.pipe';
 import { EditHeaderDemoThemeComponent } from './components/demo-theme/header-demo-theme/edit-header-demo-theme/edit-header-demo-theme/edit-header-demo-theme.component';
 import { CompanyService } from './services/demo-company/company.service';
 import { EditCompanyDialogComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-company-dialog/edit-company-dialog.component';
 import { ContactFormComponent } from './components/demo-theme/content-demo-theme/contact-form/contact-form.component';
 import { BannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/banner/banner.component';
 import { EditBannerComponent } from './components/demo-theme/content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
-import { ProductListComponent } from './components/demo-theme/content-demo-theme/products/product-list/product-list.component';
 import { TextAreaComponent } from './components/demo-theme/dynamic-componets/text-area/text-area.component';
 import { TextFormComponent } from './components/demo-theme/dynamic-componets/text-area/text-form/text-form.component';
 import { TextFormEditComponent } from './components/demo-theme/dynamic-componets/text-area/text-form-edit/text-form-edit.component';
@@ -113,6 +105,7 @@ import { ReportsComponent } from './components/demo-theme/reports/reports.compon
 import { ReportsTableComponent } from './components/demo-theme/reports/reports-table/reports-table.component';
 import { MessagesComponent } from './components/demo-theme/content-demo-theme/messages/messages.component';
 import { MessageComponent } from './components/demo-theme/content-demo-theme/messages/message/message.component';
+import { ThemeModule } from './modules/theme/theme.module';
 
 @NgModule({
   declarations: [
@@ -126,11 +119,9 @@ import { MessageComponent } from './components/demo-theme/content-demo-theme/mes
     ToolsComponent,
     HomeDemoThemeComponent,
     HeaderDemoThemeComponent,
-    FooterDemoThemeComponent,
-    ProductsComponent,
+    FooterDemoThemeComponent,   
     UsersComponent,
-    OrdersComponent,
-    ProductComponent,
+    OrdersComponent,    
     NavDemoThemeComponent,
     DemoLoginComponent,
     CreateProductComponent,
@@ -140,22 +131,19 @@ import { MessageComponent } from './components/demo-theme/content-demo-theme/mes
     SalesOrderComponent,
     OrdersListComponent,
     EditUserDialogComponent,
-    FeatureProductsComponent,
-    SearchFilterPipe,
+    FeatureProductsComponent,  
     ShoppingcartComponent,
     ShoppingcartFormComponent,
     CheckoutComponent,
     CheckoutFormComponent,
     OrderconfirmationComponent,
     AdminProductsComponent,
-    AdminProductsTableComponent,
-    ProductsSortPipe,
+    AdminProductsTableComponent,   
     EditHeaderDemoThemeComponent,
     EditCompanyDialogComponent,
     ContactFormComponent,
     BannerComponent,
-    EditBannerComponent,
-    ProductListComponent,
+    EditBannerComponent,    
     TextAreaComponent,
     TextFormComponent,
     TextFormEditComponent,
@@ -168,7 +156,6 @@ import { MessageComponent } from './components/demo-theme/content-demo-theme/mes
     ReportsTableComponent,
     MessagesComponent,
     MessageComponent,
-    
     
         
   ],
@@ -208,7 +195,7 @@ import { MessageComponent } from './components/demo-theme/content-demo-theme/mes
     MatSlideToggleModule,
     MatTooltipModule,
     MatProgressBarModule,
-         
+    ThemeModule         
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorInterceptor, multi: true },

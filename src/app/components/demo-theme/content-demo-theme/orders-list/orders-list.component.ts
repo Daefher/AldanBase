@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../../services/demo-login/authentication.service';
-import {  PageEvent } from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
 
 
 
@@ -22,61 +22,45 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OrdersListComponent implements OnInit {
 
-  public user;
-
+  user;
   orders: any = [];
   panelOpenState = false;
   ordersDtl: any = [];
-
-
   selectedResult: any;
   isLoading = true;
-
   closeIsLoading = false;
-
-
   length: number;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 30];
   pageEvent: PageEvent;
-
   private company: CompanyInterface;
-
 
   constructor(
     private ordersService: OrdersService,
     public authenticationService: AuthenticationService,
     private toastr: ToastrService,
-    private companyService : CompanyService,
-    private route : ActivatedRoute
-
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
 
     this.authenticationService.currentuser.subscribe(user => this.user = user);
     this.route.data.subscribe((response: any) => {
-      this.company = response.company[0];   
-      this.mapInitializer(response.company[0]);   
+      this.company = response.company[0];
+      this.mapInitializer(response.company[0]);
     });
-
-   
   }
 
-  mapInitializer(data){
+  mapInitializer(data) {
     this.ordersService.getAll(data.companyId).subscribe((data: OrderInterface[]) => {
-
       this.orders = data;
       this.orders.forEach(order => {
-
-        order.createdDateTime =  new Date(order.createdDateTime).toLocaleString();
-        
+        order.createdDateTime = new Date(order.createdDateTime).toLocaleString();
       });
       console.log(this.orders);
       this.length = this.orders.length;
       this.selectedResult = this.orders.slice(0, this.pageSize);
       this.isLoading = false;
-
     },
       err => {
         this.toastr.error("Error cargar las ordenes");
@@ -84,9 +68,8 @@ export class OrdersListComponent implements OnInit {
       }
     );
   }
-  
 
-  filterBy(type){
+  filterBy(type) {
     let new_filter;
     switch (type) {
       case 'closed':
@@ -109,8 +92,8 @@ export class OrdersListComponent implements OnInit {
       case 'all':
         //new_filter = this.orders.filter(item => item.closed === false);
         this.selectedResult = this.orders.slice(0, this.pageSize);
-      break;
-    
+        break;
+
       default:
         break;
     }
@@ -125,9 +108,9 @@ export class OrdersListComponent implements OnInit {
       if (order) {
         order.closedDateTime = new Date().toJSON();
         //console.log(order);
-        this.closeIsLoading =  true;
+        this.closeIsLoading = true;
         this.ordersService.closeOrder(order).subscribe(res => {
-          this.closeIsLoading =  false;
+          this.closeIsLoading = false;
 
           //console.log("RESPONSE",res);
           order.closed = true;
@@ -138,7 +121,7 @@ export class OrdersListComponent implements OnInit {
           error => {
             this.toastr.error("No se ha podido cerrar la orden, revise el inventario de productos", " Error ");
 
-            this.closeIsLoading =  false;
+            this.closeIsLoading = false;
           });
       }
 
@@ -196,14 +179,14 @@ export class OrdersListComponent implements OnInit {
 
   getData(event?: PageEvent) {
     //console.log(event);
-    if(event){
+    if (event) {
       this.selectedResult = this.orders.slice(event.pageIndex * event.pageSize,
         event.pageIndex * event.pageSize + event.pageSize);
       return event;
     } else {
       return null;
     }
-    
+
   }
 
 
