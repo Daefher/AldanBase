@@ -44,7 +44,8 @@ const routes: Routes = [
   { path: 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'reports', component: ReportsComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
-  { path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) }
+  { path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) },
+  { path: 'home2', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) }
 ];
 
 @NgModule({

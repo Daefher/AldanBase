@@ -1,0 +1,10 @@
+<div class="home-content demo-header-container banner-container"
+    [style.background-image]=" image_banner?.image  ? 'url( '+image_banner?.image+')': '' ">
+    <div class="sec1">
+        <div class="header-text">
+            <h1 *ngIf="companyFile?.title">{{companyFile?.title}}</h1>
+            <h1 *ngIf="!companyFile?.title">{{companyInfo?.name}}</h1>
+            <h2>{{companyFile?.subtitle}}</h2>
+        </div>
+    </div>
+</div>

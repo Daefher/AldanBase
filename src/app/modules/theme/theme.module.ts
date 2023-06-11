@@ -9,11 +9,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ThemeViewComponent } from './components/theme-view/theme-view.component';
 import { RouterModule } from '@angular/router';
+import { HomeBannerComponent } from './components/home-banner/home-banner.component';
+import { ActionsBannerComponent } from './components/actions-banner/actions-banner.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,    
-    ThemeViewComponent
+    ThemeViewComponent, HomeBannerComponent, ActionsBannerComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { RouterModule } from '@angular/router';
     MatProgressBarModule,    
   ],
   exports: [
-    NavbarComponent,    
+    NavbarComponent,
+    HomeBannerComponent
   ]
 })
 export class ThemeModule { }
