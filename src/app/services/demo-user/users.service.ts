@@ -17,17 +17,17 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class UsersService {
 
-  user:any;
+  user: any;
   loaded: boolean = false;
 
   private currentUserSubject: BehaviorSubject<UserInterface>;
 
   public currentuser: Observable<UserInterface>;
 
-  private currentUserInfo :  BehaviorSubject<UserDataInterface>;
+  private currentUserInfo: BehaviorSubject<UserDataInterface>;
   //public currentUserInfo : Observable<UserDataInterface>;
-  
-  protected user_data_info : UserDataInterface;
+
+  protected user_data_info: UserDataInterface;
   private api_url = globals.api_url + "SystemUser";
 
   httpOptions = {
@@ -36,50 +36,39 @@ export class UsersService {
     })
   }
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<UserInterface>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentuser = this.currentUserSubject.asObservable();
-    
-    
-   
     this.currentUserInfo = new BehaviorSubject<UserDataInterface>(null);
-
-    
-
-    
   }
 
- /**
-  * This Function get the current values from the user log in, if no user found returns null
-  */
-  get getCurrentUserInfo(){
-    var curUserVal = this.currentUserValue; 
+  /**
+   * This Function get the current values from the user log in, if no user found returns null
+   */
+  get getCurrentUserInfo() {
+    var curUserVal = this.currentUserValue;
     try {
-      if(curUserVal){
-        this.getUserInfo(curUserVal.systemUserId).subscribe((data)=> {      
+      if (curUserVal) {
+        this.getUserInfo(curUserVal.systemUserId).subscribe((data) => {
           this.user_data_info = data[0];
           //console.log("data",data[0]);
           this.currentUserInfo.next(data[0]);
           //console.log("currentUserInfo", this.currentUserInfo);
         },
-        err =>{
+          err => {
             this.currentUserInfo.next(null);
             //console.log("error");
-        });
-      }else {
+          });
+      } else {
         return undefined;
       }
-     
     } catch (error) {
       console.log(error);
     }
-
-   
-
     return this.currentUserInfo.asObservable();
   }
 
-  set setCurrentUserInfo(userInfo : UserDataInterface){
+  set setCurrentUserInfo(userInfo: UserDataInterface) {
     this.currentUserInfo.next(userInfo);
   }
 
@@ -89,7 +78,7 @@ export class UsersService {
 
   getUserInfo(user_id): Observable<UserDataInterface[]> {
     //console.log("user_id", user_id);
-    return this.http.get<UserDataInterface[]>(this.api_url + '/GetById/'+ user_id)
+    return this.http.get<UserDataInterface[]>(this.api_url + '/GetById/' + user_id)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -103,7 +92,7 @@ export class UsersService {
       );
 
   }
-  
+
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

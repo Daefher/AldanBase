@@ -10,7 +10,6 @@ const routes: Routes = [
     children: [
      { path: '', component: HomeViewComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver }
     ]
-
   }
 ];
 

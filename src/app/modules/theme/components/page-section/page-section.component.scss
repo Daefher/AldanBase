@@ -1,0 +1,57 @@
+.toggle-btn {
+    margin: 15px;    
+}
+
+.space_between {
+    margin: auto 15px auto 15px;
+}
+
+.add-btn {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}
+
+.add-btn mat-icon {
+
+    display: flex;
+    /* justify-items: center; */
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.wrapper {
+    margin: 20px;
+}
+
+.top-controls {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.controls-sec {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.title {
+    text-align: center;
+}
+
+.title-darkBG {
+    text-align: center;
+    color: white;
+}
+
+.content {
+    padding: 16px;
+
+}
+
+.content>mat-card {
+    margin-bottom: 16px;
+}

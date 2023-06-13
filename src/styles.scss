@@ -58,7 +58,6 @@
     background: -webkit-linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
     background: linear-gradient(90deg, $alterPrimary 0%, mat-color($accent) 100%);
     color: #000000;
-
   }
 }
 
@@ -139,7 +138,7 @@ mat-card {
 }
 
 mat-card-header {
-  background-color: rgb(1, 1, 1, 0.1);
+  background-color: rgba(1, 1, 1, 0.01);
   justify-content: center;
   align-items: center;
 }

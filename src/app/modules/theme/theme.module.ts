@@ -12,14 +12,32 @@ import { RouterModule } from '@angular/router';
 import { HomeBannerComponent } from './components/home-banner/home-banner.component';
 import { ActionsBannerComponent } from './components/actions-banner/actions-banner.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PageSectionComponent } from './components/page-section/page-section.component';
+import { EditPageSectionComponent } from './components/edit-page-section/edit-page-section.component';
+import { CreatePageSectionComponent } from './components/create-page-section/create-page-section.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { NgxColorsModule } from 'ngx-colors';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NewestProductsComponent } from './components/newest-products/newest-products.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     NavbarComponent,    
-    ThemeViewComponent, HomeBannerComponent, ActionsBannerComponent
+    ThemeViewComponent, 
+    HomeBannerComponent, 
+    ActionsBannerComponent, 
+    PageSectionComponent, 
+    EditPageSectionComponent, 
+    CreatePageSectionComponent, 
+    NewestProductsComponent
   ],
   imports: [
     CommonModule,
+    NgxColorsModule,
     RouterModule,
     MatToolbarModule,
     MatIconModule,
@@ -27,12 +45,21 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDividerModule,
     MatButtonModule,
     MatProgressBarModule,    
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,   
+    MatFormFieldModule, 
+    AngularEditorModule,
+    MatSlideToggleModule,  
+    MatCardModule,
+    MatInputModule 
   ],
   exports: [
     NavbarComponent,
     HomeBannerComponent,
-    ActionsBannerComponent
+    ActionsBannerComponent,
+    PageSectionComponent,
+    NewestProductsComponent
   ]
 })
 export class ThemeModule { }

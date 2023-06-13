@@ -29,7 +29,7 @@ import { CompanyNameResolver } from './resolvers/company-name/company-name.resol
 
 const routes: Routes = [
   { path: '', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
-  { path: 'home', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
+  { path: 'home2', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'login', component: DemoLoginComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'products/create', component: CreateProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
   { path: 'products/:partId/update', component: EditProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
@@ -45,7 +45,7 @@ const routes: Routes = [
   { path: 'reports', component: ReportsComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) },
-  { path: 'home2', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) }
+  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) }
 ];
 
 @NgModule({
