@@ -11,6 +11,7 @@ import { ThemeViewComponent } from './components/theme-view/theme-view.component
 import { RouterModule } from '@angular/router';
 import { HomeBannerComponent } from './components/home-banner/home-banner.component';
 import { ActionsBannerComponent } from './components/actions-banner/actions-banner.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,10 +27,12 @@ import { ActionsBannerComponent } from './components/actions-banner/actions-bann
     MatDividerModule,
     MatButtonModule,
     MatProgressBarModule,    
+    MatDialogModule
   ],
   exports: [
     NavbarComponent,
-    HomeBannerComponent
+    HomeBannerComponent,
+    ActionsBannerComponent
   ]
 })
 export class ThemeModule { }

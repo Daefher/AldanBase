@@ -8,3 +8,27 @@
         </div>
     </div>
 </div>
+<ng-container  *ngIf="authenticationService.currentuser | async">
+
+    <div class="actions-container"> 
+
+      <ng-container *ngIf="!image_banner?.image">
+        <div>
+          <button mat-raised-button color="accent" (click)="openDialog()">Agregar Banner</button>
+        </div>
+      </ng-container>
+   
+      <ng-container *ngIf="image_banner?.image">
+          <div>
+            <button mat-raised-button color="accent"   (click)="openEditDialog()">Editar Banner</button>
+          </div>
+      </ng-container>
+
+      <ng-container *ngIf="image_banner?.image">
+          <div>
+            <button mat-raised-button color="warn" [class.spinner]="loading"   (click)="deleteBanner(companyFile?.companyFileId)">Borrar Banner</button>
+          </div>
+      </ng-container>
+
+    </div>
+  </ng-container>

@@ -5,3 +5,12 @@
     align-items: center;
     justify-content: center;
 }
+
+.actions-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    margin: 15px;
+}
