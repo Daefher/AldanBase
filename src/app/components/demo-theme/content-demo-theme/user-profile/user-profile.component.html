@@ -15,7 +15,7 @@
             <mat-list>
               <mat-list-item> Nombre : {{ (this.user_data$ | async )?.name }} </mat-list-item>
               <mat-list-item> Correo : {{ (this.user_data$ | async )?.email }} </mat-list-item>
-              <mat-list-item> Telefono: </mat-list-item>
+              <mat-list-item> Telefono: {{ (this.user_data$ | async )?.phone }} </mat-list-item>
               <mat-list-item> Fecha de Registro : {{(this.user_data$ | async)?.createdDateTime | date:'MM/dd/yyyy'}}
               </mat-list-item>
             </mat-list>

@@ -28,6 +28,11 @@
       <input matInput placeholder="Email" formControlName="email" [ngModel]="post_data?.email">
     </mat-form-field>
 
+    <mat-form-field appearance="fill" fxFlex="100%" >
+      <mat-label>Teléfono</mat-label>
+      <input matInput placeholder="Teléfono" formControlName="teléfono" [ngModel]="post_data?.phone">
+    </mat-form-field>
+
     <div mat-dialog-actions align="end">
       <button mat-raised-button (click)="onNoClick()" type="button" 
       color="primary">Cancelar</button>
