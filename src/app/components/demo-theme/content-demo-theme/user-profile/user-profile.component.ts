@@ -22,10 +22,10 @@ import {EditCompanyDialogComponent} from '../dialogs/company/edit-company-dialog
 export class UserProfileComponent implements OnInit {
 
   public user;
-  public user_data$: Observable<UserDataInterface>; //Que efecto tiene la clase observable la interfaz?
+  public user_data$: Observable<UserDataInterface>;
   public user_created_date : any;
 
-  animal: string; //Que significa la variable animal?
+  animal: string;
   name: string;
 
   protected company:CompanyInterface;
