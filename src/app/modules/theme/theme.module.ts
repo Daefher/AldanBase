@@ -23,6 +23,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NewestProductsComponent } from './components/newest-products/newest-products.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { MatInputModule } from '@angular/material/input';
     PageSectionComponent, 
     EditPageSectionComponent, 
     CreatePageSectionComponent, 
-    NewestProductsComponent
+    NewestProductsComponent, ContactFormComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +60,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeBannerComponent,
     ActionsBannerComponent,
     PageSectionComponent,
-    NewestProductsComponent
+    NewestProductsComponent,
+    ContactFormComponent
   ]
 })
 export class ThemeModule { }

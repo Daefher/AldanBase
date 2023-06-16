@@ -28,7 +28,10 @@ import { CompanyNameResolver } from './resolvers/company-name/company-name.resol
 
 
 const routes: Routes = [
-  { path: '', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
+  { path: '', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
+  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
+  { path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) },  
+  { path: 'about', loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule) },
   { path: 'home2', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'login', component: DemoLoginComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'products/create', component: CreateProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
@@ -40,12 +43,11 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'orderconfirmation', component: OrderconfirmationComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'adminproducts/:userId', component: AdminProductsComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
-  { path: 'about', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
+  { path: 'about2', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'reports', component: ReportsComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
-  { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
-  { path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) },
-  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) }
+  { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] }
+  
 ];
 
 @NgModule({
