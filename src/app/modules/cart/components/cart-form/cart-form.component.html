@@ -1,0 +1,47 @@
+<div class="wrapper-cart">
+    <div class="shopping-cart cScrollbar">
+        <div class="title">
+            Carrito
+        </div>
+        <ng-container *ngFor="let product of shopCartItems">
+            <!-- Start Item section -->
+            <div class="item">
+                <div class="buttons">
+                    <span class="delete-btn" *ngIf="this.showControls"><mat-icon
+                            (click)="removeProduct(product)">close</mat-icon></span>
+                </div>
+                <div class="image">
+                    <img class="img-size-cart" src="{{image_path+product.imageFile}}" alt="">
+                </div>
+                <div class="description">
+                    <span>{{product.name}}</span>
+                </div>
+                <div class="quantity">
+                    <input matInput type="number" [disabled]='!this.showControls' id="cartQty" name="cartQty" min="1"
+                        #cartQty value="{{product?.quantity}}" (change)="onQtyChange(product, cartQty.value)">
+
+                </div>  
+                <div class="total-price">
+                    {{product.total | currency: 'MXN'}}
+                </div>
+
+            </div>
+        </ng-container>
+        <!-- End Item section -->
+        <ng-container *ngIf='shopCartItems.length == 0'>
+            <div class="no-item">No hay productos en el carrito.</div>
+        </ng-container>
+        <div class="cart-footer">
+            <div class="total-parts-qty">
+
+                <span> Total de artículos: {{this.numberOfElements}}</span>
+            </div>
+            <div class="tax">
+                IVA:
+            </div>
+            <div class="cart-total-price">
+                Total de la compra: {{this.sumOfCart}}.00 MXN
+            </div>
+        </div>
+    </div>
+</div>

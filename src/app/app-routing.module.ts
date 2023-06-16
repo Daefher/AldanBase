@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'users/:userId/view', component: UserProfileComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
   { path: 'orders/view', component: SalesOrdersComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
   { path: 'orders/:orderId/view', component: SalesOrderComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
-  { path: 'cart', component: ShoppingcartComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
+  { path: 'cart2', component: ShoppingcartComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'checkout', component: CheckoutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'orderconfirmation', component: OrderconfirmationComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'adminproducts/:userId', component: AdminProductsComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
@@ -47,7 +47,8 @@ const routes: Routes = [
   { path: 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'reports', component: ReportsComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
-  { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) }
+  { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
+  { path: 'cart', loadChildren: () => import('./modules/cart/cart.module').then(m => m.CartModule) }
   
 ];
 
