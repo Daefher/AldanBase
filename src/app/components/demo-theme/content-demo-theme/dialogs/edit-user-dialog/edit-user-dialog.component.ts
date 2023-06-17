@@ -63,15 +63,14 @@ export class EditUserDialogComponent {
 
       globals.chooseTheme(this.hostname, this.overlayContainer);
     }
-
+    //TODO: DELETE PASSWORD FROM HERE AND THE FORM
     this.user_data_form = this.formBuilder.group({
       aldanCustomerId: [''],
       companyId:  [''],
       plantId:  [''],
       systemUserId:  [''],
       systemUserNum:  [''],
-      profile:  [''],
-      password:  [''],
+      profile:  [''],     
       canceledBy:  [''],
       canceledDateTime:  [''],
       canceled:  [''],

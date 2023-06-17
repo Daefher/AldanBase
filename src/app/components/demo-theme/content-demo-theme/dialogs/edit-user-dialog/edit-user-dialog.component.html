@@ -1,7 +1,6 @@
 <h1 mat-dialog-title>Editar Perfil </h1>
 <form [formGroup]='user_data_form' (ngSubmit)='onSubmit()'>
 <div  fxLayout="column" fxLayoutAlign="center center">
-  <input type="hidden" [hidden]="true" formControlName="password"  [ngModel]="post_data?.password">
   <input type="hidden" [hidden]="true" formControlName="createdDateTime"  [ngModel]="post_data?.createdDateTime">
   <input type="hidden" [hidden]="true" formControlName="systemUserId"  [ngModel]="post_data?.systemUserId">
   <input type="hidden" [hidden]="true" formControlName="cancelable"  [ngModel]="post_data?.cancelable">

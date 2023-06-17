@@ -28,13 +28,16 @@ import { CompanyNameResolver } from './resolvers/company-name/company-name.resol
 
 
 const routes: Routes = [
+  //NEW
   { path: '', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
-  { path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) },  
+  { path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) },
   { path: 'about', loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule) },
   { path: 'cart', loadChildren: () => import('./modules/cart/cart.module').then(m => m.CartModule) },
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   { path: 'checkout', loadChildren: () => import('./modules/checkout/checkout.module').then(m => m.CheckoutModule) },
+  { path: 'activity-box', loadChildren: () => import('./modules/activity-box/activity-box.module').then(m => m.ActivityBoxModule) },
+  //OLD
   { path: 'home2', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'login2', component: DemoLoginComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'products/create', component: CreateProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
@@ -50,9 +53,6 @@ const routes: Routes = [
   { path: 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'reports', component: ReportsComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
-  
-  
-  
 ];
 
 @NgModule({
