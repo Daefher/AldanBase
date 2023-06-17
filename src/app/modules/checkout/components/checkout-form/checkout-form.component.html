@@ -1,0 +1,164 @@
+<div class="wrapper">
+    <div class="main-div">
+        <div>
+            <div>
+                <mat-card class="mat-card-class">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h2>Datos de envio</h2>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content >
+                        <form class="checkout-form" [formGroup]='createSalesOrderForm' (ngSubmit)='onSubmit()'>
+                            <input type="hidden" [hidden]="true" formControlName="Subtotal">
+                            <input type="hidden" [hidden]="true" formControlName="Taxes">
+                            <input type="hidden" [hidden]="true" formControlName="Total">
+                            <input type="hidden" [hidden]="true" formControlName="Payed">                          
+                            <input type="hidden" [hidden]="true" formControlName="PaymentFormNum">                           
+
+                            <div>
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="PayPalFullName">Nombre completo:</mat-label>
+                                    <input matInput [readonly]='!this.showControls' type="text"
+                                        formControlName='PayPalFullName' class="form-control small-form"
+                                        [ngClass]="{ 'is-invalid': submitted && f.PayPalFullName.errors }" />
+                                    <div class="invalid-feedback" *ngIf="submitted && f.PayPalFullName.errors">
+                                        <mat-error *ngIf="f.PayPalFullName.errors.required">Nombre completo es
+                                            requerido</mat-error>
+                                    </div>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="CustomerEmail">Correo electrónico:</mat-label>
+                                    <input matInput [readonly]='!this.showControls' type="text"
+                                        formControlName='CustomerEmail' class="form-control small-form"
+                                        [ngClass]="{ 'is-invalid': submitted && f.CustomerEmail.errors }" />
+                                    <div class="invalid-feedback" *ngIf="submitted && f.CustomerEmail.errors">
+                                        <mat-error *ngIf="f.CustomerEmail.errors.required">Correo electrónico es
+                                            requerido</mat-error>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                            <div>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="PayPalAddressLine1">Direccion</mat-label>
+                                    <input matInput [readonly]='!this.showControls' type="text"
+                                        formControlName="PayPalAddressLine1"
+                                        [ngModel]="salesOrderData.PayPalAddressLine1" class="form-control small-form"
+                                        [ngClass]="{ 'is-invalid': submitted && f.PayPalAddressLine1.errors }" />
+                                    <div *ngIf="submitted && f.PayPalAddressLine1.errors" class="invalid-feedback">
+                                        <mat-error *ngIf="f.PayPalAddressLine1.errors.required">Direccion es
+                                            requerida</mat-error>
+                                    </div>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="PayPalAddressLine2">Colonia</mat-label>
+                                    <input matInput [readonly]='!this.showControls' type="text"
+                                        formControlName="PayPalAddressLine2"
+                                        [ngModel]="salesOrderData.PayPalAddressLine2" class="form-control small-form"
+                                        [ngClass]="{ 'is-invalid': submitted && f.PayPalAddressLine2.errors }" />
+                                    <mat-error *ngIf="submitted && f.PayPalAddressLine2.errors"
+                                        class="invalid-feedback">
+                                        Colonia es requerida
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill">
+
+                                    <mat-label for="PayPalAdminArea2">Ciudad</mat-label>
+                                    <input matInput [readonly]='!this.showControls' type="text"
+                                        formControlName="PayPalAdminArea2" [ngModel]="salesOrderData.PayPalAdminArea2"
+                                        class="form-control small-form"
+                                        [ngClass]="{ 'is-invalid': submitted && f.PayPalAdminArea2.errors }" />
+                                    <div *ngIf="submitted && f.PayPalAdminArea2.errors" class="invalid-feedback">
+                                        <mat-error *ngIf="f.PayPalAdminArea2.errors.required">Ciudad es
+                                            requerida</mat-error>
+                                    </div>
+
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="PayPalAdminArea1">Estado</mat-label>
+                                    <ng-container *ngIf='!this.showControls'>
+                                        <mat-select disabled id="formSelectState" type="text"
+                                            formControlName="PayPalAdminArea1"
+                                            [ngModel]="salesOrderData.PayPalAdminArea1" class="form-control small-form"
+                                            [ngClass]="{ 'is-invalid': submitted && f.PayPalAdminArea1.errors }">
+                                            <mat-option *ngFor="let item of statesList"
+                                                [value]="item.id">{{item.name}}</mat-option>
+                                        </mat-select>
+                                    </ng-container>
+
+                                    <ng-container *ngIf='this.showControls'>
+                                        <mat-select id="formSelectState" type="text" formControlName="PayPalAdminArea1"
+                                            [ngModel]="salesOrderData.PayPalAdminArea1" class="form-control small-form"
+                                            [ngClass]="{ 'is-invalid': submitted && f.PayPalAdminArea1.errors }">
+                                            <mat-option *ngFor="let item of statesList"
+                                                [value]="item.id">{{item.name}}</mat-option>
+                                        </mat-select>
+                                    </ng-container>
+                                    <div *ngIf="submitted && f.PayPalAdminArea1.errors" class="invalid-feedback">
+                                        <mat-error *ngIf="f.PayPalAdminArea1.errors.required">Estado es
+                                            requerido</mat-error>
+                                    </div>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="PayPalPostalCode">Código Postal</mat-label>
+                                    <input matInput [readonly]='!this.showControls'
+                                        (change)="checkIfPostalCodeExist($event.target)" type="text"
+                                        formControlName="PayPalPostalCode" [ngModel]="salesOrderData.PayPalPostalCode"
+                                        class="form-control small-form"
+                                        [ngClass]="{ 'is-invalid': submitted && f.PayPalPostalCode.errors }" />
+                                    <div *ngIf="submitted && f.PayPalPostalCode.errors" class="invalid-feedback">
+                                        <mat-error *ngIf="f.PayPalPostalCode.errors.required">Código Postal es
+                                            requerido</mat-error>
+                                    </div>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="PayPalCountryCode">País</mat-label>
+                                    <ng-container *ngIf='!this.showControls'>
+                                        <mat-select disabled id="formSelectCountry" type="text"
+                                            formControlName="PayPalCountryCode"
+                                            [ngModel]="salesOrderData.PayPalCountryCode" class="form-control small-form"
+                                            [ngClass]="{ 'is-invalid': submitted && f.PayPalCountryCode.errors }">
+                                            <mat-option *ngFor="let item of countryList"
+                                                [value]="item.id">{{item.name}}</mat-option>
+                                        </mat-select>
+                                    </ng-container>
+
+                                    <ng-container *ngIf='this.showControls'>
+                                        <mat-select id="formSelectCountry" type="text"
+                                            formControlName="PayPalCountryCode"
+                                            [ngModel]="salesOrderData.PayPalCountryCode" class="form-control small-form"
+                                            [ngClass]="{ 'is-invalid': submitted && f.PayPalCountryCode.errors }">
+                                            <mat-option *ngFor="let item of countryList"
+                                                [value]="item.id">{{item.name}}</mat-option>
+                                        </mat-select>
+                                    </ng-container>
+                                    <div *ngIf="submitted && f.PayPalCountryCode.errors" class="invalid-feedback">
+                                        <mat-error *ngIf="f.PayPalCountryCode.errors.required">Pais es
+                                            requerido</mat-error>
+                                    </div>
+
+                                </mat-form-field>
+
+                            </div>
+                            <div align="end">
+
+                                <button type="submit" *ngIf="this.showControls" mat-raised-button color="accent"
+                                    [disabled]="loading">
+                                    Continuar
+                                </button>
+                            </div>
+
+
+                        </form>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>

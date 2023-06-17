@@ -22,6 +22,7 @@ export class CartFormComponent {
   sumOfCart: number;
   numberOfElements: number;
   displayedColumns: string[] = ['name', 'description', 'quantity'];
+  isEmpty: boolean  = false;
   cart = localStorage.getItem(globals.cartId);
   private company: CompanyInterface;
   constructor(private cartService: CartService,
@@ -41,6 +42,7 @@ export class CartFormComponent {
     }
     this.cartService.getLSCart(this.cart).subscribe((data: ProductInterface[]) => {
       this.shopCartItems = data;
+      this.isEmpty = (data && data.length) > 0 ? false : true;
     },
       err => {
         this.toastr.error("Error cargar productos");

@@ -19,8 +19,7 @@
                 <div class="quantity">
                     <input matInput type="number" [disabled]='!this.showControls' id="cartQty" name="cartQty" min="1"
                         #cartQty value="{{product?.quantity}}" (change)="onQtyChange(product, cartQty.value)">
-
-                </div>  
+                </div>
                 <div class="total-price">
                     {{product.total | currency: 'MXN'}}
                 </div>
@@ -28,12 +27,11 @@
             </div>
         </ng-container>
         <!-- End Item section -->
-        <ng-container *ngIf='shopCartItems.length == 0'>
+        <ng-container *ngIf='isEmpty'>
             <div class="no-item">No hay productos en el carrito.</div>
         </ng-container>
         <div class="cart-footer">
             <div class="total-parts-qty">
-
                 <span> Total de artículos: {{this.numberOfElements}}</span>
             </div>
             <div class="tax">

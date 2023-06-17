@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <mat-card class="mat-card-class cart">
+        <div class="btn-container">
+            <button mat-raised-button class="alterPrimaryBG " routerLink="../cart">Atras</button>
+        </div>
+        <mat-card-header class="mat-header">
+            <mat-card-title>
+                Ya casi es tuyo el carrito...
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="PartType">Forma de pago</mat-label>
+            <mat-select [(ngModel)]="mySelect" class="form-control small-form"
+                (selectionChange)="onPaymentFormChange($event.value)">
+                <mat-option *ngFor="let item of paymentFormArray" [value]="item.id">{{item.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <ng-container *ngIf="this.selectedPaymentForm == 'PagoContraEntrega' || this.selectedPaymentForm == 'PayPal'">
+            <app-checkout-form></app-checkout-form>
+        </ng-container>
+        </mat-card-content>
+    </mat-card>
+</div>
