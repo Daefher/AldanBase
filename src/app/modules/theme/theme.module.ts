@@ -30,6 +30,9 @@ import { CompanyOrdersComponent } from './components/company-orders/company-orde
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NewestProductsComponent, 
     ContactFormComponent, 
     EditProfileComponent, 
-    EditCompanyComponent, CompanyOrdersComponent
+    EditCompanyComponent, 
+    CompanyOrdersComponent, 
+    SideNavComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +70,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatListModule
   ],
   exports: [
     NavbarComponent,
@@ -74,7 +81,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     PageSectionComponent,
     NewestProductsComponent,
     ContactFormComponent,
-    CompanyOrdersComponent
+    CompanyOrdersComponent,
+    SideNavComponent
   ]
 })
 export class ThemeModule { }
