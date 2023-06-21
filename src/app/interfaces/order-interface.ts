@@ -1,5 +1,5 @@
 export interface OrderInterface {
-
+    salesOrderId: number,
     aldanCustomerId: number,
     companyId: number,
     plantId: number,
@@ -18,4 +18,22 @@ export interface OrderInterface {
     receivedComment: string,
     sysRowId: string,
     carrierId: number
+    closedDateTime: string,
+    CreatedDateTime: string
+    Subtotal: number,
+    Taxes: number,
+    Total: number,
+    Payed: number,
+    Change: number,
+    CurrencyNum: "MXN",
+    PaymentFormNum: string,
+    TotalDiscount: number,
+    PayPalFullName: string,
+    PayPalAddressLine1: string,
+    PayPalAddressLine2: string,
+    PayPalAdminArea2: string,
+    PayPalAdminArea1: string,
+    PayPalPostalCode: string,
+    PayPalCountryCode: "MX",
+    CustomerEmail: string
 }

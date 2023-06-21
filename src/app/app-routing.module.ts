@@ -38,6 +38,8 @@ const routes: Routes = [
   { path: 'checkout', loadChildren: () => import('./modules/checkout/checkout.module').then(m => m.CheckoutModule) },
   { path: 'activity-box', loadChildren: () => import('./modules/activity-box/activity-box.module').then(m => m.ActivityBoxModule) },
   { path: 'management', loadChildren: () => import('./modules/management/management.module').then(m => m.ManagementModule) },
+  { path: 'company-info', loadChildren: () => import('./modules/company-info/company-info.module').then(m => m.CompanyInfoModule) },
+
   //OLD
   { path: 'home2', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'login2', component: DemoLoginComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },

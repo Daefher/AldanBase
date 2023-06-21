@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Editar Compañia </h1>
+<div mat-dialog-content>
+    <form class="example-form" [formGroup]='companyForm' fxLayout="column" fxLayoutAlign="center center"
+        (ngSubmit)='onSubmit()'>
+        <input type="hidden" [hidden]="true" formControlName="aldanCustomerId" [ngModel]="company?.aldanCustomerId">
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput placeholder="Nombre" formControlName="name" [ngModel]="company?.name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Servidor SMTP</mat-label>
+            <input matInput placeholder="Servidor SMTP" formControlName="smtpServer" [ngModel]="company?.smtpServer">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Puerto SMTP</mat-label>
+            <input matInput placeholder="Puerto" formControlName="smtpPort" [ngModel]="company?.smtpPort">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Email SMTP</mat-label>
+            <input matInput placeholder="Email" formControlName="smtpEmail" [ngModel]="company?.smtpEmail">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Email de Contacto</mat-label>
+            <input matInput placeholder="Email de Contacto" formControlName="contactEmail"
+                [ngModel]="company?.contactEmail">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Contraseña SMTP</mat-label>
+            <input matInput type="password" placeholder="Contraseña SMTP" formControlName="smtpPassword"
+                [ngModel]="company?.smtpPassword">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput type="password" placeholder="Descripción" formControlName="description"
+                [ngModel]="company?.description"></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Facebook</mat-label>
+            <input matInput placeholder="Facebook" formControlName="facebookUrl" [ngModel]="company?.facebookUrl">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Whatsapp</mat-label>
+            <input matInput placeholder="Whatsapp" formControlName="whatsAppUrl" [ngModel]="company?.whatsAppUrl">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Twitter</mat-label>
+            <input matInput placeholder="Twitter" formControlName="twitterUrl" [ngModel]="company?.twitterUrl">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Instagram</mat-label>
+            <input matInput placeholder="Instagram" formControlName="instagramUrl" [ngModel]="company?.instagramUrl">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Youtube</mat-label>
+            <input matInput placeholder="Youtube" formControlName="youTubeUrl" [ngModel]="company?.youTubeUrl">
+        </mat-form-field>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button (click)="onNoClick()" type="button" color="primary">Cancelar</button>
+            <button mat-raised-button color="accent" [class.spinner]="loading" [disabled]="loading">Guardar</button>
+        </div>
+    </form>
+</div>

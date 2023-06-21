@@ -24,17 +24,26 @@ import { NewestProductsComponent } from './components/newest-products/newest-pro
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { EditProfileComponent } from './dialogs/edit-profile/edit-profile.component';
+import { EditCompanyComponent } from './dialogs/edit-company/edit-company.component';
+import { CompanyOrdersComponent } from './components/company-orders/company-orders.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
-    NavbarComponent,    
-    ThemeViewComponent, 
-    HomeBannerComponent, 
-    ActionsBannerComponent, 
-    PageSectionComponent, 
-    EditPageSectionComponent, 
-    CreatePageSectionComponent, 
-    NewestProductsComponent, ContactFormComponent
+    NavbarComponent,
+    ThemeViewComponent,
+    HomeBannerComponent,
+    ActionsBannerComponent,
+    PageSectionComponent,
+    EditPageSectionComponent,
+    CreatePageSectionComponent,
+    NewestProductsComponent, 
+    ContactFormComponent, 
+    EditProfileComponent, 
+    EditCompanyComponent, CompanyOrdersComponent
   ],
   imports: [
     CommonModule,
@@ -45,15 +54,18 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
     MatMenuModule,
     MatDividerModule,
     MatButtonModule,
-    MatProgressBarModule,    
+    MatProgressBarModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule,   
-    MatFormFieldModule, 
+    ReactiveFormsModule,
+    MatFormFieldModule,
     AngularEditorModule,
-    MatSlideToggleModule,  
+    MatSlideToggleModule,
     MatCardModule,
-    MatInputModule 
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatPaginatorModule
   ],
   exports: [
     NavbarComponent,
@@ -61,7 +73,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
     ActionsBannerComponent,
     PageSectionComponent,
     NewestProductsComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    CompanyOrdersComponent
   ]
 })
 export class ThemeModule { }
