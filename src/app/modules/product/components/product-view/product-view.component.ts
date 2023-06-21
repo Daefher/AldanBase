@@ -8,6 +8,7 @@ import { AuthenticationService } from 'src/app/services/demo-login/authenticatio
 import { ProductsService } from 'src/app/services/demo-products/products.service';
 import * as globals from '../../../../globals';
 import { ProductQty } from 'src/app/interfaces/product-qty';
+import { UserInterface } from 'src/app/interfaces/user-interface';
 
 @Component({
   selector: 'app-product-view',
@@ -24,7 +25,7 @@ export class ProductViewComponent {
   partQty_Value: number;
   partQty_control = 0;
   image_path: string;
-  user;
+  user: UserInterface;
   private company: CompanyInterface;
 
   constructor(

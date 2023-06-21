@@ -37,6 +37,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   { path: 'checkout', loadChildren: () => import('./modules/checkout/checkout.module').then(m => m.CheckoutModule) },
   { path: 'activity-box', loadChildren: () => import('./modules/activity-box/activity-box.module').then(m => m.ActivityBoxModule) },
+  { path: 'management', loadChildren: () => import('./modules/management/management.module').then(m => m.ManagementModule) },
   //OLD
   { path: 'home2', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'login2', component: DemoLoginComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'reports', component: ReportsComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
+ 
 ];
 
 @NgModule({

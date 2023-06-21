@@ -16,7 +16,7 @@
         </div>
       </ng-container>
       <ng-container >
-        <div fxLayout="row" fxLayoutAlign="end center" >
+        <div class="table-actions"  fxLayout="row" fxLayoutAlign="end center" >
           <div fxFlex="75" style="margin-left: 10px;" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutAlign="start">
             <button mat-raised-button class="alterPrimaryBG"
               *ngIf="authenticationService.currentuser | async" [routerLink]="['/products/create']" (click)="gotoTop()">Crear

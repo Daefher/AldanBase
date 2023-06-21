@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.table-actions {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+}
+
+.filters{
+    margin-top: 15px;
+}
