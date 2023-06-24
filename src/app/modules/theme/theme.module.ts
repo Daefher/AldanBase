@@ -35,6 +35,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AddBannerComponent } from './dialogs/add-banner/add-banner.component';
 import { UpdateBannerComponent } from './dialogs/update-banner/update-banner.component';
+import { AppFooterComponent } from './components/app-footer/app-footer.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,10 @@ import { UpdateBannerComponent } from './dialogs/update-banner/update-banner.com
     EditProfileComponent, 
     EditCompanyComponent, 
     CompanyOrdersComponent, 
-    SideNavComponent, AddBannerComponent, UpdateBannerComponent
+    SideNavComponent, 
+    AddBannerComponent, 
+    UpdateBannerComponent, 
+    AppFooterComponent
   ],
   imports: [
     CommonModule,
@@ -86,7 +90,8 @@ import { UpdateBannerComponent } from './dialogs/update-banner/update-banner.com
     CompanyOrdersComponent,
     SideNavComponent,
     UpdateBannerComponent,
-    AddBannerComponent
+    AddBannerComponent,
+    AppFooterComponent
   ]
 })
 export class ThemeModule { }
