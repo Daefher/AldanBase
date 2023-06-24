@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ToastrService } from 'ngx-toastr';
-import { TextFormComponent } from 'src/app/components/demo-theme/dynamic-componets/text-area/text-form/text-form.component';
 import { CompanyPage } from 'src/app/interfaces/CompanyPage/company-page';
 import { CompanyPageData } from 'src/app/interfaces/CompanyPage/company-page-data';
 import { CompanyService } from 'src/app/services/demo-company/company.service';

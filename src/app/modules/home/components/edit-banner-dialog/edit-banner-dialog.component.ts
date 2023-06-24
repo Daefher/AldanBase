@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EditBannerComponent } from 'src/app/components/demo-theme/content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
 import { CompanyFile } from 'src/app/interfaces/company-file';
 import { CompanyInterface } from 'src/app/interfaces/company-interface';
 import { BannerService } from 'src/app/services/demo-banner/banner.service';
@@ -30,7 +29,7 @@ export class EditBannerDialogComponent implements OnInit {
     private router : Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    public dialogRef: MatDialogRef<EditBannerComponent>,
+    public dialogRef: MatDialogRef<EditBannerDialogComponent>,
     public companyService : CompanyService,
     public overlayContainer : OverlayContainer
   ) { }

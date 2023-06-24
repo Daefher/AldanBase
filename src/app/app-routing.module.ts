@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardGuard } from './helpers/auth-guard.guard';
+/* import { AuthGuardGuard } from './helpers/auth-guard.guard';
 import {
   HomeComponent,
   HomeDemoThemeComponent,
@@ -21,7 +21,7 @@ import {
 } from "./components/index.pages";
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
 import { CompanyResolver } from './resolvers/company-resolver/company.resolver';
-import { CompanyNameResolver } from './resolvers/company-name/company-name.resolver';
+import { CompanyNameResolver } from './resolvers/company-name/company-name.resolver'; */
 
 const routes: Routes = [
   //NEW
@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'company-info', loadChildren: () => import('./modules/company-info/company-info.module').then(m => m.CompanyInfoModule) },
 
   //OLD
-  { path: 'home2', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
+ /*  { path: 'home2', component: HomeDemoThemeComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'login2', component: DemoLoginComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
   { path: 'products/create', component: CreateProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
   { path: 'products/:partId/update', component: EditProductComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver },
@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'salesdashboard/:userId/view', component: DashboardSalesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'reports', component: ReportsComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
   { path: 'messages', component: MessagesComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver, canActivate: [AuthGuardGuard] },
- 
+  */
 ];
 
 @NgModule({

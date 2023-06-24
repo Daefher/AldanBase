@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EditBannerComponent } from 'src/app/components/demo-theme/content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
 import { CompanyFile } from 'src/app/interfaces/company-file';
 import { CompanyInterface } from 'src/app/interfaces/company-interface';
 import { BannerService } from 'src/app/services/demo-banner/banner.service';
@@ -29,7 +28,7 @@ export class UpdateBannerComponent {
     private bannerService: BannerService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    public dialogRef: MatDialogRef<EditBannerComponent>,
+    public dialogRef: MatDialogRef<UpdateBannerComponent>,
     public companyService: CompanyService,
     public overlayContainer: OverlayContainer
   ) { }

@@ -35,7 +35,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AddBannerComponent } from './dialogs/add-banner/add-banner.component';
 import { UpdateBannerComponent } from './dialogs/update-banner/update-banner.component';
-import { EditBannerComponent } from 'src/app/components/demo-theme/content-demo-theme/dialogs/company/edit-banner/edit-banner.component';
 
 @NgModule({
   declarations: [

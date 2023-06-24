@@ -2,9 +2,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EditUserDialogComponent } from 'src/app/components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 import { CompanyInterface } from 'src/app/interfaces/company-interface';
 import { CompanyService } from 'src/app/services/demo-company/company.service';
 import * as globals from '../../../../globals';
@@ -22,7 +20,7 @@ export class EditCompanyComponent {
   loading:boolean = false;
 
   constructor(
-    public dialogRef: MatDialogRef<EditUserDialogComponent>,
+    public dialogRef: MatDialogRef<EditCompanyComponent>,
     public companyService: CompanyService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,

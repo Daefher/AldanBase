@@ -2,19 +2,22 @@ import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { EditUserDialogComponent, DialogData } from 'src/app/components/demo-theme/content-demo-theme/dialogs/edit-user-dialog/edit-user-dialog.component';
 import { UserDataInterface } from 'src/app/interfaces/user-data-interface';
 import { UserInterface } from 'src/app/interfaces/user-interface';
 import { AuthenticationService } from 'src/app/services/demo-login/authentication.service';
 import { UsersService } from 'src/app/services/demo-user/users.service';
 import * as globals from '../../../../globals';
 import { OverlayContainer } from '@angular/cdk/overlay';
-
+export interface DialogData {
+  email: string;
+  name: string; 
+}
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss']
 })
+
 export class EditProfileComponent {
 
   post_data: UserDataInterface;
@@ -25,7 +28,7 @@ export class EditProfileComponent {
   hostname: string = window.location.hostname;
 
   constructor(
-    public dialogRef: MatDialogRef<EditUserDialogComponent>,
+    public dialogRef: MatDialogRef<EditProfileComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public usersService: UsersService,
     public authenticationService: AuthenticationService,

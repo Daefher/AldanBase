@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { BannerComponent } from 'src/app/components/demo-theme/content-demo-theme/dialogs/company/banner/banner.component';
 import { CompanyFile } from 'src/app/interfaces/company-file';
 import { CompanyInterface } from 'src/app/interfaces/company-interface';
 import { BannerService } from 'src/app/services/demo-banner/banner.service';
@@ -26,7 +25,7 @@ export class AddBannerComponent {
     private bannerService: BannerService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    public dialogRef: MatDialogRef<BannerComponent>,
+    public dialogRef: MatDialogRef<AddBannerComponent>,
     public companyService: CompanyService,
   ) { }
 

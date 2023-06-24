@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ToastrService } from 'ngx-toastr';
-import { TextFormEditComponent } from 'src/app/components/demo-theme/dynamic-componets/text-area/text-form-edit/text-form-edit.component';
 import { CompanyPage } from 'src/app/interfaces/CompanyPage/company-page';
 import { CompanyPageData } from 'src/app/interfaces/CompanyPage/company-page-data';
 import { UserInterface } from 'src/app/interfaces/user-interface';
