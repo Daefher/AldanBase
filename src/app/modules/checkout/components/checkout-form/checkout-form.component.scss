@@ -1,0 +1,37 @@
+.main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.mat-card-class {
+    margin: 2em auto;
+    text-align: center;
+    width: 650px;
+}
+
+
+.checkout-form{
+   display: flex;
+   box-sizing: border-box;
+   flex-flow: row wrap;
+   justify-content: center;   
+}
+
+mat-form-field{
+    margin-left: 10px;
+}
+
+.checkout-form > div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.checkout-form > div  > mat-form-field {
+    flex: 1 1 25%;
+}
+
+

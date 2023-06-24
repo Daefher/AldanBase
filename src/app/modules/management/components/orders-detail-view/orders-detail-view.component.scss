@@ -1,0 +1,36 @@
+.wrapper {
+    display: flex;
+    box-sizing: border-box;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: stretch;
+    align-content: center;
+    margin: 15px;
+}
+
+.wrapper>* {
+    @media only screen and (max-width: 1181px) {
+        flex: 1 1 100%;
+        box-sizing: border-box;
+        max-width: 100%;
+        padding: 0px 16px 16px 0px;
+    }
+}
+
+.wrapper>app-orders-by-product {
+    flex: 1 1 70%;
+}
+
+.wrapper>app-orders-overall-info {
+    flex: 1 1 25%;
+    align-self: stretch;
+}
+
+.wrapper>app-products-available {
+    flex: 0 0 50%;
+}
+
+.wrapper>app-orders-by-status {
+    flex: 0 0 45%;
+}

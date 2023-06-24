@@ -1,0 +1,61 @@
+<app-nav-demo-theme></app-nav-demo-theme>
+
+<div class="bounds">
+ <div class="home-content demo-header-container" 
+ [style.background-image]=" image_banner?.image  ? 'url( '+image_banner?.image+')': '' "
+  fxLayout="row" fxLayoutAlign="space-around center"
+    style="min-height:400px">
+    
+
+    <div fxFlex="100" class="sec1" fxFlex.xs="55">
+      <app-header-demo-theme [model]="image_id"></app-header-demo-theme>
+    </div>
+    
+  </div>
+
+  <ng-container  *ngIf="authenticationService.currentuser | async">
+
+    <div class="content" fxLayoutGap="5px grid"> 
+
+      <ng-container *ngIf="!image_banner?.image">
+        <div  fxFlex="15%" fxFlex.xs="100%" fxFlex.sm="33%">
+          <button mat-raised-button color="accent" (click)="openDialog()">Agregar Banner</button>
+        </div>
+      </ng-container>
+   
+      <ng-container *ngIf="image_banner?.image">
+          <div   fxFlex="15%" fxFlex.xs="100%" fxFlex.sm="33%">
+            <button mat-raised-button color="accent"   (click)="openEditDialog()">Editar Banner</button>
+          </div>
+      </ng-container>
+
+      <ng-container *ngIf="image_banner?.image">
+          <div  fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%" >
+            <button mat-raised-button color="warn"   (click)="deleteBanner(image_id?.companyFileId)">Borrar Banner</button>
+          </div>
+      </ng-container>
+
+    </div>
+  </ng-container>
+
+  <app-text-area *ngIf="companyPage"  [CurrentPage] ="companyPage[0]" [Block]="0"></app-text-area>
+  
+  <br>
+  <br>
+  <div class="wrapper">
+    <div class="title">
+      <h1>Recién Llegados</h1>
+    </div>
+
+    <app-feature-products></app-feature-products>
+
+    <br>
+    <app-text-area *ngIf="companyPage" [CurrentPage] ="companyPage[0]" [Block]="1"></app-text-area>
+
+    
+  </div>
+  <app-text-area *ngIf="companyPage" [CurrentPage] ="companyPage[0]" [Block]="2"></app-text-area>
+  <app-text-area *ngIf="companyPage" [CurrentPage] ="companyPage[0]" [Block]="3"></app-text-area>
+
+</div>
+ 

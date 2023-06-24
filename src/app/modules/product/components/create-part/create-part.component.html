@@ -1,0 +1,70 @@
+<div class="main-div">
+  <mat-card class="mat-card-class cScrollbar">
+    <h2>Agregar Producto</h2>
+    <mat-card-content> 
+      <form class="form-wrapper"  [formGroup]='createProductForm' (ngSubmit)='onSubmit()'>
+        <input type="hidden" [hidden]="true" formControlName="UomClassId" [ngModel]="1">
+        <input type="hidden" [hidden]="true" formControlName="UomId" [ngModel]="2">
+        <input type="hidden" [hidden]="true" formControlName="CreatedDateTime">
+        <input type="hidden" [hidden]="true" formControlName="UnitCost">
+        <input type="hidden" [hidden]="true" formControlName="imageFile">       
+        <div class="example-full-width" appearance="fill">
+          <mat-label>Imagen</mat-label>
+          <input type="file" (change)="handleInputChange($event)" class="form-control small-form"  /> 
+          <ng-container *ngIf="image_file">
+            <img src="{{image_file}}" class="img-size-create" >    
+          </ng-container>    
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name'>
+          <div *ngIf="submitted && f.Name.errors">
+            <mat-error *ngIf="f.Name.errors.required">
+              Name is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput placeholder="Descripcion del Producto" formControlName='description'></textarea>
+          <div *ngIf="submitted && f.description.errors">
+            <mat-error *ngIf="f.description.errors.required">
+              Description is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Costo por Unidad</mat-label>
+                <input type="text" matInput placeholder="Peso del Producto" formControlName='UnitCost'
+                  >
+                <div *ngIf="submitted && f.UnitCost.errors">
+                  <mat-error *ngIf="f.UnitCost.errors.required">
+                    Peso is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Precio</mat-label>
+                <input type="text" matInput placeholder="Precio del Producto" formControlName='UnitPrice'>
+                <div *ngIf="submitted && f.UnitPrice.errors">
+                  <mat-error *ngIf="f.UnitPrice.errors.required">
+                    Precio is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <button type="submit" mat-raised-button color="primary" [class.spinner]="loading" [disabled]="loading" >
+          Crear
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+ 

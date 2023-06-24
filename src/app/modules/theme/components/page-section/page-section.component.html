@@ -1,0 +1,38 @@
+<ng-container *ngIf="data_loaded">
+    <ng-container *ngIf=" authenticationService.currentuser | async  ">
+        <div class="top-controls">
+            <ngx-colors matTooltip="Color de Texto" class="space_between" ngx-colors-trigger
+                (change)="changeColor($event, 'FontColor', companyPageData)"
+                [ngModel]="companyPageData?.sectionFontColor"></ngx-colors>
+            <ngx-colors matTooltip="Color de Fondo" class="space_between"
+                (change)="changeColor($event, 'BGColor', companyPageData)" ngx-colors-trigger
+                [ngModel]="companyPageData?.sectionBGColor"></ngx-colors>
+            <mat-slide-toggle class="space_between" (change)="deactiveSection(companyPageData)" color="primary"
+                [checked]="!companyPageData?.canceled">Activo</mat-slide-toggle>
+            <button mat-raised-button class="space_between" color="warn"
+                (click)="editCompanyDialog()"><mat-icon>edit</mat-icon>Editar</button>
+        </div>
+    </ng-container>
+    <div class="wrapper"
+        [ngStyle]="{'background-color': companyPageData?.sectionBGColor, 'color':companyPageData?.sectionFontColor } "
+        *ngIf="!companyPageData?.canceled">
+        <mat-divider></mat-divider>
+        <div class="title">
+            <h1>{{companyPageData?.sectionTitle}}</h1>
+        </div>
+        <div class="title">
+            <h4>{{companyPageData?.sectionSubtitle}}</h4>
+        </div>
+        <div class="about-text">
+            <p align="center" [innerHTML]="companyPageData?.sectionDescription"></p>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+</ng-container>
+<ng-container *ngIf="!data_loaded && authenticationService.currentuser | async">
+    <div class="add-btn">
+        <button mat-fab color="warn" (click)="openCompanyDialog()">
+            <mat-icon>add_box</mat-icon>
+        </button>
+    </div>
+</ng-container>

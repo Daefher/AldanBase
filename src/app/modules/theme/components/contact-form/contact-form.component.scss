@@ -1,0 +1,19 @@
+.contact-form{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;   
+}
+
+.mat-card-class {
+    min-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.mat-card-content{
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+}

@@ -1,0 +1,31 @@
+.navBarTheme {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    font-family: sans-serif;
+    place-content: flex-end center;
+    align-items: flex-end;
+    font-size: 14px;
+}
+
+.spacing {
+    margin-right: 30px;
+    flex: 1 1 0%;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 600px) {
+    .hide {
+        display: none;
+    }
+    .dropMenu {
+        display: block;
+    }
+}
+
+@media (min-width: 601px) {
+    .dropMenu {
+        display: none;
+    }
+}

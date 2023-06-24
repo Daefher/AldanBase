@@ -1,0 +1,33 @@
+<div class="main-div">
+    <mat-card class="mat-card-class">
+        <h2>Log In</h2>
+        <mat-card-content>
+            <form class="example-form" [formGroup]='loginForm' (ngSubmit)='onSubmit()'>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="test@example.com" formControlName='Email'>
+                    <div *ngIf="submitted && f.Email.errors">
+                        <mat-error *ngIf="f.Email.errors.required">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="f.Email.errors.required">
+                            Email not <strong>admitted</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName='Password'>
+                    <div *ngIf="submitted && f.Email.errors">
+                        <mat-error *ngIf="f.Password.errors.required">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                <button mat-raised-button color="accent">
+                    Login
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

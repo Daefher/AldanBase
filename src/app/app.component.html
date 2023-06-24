@@ -2,7 +2,7 @@
   
   
   <mat-drawer #drawer class="example-sidenav leftNavColor " mode="side" >
-    <app-sidenav [company]="company" ></app-sidenav>
+    <app-side-nav [company]="company" ></app-side-nav>
   </mat-drawer>
   <ng-container *ngIf="authenticationService.currentuser | async ">
     <div id="open-menu"  >

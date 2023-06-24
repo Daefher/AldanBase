@@ -9,6 +9,7 @@ import { ProductInterface } from '../../interfaces/product-interface';
 import { ProductQty } from '../../interfaces/product-qty';
 
 import { FormGroup } from '@angular/forms';
+import { activeDemand } from 'src/app/interfaces/active-demand';
 
  
 @Injectable({
@@ -52,7 +53,7 @@ export class ProductsService {
       )
   }
 
-  getActiveDemand(active): Observable<any[]>{
+  getActiveDemand(active): Observable<activeDemand[]>{
     return this.http.get<any[]>(this.api_url + '/GetActiveDemandOfPart', { params: { active: active } })
     .pipe(
       catchError(this.errorHandler)

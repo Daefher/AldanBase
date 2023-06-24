@@ -1,0 +1,38 @@
+<mat-toolbar class="navBarTheme" color="primary">
+    
+    <a mat-button routerLink="/" >{{company.name}}</a>
+    <span class="spacing"></span>
+    <a class="hide" mat-button routerLink="/" > Inicio </a>
+    <a class="hide" mat-button routerLink="/product/all" > Productos </a>   
+    <a class="hide" mat-button routerLink="/about" > Acerca de  </a>   
+    <a class="hide" mat-button routerLink="/cart" > <mat-icon>shopping_cart</mat-icon>  ( {{prods_on_cart}} ) </a>   
+   
+    <button class="dropMenu" mat-icon-button [matMenuTriggerFor]="dropMenu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu">
+        <ng-container>         
+            
+            <button mat-menu-item routerLink="/">
+                <mat-icon class="mr">home</mat-icon>
+               Inicio 
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/product/all">
+                <mat-icon class="mr">store</mat-icon>
+                 Productos
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/about" >
+                <mat-icon class="mr">note</mat-icon>
+                 Acerca de
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/cart">
+                <mat-icon class="mr">shopping_cart</mat-icon>
+                Carrito ( {{prods_on_cart}} )
+           </button> 
+           
+        </ng-container>
+    </mat-menu>
+</mat-toolbar>

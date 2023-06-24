@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Agregar Banner</h1>
+<div mat-dialog-content>
+    <form class="add-banner-form" [formGroup]='form' (ngSubmit)='onSubmit()'>
+        <input type="hidden" [hidden]="true" formControlName="createdDateTime">
+        <input type="hidden" [hidden]="true" formControlName="cancelable">
+        <input type="hidden" [hidden]="true" formControlName="canceled">
+        <input type="hidden" [hidden]="true" formControlName="canceledBy">
+        <input type="hidden" [hidden]="true" formControlName="companyId">
+        <input type="hidden" [hidden]="true" formControlName="createdBy">
+        <input type="hidden" [hidden]="true" formControlName="sysRowId">
+        <input type="hidden" [hidden]="true" formControlName="aldanCustomerId">
+        <div class="example-full-width" appearance="fill">
+            <mat-label>Imagen</mat-label>
+            <input type="file" (change)="handleInputChange($event)" class="form-control small-form" />
+            <ng-container *ngIf="image_file">
+                <img src="{{image_file}}" class="img-size-banner">
+            </ng-container>
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Titulo</mat-label>
+            <input type="text" matInput placeholder="Titulo" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Subtitulo</mat-label>
+            <input matInput placeholder="Subtitulo" formControlName="subtitle">
+        </mat-form-field>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button (click)="onNoClick()" type="button" color="primary">Cancelar</button>
+            <button mat-raised-button color="accent" [class.spinner]="loading" [disabled]="loading">Guardar</button>
+        </div>
+    </form>
+</div>

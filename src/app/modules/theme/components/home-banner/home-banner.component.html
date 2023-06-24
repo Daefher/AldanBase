@@ -1,0 +1,34 @@
+<div class="home-content demo-header-container banner-container"
+    [style.background-image]=" image_banner?.image  ? 'url( '+image_banner?.image+')': '' ">
+    <div class="sec1">
+        <div class="header-text">
+            <h1 *ngIf="companyFile?.title">{{companyFile?.title}}</h1>
+            <h1 *ngIf="!companyFile?.title">{{companyInfo?.name}}</h1>
+            <h2>{{companyFile?.subtitle}}</h2>
+        </div>
+    </div>
+</div>
+<ng-container  *ngIf="authenticationService.currentuser | async">
+
+    <div class="actions-container"> 
+
+      <ng-container *ngIf="!image_banner?.image">
+        <div>
+          <button mat-raised-button color="accent" (click)="openDialog()">Agregar Banner</button>
+        </div>
+      </ng-container>
+   
+      <ng-container *ngIf="image_banner?.image">
+          <div>
+            <button mat-raised-button color="accent"   (click)="openEditDialog()">Editar Banner</button>
+          </div>
+      </ng-container>
+
+      <ng-container *ngIf="image_banner?.image">
+          <div>
+            <button mat-raised-button color="warn" [class.spinner]="loading"   (click)="deleteBanner(companyFile?.companyFileId)">Borrar Banner</button>
+          </div>
+      </ng-container>
+
+    </div>
+  </ng-container>

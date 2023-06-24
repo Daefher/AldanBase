@@ -1,0 +1,11 @@
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.action-button {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+    justify-content: flex-end;
+}

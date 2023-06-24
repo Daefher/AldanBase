@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Agregar Texto</h1>
+<div mat-dialog-content>
+    <form class="example-form" [formGroup]="block_data_form" fxLayout="column" fxLayoutAlign="center center"
+        (ngSubmit)="onSubmit()">
+        <input type="hidden" [hidden]="true" formControlName="createdDateTime">
+        <input type="hidden" [hidden]="true" formControlName="cancelable">
+        <input type="hidden" [hidden]="true" formControlName="canceled">
+        <input type="hidden" [hidden]="true" formControlName="canceledBy">
+        <input type="hidden" [hidden]="true" formControlName="createdBy">
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Titulo</mat-label>
+            <input type="text" matInput placeholder="Titulo" formControlName="sectionTitle">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Subtitulo</mat-label>
+            <input matInput placeholder="Subtitulo" formControlName="sectionSubtitle">
+        </mat-form-field>
+        <div class="example-full-width" appearance="fill" fxFlex="100%">
+            <mat-label>Contenido</mat-label>
+            <angular-editor [placeholder]="'Contenido...'" formControlName="sectionDescription"
+                [config]="config"></angular-editor>
+        </div>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button (click)="onNoClick()" type="button" color="primary">Cancelar</button>
+            <button mat-raised-button color="accent" [class.spinner]="loading_edit"
+                [disabled]="loading_edit">Guardar</button>
+        </div>
+    </form>
+</div>
