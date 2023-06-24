@@ -99,7 +99,6 @@ import { ReportsTableComponent } from './components/demo-theme/reports/reports-t
 import { MessagesComponent } from './components/demo-theme/content-demo-theme/messages/messages.component';
 import { MessageComponent } from './components/demo-theme/content-demo-theme/messages/message/message.component'; */
 import { ThemeModule } from './modules/theme/theme.module';
-import { FooterComponent } from './components(old)/home-theme/footer/footer.component';
 import { NgChartsModule } from 'ng2-charts';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
@@ -109,8 +108,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
-    AppComponent,   
-    FooterComponent,        
+    AppComponent,
   ],
   imports: [    
     BrowserModule,

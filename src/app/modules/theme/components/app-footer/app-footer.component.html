@@ -1,0 +1,27 @@
+<footer>
+
+    <div class="footer-content" mat-subheader>
+      <h3>{{this.cpny?.name}}</h3>
+
+      <p>
+        {{ cpny?.description }}
+      </p>
+  </div>
+
+  <ul class="socials">
+      <li><a href="{{cpny?.facebookUrl}}"><i class="fa fa-facebook"></i></a></li>
+      <li><a href='{{cpny?.twitterUrl}}'><i class="fa fa-twitter"></i></a></li>
+      <li><a href='{{cpny?.instagramUrl}}'><i class="fa fa-instagram"></i></a></li>
+      <li><a href='{{cpny?.youTubeUrl}}'><i class="fa fa-youtube"></i></a></li>
+
+  </ul>
+
+  <div class="login-component">
+    <a routerLink="/login" *ngIf="!(authenticationService.currentuser | async) as user" > Iniciar Sesión </a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>  AldanTech {{year}} </p>
+  </div>
+
+</footer>
