@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { AuthGuardGuard } from './helpers/auth-guard.guard';
-
 import {
-
   HomeComponent,
   HomeDemoThemeComponent,
   DemoLoginComponent,
@@ -25,7 +22,6 @@ import {
 import { OrderconfirmationComponent } from './components/demo-theme/content-demo-theme/orderconfirmation/orderconfirmation.component';
 import { CompanyResolver } from './resolvers/company-resolver/company.resolver';
 import { CompanyNameResolver } from './resolvers/company-name/company-name.resolver';
-
 
 const routes: Routes = [
   //NEW

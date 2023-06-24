@@ -1,0 +1,16 @@
+.number{
+    font-size: 28px;
+}
+
+.small-desc{
+    font-size: xx-small;
+    color: grey;
+   //margin-top: 10px;
+}
+
+.left {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    margin-right: 15px;
+}

@@ -4,12 +4,14 @@ import { ManagementComponent } from './management.component';
 import { InventoryViewComponent } from './components/inventory-view/inventory-view.component';
 import { CompanyNameResolver } from 'src/app/resolvers/company-name/company-name.resolver';
 import { CompanyResolver } from 'src/app/resolvers/company-resolver/company.resolver';
+import { OrdersDetailViewComponent } from './components/orders-detail-view/orders-detail-view.component';
 
 const routes: Routes = [
   {
     path: '', component: ManagementComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver,
     children: [
-      { path: 'products', component: InventoryViewComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver }
+      { path: 'products', component: InventoryViewComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver },
+      { path: 'orders-detail', component: OrdersDetailViewComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver }
     ]
   }
 ];

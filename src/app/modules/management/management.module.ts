@@ -18,13 +18,25 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { OrdersDetailViewComponent } from './components/orders-detail-view/orders-detail-view.component';
+import { OrdersOverallInfoComponent } from './components/orders-overall-info/orders-overall-info.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { OrdersByProductComponent } from './components/orders-by-product/orders-by-product.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ProductsAvailableComponent } from './components/products-available/products-available.component';
+import { OrdersByStatusComponent } from './components/orders-by-status/orders-by-status.component';
 
 
 @NgModule({
   declarations: [
     ManagementComponent,
     InventoryViewComponent,
-    InventoryProductsTableComponent
+    InventoryProductsTableComponent,
+    OrdersDetailViewComponent,
+    OrdersOverallInfoComponent,
+    OrdersByProductComponent,
+    ProductsAvailableComponent,
+    OrdersByStatusComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +55,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatProgressSpinnerModule,
     MatInputModule,  
     MatTableModule,
-    MatPaginatorModule    
+    MatPaginatorModule,
+    MatProgressBarModule,
+    NgChartsModule  
   ]
 })
 export class ManagementModule { }
