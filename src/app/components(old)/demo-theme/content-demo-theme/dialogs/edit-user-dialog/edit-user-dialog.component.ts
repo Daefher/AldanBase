@@ -14,7 +14,7 @@ import * as globals from '../../../../../globals';
 export interface DialogData {
   email: string;
   name: string;
-  //phone : string;
+  phoneNumber : string;
 
 
 }
@@ -30,7 +30,7 @@ export class EditUserDialogComponent {
   public user_data_form: FormGroup;
 
   @Output() sender = new EventEmitter();
-  
+
   public user;
   //public post_data$:  Observable<UserDataInterface>;
 
@@ -50,16 +50,16 @@ export class EditUserDialogComponent {
   ) {
     this.authenticationService.currentuser.subscribe(user => this.user = user);
     //this.post_data$ = this.usersService.getCurrentUserInfo;
-    
+
     if(this.user){
       this.usersService.getUserInfo(this.user.systemUserId).subscribe((data)=>{
         this.post_data = data[0];
-       
+
       },
-      err =>{       
+      err =>{
         this.toastr.error(err);
       }
-      ); 
+      );
 
       globals.chooseTheme(this.hostname, this.overlayContainer);
     }
@@ -82,6 +82,7 @@ export class EditUserDialogComponent {
       isCarrier:  [''],
       sysRowId:  [''],
       name:  [''],
+      phoneNumber:  [''],
     });
 
 
@@ -95,12 +96,12 @@ export class EditUserDialogComponent {
 
 
   onNoClick(): void {
-    this.dialogRef.close();    
+    this.dialogRef.close();
   }
 
   onSubmit() :void {
 
-    this.submitted = true;  
+    this.submitted = true;
 
     //console.log("Sent FORM",this.user_data_form.value);
 
@@ -108,8 +109,8 @@ export class EditUserDialogComponent {
       this.toastr.success("Perfil actualizado correctamente", "Exito");
       this.usersService.setCurrentUserInfo = this.user_data_form.value;
       //this.user_data = this.user_data_form.value;
-      
-      
+
+
       //this.router.navigateByUrl('/product/'+this.product_id + '/view');
       //this.loading = false;
     },
@@ -117,7 +118,7 @@ export class EditUserDialogComponent {
       this.toastr.error("Error", error);
       //this.loading = false;
     });
-    this.dialogRef.close(); 
+    this.dialogRef.close();
 
   }
 
