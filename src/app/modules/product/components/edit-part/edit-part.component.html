@@ -1,0 +1,108 @@
+<div class="main-div">
+  <mat-card class="mat-card-class cScrollbar">
+    <h2>Editar Producto</h2>
+    <mat-card-content >
+      
+      <form class="example-form" [formGroup]='EditProductForm' (ngSubmit)='onSubmit()'>
+        <input type="hidden" [hidden]="true" formControlName="AldanCustomerId">
+        <input type="hidden" [hidden]="true" formControlName="CompanyId" >
+        <input type="hidden" [hidden]="true" formControlName="PartId">
+        <input type="hidden" [hidden]="true" formControlName="PartNum">
+        <input type="hidden" [hidden]="true" formControlName="PayPalToken" >
+        <input type="hidden" [hidden]="true" formControlName="CanceledBy">
+        <input type="hidden" [hidden]="true" formControlName="CanceledDateTime">
+        <input type="hidden" [hidden]="true" formControlName="CreatedBy" >
+        <input type="hidden" [hidden]="true" formControlName="CreatedDateTime">
+        <input type="hidden" [hidden]="true" formControlName="Cancelable" >
+        <input type="hidden" [hidden]="true" formControlName="SysRowId" >
+        <input type="hidden" [hidden]="true" formControlName="UomClassId" >
+        <input type="hidden" [hidden]="true" formControlName="UomId">
+        <input type="hidden" [hidden]="true" formControlName="WeightUomId" >
+        <input type="hidden" [hidden]="true" formControlName="imageFile">
+        <ng-container *ngIf="form_loading" >
+          <div style="display: flex; justify-content: center; align-items: center; background: white;">
+            <mat-progress-spinner 
+              color="accent" 
+              mode="indeterminate">
+            </mat-progress-spinner>
+          </div>
+        </ng-container>        
+        <div class="example-full-width" appearance="fill">
+          <mat-label>Imagen</mat-label>
+          <input type="file" (change)="handleInputChange($event)" class="form-control small-form"  /> 
+          <ng-container *ngIf="image_file">
+            <img src="{{image_file}}"  class="img-size-edit" >    
+          </ng-container>    
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput placeholder="Nombre del Producto" formControlName='Name'
+            >
+          <div *ngIf="submitted && f.Name.errors">
+            <mat-error *ngIf="f.Name.errors.required">
+              Name is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput placeholder="Descripcion del Producto" formControlName='Description'
+            ></textarea>
+          <div *ngIf="submitted && f.Description.errors">
+            <mat-error *ngIf="f.Description.errors.required">
+              Description is <strong>required</strong>
+            </mat-error>
+          </div>
+        </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Costo por Unidad</mat-label>
+                <input type="text" matInput placeholder="Peso del Producto" formControlName='unitCost'
+                  >
+                <div *ngIf="submitted && f.unitCost.errors">
+                  <mat-error *ngIf="f.unitCost.errors.required">
+                    Peso is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Precio al Publico</mat-label>
+                <input type="text" matInput placeholder="Precio del Producto" formControlName='UnitPrice'
+                  >
+                <div *ngIf="submitted && f.UnitPrice.errors">
+                  <mat-error *ngIf="f.UnitPrice.errors.required">
+                    Precio is <strong>required</strong>
+                  </mat-error>
+                </div>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>  
+        <div >
+            <mat-slide-toggle formControlName="Canceled" color="warn" >Cancelado</mat-slide-toggle>
+        </div>           
+        <br>
+        <mat-spinner [diameter]="20" *ngIf="loading"></mat-spinner>
+        <div class="actions" >           
+          <div>
+            <button mat-raised-button color="primary"
+              [routerLink]="['/products', product?.partId, 'view' ]">
+              Regresar
+            </button>
+          </div>
+          <div >
+            <button type="submit" mat-raised-button class="alterPrimaryBG" [class.spinner]="loading" [disabled]="loading">
+              Guardar
+            </button>
+          </div>
+        </div> 
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+   

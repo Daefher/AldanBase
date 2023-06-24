@@ -1,0 +1,29 @@
+.main-div{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin: 15px;
+}
+
+.mat-card-class{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin:15px;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-flow: column;
+}
+
+.example-full-width{
+    text-align: center;
+}
+
+.img-size-edit {
+    object-fit: contain ;
+    width: 100%;
+    height: 150px;
+}

@@ -18,6 +18,9 @@ import { RouterModule } from '@angular/router';
 import { ProductsSortPipe } from 'src/app/pipes/productsPipes/products-sort.pipe';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { MatInputModule } from '@angular/material/input';
+import { CreatePartComponent } from './components/create-part/create-part.component';
+import { EditPartComponent } from './components/edit-part/edit-part.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [   
@@ -27,7 +30,9 @@ import { MatInputModule } from '@angular/material/input';
     ProductViewComponent,
     //TODO: MOVE THIS PIPE TO THE THEME MODULE
     SearchFilterPipe,
-    ProductsSortPipe,   
+    ProductsSortPipe,  
+    CreatePartComponent,
+    EditPartComponent,   
   ],
   imports: [
     CommonModule,
@@ -44,6 +49,7 @@ import { MatInputModule } from '@angular/material/input';
     RouterModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    MatSlideToggleModule
     
          
   ]
