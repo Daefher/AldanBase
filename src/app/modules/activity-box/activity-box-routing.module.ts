@@ -4,12 +4,13 @@ import { ActivityBoxComponent } from './activity-box.component';
 import { MessagesViewComponent } from './components/messages-view/messages-view.component';
 import { CompanyNameResolver } from 'src/app/resolvers/company-name/company-name.resolver';
 import { CompanyResolver } from 'src/app/resolvers/company-resolver/company.resolver';
+import { AuthGuardGuard } from 'src/app/helpers/auth-guard.guard';
 
 const routes: Routes = [
   {
     path: '', component: ActivityBoxComponent,resolve: { company: CompanyResolver }, title: CompanyNameResolver,
     children : [
-     { path: 'messages', component: MessagesViewComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver }
+     { path: 'messages', component: MessagesViewComponent, resolve: { company: CompanyResolver }, canActivate: [AuthGuardGuard], title: CompanyNameResolver }
     ]
   }
 ];
