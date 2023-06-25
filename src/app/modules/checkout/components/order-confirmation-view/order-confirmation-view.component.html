@@ -1,0 +1,57 @@
+<div class="wrapper">
+    <div class="back-btn">
+        <button mat-raised-button color="accent" routerLink="/checkout">
+            Regresar
+        </button>
+    </div>
+    <div>
+        <div class="row justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>
+                            <h2>Confirmación de pedido</h2>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div >
+        <app-cart-form></app-cart-form>
+    </div>
+    <div >
+        <h2>Datos de pago</h2>
+        <mat-form-field class="form-group">
+            <mat-label for="PartType">Forma de pago</mat-label>
+            <mat-select [(ngModel)]="mySelect" disabled class="form-control small-form">
+                <mat-option *ngFor="let item of paymentFormArray" [value]="item.id">{{item.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div >
+        <app-checkout-form></app-checkout-form>
+    </div>
+    <div style="padding: 20px;" fxLayoutAlign="center">
+
+        <button *ngIf="!this.showControls" [disabled]="loading" (click)="placeOrder()" mat-raised-button color="accent"
+            style="margin: 20px;">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Realizar pedido
+        </button>
+
+        <button *ngIf="this.showPayPalPayButton" (click)="redirectToPayPal()" style="margin: 20px;" mat-raised-button
+            color="accent">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Pagar en PayPal
+        </button>
+
+    </div>
+
+
+
+
+</div>
+<div class="cart-div">
+
+</div>

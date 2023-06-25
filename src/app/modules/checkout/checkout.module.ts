@@ -13,13 +13,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { OrderConfirmationViewComponent } from './components/order-confirmation-view/order-confirmation-view.component';
+import { CartModule } from '../cart/cart.module';
 
 
 @NgModule({
   declarations: [
     CheckoutComponent,
     CheckoutViewComponent,
-    CheckoutFormComponent
+    CheckoutFormComponent,
+    OrderConfirmationViewComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    CartModule
   ]
 })
 export class CheckoutModule { }

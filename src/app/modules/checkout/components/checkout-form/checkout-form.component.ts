@@ -402,7 +402,7 @@ export class CheckoutFormComponent {
     }
     this.loading = true;
     this.salesOrderService.updateCheckoutSalesOrderData(this.createSalesOrderForm);
-    this.router.navigateByUrl("orderconfirmation");
+    this.router.navigateByUrl("checkout/order-confirmation");
   }
 
   checkIfPostalCodeExist(control) {

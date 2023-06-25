@@ -6,6 +6,7 @@ export interface SalesOrderInterface {
     Payed: number,
     Change: number,
     CurrencyNum: "MXN",
+    PhoneNumber: number,
     PaymentFormNum: string,
     TotalDiscount: number,
     PayPalFullName: string,
