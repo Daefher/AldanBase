@@ -27,6 +27,7 @@ export class CompanyOrdersComponent {
   pageSizeOptions: number[] = [5, 10, 30];
   pageEvent: PageEvent;
   company: CompanyInterface;
+  numberOfOrders: number;
 
   constructor(
     private ordersService: OrdersService,

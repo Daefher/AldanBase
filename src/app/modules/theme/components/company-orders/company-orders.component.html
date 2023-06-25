@@ -38,23 +38,55 @@
                             </p>
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <p>
-                        Fecha: {{order?.createdDateTime}}
-                    </p>
-                    <p>
-                        Direccion de Entrega: {{order.payPalAddressLine1}} {{order.payPalAddressLine2}},
-                        {{order.payPalAdminArea1}}, {{order.payPalAdminArea2}}
-                    </p>
-                    <ng-container *ngFor="let orderDtl of ordersDtl; trackBy: trackByOrderDtl">
-                        <ng-container *ngIf="orderDtl.salesOrderId == order.salesOrderId">
+                    <div class="order-info-panel">
+                        <div class="section">
+                            <div>
+                                <strong> Contenido</strong>
+                            </div>
+                            <ng-container *ngFor="let orderDtl of ordersDtl; trackBy: trackByOrderDtl">
+                                <ul>
+                                <ng-container *ngIf="orderDtl.salesOrderId == order.salesOrderId">
+                                    <li>
+                                        {{orderDtl?.partName}} (${{orderDtl.unitPrice}}.00 pesos)
+                                    </li>
+                                </ng-container>
+                                </ul>
+                            </ng-container>
+                        </div>
+                        <div class="section">
+                            <div>
+                                <strong> Contacto</strong>
+                            </div>
                             <p>
-                                {{orderDtl?.partName}} (${{orderDtl.unitPrice}}.00 pesos)
+                                Fecha: {{order?.createdDateTime}}                           
                             </p>
-                        </ng-container>
-                    </ng-container>
-                    <p>
-                        Total de la orden: <strong> $ {{order.totalLetter}} </strong>
-                    </p>
+                            <p>
+                                Correo: {{order?.customerEmail}}
+                            </p> 
+                        </div>
+                        <div class="section">
+                            <div>
+                                <strong> Envio</strong>
+                            </div>
+                            <p>
+                                Direccion de Entrega: {{order.payPalAddressLine1}} {{order.payPalAddressLine2}}, 
+                                {{order.payPalAdminArea1}}, {{order.payPalAdminArea2}}
+                            </p>
+                        </div>
+                        <div class="section">
+                            <div>
+                                <strong>Pago</strong>
+                            </div>
+                            <p>
+                                Total de la orden: <strong> $ {{ order.total}} {{order.totalLetter}} </strong>
+                            </p>
+                        </div>
+                       
+                       
+                       
+                       
+                    </div>
+
                     <div class="action-button" align="end">
                         <ng-container *ngIf="!order.closed || !order.canceled">
                             <button mat-raised-button class="action-button" matTooltip="Finalizar"
@@ -62,8 +94,8 @@
                                 [disabled]="closeIsLoading" color="accent"> Finalizar
                             </button>
                         </ng-container>
-                        <button mat-raised-button matTooltip="Cancelar"
-                            (click)="cancelOrder(order.salesOrderId)" color="warn"> Cancelar </button>
+                        <button mat-raised-button matTooltip="Cancelar" (click)="cancelOrder(order.salesOrderId)"
+                            color="warn"> Cancelar </button>
                     </div>
                 </mat-expansion-panel>
             </mat-accordion>
@@ -72,4 +104,4 @@
             <br>
         </ng-container>
     </mat-card-content>
-    </mat-card>
+</mat-card>
