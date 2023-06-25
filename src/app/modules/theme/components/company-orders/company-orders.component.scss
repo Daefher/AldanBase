@@ -9,3 +9,29 @@
     gap: 5px;
     justify-content: flex-end;
 }
+
+.order-info-panel {
+    display: flex;
+    flex-flow: row wrap;
+    /* gap: 10px; */
+    justify-content: space-between;
+}
+
+
+.section {
+    flex: 1 1 auto; 
+    border: 1px solid lightgrey;  
+    padding: 5px;
+}
+
+.section {
+    text-align: center;
+}
+
+.section>div{
+    font-size: larger;
+}
+
+ul{
+    text-align: left !important;
+}
