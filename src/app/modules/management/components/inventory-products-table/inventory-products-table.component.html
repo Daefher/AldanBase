@@ -49,7 +49,7 @@
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef> Acciones </th>
                         <td mat-cell *matCellDef="let element">
-                            <button mat-button [routerLink]="['/products', element.partId, 'update' ]">
+                            <button mat-button [routerLink]="['/product', element.partId, 'edit' ]">
                                 <mat-icon>edit</mat-icon>
                             </button>
                             <button *ngIf="authenticationService.currentuser | async" mat-button color="warn"
