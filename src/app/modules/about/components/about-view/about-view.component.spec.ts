@@ -16,7 +16,6 @@ fdescribe('AboutViewComponent', () => {
       declarations: [ AboutViewComponent ]
     })
     .compileComponents();
-
     fixture = TestBed.createComponent(AboutViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
