@@ -13,6 +13,9 @@ import { CartService } from 'src/app/services/demo-cart/cart.service';
 import { CompanyService } from 'src/app/services/demo-company/company.service';
 import { AuthenticationService } from 'src/app/services/demo-login/authentication.service';
 import { ProductsService } from 'src/app/services/demo-products/products.service';
+import { UserInterface } from 'src/app/interfaces/user-interface';
+import { ProductsSortPipe } from 'src/app/pipes/productsPipes/products-sort.pipe';
+import { SearchFilterPipe } from 'src/app/pipes/search-filter.pipe';
 
 export interface sortInterface  {
   name : string,
@@ -28,10 +31,10 @@ export interface sortInterface  {
 })
 export class ProductListComponent implements OnInit {
 
-  products: any = [];
+  products: ProductInterface[] = [];
   image_path :string ;
-  filterRslt = [];
-  is_loading = true;
+  filterRslt:ProductInterface[] = [];
+  is_loading: boolean = true;
   sort_types : Array<sortInterface> = [
     { name: 'A-Z', value: 'name' , type: 'asc', is_date: false },
     { name: 'Z-A', value: 'name' , type: 'desc', is_date: false },
@@ -40,14 +43,11 @@ export class ProductListComponent implements OnInit {
     { name: 'Menor Precio', value: 'unitPrice' , type: 'asc', is_date: false },
     { name: 'Mayor Precio', value: 'unitPrice' , type: 'desc', is_date: false },
   ];
-
   selected_sort  = { name: 'Nuevos', value: 'createdDateTime' , type: 'desc', is_date: true };
   sort_type : any;
   searchForm: any;
   orderByForm : any;
-
-  public user;
-
+  user: UserInterface;
   company : CompanyInterface;
 
   constructor(
@@ -73,38 +73,31 @@ export class ProductListComponent implements OnInit {
     this.activatedRoute.data.subscribe((response: any) => {
       this.company = response.company[0];    
       this.mapInitializer(this.company);    
-      this.image_path = globals.img_path + this.company.companyId +'/';  
+      this.image_path = globals.img_path + this.company?.companyId +'/';  
      });
 
   }
 
   mapInitializer(data){
-
-    this.productService.getAllActive(data.companyId).subscribe((data: ProductInterface[])=>{   
-          
+    this.productService.getAllActive(data.companyId).subscribe((data: ProductInterface[])=>{          
       this.products = data;
-      this.is_loading = false;
-     
+      this.is_loading = false;     
     },
     err =>{
       this.toastr.error("Error cargar productos"); 
       this.is_loading = false; 
     }
     ); 
-
   }
 
   cancelProduct(partId){
-
     this.productService.delete(partId).subscribe((data) => {
       this.toastr.success("Producto Cancelado Correctamente", "Exito");
       this.products = this.products.filter(item => item.partId != partId);
     },
      err => {
-
     }
     );
-
   }
 
  /*  getProdut(data:ProductInterface[]){
@@ -139,10 +132,6 @@ export class ProductListComponent implements OnInit {
     this.selected_sort  = selected_sort;
   }
 
-  
-
-  
-  
   ReturnNotTrashed(products) {
     let newProducts:any[] = [];
     products.forEach(element => {

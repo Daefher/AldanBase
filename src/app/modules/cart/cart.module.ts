@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     CartRoutingModule,
     ThemeModule,
     RouterModule,

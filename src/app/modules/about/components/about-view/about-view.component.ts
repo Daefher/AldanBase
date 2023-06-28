@@ -22,7 +22,8 @@ export class AboutViewComponent {
 
   @ViewChild('textArea0') textArea0: ElementRef;
 
-  constructor(public companyService: CompanyService,
+  constructor(
+    public companyService: CompanyService,
     private activatedRoute: ActivatedRoute,
     private overlayContainer: OverlayContainer,
   ) { }
@@ -31,14 +32,19 @@ export class AboutViewComponent {
     const hostname = window.location.hostname;
     globals.chooseTheme(hostname, this.overlayContainer);
     this.activatedRoute.data.subscribe((response: Data) => {
-      this.company = response.company[0];
-      this.values = {
-        "CompanyId": this.company.companyId,
-        "PageName": "about"
+      this.company = response?.company[0];
+      try {
+        this.values = {
+          "CompanyId": this.company?.companyId,
+          "PageName": "about"
+        }
+        this.companyService.getCompanyPageByCompanyId(this.values).subscribe((resp:CompanyPage) => {
+          this.companyPage = resp;
+        })
+      } catch (error) {
+        console.log("Cant get comapany id");
       }
-      this.companyService.getCompanyPageByCompanyId(this.values).subscribe((resp:CompanyPage) => {
-        this.companyPage = resp;
-      })
+      
     });
   }
 

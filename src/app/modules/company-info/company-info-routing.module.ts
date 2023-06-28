@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompanyInfoComponent } from './company-info.component';
 import { CompanyInfoViewComponent } from './components/company-info-view/company-info-view.component';
-import { CompanyNameResolver } from 'src/app/resolvers/company-name/company-name.resolver';
-import { CompanyResolver } from 'src/app/resolvers/company-resolver/company.resolver';
-import { AuthGuardGuard } from 'src/app/helpers/auth-guard.guard';
+import { companyNameResolverFn } from 'src/app/resolvers/company-name/company-name.resolver';
+import { CompanyService } from 'src/app/services/demo-company/company.service';
+import { canActivate } from 'src/app/helpers/auth-guardFn.guard';
 
 const routes: Routes = [
   {
-    path: '', component: CompanyInfoComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver,
+    path: '', component: CompanyInfoComponent, resolve: { company: () => inject(CompanyService).companyResolverFn() }, title: companyNameResolverFn,
     children: [
-      { path: 'profile', component: CompanyInfoViewComponent, canActivate: [AuthGuardGuard], resolve: { company: CompanyResolver }, title: CompanyNameResolver }
+      { path: 'profile', component: CompanyInfoViewComponent, canActivate: [canActivate], resolve: { company: () => inject(CompanyService).companyResolverFn() }, title: companyNameResolverFn }
     ]
   }
 ];

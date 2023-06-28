@@ -25,6 +25,7 @@ import { OrdersByProductComponent } from './components/orders-by-product/orders-
 import { NgChartsModule } from 'ng2-charts';
 import { ProductsAvailableComponent } from './components/products-available/products-available.component';
 import { OrdersByStatusComponent } from './components/orders-by-status/orders-by-status.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { OrdersByStatusComponent } from './components/orders-by-status/orders-by
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ManagementRoutingModule,
     ThemeModule, 
     RouterModule,

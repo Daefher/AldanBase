@@ -36,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
 import { AddBannerComponent } from './dialogs/add-banner/add-banner.component';
 import { UpdateBannerComponent } from './dialogs/update-banner/update-banner.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AppFooterComponent } from './components/app-footer/app-footer.component
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     NgxColorsModule,
     RouterModule,
     MatToolbarModule,

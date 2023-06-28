@@ -5,6 +5,7 @@ import { AboutComponent } from './about.component';
 import { RouterModule } from '@angular/router';
 import { ThemeModule } from '../theme/theme.module';
 import { AboutViewComponent } from './components/about-view/about-view.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AboutViewComponent } from './components/about-view/about-view.component
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     AboutRoutingModule,
     RouterModule,
     ThemeModule

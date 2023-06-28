@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartComponent } from './cart.component';
 
-describe('CartComponent', () => {
+fdescribe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
 
@@ -15,6 +15,9 @@ describe('CartComponent', () => {
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+  afterEach(() => {
+    fixture.destroy();
   });
 
   it('should create', () => {

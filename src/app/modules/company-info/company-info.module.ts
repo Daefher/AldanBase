@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatListModule } from '@angular/material/list';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     CompanyInfoRoutingModule,
     RouterModule,
     ThemeModule, 
