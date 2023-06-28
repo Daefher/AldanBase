@@ -1,22 +1,35 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CompanyInfoViewComponent } from './company-info-view.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
-describe('CompanyInfoViewComponent', () => {
+fdescribe('CompanyInfoViewComponent', () => {
   let component: CompanyInfoViewComponent;
   let fixture: ComponentFixture<CompanyInfoViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CompanyInfoViewComponent ]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ToastrModule.forRoot()
+      ],
+      providers: [
+        { provide: ToastrService, useValue: ToastrService }
+      ],
+      declarations: [CompanyInfoViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CompanyInfoViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  afterEach(() => {
+    fixture.destroy();
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });

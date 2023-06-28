@@ -1,20 +1,35 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartFormComponent } from './cart-form.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
-describe('CartFormComponent', () => {
+fdescribe('CartFormComponent', () => {
   let component: CartFormComponent;
   let fixture: ComponentFixture<CartFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartFormComponent ]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ToastrModule.forRoot()
+      ],
+      declarations: [ CartFormComponent ],
+      providers: [
+        {provide: ToastrService, useValue: ToastrService}
+      ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(CartFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
   });
 
   it('should create', () => {

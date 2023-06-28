@@ -11,7 +11,7 @@ import { ProductQty } from '../../interfaces/product-qty';
 import { FormGroup } from '@angular/forms';
 import { activeDemand } from 'src/app/interfaces/active-demand';
 
- 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,7 +38,7 @@ export class ProductsService {
         catchError(this.errorHandler)
       )
   }
-  
+
   getAllActive(companyId): Observable<ProductInterface[]> {
     return this.http.get<ProductInterface[]>(this.api_url + '/GetPartsNotCanceled', { params: { companyId: companyId } })
       .pipe(
@@ -53,11 +53,11 @@ export class ProductsService {
       )
   }
 
-  getActiveDemand(active): Observable<activeDemand[]>{
+  getActiveDemand(active): Observable<activeDemand[]> {
     return this.http.get<any[]>(this.api_url + '/GetActiveDemandOfPart', { params: { active: active } })
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   create(post): Observable<ProductInterface> {
@@ -83,21 +83,21 @@ export class ProductsService {
   adjustQty(post): Observable<ProductQty> {
     return this.http.post<ProductQty>(this.api_url_quantity + '/AdjustQuantity', JSON.stringify([post]), this.httpOptions)
 
-    .pipe(
+      .pipe(
 
-      catchError(this.errorHandler)
+        catchError(this.errorHandler)
 
-    );
+      );
   }
 
   UpdateQty(post): Observable<ProductQty> {
     return this.http.post<ProductQty>(this.api_url_quantity + '/Update', JSON.stringify([post]), this.httpOptions)
 
-    .pipe(
+      .pipe(
 
-      catchError(this.errorHandler)
+        catchError(this.errorHandler)
 
-    );
+      );
   }
 
   find(id): Observable<ProductInterface> {

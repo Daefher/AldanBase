@@ -1,14 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessagesViewComponent } from './messages-view.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
-describe('MessagesViewComponent', () => {
+fdescribe('MessagesViewComponent', () => {
   let component: MessagesViewComponent;
   let fixture: ComponentFixture<MessagesViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessagesViewComponent ]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ToastrModule.forRoot()
+      ],
+      declarations: [ MessagesViewComponent ],
+      providers: [
+        {provide: ToastrService, useValue: ToastrService}
+      ]
     })
     .compileComponents();
 
@@ -16,7 +27,9 @@ describe('MessagesViewComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  afterEach(() => {
+    fixture.destroy();
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });

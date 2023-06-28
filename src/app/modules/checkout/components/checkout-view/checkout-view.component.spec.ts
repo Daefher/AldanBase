@@ -1,13 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CheckoutViewComponent } from './checkout-view.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
-describe('CheckoutViewComponent', () => {
+fdescribe('CheckoutViewComponent', () => {
   let component: CheckoutViewComponent;
   let fixture: ComponentFixture<CheckoutViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ToastrModule.forRoot()
+      ],
+      providers: [
+        {provide: ToastrService, useValue: ToastrService}
+      ],
       declarations: [ CheckoutViewComponent ]
     })
     .compileComponents();
@@ -16,7 +27,9 @@ describe('CheckoutViewComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  afterEach(() => {
+    fixture.destroy();
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });

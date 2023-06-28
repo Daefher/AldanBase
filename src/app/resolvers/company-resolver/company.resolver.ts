@@ -15,7 +15,7 @@ import { CompanyService } from '../../services/demo-company/company.service';
 })
 
 
-export class CompanyResolver implements Resolve<any> {
+export class CompanyResolver {
 
   public company_host_name :string;
   private company :CompanyInterface;

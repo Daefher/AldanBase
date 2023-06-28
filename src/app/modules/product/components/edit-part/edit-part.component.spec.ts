@@ -1,13 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditPartComponent } from './edit-part.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
-describe('EditPartComponent', () => {
+fdescribe('EditPartComponent', () => {
   let component: EditPartComponent;
   let fixture: ComponentFixture<EditPartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ToastrModule.forRoot(),        
+      ],
+      providers: [
+        {
+          provide: ToastrService, 
+          useValue: ToastrService
+        },
+      ],
       declarations: [ EditPartComponent ]
     })
     .compileComponents();
@@ -16,7 +30,9 @@ describe('EditPartComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  afterEach(() => {
+    fixture.destroy();
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });
