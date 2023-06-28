@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about.component';
-import { CompanyNameResolver } from 'src/app/resolvers/company-name/company-name.resolver';
-import { CompanyResolver } from 'src/app/resolvers/company-resolver/company.resolver';
+import { companyNameResolverFn } from 'src/app/resolvers/company-name/company-name.resolver';
 import { AboutViewComponent } from './components/about-view/about-view.component';
+import { CompanyService } from 'src/app/services/demo-company/company.service';
 
 const routes: Routes = [
   {
-    path: '', component: AboutComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver,
+    path: '', component: AboutComponent, resolve: { company: () => inject(CompanyService).companyResolverFn() }, title: companyNameResolverFn,
     children: [
-      { path: '', component: AboutViewComponent, resolve: { company: CompanyResolver }, title: CompanyNameResolver }
+      { path: '', component: AboutViewComponent, resolve: { company: () => inject(CompanyService).companyResolverFn() }, title: companyNameResolverFn }
     ]
   }
 ];

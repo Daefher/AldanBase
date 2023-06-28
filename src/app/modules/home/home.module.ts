@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { EditBannerDialogComponent } from './components/edit-banner-dialog/edit-banner-dialog.component';
 import { CreateBannerDialogComponent } from './components/create-banner-dialog/create-banner-dialog.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left'
     }),
+    HttpClientModule,
     HomeRoutingModule,
     RouterModule,
     ThemeModule,  

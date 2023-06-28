@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MessagesViewComponent } from './components/messages-view/messages-view.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { MessagesViewComponent } from './components/messages-view/messages-view.
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ActivityBoxRoutingModule,
     ThemeModule,
     RouterModule,

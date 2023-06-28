@@ -30,7 +30,7 @@ export class OrdersOverallInfoComponent {
   ) { }
 
   ngOnInit(): void {
-    this.ordersService.getAllByDays(this.company.companyId, -800).subscribe((data: OrderInterface[]) => {
+    this.ordersService.getAllByDays(this.company?.companyId, -800).subscribe((data: OrderInterface[]) => {
       this.orders = data;
       this.length = this.orders.length;
       this.orders_caceled = data.filter(order => order.canceled == true);

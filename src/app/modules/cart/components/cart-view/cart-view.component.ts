@@ -18,7 +18,7 @@ export class CartViewComponent {
 
   ngOnInit(): void {
     this.cartService.getLSCart(this.cart).subscribe((value: ProductInterface[]) => {
-      this.prods_on_cart = value.length;
+      this.prods_on_cart = value?.length;
     });
     window.scroll(0, 0);
   }

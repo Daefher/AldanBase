@@ -21,23 +21,25 @@ import { MatInputModule } from '@angular/material/input';
 import { CreatePartComponent } from './components/create-part/create-part.component';
 import { EditPartComponent } from './components/edit-part/edit-part.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [   
-    ProductComponent, 
+  declarations: [
+    ProductComponent,
     ProductsViewComponent,
-    ProductListComponent,    
+    ProductListComponent,
     ProductViewComponent,
     //TODO: MOVE THIS PIPE TO THE THEME MODULE
     SearchFilterPipe,
-    ProductsSortPipe,  
+    ProductsSortPipe,
     CreatePartComponent,
-    EditPartComponent,   
+    EditPartComponent,
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ProductRoutingModule,
-    ThemeModule,    
+    ThemeModule,
     MatCardModule,
     MatFormFieldModule,
     MatButtonModule,

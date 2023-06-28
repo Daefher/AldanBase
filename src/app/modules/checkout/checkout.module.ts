@@ -15,6 +15,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { OrderConfirmationViewComponent } from './components/order-confirmation-view/order-confirmation-view.component';
 import { CartModule } from '../cart/cart.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CartModule } from '../cart/cart.module';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     CheckoutRoutingModule,
     RouterModule,
     ThemeModule,

@@ -73,7 +73,7 @@ export class ProductsAvailableComponent {
   ngOnInit(): void {
     const hostname = window.location.hostname;
 
-    this.productService.getAllActive(this.company.companyId).subscribe((data: ProductInterface[]) => {
+    this.productService.getAllActive(this.company?.companyId).subscribe((data: ProductInterface[]) => {
       this.products = data;
 
       for (const prod of data) {
