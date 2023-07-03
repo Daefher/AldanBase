@@ -5,7 +5,8 @@
     <a class="hide" mat-button routerLink="/" > Inicio </a>
     <a class="hide" mat-button routerLink="/product/all" > Productos </a>   
     <a class="hide" mat-button routerLink="/about" > Acerca de  </a>   
-    <a class="hide" mat-button routerLink="/cart" > <mat-icon>shopping_cart</mat-icon>  ( {{prods_on_cart}} ) </a>   
+    <a class="hide" mat-button routerLink="/cart" > <mat-icon>shopping_cart</mat-icon>   ( {{prods_on_cart  | async }} ) </a>   
+   
    
     <button class="dropMenu" mat-icon-button [matMenuTriggerFor]="dropMenu">
         <mat-icon>more_vert</mat-icon>
@@ -30,7 +31,7 @@
             <mat-divider></mat-divider>
             <button mat-menu-item routerLink="/cart">
                 <mat-icon class="mr">shopping_cart</mat-icon>
-                Carrito ( {{prods_on_cart}} )
+                Carrito ( {{prods_on_cart?.value  | async }} )
            </button> 
            
         </ng-container>

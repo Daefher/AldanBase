@@ -28,9 +28,11 @@ export class NavbarComponent {
     this.route.data.subscribe((response: any) => {
       this.company = response.company[0];
     });
-    this.cart.getAmountOnCart().subscribe(value => {
+    /* this.cart.getAmountOnCart().subscribe(value => {
       this.prods_on_cart = value;
-    });
+    }); */
+    this.prods_on_cart = this.cart.getTotalCartProducts;  
+    //console.log(this.prods_on_cart?.value) 
   }
 
   logout() {

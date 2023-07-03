@@ -10,7 +10,7 @@
             <div fxFlex="10%" fxFlex.xs="100%" fxFlex.sm="33%">
                 <button align='right' mat-raised-button class="alterPrimaryBG" style="margin:5px;"
                     *ngIf="authenticationService.currentuser | async"
-                    [routerLink]="['/products', product?.partId, 'update']" (click)="gotoTop()">Editar Producto</button>
+                    [routerLink]="['/product', product?.partId, 'edit']" (click)="gotoTop()">Editar Producto</button>
             </div>
             <ng-container *ngIf="!product?.canceled">
                 <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
