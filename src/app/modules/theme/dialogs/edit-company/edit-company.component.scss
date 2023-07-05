@@ -11,3 +11,11 @@
 mat-form-field {
     display: block;
   }
+
+.comapany-dialog{
+    display: flex;
+    flex-flow: column;
+    margin: 15px;
+    justify-content: center;
+    align-items: stretch;
+}

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -11,6 +11,7 @@ import { UserInterface } from '../../interfaces/user-interface';
 import { UserDataInterface } from '../../interfaces/user-data-interface';
 import { FormGroup } from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
+import { AuthenticationService } from '../demo-login/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,7 @@ export class UsersService {
    * This Function get the current values from the user log in, if no user found returns null
    */
   get getCurrentUserInfo() {
-    var curUserVal = this.currentUserValue;
+    let curUserVal = this.currentUserValue ? this.currentUserValue : new BehaviorSubject<UserInterface>(JSON.parse(localStorage.getItem('currentUser'))).value;
     try {
       if (curUserVal) {
         this.getUserInfo(curUserVal.systemUserId).subscribe((data) => {
