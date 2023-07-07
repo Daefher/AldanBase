@@ -52,8 +52,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatProgressSpinnerModule,
     MatInputModule,
     MatSlideToggleModule
-    
-         
+  ],
+  exports: [
+    ProductListComponent
   ]
 })
 export class ProductModule { }

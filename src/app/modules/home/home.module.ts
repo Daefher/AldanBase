@@ -15,6 +15,7 @@ import { EditBannerDialogComponent } from './components/edit-banner-dialog/edit-
 import { CreateBannerDialogComponent } from './components/create-banner-dialog/create-banner-dialog.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductModule } from '../product/product.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    ProductModule
   ]
 })
 export class HomeModule { }
