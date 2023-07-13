@@ -4,3 +4,28 @@
     flex-flow: row wrap;
     gap: 5px;
 }
+.avatar {
+    margin-top: 16px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+
+  mat-card-content{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .edit-profile-pic{
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    object-fit: contain;
+    cursor: pointer;  
+  }
+
+  .edit-profile-pic >mat-icon {
+    transform: scale(0.7);
+  }
