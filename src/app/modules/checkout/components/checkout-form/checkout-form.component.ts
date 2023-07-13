@@ -16,6 +16,7 @@ export class CheckoutFormComponent {
 
   //Subscribe to showControls flag
   showControls: boolean;
+  
   subscription: Subscription;
   salesOrderLclStrg: any;
   loading = false;
@@ -27,6 +28,8 @@ export class CheckoutFormComponent {
   countryList: Array<Object>;
   cp: unknown;
   @Input() company: CompanyInterface;
+  @Input() formState: boolean;
+  disabled: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -363,9 +366,9 @@ export class CheckoutFormComponent {
   }
 
   ngOnInit(): void {
-    this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message);
+    this.subscription = this.salesOrderService.currentMessage.subscribe(message => this.showControls = message);    
     
-    if (this.matchExact(location.href.split("/").slice(-1)[0], "demo-checkout")) {
+    if (this.matchExact(location.href.split("/").slice(-1)[0], "checkout")) {
       this.changeShowControls(true)
     }
     this.createSalesOrderForm = this.formBuilder.group({
@@ -378,6 +381,7 @@ export class CheckoutFormComponent {
       Change: [0],
       CurrencyNum: "MXN",
       PaymentFormNum: ['',],
+      phoneNumber:[1111,],
       TotalDiscount: [0],
       PayPalFullName: ['', Validators.required],
       PayPalAddressLine1: ['', Validators.required],
@@ -390,8 +394,10 @@ export class CheckoutFormComponent {
     });
     this.populateInitialCombos();
     //Look for sales order json in local storage. if there is one, load the visible fields with data from json
-    this.populateSalesOrderData();
+    if(!this.formState)this.populateSalesOrderData();
   }
+
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -428,23 +434,26 @@ export class CheckoutFormComponent {
     if (this.salesOrderLclStrg != null || this.salesOrderLclStrg != undefined) {
       //Updating fields
       var currentSalesOrder = JSON.parse(this.salesOrderLclStrg);
-      this.createSalesOrderForm.value.Subtotal = 0;
-      this.createSalesOrderForm.value.Taxes = 0;
-      this.createSalesOrderForm.value.Total = 0;
-      this.createSalesOrderForm.value.Payed = 0;
-      this.createSalesOrderForm.value.Change = 0;
-      this.createSalesOrderForm.value.CurrencyNum = currentSalesOrder[0].CurrencyNum;
-      this.createSalesOrderForm.value.TotalDiscount = 0;
-      this.createSalesOrderForm.value.PayPalFullName = currentSalesOrder[0].PayPalFullName;
-      this.createSalesOrderForm.value.PayPalAddressLine1 = currentSalesOrder[0].PayPalAddressLine1;
-      this.createSalesOrderForm.value.PayPalAddressLine2 = currentSalesOrder[0].PayPalAddressLine2;
-      this.createSalesOrderForm.value.PayPalAdminArea2 = currentSalesOrder[0].PayPalAdminArea2;
-      this.createSalesOrderForm.value.PayPalAdminArea1 = currentSalesOrder[0].PayPalAdminArea1;
-      this.createSalesOrderForm.value.PayPalPostalCode = currentSalesOrder[0].PayPalPostalCode;
-      this.createSalesOrderForm.value.PayPalCountryCode = currentSalesOrder[0].PayPalCountryCode;
-      this.createSalesOrderForm.value.CreatedDateTime = currentSalesOrder[0].CreatedDateTime;
-      this.createSalesOrderForm.value.CustomerEmail = currentSalesOrder[0].CustomerEmail;
+      this.createSalesOrderForm.patchValue({
+        Subtotal: 0,
+        Taxes: 0,
+        Total: 0,
+        Payed: 0,
+        Change: 0,
+        CurrencyNum: currentSalesOrder[0].CurrencyNum,
+        TotalDiscount: 0,
+        PayPalFullName: currentSalesOrder[0].PayPalFullName,
+        PayPalAddressLine1: currentSalesOrder[0].PayPalAddressLine1,
+        PayPalAddressLine2: currentSalesOrder[0].PayPalAddressLine2,
+        PayPalAdminArea2: currentSalesOrder[0].PayPalAdminArea2,
+        PayPalAdminArea1: currentSalesOrder[0].PayPalAdminArea1,
+        PayPalPostalCode: currentSalesOrder[0].PayPalPostalCode,
+        PayPalCountryCode: currentSalesOrder[0].PayPalCountryCode,
+        CreatedDateTime: currentSalesOrder[0].CreatedDateTime,
+        CustomerEmail: currentSalesOrder[0].CustomerEmail,      
+      });   
     }
+    this.createSalesOrderForm.disable();    
     this.salesOrderData = this.createSalesOrderForm.value;
   }
 
