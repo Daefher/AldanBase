@@ -17,7 +17,7 @@
             </mat-select>
         </mat-form-field>
         <ng-container *ngIf="this.selectedPaymentForm == 'PagoContraEntrega' || this.selectedPaymentForm == 'PayPal'">
-            <app-checkout-form></app-checkout-form>
+            <app-checkout-form [company]="company"></app-checkout-form>
         </ng-container>
         </mat-card-content>
     </mat-card>

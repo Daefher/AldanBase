@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { CompanyInterface } from 'src/app/interfaces/company-interface';
 import { SalesOrderInterface } from 'src/app/interfaces/sales-order-interface';
 import { SalesorderService } from 'src/app/services/demo-salesorder/salesorder.service';
 
@@ -25,6 +26,7 @@ export class CheckoutFormComponent {
   statesList: Array<Object>;
   countryList: Array<Object>;
   cp: unknown;
+  @Input() company: CompanyInterface;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -368,6 +370,7 @@ export class CheckoutFormComponent {
     }
     this.createSalesOrderForm = this.formBuilder.group({
       CreatedDateTime: [new Date],
+      CompanyId: [this.company.companyId],
       Subtotal: ['',],
       Taxes: ['',],
       Total: ['',],
