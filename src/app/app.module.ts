@@ -100,8 +100,8 @@ import { MessagesComponent } from './components/demo-theme/content-demo-theme/me
 import { MessageComponent } from './components/demo-theme/content-demo-theme/messages/message/message.component'; */
 import { ThemeModule } from './modules/theme/theme.module';
 import { NgChartsModule } from 'ng2-charts';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, MatIconButton } from '@angular/material/button';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';

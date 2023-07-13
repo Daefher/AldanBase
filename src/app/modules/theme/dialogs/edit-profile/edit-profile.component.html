@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Editar Perfil </h1>
 <form [formGroup]='user_data_form' (ngSubmit)='onSubmit()'>
-<div  fxLayout="column" fxLayoutAlign="center center">
+<div class="profile-dialog">
   <input type="hidden" [hidden]="true" formControlName="createdDateTime"  [ngModel]="post_data?.createdDateTime">
   <input type="hidden" [hidden]="true" formControlName="systemUserId"  [ngModel]="post_data?.systemUserId">
   <input type="hidden" [hidden]="true" formControlName="cancelable"  [ngModel]="post_data?.cancelable">
@@ -17,12 +17,12 @@
   <input type="hidden" [hidden]="true" formControlName="systemUserNum"  [ngModel]="post_data?.systemUserNum">
   <input type="hidden" [hidden]="true" formControlName="aldanCustomerId"  [ngModel]="post_data?.aldanCustomerId">
 
-    <mat-form-field appearance="fill" fxFlex="100%" >
+    <mat-form-field appearance="fill">
       <mat-label>Nombre</mat-label>
       <input matInput placeholder="Nombre"  formControlName="name" [ngModel]="post_data?.name">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" fxFlex="100%" >
+    <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput placeholder="Email" formControlName="email" [ngModel]="post_data?.email">
     </mat-form-field>

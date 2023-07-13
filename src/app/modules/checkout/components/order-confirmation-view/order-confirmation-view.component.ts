@@ -109,10 +109,8 @@ export class OrderConfirmationViewComponent {
     
     var redirectUrl: string = "";
     this.salesOrderService.insertSalesOrder(this.ds).subscribe((res: SalesOrderDatasetInterface) => {
-      //Delete local storage variables
-      localStorage.removeItem(this.salesOrderService.lclStrgId);
-      localStorage.removeItem(globals.cartId);
-      localStorage.removeItem(this.salesOrderService.lclStrgIdPayFrm);
+      //Delete local storage variables     
+      this.shoppingCartService.flushLSCart(this.salesOrderService.lclStrgId,this.salesOrderService.lclStrgIdPayFrm);     
       //NEW DATA FOR THE CART
       this.loading = false;
       if (res.links != null || res.links != undefined) {

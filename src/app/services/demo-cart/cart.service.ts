@@ -36,6 +36,10 @@ export class CartService {
    
   }
 
+  get getTotalCartProducts() {
+    return this.totalCost.asObservable();
+  }
+
   getAmountOnCart(): Observable<any>{
     
     return this.totalCost.asObservable();
@@ -148,6 +152,13 @@ export class CartService {
 
   public clearLSCart(){
     localStorage.removeItem(globals.cartId);
+  }
+
+  public flushLSCart(lclStrgId, lclStrgIdPayFrm){
+    localStorage.removeItem(lclStrgId);    
+    localStorage.removeItem(globals.cartId);
+    localStorage.removeItem(lclStrgIdPayFrm);
+    this.totalCost.next(0);
   }
 
   private setLSCart(cartArray: ProductInterface[]){

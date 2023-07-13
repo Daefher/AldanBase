@@ -16,12 +16,17 @@
 }
 
 #open-menu {
-  margin: 15px;
-  margin-top: 5%;
+  margin: 0px;
   z-index: 999;
   display: flex;
+  flex-flow: column;
   position: fixed;
+  width: 85px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .example-sidenav {
   padding: 20px;
@@ -51,4 +56,15 @@
 
 .mat-alter {
   background-color: #cab8c6 !important;
+}
+
+.menu-btn {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.1s linear, opacity 0.1s linear;
+}
+
+.open-menu-cls:hover .menu-btn {
+  visibility: visible;
+  opacity: 1;
 }

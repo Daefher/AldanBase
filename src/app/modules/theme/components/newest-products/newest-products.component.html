@@ -9,10 +9,10 @@
                 <mat-card-header color="primary">
                     <mat-card-title>
                         <button mat-button
-                            [routerLink]="['/products', product?.partId, 'view' ]">{{product.name}}</button>
+                            [routerLink]="['/product', product?.partId, 'view' ]">{{product.name}}</button>
                     </mat-card-title>
                 </mat-card-header>
-                <a [routerLink]="['/products', product?.partId, 'view' ]">
+                <a [routerLink]="['/product', product?.partId, 'view' ]">
                     <img mat-card-image class="img-size" src="{{ image_path + product?.imageFile}}">
                 </a>
                 <mat-card-content>
