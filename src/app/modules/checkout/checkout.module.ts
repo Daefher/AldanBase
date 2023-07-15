@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { OrderConfirmationViewComponent } from './components/order-confirmation-view/order-confirmation-view.component';
 import { CartModule } from '../cart/cart.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatOptionModule,
     MatSelectModule,
-    CartModule
+    CartModule,
+    MatFormFieldModule,
   ]
 })
 export class CheckoutModule { }

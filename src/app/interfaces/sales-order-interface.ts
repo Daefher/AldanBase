@@ -1,6 +1,7 @@
 export interface SalesOrderInterface {
     CreatedDateTime: string
     Subtotal: number,
+    CompanyId: number,
     Taxes: number,
     Total: number,
     Payed: number,

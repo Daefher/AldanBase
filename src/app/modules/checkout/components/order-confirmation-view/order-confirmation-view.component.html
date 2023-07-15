@@ -30,19 +30,18 @@
         </mat-form-field>
     </div>
     <div >
-        <app-checkout-form></app-checkout-form>
+        <app-checkout-form  [company]="company" [formState]="false"></app-checkout-form>
     </div>
     <div style="padding: 20px;" fxLayoutAlign="center">
 
-        <button *ngIf="!this.showControls" [disabled]="loading" (click)="placeOrder()" mat-raised-button color="accent"
-            style="margin: 20px;">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        <button *ngIf="!this.showControls" (click)="placeOrder()" mat-raised-button color="accent"
+            style="margin: 20px;" [class.spinner]="loading" [disabled]="loading">
+         
             Realizar pedido
         </button>
 
         <button *ngIf="this.showPayPalPayButton" (click)="redirectToPayPal()" style="margin: 20px;" mat-raised-button
-            color="accent">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            color="accent" [class.spinner]="loading" [disabled]="loading">            
             Pagar en PayPal
         </button>
 

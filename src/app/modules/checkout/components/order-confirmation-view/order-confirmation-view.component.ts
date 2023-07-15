@@ -27,7 +27,7 @@ export class OrderConfirmationViewComponent {
   loading: boolean = false;
   showPayPalPayButton: boolean = false;
   hideControls: boolean = false;
-  private company: CompanyInterface;
+  company: CompanyInterface;
 
   constructor(
     private router: Router,
