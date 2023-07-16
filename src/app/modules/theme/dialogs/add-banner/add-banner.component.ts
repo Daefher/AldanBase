@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyFile } from 'src/app/interfaces/company-file';
 import { CompanyInterface } from 'src/app/interfaces/company-interface';
@@ -27,6 +27,7 @@ export class AddBannerComponent {
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<AddBannerComponent>,
     public companyService: CompanyService,
+    
   ) { }
 
 

@@ -28,10 +28,12 @@ mat-divider {
 
 .avatar {
   margin-top: 16px;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
+  object-fit: contain;
 }
+
 
 .menu-button {
   width: 100%;
@@ -46,8 +48,7 @@ mat-divider {
 }
 
 .userAvatarInfo{
-  text-align: center;
-  width: 100%;
+  text-align: center; 
   color: black;
 }
 

@@ -5,11 +5,18 @@
         </mat-card-title>
     </mat-card-header>
     <!-- <img mat-card-image  src="{{ image_path + product.imageFile}}">     -->
-    <mat-card-content>        
+    <mat-card-content>  
+             
         <div class="userAvatarInfo">           
-            <img class="avatar mat-elevation-z8" src="{{image_banner?.image}}" />             
+            <img class="avatar mat-elevation-z8"  src="{{image_banner?.image}}" />             
         </div>
-        <div class= 'edit-profile-pic' (click)="openProfilePicDialog()"><mat-icon>edit</mat-icon></div>
+        <ng-container *ngIf="!image_banner.image">
+            <div class= 'edit-profile-pic' (click)="openProfilePicDialog()"><mat-icon>compare_arrows</mat-icon></div>
+        </ng-container>
+        <ng-container *ngIf="image_banner.image">
+            <div class= 'edit-profile-pic' (click)="openEditProfilePicDialog()"><mat-icon>edit</mat-icon></div>
+        </ng-container>
+        
         <mat-list>
             <mat-list-item> Nombre : {{ (this.user_data$ | async )?.name }} </mat-list-item>
             <mat-list-item> Correo : {{ (this.user_data$ | async )?.email }} </mat-list-item>

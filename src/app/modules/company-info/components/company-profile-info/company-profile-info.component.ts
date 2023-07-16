@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Data } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -15,6 +15,7 @@ import { UsersService } from 'src/app/services/demo-user/users.service';
 import * as globals from '../../../../globals';
 import { CompanyFile } from 'src/app/interfaces/company-file';
 import { mergeMap, switchMap } from 'rxjs/operators';
+import { EditProfilePictureComponent } from 'src/app/modules/theme/dialogs/edit-profile-picture/edit-profile-picture.component';
 
 @Component({
   selector: 'app-company-profile-info',
@@ -42,14 +43,15 @@ export class CompanyProfileInfoComponent {
     private toastr: ToastrService,
     public dialog: MatDialog,
     private route: ActivatedRoute,
-    private fileService : BannerService
+    private fileService : BannerService,
+    private cdRef: ChangeDetectorRef,
   ) {   
     this.authenticationService.currentuser.subscribe((user:UserInterface) => this.user = user); 
     this.user_data$ = this.usersService.getCurrentUserInfo;
     this.fileService.getImage('PROFILE-PIC').subscribe((bannerFile: CompanyFile[]) => {
       let image_path = globals.img_path + this.company.companyId + '/';
       if (bannerFile.length > 0)
-        this.image_banner.image = image_path + bannerFile[0].fileName;
+        this.image_banner.image = image_path + bannerFile[0].fileName + "?ts=" + new Date().getTime();
       this.companyFile = bannerFile[0];
     });
     //console.log("userDATA", this.user_data$);
@@ -78,6 +80,21 @@ export class CompanyProfileInfoComponent {
 
     dialogRefProfilePic.afterClosed().subscribe(() => {
       //console.log('The dialog was closed');
+    });
+  }
+
+  openEditProfilePicDialog(): void{
+    const dialogRefProfilePic = this.dialog.open(EditProfilePictureComponent, {
+      maxWidth: '480px',
+      maxHeight: '640px',
+      minWidth: "380px",
+      data: this.company
+    });
+
+    dialogRefProfilePic.afterClosed().subscribe(() => {
+      //console.log('The dialog was closed');
+      let image_path = globals.img_path + this.company.companyId + '/';      
+      this.image_banner.image = image_path + this.companyFile.fileName + "?ts=" + new Date().getTime();
     });
   }
 
