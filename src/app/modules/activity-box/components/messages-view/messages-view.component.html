@@ -48,6 +48,18 @@
         </mat-card>
 
     </ng-container>
-
+    <ng-container *ngIf="messages.length <= 0">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Mensajes Recibidos
+                </mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>                       
+                No hay mensajes para mostrar
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
 
 </div>
