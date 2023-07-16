@@ -1,21 +1,24 @@
-import { Component, Inject } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyFile } from 'src/app/interfaces/company-file';
 import { CompanyInterface } from 'src/app/interfaces/company-interface';
 import { BannerService } from 'src/app/services/demo-banner/banner.service';
 import { CompanyService } from 'src/app/services/demo-company/company.service';
+import { AddBannerComponent } from '../add-banner/add-banner.component';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import * as globals from '../../../../globals';
 
 @Component({
-  selector: 'app-add-banner',
-  templateUrl: './add-banner.component.html',
-  styleUrls: ['./add-banner.component.scss']
+  selector: 'app-add-profile-picture',
+  templateUrl: './add-profile-picture.component.html',
+  styleUrls: ['./add-profile-picture.component.scss']
 })
-export class AddBannerComponent {
+export class AddProfilePictureComponent implements OnInit {
 
-  loading = false;
-  submitted = false;
+  loading: boolean = false;
+  submitted: boolean = false;
   form: FormGroup;
   image_file: string;
   post_data: CompanyFile;
@@ -27,63 +30,32 @@ export class AddBannerComponent {
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<AddBannerComponent>,
     public companyService: CompanyService,
-    
+    public overlayContainer: OverlayContainer
   ) { }
-
 
   ngOnInit(): void {
     const hostname = window.location.hostname;
-
-    this.bannerService.getImage("BANNER-HOME").subscribe(response => {
-      if (response.length > 0) {
-        this.mapForm(response[0]);
-      }
-    }, err => {
-      console.log(err);
-    }
-    )
+    globals.chooseTheme(hostname, this.overlayContainer);
     this.initForm();
   }
-
   initForm() {
     this.form = this.formBuilder.group({
-      aldanCustomerId: [' '],
+      aldanCustomerId: [0],
       companyId: [1],
       companyFileId: [0],
-      name: ['HOME-BANNER'],
-      description: [' '],
-      fileName: [' '],
-      filePath: [' '],
-      title: [' '],
-      subtitle: [' '],
+      name: ['PROFILE-PIC'],
+      description: [''],
+      fileName: [''],
+      filePath: [''],
+      title: [''],
+      subtitle: [''],
       canceledBy: [''],
       canceledDateTime: [''],
-      canceled: [' '],
-      createdBy: [' '],
+      canceled: [false],
+      createdBy: [''],
       createdDateTime: [new Date],
-      cancelable: [' '],
-      sysRowId: [' ']
-    });
-  }
-
-  mapForm(file: CompanyFile) {
-    this.form = this.formBuilder.group({
-      aldanCustomerId: [file?.aldanCustomerId],
-      companyId: [file?.companyId],
-      companyFileId: [file?.companyFileId],
-      name: [file?.name],
-      description: [file?.name],
-      fileName: [file?.fileName],
-      filePath: [file?.filePath],
-      title: [file?.title],
-      subtitle: [file?.subtitle],
-      canceledBy: [file?.canceledBy],
-      canceledDateTime: [file?.canceledDateTime],
-      canceled: [file?.canceled],
-      createdBy: [file?.createdBy],
-      createdDateTime: [new Date],
-      cancelable: [file?.cancelable],
-      sysRowId: [file?.sysRowId]
+      cancelable: [true],
+      sysRowId: ['']
     });
   }
 
@@ -100,7 +72,7 @@ export class AddBannerComponent {
       return;
     }
     reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);   
+    reader.readAsDataURL(file);
   }
 
   _handleReaderLoaded(e) {
@@ -122,7 +94,7 @@ export class AddBannerComponent {
     }
     this.loading = true;
     this.bannerService.create(this.form.value).subscribe(res => {
-      this.toastr.success("Banner actualizado correctamente", "Exito");
+      this.toastr.success("Perfil actualizado correctamente", "Exito");
       this.dialogRef.close();
       window.location.reload();
     },

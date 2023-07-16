@@ -9,6 +9,8 @@ import { AuthenticationService } from 'src/app/services/demo-login/authenticatio
 import { UsersService } from 'src/app/services/demo-user/users.service';
 import * as globals from '../../../../globals';
 import { Router } from '@angular/router';
+import { BannerService } from 'src/app/services/demo-banner/banner.service';
+import { CompanyFile } from 'src/app/interfaces/company-file';
 
 @Component({
   selector: 'app-side-nav',
@@ -21,6 +23,10 @@ export class SideNavComponent {
   user: UserInterface;
   user_data$: Observable<UserDataInterface>;
   company_host_name: string;
+  companyFile: CompanyFile;
+  image_banner = {
+    image: ""
+  };
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -28,6 +34,7 @@ export class SideNavComponent {
     private toastr: ToastrService,
     public usersService: UsersService,
     private companyService: CompanyService,
+    private fileService: BannerService
   ) { }
 
   ngOnInit(): void {
@@ -40,14 +47,20 @@ export class SideNavComponent {
       this.companyService.getCompanyByHostNameResolver(this.company_host_name).subscribe(data => {
         this.company = data[0];
         this.image_path = globals.img_path + this.company.companyId + '/' + this.company.name.toLowerCase().replace(/\s/g, '') + 'logo.jpg';
-      })
+        
+        this.fileService.getImage('PROFILE-PIC').subscribe((bannerFile: CompanyFile[]) => {
+          let image_path = globals.img_path + this.company.companyId + '/';
+          if (bannerFile.length > 0)
+            this.image_banner.image = image_path + bannerFile[0].fileName;
+          this.companyFile = bannerFile[0];
+        });
+        this.image_path = globals.img_path + this.company.companyId + '/' + this.company.name + 'logo.jpg';
+      });
+
     } else {
       this.company = this.company[0];
-      this.image_path = globals.img_path + this.company.companyId + '/' + this.company.name + 'logo.jpg';
+     
     }
-
-
-
   }
 
   logout() {

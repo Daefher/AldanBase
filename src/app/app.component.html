@@ -1,8 +1,8 @@
 <mat-drawer-container [ngClass]="current_theme | async  " class="example-container">
   
   
-  <mat-drawer #drawer class="example-sidenav leftNavColor " mode="side" >
-    <app-side-nav [company]="company" ></app-side-nav>
+  <mat-drawer #drawer class="example-sidenav leftNavColor cScrollbar " mode="side" >
+    <app-side-nav class="cScrollbar" [company]="company" ></app-side-nav>
   </mat-drawer>
   <ng-container *ngIf="authenticationService.currentuser | async ">
     <div id="open-menu"  class="open-menu-cls" >

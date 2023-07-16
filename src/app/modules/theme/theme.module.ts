@@ -37,6 +37,8 @@ import { AddBannerComponent } from './dialogs/add-banner/add-banner.component';
 import { UpdateBannerComponent } from './dialogs/update-banner/update-banner.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddProfilePictureComponent } from './dialogs/add-profile-picture/add-profile-picture.component';
+import { EditProfilePictureComponent } from './dialogs/edit-profile-picture/edit-profile-picture.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     SideNavComponent, 
     AddBannerComponent, 
     UpdateBannerComponent, 
-    AppFooterComponent
+    AppFooterComponent, AddProfilePictureComponent, EditProfilePictureComponent
   ],
   imports: [
     CommonModule,
@@ -93,7 +95,9 @@ import { HttpClientModule } from '@angular/common/http';
     SideNavComponent,
     UpdateBannerComponent,
     AddBannerComponent,
-    AppFooterComponent
+    AppFooterComponent,
+    EditProfilePictureComponent,
+    AddProfilePictureComponent
   ]
 })
 export class ThemeModule { }

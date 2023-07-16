@@ -1,6 +1,6 @@
-<mat-selection-list  [multiple]="false" *ngIf="authenticationService.currentuser | async">
+<mat-selection-list   [multiple]="false" *ngIf="authenticationService.currentuser | async">
     <div class="userAvatarInfo">
-    <img class="avatar mat-elevation-z8" src="{{image_path}}" />
+    <img class="mat-elevation-z8 avatar img-size-banner" src="{{image_banner?.image}}" />
       <h4 class="name"> {{ (this.user_data$ | async )?.name }}</h4>
       <p class="email">{{ (this.user_data$ | async )?.email }}</p>
     </div>
