@@ -15,6 +15,13 @@
                     <button mat-raised-button color="primary" *ngIf="authenticationService.currentuser | async"
                         [routerLink]="['/product/create']" (click)="gotoTop()">Crear
                         Producto</button>
+                        <form [formGroup]="searchForm">
+                            <mat-form-field>
+                              <mat-label> Buscar Producto</mat-label>
+                              <input matInput placeholder="Buscar" formControlName="search" (keyup)="applySearch($event.target.value)" >
+                              <mat-icon matPrefix>search</mat-icon>
+                            </mat-form-field>
+                          </form>
                     <mat-form-field appearance="fill" class="filters">
                         <mat-label>Filtros</mat-label>
                         <mat-select [(value)]="selected" (selectionChange)="onFilterChange($event.value)">
@@ -24,25 +31,25 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <table mat-table [dataSource]="dataSource">
+                <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
                     <!-- Position Column -->
                     <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        <th mat-header-cell mat-sort-header="name" *matHeaderCellDef> Nombre </th>
+                        <td mat-cell *matCellDef="let element  "> {{element.name}} </td>
                     </ng-container>
                     <!-- Weight Column -->
                     <ng-container matColumnDef="unitPrice">
-                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                        <th mat-header-cell mat-sort-header="price" *matHeaderCellDef> Precio </th>
                         <td mat-cell *matCellDef="let element"> ${{element.unitPrice}} </td>
                     </ng-container>
                     <!-- Symbol Column -->
                     <ng-container matColumnDef="onHandQty">
-                        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                        <th mat-header-cell mat-sort-header="qty" *matHeaderCellDef> Cantidad </th>
                         <td mat-cell *matCellDef="let element"> {{element.onHandQty}} </td>
                     </ng-container>
                     <!-- Symbol Column -->
                     <ng-container matColumnDef="createdDateTime">
-                        <th mat-header-cell *matHeaderCellDef> Creación </th>
+                        <th mat-header-cell mat-sort-header="cDate" *matHeaderCellDef> Creación </th>
                         <td mat-cell *matCellDef="let element"> {{element.createdDateTime}} </td>
                     </ng-container>
                     <!-- Symbol Column -->
