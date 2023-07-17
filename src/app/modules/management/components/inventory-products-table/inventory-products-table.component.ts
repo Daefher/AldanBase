@@ -10,6 +10,8 @@ import { CompanyService } from 'src/app/services/demo-company/company.service';
 import { AuthenticationService } from 'src/app/services/demo-login/authentication.service';
 import { ProductsService } from 'src/app/services/demo-products/products.service';
 import * as globals from '../../../../globals';
+import { Sort } from '@angular/material/sort';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-inventory-products-table',
@@ -18,13 +20,14 @@ import * as globals from '../../../../globals';
 })
 export class InventoryProductsTableComponent {
   cmbOptions: Array<Object>;
-  selected:string = 'All';
+  selected: string = 'All';
   user: UserInterface;
   products: ProductInterface[] = [];
-  isLoading = true;
+  isLoading:boolean = true;
   company: CompanyInterface;
   displayedColumns: string[] = ['name', 'unitPrice', 'onHandQty', 'createdDateTime', "actions"];
   dataSource = new MatTableDataSource<ProductInterface>(this.products);
+  searchForm: FormGroup ;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -33,7 +36,8 @@ export class InventoryProductsTableComponent {
     public companyService: CompanyService,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+    private formBuilder: FormBuilder
   ) { }
 
   ngAfterViewInit() {
@@ -58,11 +62,14 @@ export class InventoryProductsTableComponent {
 
   ngOnInit(): void {
     const hostname = window.location.hostname;
-    this.authenticationService.currentuser.subscribe((user:UserInterface) => this.user = user);
-    this.activatedRoute.data.subscribe((response: any) => {
+    this.authenticationService.currentuser.subscribe((user: UserInterface) => this.user = user);
+    this.activatedRoute.data.subscribe((response: Data) => {
       this.mapInitializer(response.company[0]);
     });
     globals.chooseTheme(hostname, this.overlayContainer);
+    this.searchForm = this.formBuilder.group({
+      search: '',
+    });
     this.populateInitialCombos();
   }
 
@@ -136,4 +143,35 @@ export class InventoryProductsTableComponent {
     }
   }
 
+  compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  sortData(sort: Sort) {
+    const data = this.products;
+    if (!sort.active || sort.direction === '') {
+      this.dataSource.data = data;
+      return;
+    }
+
+    this.dataSource.data = data.sort((a: ProductInterface, b: ProductInterface) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name':
+          return this.compare(a.name, b.name, isAsc);
+        case 'price':
+          return this.compare(a.unitPrice, b.unitPrice, isAsc);
+        case 'qty':
+          return this.compare(a.onHandQty, b.onHandQty, isAsc);
+        case 'cDate':
+          return this.compare(a.createdDateTime, b.createdDateTime, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+
+  applySearch(searchString : string){
+    this.dataSource.filter = searchString.trim().toLowerCase();
+  }
 }

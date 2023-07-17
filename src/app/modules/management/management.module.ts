@@ -26,6 +26,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { ProductsAvailableComponent } from './components/products-available/products-available.component';
 import { OrdersByStatusComponent } from './components/orders-by-status/orders-by-status.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatPaginatorModule,
     MatProgressBarModule,
-    NgChartsModule  
+    NgChartsModule,
+    MatSortModule
   ]
 })
 export class ManagementModule { }
